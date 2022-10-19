@@ -1,0 +1,50 @@
+body {
+    user-select: none;
+}
+
+canvas{
+    background-color: #ddd;
+    width:100%;
+}
+
+p {
+    font-size: 12px;
+}
+
+h1 {
+    position: relative;
+    padding: 0.25em 0;
+    color:coral
+  }
+h1:after {
+    content: "";
+    display: block;
+    height: 4px;
+    background: -webkit-linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
+    background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
+ }
+
+#controlPanel {
+    display: flex;
+    padding-top : 20px;
+    justify-content:left;
+}
+
+.setParam {
+    padding: 20px;
+}
+
+.editView {
+    display: flex;
+    justify-content:left;
+    padding: 20px;
+}
+
+@media screen and (min-width: 800px) {
+    #controlPanel  {
+        flex-wrap: wrap;
+    }
+    .editView  {
+        flex-wrap: wrap;
+    }
+}
