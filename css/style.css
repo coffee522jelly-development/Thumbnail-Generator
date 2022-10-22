@@ -14,7 +14,7 @@ canvas {
 
 h1 {
     padding-bottom:12px;
-    font-size:20px;
+    font-size:18px;
 }
 
 p {
@@ -24,20 +24,19 @@ p {
 .controlPanel {
     display: flex;
     padding-top : 12px;
-    justify-content:center;
+    justify-content:left;
     margin : 10px;
     border: 1px dotted #333333;
     border-radius: 7px;
 }
 
 .setParam {
-    padding: 10px;
+    padding: 20px;
 }
 
 .editView {
     display: flex;
     justify-content:left;
-    padding-top : 10px;
     padding: 10px;
     margin : 10px;
     border: 1px dotted #333333;

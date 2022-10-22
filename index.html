@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <!-- CSS load -->
-    <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-    <!-- Javascript load -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
-    <title>ThumbnailGenerator</title>
-  </head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS load -->
+        <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <!-- Javascript load -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        
+        <title>ThumbnailGenerator</title>
+    </head>
 
     <body>
         <!-- As a heading -->
@@ -22,56 +22,65 @@
             </div>
         </nav>
         <!--controlPanel-->
-        <div class="controlPanel" class="row">
-            <div class="setParam col">
-                <p>Title</p>
-                <form name="Title">
-                    <input type="text" name="caption" size="30" value="Hello.">
-                </form>
-            </div>
-            
-            <div class="setParam col">
-                <p>FileSelecter</p>
-                <input type="file" id="uploader">
+        <div class="container-fluid">
+            <div class="controlPanel row row-cols-1">
+                <div class="setParam col">
+                    <p>Title</p>
+                    <form name="Title">
+                        <input type="text" name="caption" size="20" value="Hello.">
+                    </form>
+                </div>
+                
+                <div class="setParam col">
+                    <p>FileSelecter</p>
+                    <input type="file" id="uploader">
+                </div>
             </div>
         </div>
 
-        <div class="controlPanel" class="row">
-            <div class="setParam col">
-                <p>FontSize</p>
-                <input type="range" id="inputSlideBar" min="0" max="500" step="50">
-            </div>
+        <!--controlPanel-->
+        <div class="container-fluid">
+            <div class="controlPanel row row-cols-2">
+                <div class="setParam col">
+                    <p>FontSize</p>
+                    <input type="range" id="inputSlideBar" min="0" max="500" step="50">
+                </div>
 
-            <div class="setParam col">
-                <p>FontColor</p>
-                <input type="color" id="fontColor" value="#ffffff">
-            </div>
+                <div class="setParam col">
+                    <p>FontColor</p>
+                    <input type="color" id="fontColor" value="#ffffff">
+                </div>
 
-            <div class="setParam col">
-                <p>FontStyle</p>
-                <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Open this select menu</option>
-                    <option value="Arial">Arial</option>
-                    <option value="sans-serif">sans-serif</option>
-                    <option value="Meiryo UI">Meiryo UI</option>
-                    <option value="Yu Gothic UI">Yu Gothic UI</option>
-                </select>
+                <div class="setParam col">
+                    <p>FontStyle</p>
+                    <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option selected>Open this select menu</option>
+                        <option value="Arial">Arial</option>
+                        <option value="sans-serif">sans-serif</option>
+                        <option value="Meiryo UI">Meiryo UI</option>
+                        <option value="Yu Gothic UI">Yu Gothic UI</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <!--EditView-->
-        <div class="editView row">
-            <div id="sourceImage" class="imageItem col">
-                <h1>Source</h1>
-                <canvas id="sourceCanvas"></canvas>
+        <div class="container-fluid">
+            <div class="editView row">
+                <div id="sourceImage" class="imageItem col">
+                    <h1>Source</h1>
+                    <canvas id="sourceCanvas"></canvas>
+                </div>
             </div>
         </div>
 
-        <div class="editView row">
-            <div id="croppedImage" class="imageItem col"> 
-                <h1>Cropped + Overlay</h1>
-                <canvas id="croppedCanvas"></canvas>
-                <img id="output" src=""> 
+        <div class="container-fluid">
+            <div class="editView row">
+                <div id="croppedImage" class="imageItem col"> 
+                    <h1>Cropped + Overlay</h1>
+                    <canvas id="croppedCanvas"></canvas>
+                    <img id="output" src=""> 
+                </div>
             </div>
         </div>
 
@@ -80,10 +89,9 @@
             <span class="text-muted">Copyright © 2022 Team.A All rights reserved.</span>
             </div>
         </footer>
-
-        <!-- Javascript load -->
-        <link rel="stylesheet" href="css/style.css">
-        <script src="js/common.js"></script>
-        <script src="js/cropper.js"></script>
     </body>
+    <!-- Javascript load -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js"></script>
+    <script src="js/cropper.js"></script>
 </html>
