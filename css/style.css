@@ -18,10 +18,10 @@ h1 {
 }
 
 p {
-    font-size: 12px;
+    font-size: 16px;
 }
 
-#controlPanel {
+.controlPanel {
     display: flex;
     padding-top : 12px;
     justify-content:left;
@@ -53,7 +53,9 @@ p {
 }
 
 
-@media screen and (min-width: 800px) {
+/* モバイル向けのスタイル */
+/* 768px 未満 */
+@media not screen and (min-width: 768px) {
     #controlPanel  {
         flex-wrap: wrap;
     }
@@ -67,6 +69,18 @@ p {
         width:100%;
     }
 }
+
+/* デスクトップ向けのスタイル */
+/* 768px 以上 */
+@media screen and (min-width: 768px) {
+    canvas {
+        width:30%;
+    }
+    #output {
+        width:30%;
+    }   
+}
+
 
 @media (prefers-color-scheme: dark) {
     body {

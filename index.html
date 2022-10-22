@@ -1,72 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <!-- CSS load -->
+    <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <!-- Javascript load -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <title>ThumbnailGenerator</title>
+  </head>
 
-<link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<body>
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+        <span class="navbar-brand mt-3 mb-3 h1">Thumbanil Generator</span>
+        </div>
+    </nav>
+    <!--controlPanel-->
+    <div class="controlPanel" class="row">
+        <div class="setParam col">
+            <p>Title</p>
+            <form name="Title">
+                <input type="text" name="caption" size="30" value="Hello.">
+            </form>
+        </div>
+        
+        <div class="setParam col">
+            <p>FileSelecter</p>
+            <input type="file" id="uploader">
+        </div>
+    </div>
 
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-      <h2 class="navbar-brand">Thumbnail Generater</h2>
-    </div>
-</nav>
+    <div class="controlPanel" class="row">
+        <div class="setParam col">
+            <p>FontSize</p>
+            <input type="range" id="inputSlideBar" min="0" max="500" step="50">
+        </div>
 
-<!--コントロールパネル-->
-<div id="controlPanel" class="row">
-    <div class="setParam col">
-        <p>Title</p>
-        <form name="Title">
-            <input type="text" name="caption" size="30" value="Hello.">
-        </form>
-    </div>
-    <div class="setParam col">
-        <p>FileSelecter</p>
-        <input type="file" id="uploader">
-    </div>
-    <div class="setParam col">
-        <p>FontSize</p>
-        <input type="range" id="inputSlideBar" min="0" max="500" step="50">
-    </div>
-    <div class="setParam col">
-        <p>FontColor</p>
-        <input type="color" id="fontColor" value="#ffffff">
-    </div>
-    <div class="setParam col">
-        <p>FontStyle</p>
-        <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-            <option selected>Open this select menu</option>
-            <option value="Arial">Arial</option>
-            <option value="sans-serif">sans-serif</option>
-            <option value="Meiryo UI">Meiryo UI</option>
-            <option value="Yu Gothic UI">Yu Gothic UI</option>
-        </select>
-    </div>
-</div>
+        <div class="setParam col">
+            <p>FontColor</p>
+            <input type="color" id="fontColor" value="#ffffff">
+        </div>
 
-<!--編集ビュー-->
-<div class="editView row">
-    <div id="sourceImage" class="imageItem col">
-        <h1>Source</h1>
-        <canvas id="sourceCanvas"></canvas>
+        <div class="setParam col">
+            <p>FontStyle</p>
+            <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Open this select menu</option>
+                <option value="Arial">Arial</option>
+                <option value="sans-serif">sans-serif</option>
+                <option value="Meiryo UI">Meiryo UI</option>
+                <option value="Yu Gothic UI">Yu Gothic UI</option>
+            </select>
+        </div>
     </div>
-</div>
 
-<div class="editView row">
-    <div id="croppedImage" class="imageItem col"> 
-        <h1>Cropped + Overlay</h1>
-        <canvas id="croppedCanvas"></canvas>
-        <img id="output" src=""> 
+    <!--EditView-->
+    <div class="editView row">
+        <div id="sourceImage" class="imageItem col">
+            <h1>Source</h1>
+            <canvas id="sourceCanvas"></canvas>
+        </div>
     </div>
-</div>
 
-<!-- <div class="preView row">
-    <div id="ImagePreview" col">
-        <h1>Image</h1>
-        <img id="output" src="">       
-    </div>   
-</div> -->
+    <div class="editView row">
+        <div id="croppedImage" class="imageItem col"> 
+            <h1>Cropped + Overlay</h1>
+            <canvas id="croppedCanvas"></canvas>
+            <img id="output" src=""> 
+        </div>
+    </div>
 
-<!--完成ビュー-->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+          <span class="text-muted">Copyright © 2022 Team.A All rights reserved.</span>
+        </div>
+    </footer>
 
-<script src="js/common.js"></script>
-<script src="js/cropper.js"></script>
-<link rel="stylesheet" href="css/style.css">
+</body>
+    <!-- Javascript load -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js"></script>
+    <script src="js/cropper.js"></script>
+</html>
