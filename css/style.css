@@ -2,15 +2,20 @@ body {
     user-select: none;
 }
 
-canvas{
+canvas {
     background-color: #ddd;
-    width:100%;
+    width:30%;
+}
+
+#output {
+    width:30%;
+    display:none;
 }
 
 h1 {
     padding-bottom:12px;
+    font-size:20px;
 }
-
 
 p {
     font-size: 12px;
@@ -32,18 +37,34 @@ p {
 .editView {
     display: flex;
     justify-content:left;
-    padding: 20px;
+    padding: 30px;
     margin : 10px;
     border: 1px dotted #333333;
     border-radius: 7px;
 }
 
-@media screen and (min-width: 800px) {
+.preView {
+    display: flex;
+    justify-content:left;
+    padding: 30px;
+    margin : 10px;
+    border: 1px dotted #333333;
+    border-radius: 7px;
+}
+
+
+@media screen and (max-width: 800px) {
     #controlPanel  {
         flex-wrap: wrap;
     }
     .editView  {
         flex-wrap: wrap;
+    }
+    canvas {
+        width:100%;
+    }
+    #output {
+        width:100%;
     }
 }
 
@@ -58,6 +79,10 @@ p {
     }
 
     .editView  {
+        border: 1px dotted #cccccc;
+    }
+
+    .preView  {
         border: 1px dotted #cccccc;
     }
 }

@@ -1,77 +1,10 @@
-let   cropper = null;
-let   fontsize = 50;
+// GrobalVariables
+let   fontsize = 200;
 const cropAspectRatio = 16.0 / 9.0;
-const scaledWidth = 384;
+const scaledWidth = 1024;
 
-// スライダーバー
+// FontSize
 const inputSlideBarElement = document.getElementById('inputSlideBar');
 inputSlideBarElement.addEventListener('change', function(){
 	fontsize = inputSlideBarElement.value;
 });
-
-const cropImage = function (evt) {
-    const files = evt.target.files;
-    if (files.length == 0) {
-        return;
-    }
-    let file = files[0];
-    let image = new Image();
-    let reader = new FileReader();
-    reader.onload = function (evt) {
-        image.onload = function () {
-            let scale = scaledWidth / image.width;
-            let imageData = null;
-            {
-                const canvas = document.getElementById("sourceCanvas");
-                {
-                    let ctx = canvas.getContext("2d");
-                    canvas.width = image.width * scale;
-                    canvas.height = image.height * scale;
-                    ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
-                }
-                if (cropper != null) {
-                    // 再読み込み
-                    cropper.destroy();
-                }
-                cropper = new Cropper(canvas, {
-                    aspectRatio: cropAspectRatio,
-                    movable: false,
-                    scalable: false,
-                    zoomable: false,
-                    data: {
-                        width: canvas.width,
-                        height: canvas.width * cropAspectRatio
-                    },
-                    crop: function (event) {
-                        const croppedCanvas = document.getElementById("croppedCanvas");
-                        {
-                            let ctx = croppedCanvas.getContext("2d");
-                            let croppedImageWidth   = image.height * cropAspectRatio;
-                            croppedCanvas.width     = croppedImageWidth * scale;
-                            croppedCanvas.height    = image.height * scale;
-                            ctx.drawImage(image,
-                                event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
-                                0, 0, croppedCanvas.width, croppedCanvas.height
-                            );
-
-                            let fontStyle = document.getElementById("fontStyle").value;
-                            ctx.font = fontsize + 'px ' + fontStyle;
-                            ctx.fillStyle = document.getElementById("fontColor").value;
-                            let x = croppedCanvas.width / 2;
-                            let y = (croppedCanvas.height / 2);
-                            let element = document.Title.caption.value;
-                            let length = ctx.measureText(element).width;
-                            ctx.fillText(element, (x - length / 2), y + (fontsize / 3));
-                        }
-                    }
-                });
-            }
-        }
-        image.src = evt.target.result;
-    }
-    reader.readAsDataURL(file);
-}
-
-//　アップローダー
-const uploader = document.getElementById('uploader');
-uploader.addEventListener('change', cropImage);

@@ -11,26 +11,26 @@
 </nav>
 
 <!--コントロールパネル-->
-<div id="controlPanel">
-    <div class="setParam">
+<div id="controlPanel" class="row">
+    <div class="setParam col">
         <p>Title</p>
         <form name="Title">
             <input type="text" name="caption" size="30" value="Hello.">
         </form>
     </div>
-    <div class="setParam">
+    <div class="setParam col">
         <p>FileSelecter</p>
         <input type="file" id="uploader">
     </div>
-    <div class="setParam">
-        <p>FontSize(0~100px)</p>
-        <input type="range" id="inputSlideBar" min="0" max="100" step="10">
+    <div class="setParam col">
+        <p>FontSize</p>
+        <input type="range" id="inputSlideBar" min="0" max="500" step="50">
     </div>
-    <div class="setParam">
+    <div class="setParam col">
         <p>FontColor</p>
         <input type="color" id="fontColor" value="#ffffff">
     </div>
-    <div class="setParam">
+    <div class="setParam col">
         <p>FontStyle</p>
         <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
             <option selected>Open this select menu</option>
@@ -48,11 +48,25 @@
         <h1>Source</h1>
         <canvas id="sourceCanvas"></canvas>
     </div>
+</div>
+
+<div class="editView row">
     <div id="croppedImage" class="imageItem col"> 
         <h1>Cropped + Overlay</h1>
         <canvas id="croppedCanvas"></canvas>
+        <img id="output" src=""> 
     </div>
 </div>
 
+<!-- <div class="preView row">
+    <div id="ImagePreview" col">
+        <h1>Image</h1>
+        <img id="output" src="">       
+    </div>   
+</div> -->
+
+<!--完成ビュー-->
+
 <script src="js/common.js"></script>
+<script src="js/cropper.js"></script>
 <link rel="stylesheet" href="css/style.css">
