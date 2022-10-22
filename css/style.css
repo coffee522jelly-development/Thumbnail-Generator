@@ -4,11 +4,11 @@ body {
 
 canvas {
     background-color: #ddd;
-    width:30%;
+    width:100%;
 }
 
 #output {
-    width:30%;
+    width:100%;
     display:none;
 }
 
@@ -43,6 +43,11 @@ p {
     border-radius: 7px;
 }
 
+.imageItem {
+    padding: 10px;
+}
+
+
 .preView {
     display: flex;
     justify-content:left;
@@ -73,12 +78,7 @@ p {
 /* デスクトップ向けのスタイル */
 /* 768px 以上 */
 @media screen and (min-width: 768px) {
-    canvas {
-        width:30%;
-    }
-    #output {
-        width:30%;
-    }   
+   
 }
 
 
@@ -88,7 +88,7 @@ p {
       color: #eeeeee;
     }
 
-    #controlPanel {
+    .controlPanel {
         border: 1px dotted #cccccc;
     }
 
