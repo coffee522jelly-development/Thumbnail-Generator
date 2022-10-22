@@ -2,6 +2,10 @@ body {
     user-select: none;
 }
 
+label {
+    font-size: 12px;
+}
+
 canvas {
     background-color: #ddd;
     width:100%;
