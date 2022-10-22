@@ -14,76 +14,76 @@
     <title>ThumbnailGenerator</title>
   </head>
 
-<body>
-    <!-- As a heading -->
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-        <span class="navbar-brand mt-3 mb-3 h1">Thumbanil Generator</span>
-        </div>
-    </nav>
-    <!--controlPanel-->
-    <div class="controlPanel" class="row">
-        <div class="setParam col">
-            <p>Title</p>
-            <form name="Title">
-                <input type="text" name="caption" size="30" value="Hello.">
-            </form>
-        </div>
-        
-        <div class="setParam col">
-            <p>FileSelecter</p>
-            <input type="file" id="uploader">
-        </div>
-    </div>
-
-    <div class="controlPanel" class="row">
-        <div class="setParam col">
-            <p>FontSize</p>
-            <input type="range" id="inputSlideBar" min="0" max="500" step="50">
+    <body>
+        <!-- As a heading -->
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+            <span class="navbar-brand mt-3 mb-3 h1">Thumbanil Generator</span>
+            </div>
+        </nav>
+        <!--controlPanel-->
+        <div class="controlPanel" class="row">
+            <div class="setParam col">
+                <p>Title</p>
+                <form name="Title">
+                    <input type="text" name="caption" size="30" value="Hello.">
+                </form>
+            </div>
+            
+            <div class="setParam col">
+                <p>FileSelecter</p>
+                <input type="file" id="uploader">
+            </div>
         </div>
 
-        <div class="setParam col">
-            <p>FontColor</p>
-            <input type="color" id="fontColor" value="#ffffff">
+        <div class="controlPanel" class="row">
+            <div class="setParam col">
+                <p>FontSize</p>
+                <input type="range" id="inputSlideBar" min="0" max="500" step="50">
+            </div>
+
+            <div class="setParam col">
+                <p>FontColor</p>
+                <input type="color" id="fontColor" value="#ffffff">
+            </div>
+
+            <div class="setParam col">
+                <p>FontStyle</p>
+                <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>Open this select menu</option>
+                    <option value="Arial">Arial</option>
+                    <option value="sans-serif">sans-serif</option>
+                    <option value="Meiryo UI">Meiryo UI</option>
+                    <option value="Yu Gothic UI">Yu Gothic UI</option>
+                </select>
+            </div>
         </div>
 
-        <div class="setParam col">
-            <p>FontStyle</p>
-            <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option selected>Open this select menu</option>
-                <option value="Arial">Arial</option>
-                <option value="sans-serif">sans-serif</option>
-                <option value="Meiryo UI">Meiryo UI</option>
-                <option value="Yu Gothic UI">Yu Gothic UI</option>
-            </select>
+        <!--EditView-->
+        <div class="editView row">
+            <div id="sourceImage" class="imageItem col">
+                <h1>Source</h1>
+                <canvas id="sourceCanvas"></canvas>
+            </div>
         </div>
-    </div>
 
-    <!--EditView-->
-    <div class="editView row">
-        <div id="sourceImage" class="imageItem col">
-            <h1>Source</h1>
-            <canvas id="sourceCanvas"></canvas>
+        <div class="editView row">
+            <div id="croppedImage" class="imageItem col"> 
+                <h1>Cropped + Overlay</h1>
+                <canvas id="croppedCanvas"></canvas>
+                <img id="output" src=""> 
+            </div>
         </div>
-    </div>
 
-    <div class="editView row">
-        <div id="croppedImage" class="imageItem col"> 
-            <h1>Cropped + Overlay</h1>
-            <canvas id="croppedCanvas"></canvas>
-            <img id="output" src=""> 
-        </div>
-    </div>
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+            <span class="text-muted">Copyright © 2022 Team.A All rights reserved.</span>
+            </div>
+        </footer>
 
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-          <span class="text-muted">Copyright © 2022 Team.A All rights reserved.</span>
-        </div>
-    </footer>
-
-</body>
-    <!-- Javascript load -->
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/common.js"></script>
-    <script src="js/cropper.js"></script>
+        <!-- Javascript load -->
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/common.js"></script>
+        <script src="js/cropper.js"></script>
+    </body>
 </html>

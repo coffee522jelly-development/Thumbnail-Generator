@@ -55,16 +55,6 @@ const cropImage = function (evt) {
                             let element = document.Title.caption.value;
                             let length = ctx.measureText(element).width;
                             ctx.fillText(element, (x - length / 2), y + (fontsize / 3));
-                            
-                            // Edit
-                            const imageData = croppedCanvas.getImageData(0, 0, croppedCanvas.clientWidth, croppedCanvas.clientHeight);
-                            let data = imageData.data;
-                            for (let i = 0; i < data.length; i += 4) {
-                                // (r+g+b)/3
-                                const color = (data[i] + data[i+1] + data[i+2]) / 3;
-                                data[i] = data[i+1] = data[i+2] = color;
-                              }
-                            croppedCanvas.putImageData(imageData, 0, 0);
 
                             // ConvertPngImage
                             let output = document.getElementById("output");
