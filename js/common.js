@@ -27,6 +27,14 @@ function OnAspectButton(){
 		}
 	}
 	cropAspectRatio = parseFloat(str);
+
+	if (cropper != null){
+		cropper.initialAspectRatio = cropAspectRatio;
+		cropper.aspectRatio = cropAspectRatio;
+		cropper.canvasData.width = cropper.canvasData.height * cropAspectRatio;
+		cropper.cropBoxData.width = cropper.cropBoxData.height * cropAspectRatio;
+		cropper.setCropBoxData(cropper.cropBoxData);
+	}
 }
 
 // mobile editor adjust
