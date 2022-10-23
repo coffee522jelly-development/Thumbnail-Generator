@@ -36,11 +36,17 @@ function getViewportSizeAndAdjust() {
 
 	if (w < 414){
 		document.getElementById("EditView").classList.remove("row-cols-2");
+		document.getElementById("ControlView").classList.remove("row-cols-2");
+
 		document.getElementById("EditView").classList.add("row-cols-1");
+		document.getElementById("ControlView").classList.add("row-cols-1");
 	}
 	else{
 		document.getElementById("EditView").classList.remove("row-cols-1");
+		document.getElementById("ControlView").classList.remove("row-cols-1");
+
 		document.getElementById("EditView").classList.add("row-cols-2");
+		document.getElementById("ControlView").classList.add("row-cols-2");
 	}
   }
   window.addEventListener('load', (e) => {

@@ -18,71 +18,156 @@
         <!-- As a heading -->
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
-            <span class="navbar-brand mt-3 mb-3 h1">Thumbanil Generator</span>
+            <span class="navbar-brand mt-1 mb-1 h1">Thumbanil Generator</span>
             </div>
         </nav>
+
         <!--controlPanel-->
         <div class="container-fluid">
             <div class="controlPanel row row-cols-1">
-                <div class="setParam col">
-                    <p>Title</p>
-                    <form name="Title">
-                        <input type="text" name="caption" size="20" value="Hello.">
-                    </form>
-                </div>
-                
-                <div class="setParam col">
-                    <p>FileSelecter</p>
-                    <input type="file" id="uploader">
+                <div class="accordion" id="accordion1">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TitleAndFile" aria-expanded="true" aria-controls="TitleAndFile">
+                          Title&File
+                        </button>
+                      </h2>
+                      <div id="TitleAndFile" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
+                        <div class="accordion-body">
+                            <div class="setParam col">
+                                <p>Title</p>
+                                <form name="Title">
+                                    <input type="text" name="caption" size="20" value="Hello.">
+                                </form>
+                            </div>
+                            <div class="setParam col">
+                                <p>FileSelecter</p>
+                                <input type="file" id="uploader">
+                            </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!--controlPanel-->
         <div class="container-fluid">
-            <div class="controlPanel row row-cols-2">
-                <div class="setParam col">
-                    <p>FontSize</p>
-                    <input type="range" id="inputSlideBar" min="0" max="500" step="50">
-                </div>
-
-                <div class="setParam col">
-                    <p>FontColor</p>
-                    <input type="color" id="fontColor" value="#ffffff" list="colors">
-                    <datalist id="colors">
-                        <option value="#FFFFFF">
-                        <option value="#0F4C81">
-                        <option value="#939597">
-                        <option value="#F5DF4D">
-                    </datalist>
-                </div>
-
-                <div class="setParam col">
-                    <p>FontStyle</p>
-                    <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected>Open this select menu</option>
-                        <option value="Arial">Arial</option>
-                        <option value="sans-serif">sans-serif</option>
-                        <option value="Meiryo UI">Meiryo UI</option>
-                        <option value="Yu Gothic UI">Yu Gothic UI</option>
-                    </select>
-                </div>
-
-                <div class="setParam col">
-                    <p>Aspect Ratio</p>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
-                        <label class="form-check-label" for="exampleRadios1">16:9</label>
+            <div id="ControlView" class="controlPanel row row-cols-2">
+                <div class="accordion col" id="accordion2">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#FontEdit" aria-expanded="true" aria-controls="FontEdit">
+                          FontEdit
+                        </button>
+                      </h2>
+                      <div id="FontEdit" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            <div class="setParam col">
+                                <p>FontSize</p>
+                                <input type="range" id="inputSlideBar" min="0" max="500" step="50">
+                            </div>
+                            <div class="setParam col">
+                                <p>FontColor</p>
+                                <input type="color" id="fontColor" value="#ffffff" list="colors">
+                                <datalist id="colors">
+                                    <option value="#FFFFFF">
+                                    <option value="#0F4C81">
+                                    <option value="#939597">
+                                    <option value="#F5DF4D">
+                                </datalist>
+                            </div>
+                            <div class="setParam col">
+                                <p>FontStyle</p>
+                                <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="Arial">Arial</option>
+                                    <option value="sans-serif">sans-serif</option>
+                                    <option value="Meiryo UI">Meiryo UI</option>
+                                    <option value="Yu Gothic UI">Yu Gothic UI</option>
+                                </select>
+                            </div>
+                        </div>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
-                        <label class="form-check-label" for="exampleRadios2">4:3</label>
+                    </div>
+                    <!-- <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Accordion Item #2
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
-                        <label class="form-check-label" for="exampleRadios3">3:2</label>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Accordion Item #3
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
                       </div>
-                      <button id="aspectRatio">Change</button>
+                    </div> -->
+                  </div>
+
+                <div class="accordion col" id="accordion3">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#PhotoEdit" aria-expanded="true" aria-controls="PhotoEdit">
+                          PhotoEdit
+                        </button>
+                      </h2>
+                      <div id="PhotoEdit" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion3">
+                        <div class="accordion-body">
+                            <div class="setParam col">
+                                <p>Aspect Ratio</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
+                                    <label class="form-check-label" for="exampleRadios1">16:9</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
+                                    <label class="form-check-label" for="exampleRadios2">4:3</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
+                                    <label class="form-check-label" for="exampleRadios3">3:2</label>
+                                </div>
+                                <button id="aspectRatio">Change</button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Accordion Item #2
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Accordion Item #3
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div> -->
                 </div>
             </div>
         </div>
