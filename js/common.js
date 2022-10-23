@@ -7,9 +7,16 @@ const scaledWidth = 1024;
 window.onload = getViewportSizeAndAdjust;
 
 // FontSize
-const inputSlideBarElement = document.getElementById('inputSlideBar');
-inputSlideBarElement.addEventListener('change', function(){
-	fontsize = inputSlideBarElement.value;
+const inputSlideBarFontSize = document.getElementById('inputSlideBar');
+inputSlideBarFontSize.addEventListener('change', function(){
+	fontsize = inputSlideBarFontSize.value;
+});
+
+// contrast
+const inputSlideBarContrast = document.getElementById('Contrast');
+inputSlideBarContrast.addEventListener('change', function(){
+	let element = document.getElementById('output');
+	element.style.filter = 'contrast(' + inputSlideBarContrast.value + '%)';
 });
 
 // AspectRatioCheck
