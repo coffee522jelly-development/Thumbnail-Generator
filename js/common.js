@@ -3,7 +3,7 @@ let   fontsize = 200;
 let   cropAspectRatio = 16.0 / 9.0;
 const scaledWidth = 1024;
 
-// window load
+// Window load
 window.onload = getViewportSizeAndAdjust;
 
 // FontSize
@@ -12,7 +12,7 @@ inputSlideBarFontSize.addEventListener('change', function(){
 	fontsize = inputSlideBarFontSize.value;
 });
 
-// contrast
+// Contrast
 const inputSlideBarContrast = document.getElementById('Contrast');
 inputSlideBarContrast.addEventListener('change', function(){
 	let element = document.getElementById('output');
@@ -23,7 +23,7 @@ inputSlideBarContrast.addEventListener('change', function(){
 let button = document.getElementById('aspectRatio');
 button.addEventListener('click', OnAspectButton);
 
-// OnbtnAspectRatio
+// OnButtonAspectRatio
 function OnAspectButton(){
 	let radioList = document.getElementsByName("AspectRatio");
 	let str = "";
@@ -44,7 +44,7 @@ function OnAspectButton(){
 	}
 }
 
-// mobile editor adjust
+// Mobileeditor-Adjuster
 function getViewportSizeAndAdjust() {
 	const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
