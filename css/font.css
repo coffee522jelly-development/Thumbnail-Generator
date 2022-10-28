@@ -1,0 +1,43 @@
+/*フォント定義*/
+@font-face {
+    /*キウイ丸ライト*/
+    font-family:'Kiwimaru-Light';
+    src: url('../fonts/Kiwi_Maru/KiwiMaru-Light.ttf') format('truetype');
+  }
+  
+  @font-face {
+    /*キウイ丸レギュラー*/
+    font-family:'Kiwimaru-Regular';
+    src: url('../fonts/Kiwi_Maru/KiwiMaru-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+      /*クレーOneレギュラー*/
+      font-family:'KleeOne-Regular';
+      src: url('../fonts/Klee_One/KleeOne-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+      /*クレーOneセミボールド*/
+      font-family:'KleeOne-SemiBold';
+      src: url('../fonts/Klee_One/KleeOne-SemiBold.ttf') format('truetype');
+  }
+  
+  @font-face {
+      /*小杉丸*/
+      font-family:'Kosugi-Maru';
+      src: url('../fonts/Kosugi_Maru/KosugiMaru-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+      /*トレインOne*/
+      font-family:'Train-One';
+      src: url('../fonts/Train_One/TrainOne-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+      /*ランパートOne*/
+      font-family:'Rampart-One';
+      src: url('../fonts/Rampart_One/RampartOne-Regular.ttf') format('truetype');
+  }
+  /*フォント定義ここまで*/
