@@ -18,12 +18,12 @@ inputSlideBarFontSize.addEventListener('change', function(){
 	fontsize = inputSlideBarFontSize.value;
 });
 
-// contrast
-const inputSlideBarContrast = document.getElementById('Contrast');
-inputSlideBarContrast.addEventListener('change', function(){
-	let element = document.getElementById('output');
-	element.style.filter = 'contrast(' + inputSlideBarContrast.value + '%)';
-});
+// // contrast
+// const inputSlideBarContrast = document.getElementById('Contrast');
+// inputSlideBarContrast.addEventListener('change', function(){
+// 	let element = document.getElementById('output');
+// 	element.style.filter = 'contrast(' + inputSlideBarContrast.value + '%)';
+// });
 
 // AspectRatioCheck
 let button = document.getElementById('aspectRatio');
