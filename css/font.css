@@ -1,43 +1,87 @@
 /*フォント定義*/
+/*JPフォント*/
 @font-face {
-    /*キウイ丸ライト*/
-    font-family:'Kiwimaru-Light';
-    src: url('../fonts/Kiwi_Maru/KiwiMaru-Light.ttf') format('truetype');
-  }
-  
-  @font-face {
-    /*キウイ丸レギュラー*/
-    font-family:'Kiwimaru-Regular';
-    src: url('../fonts/Kiwi_Maru/KiwiMaru-Regular.ttf') format('truetype');
-  }
-  
-  @font-face {
+      /*キウイ丸ライト*/
+      font-family:'Kiwimaru-Light';
+      src: url('../fonts/JPFont/Kiwi_Maru/KiwiMaru-Light.ttf') format('truetype');
+}
+
+@font-face {
+      /*キウイ丸レギュラー*/
+      font-family:'Kiwimaru-Regular';
+      src: url('../fonts/JPFont/Kiwi_Maru/KiwiMaru-Regular.ttf') format('truetype');
+}
+
+@font-face {
       /*クレーOneレギュラー*/
       font-family:'KleeOne-Regular';
-      src: url('../fonts/Klee_One/KleeOne-Regular.ttf') format('truetype');
-  }
-  
-  @font-face {
+      src: url('../fonts/JPFont/Klee_One/KleeOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
       /*クレーOneセミボールド*/
       font-family:'KleeOne-SemiBold';
-      src: url('../fonts/Klee_One/KleeOne-SemiBold.ttf') format('truetype');
-  }
-  
-  @font-face {
+      src: url('../fonts/JPFont/Klee_One/KleeOne-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
       /*小杉丸*/
       font-family:'Kosugi-Maru';
-      src: url('../fonts/Kosugi_Maru/KosugiMaru-Regular.ttf') format('truetype');
-  }
-  
-  @font-face {
+      src: url('../fonts/JPFont/Kosugi_Maru/KosugiMaru-Regular.ttf') format('truetype');
+}
+
+@font-face {
       /*トレインOne*/
       font-family:'Train-One';
-      src: url('../fonts/Train_One/TrainOne-Regular.ttf') format('truetype');
-  }
-  
-  @font-face {
+      src: url('../fonts/JPFont/Train_One/TrainOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
       /*ランパートOne*/
       font-family:'Rampart-One';
-      src: url('../fonts/Rampart_One/RampartOne-Regular.ttf') format('truetype');
-  }
+      src: url('../fonts/JPFont/Rampart_One/RampartOne-Regular.ttf') format('truetype');
+}
+
+/*Worldフォント*/
+@font-face {
+      /*Archivo-Narrow*/
+      font-family:'Archivo-Narrow';
+      src: url('../fonts/WorldFont/Archivo_Narrow/static/ArchivoNarrow-Medium.ttf') format('truetype');
+}
+
+@font-face {
+      /*Cardo*/
+      font-family:'Cardo';
+      src: url('../fonts/WorldFont/Cardo/Cardo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*inconsolata*/
+      font-family:'inconsolata';
+      src: url('../fonts/WorldFont/inconsolata/inconsolata/static/Ligconsolata-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Lato*/
+      font-family:'Lato';
+      src: url('../fonts/WorldFont/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Manrope*/
+      font-family:'Manrope';
+      src: url('../fonts/WorldFont/Manrope/static/Manrope-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Montserrat*/
+      font-family:'Montserrat';
+      src: url('../fonts/WorldFont/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Neuton*/
+      font-family:'Neuton';
+      src: url('../fonts/WorldFont/Neuton/Neuton-Regular.ttf') format('truetype');
+}
   /*フォント定義ここまで*/

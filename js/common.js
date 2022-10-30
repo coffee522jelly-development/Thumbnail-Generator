@@ -1,6 +1,7 @@
 // GrobalVariables
 let   fontsize = 200;
 let   cropAspectRatio = 16.0 / 9.0;
+let   angle = 0.0;
 const scaledWidth = 1024;
 
 // window load
@@ -26,8 +27,8 @@ inputSlideBarFontSize.addEventListener('change', function(){
 // });
 
 // AspectRatioCheck
-let button = document.getElementById('aspectRatio');
-button.addEventListener('click', OnAspectButton);
+let btnAspectRatio = document.getElementById('aspectRatio');
+btnAspectRatio.addEventListener('click', OnAspectButton);
 
 // OnbtnAspectRatio
 function OnAspectButton(){
@@ -47,6 +48,30 @@ function OnAspectButton(){
 		cropper.canvasData.width = cropper.canvasData.height * cropAspectRatio;
 		cropper.cropBoxData.width = cropper.cropBoxData.height * cropAspectRatio;
 		cropper.setCropBoxData(cropper.cropBoxData);
+	}
+}
+
+// Clear
+let btnClear = document.getElementById('Clear');
+btnClear.addEventListener('click', OnClearButton);
+
+// OnbtnClear
+function OnClearButton(){
+	if (cropper != null){
+		cropper.clear();
+		cropper.reset();
+	}
+}
+
+// Rotate
+let btnRotate = document.getElementById('Rotate');
+btnRotate.addEventListener('click', OnRotateButton);
+
+// OnbtnRotate
+function OnRotateButton(){
+	if (cropper != null){
+		cropper.rotate(45);
+		angle += 45.0;
 	}
 }
 

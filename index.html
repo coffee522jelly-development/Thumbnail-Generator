@@ -6,10 +6,13 @@
         <!-- CSS load -->
         <link rel="stylesheet" type="text/css" media="all" href="dist/css/cropper.min.css" />
         <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="dist/css/semantic.min.css">
         
         <!-- Javascript load -->
+        <script type="text/javascript" src="dist/js/jquery-3.6.1.min.js"></script>
         <script type="text/javascript" src="dist/js/cropper.min.js"></script>
-        <script src="dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="dist/js/semantic.min.js"></script>
 
         <title>ThumbnailGenerator</title>
     </head>
@@ -18,7 +21,10 @@
         <!-- As a heading -->
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
-            <span class="navbar-brand mt-1 mb-1 h1">Thumbanil Generator</span>
+            <span class="navbar-brand mt-1 mb-1 h1">
+              <img class="icon" src="icon/pen.svg" width="16" height="16">
+              Thumbanil Generator
+            </span>
             </div>
         </nav>
 
@@ -33,16 +39,24 @@
                         </button>
                       </h2>
                       <div id="TitleAndFile" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
-                        <div class="accordion-body">
+                        <div class="accordion-body row">
                             <div class="setParam col">
                                 <p>Title</p>
                                 <form name="Title">
+                                  <div class="ui input focus">
                                     <input type="text" name="caption" size="20" value="Hello.">
+                                  </div>
                                 </form>
                             </div>
                             <div class="setParam col">
                                 <p>FileSelecter</p>
-                                <input type="file" id="uploader">
+                                <div>
+                                  <label for="uploader" class="ui icon button">
+                                  <img class="icon" src="icon/folder.svg" width="16" height="16">
+                                    Open File
+                                  </label>
+                                  <input type="file" id="uploader" style="display: none">
+                                </div>
                             </div>
                         </div>
                       </div>
@@ -62,10 +76,10 @@
                         </button>
                       </h2>
                       <div id="FontEdit" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordion2">
-                        <div class="accordion-body">
+                        <div class="accordion-body row">
                             <div class="setParam col">
                                 <p>FontSize</p>
-                                <input type="range" id="inputSlideBar" min="0" max="500" step="50">
+                                  <input type="range" id="inputSlideBar" min="0" max="500" step="50">
                             </div>
                             <div class="setParam col">
                                 <p>FontColor</p>
@@ -79,10 +93,9 @@
                             </div>
                             <div class="setParam col">
                                 <p>FontStyle</p>
-                                <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="Arial">Arial</option>
-                                    <option value="sans-serif">sans-serif</option>
+                                <select id="fontStyle" class="form-select  mb-3 ui dropdown" aria-label=" example">
+                                    <option selected>Font-Family</option>
+                                    <option value="">-----JPFont-----</option>
                                     <option value="Meiryo UI">Meiryo UI</option>
                                     <option value="Yu Gothic UI">Yu Gothic UI</option>
                                     <option value="Kiwimaru-Light">Kiwimaru-Light</option>
@@ -92,6 +105,14 @@
                                     <option value="KleeOne-SemiBold">KleeOne-SemiBold</option>
                                     <option value="Train-One">Train-One</option>
                                     <option value="Rampart-One">Rampart-One</option>
+                                    <option value="">-----WorldFont-----</option>
+                                    <option value="Archivo-Narrow">Archivo-Narrow</option>
+                                    <option value="Cardo">Cardo</option>
+                                    <option value="inconsolata">inconsolata</option>
+                                    <option value="Lato">Lato</option>
+                                    <option value="Manrope">Manrope</option>
+                                    <option value="Montserrat">Montserrat</option>
+                                    <option value="Neuton">Neuton</option>
                                 </select>
                             </div>
                         </div>
@@ -131,7 +152,7 @@
                         </button>
                       </h2>
                       <div id="PhotoEdit" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordion3">
-                        <div class="accordion-body">
+                        <div class="accordion-body row">
                             <div class="setParam col">
                                 <p>Aspect Ratio</p>
                                 <div class="form-check">
@@ -149,9 +170,23 @@
                                 <div class="form-check">
                                   <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
                                   <label class="form-check-label" for="exampleRadios4">1:1</label>
+                                </div>
+                                <button id="aspectRatio" class="ui button">
+                                  <img class="icon" src="icon/triming.svg" width="16" height="16">
+                                  Crop
+                                </button>
                               </div>
-                                <button id="aspectRatio">Change</button>
-                            </div>
+                              <div class="setParam col">
+                                <p>Edit</p>
+                                <button id="Clear" class="ui button">
+                                  <img class="icon" src="icon/trush.svg" width="16" height="16">
+                                  Clear
+                                </button>
+                                <!-- <button id="Rotate" class="ui button">
+                                  <img class="icon" src="icon/rotate.svg" width="16" height="16">
+                                  Rotate
+                                </button> -->
+                              </div>
                         </div>
                       </div>
                     </div>
@@ -194,7 +229,7 @@
                     <canvas id="sourceCanvas"></canvas>
                 </div>
                 <div id="croppedImage" class="imageItem col"> 
-                    <h1>Cropped + Overlay</h1>
+                    <h1>Result</h1>
                     <canvas id="croppedCanvas"></canvas>
                     <img id="output" src=""> 
                 </div>
