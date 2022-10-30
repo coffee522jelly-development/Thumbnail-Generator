@@ -1,25 +1,23 @@
 // GrobalVariables
-let   fontSize = 200;
-let   cropAspectRatio = 16.0 / 9.0;
-let   angle = 0.0;
+let   fontSize 			= 150;
+let   cropAspectRatio 	= 16 / 9;
+let   angle 			= 0.0;
 
-// effect variables
-let   Brightness = 100;
-let   Blur = 0;
-let   Contrast = 100;
-let   GrayScale = 0;
-let   Sepia = 0;
-let   Opacity = 1.0;
-
+// Effects GrobalVariables
+let   Brightness 	= 100;
+let   Blur 			= 0;
+let   Contrast 		= 100;
+let   GrayScale 	= 0;
+let   Sepia 		= 0;
+let   Opacity 		= 1.0;
 
 const initWidth = window.innerWidth;
 const initHeight = window.innerHeight;
 
 // イベントリスナー/////////////////////////////////////////////////////////////////
-
-window.onload = function() {
-	getViewportSizeAndAdjust();
-}
+// window.onload = function() {
+// 	getViewportSizeAndAdjust();
+// }
 
 // window load
 window.addEventListener('load', (e) => {
@@ -92,6 +90,23 @@ inputOpacity.addEventListener('change', function(){
 	Opacity = inputOpacity.value;
 });
 
+// ResetParams
+let btnResetParam = document.getElementById('ResetParam');
+btnResetParam.addEventListener('click', function(){
+	Brightness 	= 100;
+	Blur 		= 0;
+	Contrast 	= 100;
+	GrayScale 	= 0;
+	Sepia 		= 0;
+	Opacity 	= 1.0;
+	inputBrightness.value = Brightness;
+	inputBlur.value = Blur;
+	inputContrast.value = Contrast;
+	inputGrayScale.value = GrayScale;
+	inputSepia.value = Sepia;
+	inputOpacity.value = Opacity;
+});
+
 
 // 関数/////////////////////////////////////////////////////////////////
 
@@ -107,16 +122,8 @@ function OnAspectButton(){
 	}
 	cropAspectRatio = parseFloat(str);
 
-	if (cropper != null){
-		cropper.initialAspectRatio = cropAspectRatio;
-		cropper.aspectRatio = cropAspectRatio;
-		cropper.canvasData.width = cropper.canvasData.height * cropAspectRatio;
-		cropper.cropBoxData.width = cropper.cropBoxData.height * cropAspectRatio;
-		cropper.setCropBoxData(cropper.cropBoxData);
-	}
-	else{
-		alert('画像を読み込んでください。');
-	}
+	const canvas = document.getElementById("sourceCanvas");
+	initResultSetting(canvas);
 }
 
 // OnbtnDownload
