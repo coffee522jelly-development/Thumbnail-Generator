@@ -10,7 +10,8 @@ const cropImage = function (evt) {
     let reader = new FileReader();
     reader.onload = function (evt) {
         image.onload = function () {
-            let scale = scaledWidth / image.width;
+            const scalewidth = 1024;
+            let scale = scalewidth / image.width;
             {
                 const canvas = document.getElementById("sourceCanvas");
                 {
@@ -39,6 +40,7 @@ const cropImage = function (evt) {
                             let croppedImageWidth   = image.height * cropAspectRatio;
                             croppedCanvas.width     = croppedImageWidth * scale;
                             croppedCanvas.height    = image.height * scale;
+
                             ctx.drawImage(image,
                                 event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
                                 0, 0, croppedCanvas.width, croppedCanvas.height
@@ -46,7 +48,7 @@ const cropImage = function (evt) {
 
                             // Style
                             let fontStyle = document.getElementById("fontStyle").value;
-                            ctx.font = fontsize + 'px ' + fontStyle;
+                            ctx.font = fontSize + 'px ' + fontStyle;
                             ctx.fillStyle = document.getElementById("fontColor").value;
 
                             // ImageSizer
@@ -54,7 +56,7 @@ const cropImage = function (evt) {
                             let y = (croppedCanvas.height / 2);
                             let element = document.Title.caption.value;
                             let length = ctx.measureText(element).width;
-                            ctx.fillText(element, (x - length / 2), y + (fontsize / 3));
+                            ctx.fillText(element, (x - length / 2), y + (fontSize / 3));
                         }
                     }
                 });

@@ -1,34 +1,69 @@
 // GrobalVariables
-let   fontsize = 200;
+let   fontSize = 200;
 let   cropAspectRatio = 16.0 / 9.0;
 let   angle = 0.0;
-const scaledWidth = 1024;
+let   Contrast = 100;
+let   Blur = 0;
+
+const initWidth = window.innerWidth;
+const initHeight = window.innerHeight;
+
+// イベントリスナー/////////////////////////////////////////////////////////////////
+
+window.onload = function() {
+	getViewportSizeAndAdjust();
+}
 
 // window load
 window.addEventListener('load', (e) => {
 getViewportSizeAndAdjust();
 });
-	
-window.addEventListener('resize', (e) => {
-getViewportSizeAndAdjust();
-});
+
+// window Reload
+let btnReload = document.getElementById('Reload');
+btnReload.addEventListener('click', function(){
+	location.reload();});
 
 // FontSize
-const inputSlideBarFontSize = document.getElementById('inputSlideBar');
-inputSlideBarFontSize.addEventListener('change', function(){
-	fontsize = inputSlideBarFontSize.value;
+let inputFontSize = document.getElementById('inputFontSize');
+inputFontSize.addEventListener('change', function(){
+	fontSize = inputFontSize.value;
 });
-
-// // contrast
-// const inputSlideBarContrast = document.getElementById('Contrast');
-// inputSlideBarContrast.addEventListener('change', function(){
-// 	let element = document.getElementById('output');
-// 	element.style.filter = 'contrast(' + inputSlideBarContrast.value + '%)';
-// });
 
 // AspectRatioCheck
 let btnAspectRatio = document.getElementById('aspectRatio');
 btnAspectRatio.addEventListener('click', OnAspectButton);
+
+// Clear
+let btnClear = document.getElementById('Clear');
+btnClear.addEventListener('click',  function(){
+	if (cropper != null){
+		cropper.clear();
+	}
+	else{
+		alert('画像を読み込んでください。');
+	}
+});
+
+// Download
+let btnDownload = document.getElementById('Download');
+btnDownload.addEventListener('click', OnDownloadButton);
+
+// // Blur
+// let inputBlur = document.getElementById('inputBlur');
+// inputBlur.addEventListener('change', function(){
+// 	Blur = inputBlur.value;
+// 	let image = document.getElementById('output');
+// 	image.style.filter = 'blur('+ Blur +'px)';
+// });
+
+// // Contrast
+// let inputContrast = document.getElementById('inputContrast');
+// inputContrast.addEventListener('change', function(){
+// 	Contrast = inputContrast.value;
+// });
+
+// 関数/////////////////////////////////////////////////////////////////
 
 // OnbtnAspectRatio
 function OnAspectButton(){
@@ -54,37 +89,6 @@ function OnAspectButton(){
 	}
 }
 
-// Clear
-let btnClear = document.getElementById('Clear');
-btnClear.addEventListener('click', OnClearButton);
-
-// OnbtnClear
-function OnClearButton(){
-	if (cropper != null){
-		cropper.clear();
-		cropper.reset();
-	}
-	else{
-		alert('画像を読み込んでください。');
-	}
-}
-
-// // Rotate
-// let btnRotate = document.getElementById('Rotate');
-// btnRotate.addEventListener('click', OnRotateButton);
-
-// // OnbtnRotate
-// function OnRotateButton(){
-// 	if (cropper != null){
-// 		cropper.rotate(45);
-// 		angle += 45.0;
-// 	}
-// }
-
-// Download
-let btnDownload = document.getElementById('Download');
-btnDownload.addEventListener('click', OnDownloadButton);
-
 // OnbtnDownload
 function OnDownloadButton(){
 	if (cropper != null){
@@ -106,20 +110,9 @@ function OnDownloadButton(){
 	}
 }
 
-
-// Reload
-let btnReload = document.getElementById('Reload');
-btnReload.addEventListener('click', OnReloadButton);
-
-// OnbtnReload
-function OnReloadButton(){
-	location.reload();
-}
-
 // mobile editor adjust
 function getViewportSizeAndAdjust() {
-	const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-	const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+	const w = initWidth;
 	if (w < 414){
 		document.getElementById("EditView").classList.remove("row-cols-2");
 		document.getElementById("ControlView").classList.remove("row-cols-2");
