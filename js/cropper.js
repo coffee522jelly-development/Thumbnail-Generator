@@ -41,10 +41,14 @@ const cropImage = function (evt) {
                             croppedCanvas.width     = croppedImageWidth * scale;
                             croppedCanvas.height    = image.height * scale;
 
+                            ctx.filter = "blur("+ Blur + "px)";
+
                             ctx.drawImage(image,
                                 event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
                                 0, 0, croppedCanvas.width, croppedCanvas.height
                             );
+
+                            ctx.filter = "blur("+ 0 + "px)";
 
                             // Style
                             let fontStyle = document.getElementById("fontStyle").value;

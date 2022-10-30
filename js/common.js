@@ -49,13 +49,13 @@ btnClear.addEventListener('click',  function(){
 let btnDownload = document.getElementById('Download');
 btnDownload.addEventListener('click', OnDownloadButton);
 
-// // Blur
-// let inputBlur = document.getElementById('inputBlur');
-// inputBlur.addEventListener('change', function(){
-// 	Blur = inputBlur.value;
-// 	let image = document.getElementById('output');
-// 	image.style.filter = 'blur('+ Blur +'px)';
-// });
+// Blur
+let inputBlur = document.getElementById('inputBlur');
+inputBlur.addEventListener('change', function(){
+	Blur = inputBlur.value;
+	let image = document.getElementById('output');
+	image.style.filter = 'blur('+ Blur +'px)';
+});
 
 // // Contrast
 // let inputContrast = document.getElementById('inputContrast');
