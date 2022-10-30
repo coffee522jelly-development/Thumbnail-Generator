@@ -2,8 +2,15 @@
 let   fontSize = 200;
 let   cropAspectRatio = 16.0 / 9.0;
 let   angle = 0.0;
-let   Contrast = 100;
+
+// effect variables
+let   Brightness = 100;
 let   Blur = 0;
+let   Contrast = 100;
+let   GrayScale = 0;
+let   Sepia = 0;
+let   Opacity = 1.0;
+
 
 const initWidth = window.innerWidth;
 const initHeight = window.innerHeight;
@@ -49,19 +56,42 @@ btnClear.addEventListener('click',  function(){
 let btnDownload = document.getElementById('Download');
 btnDownload.addEventListener('click', OnDownloadButton);
 
+// Brightness
+let inputBrightness = document.getElementById('inputBrightness');
+inputBrightness.addEventListener('change', function(){
+	Brightness = inputBrightness.value;
+});
+
 // Blur
 let inputBlur = document.getElementById('inputBlur');
 inputBlur.addEventListener('change', function(){
 	Blur = inputBlur.value;
-	let image = document.getElementById('output');
-	image.style.filter = 'blur('+ Blur +'px)';
 });
 
-// // Contrast
-// let inputContrast = document.getElementById('inputContrast');
-// inputContrast.addEventListener('change', function(){
-// 	Contrast = inputContrast.value;
-// });
+// Contrast
+let inputContrast = document.getElementById('inputContrast');
+inputContrast.addEventListener('change', function(){
+	Contrast = inputContrast.value;
+});
+
+// GrayScale
+let inputGrayScale = document.getElementById('inputGrayScale');
+inputGrayScale.addEventListener('change', function(){
+	GrayScale = inputGrayScale.value;
+});
+
+// Sepia
+let inputSepia = document.getElementById('inputSepia');
+inputSepia.addEventListener('change', function(){
+	Sepia = inputSepia.value;
+});
+
+// Opacity
+let inputOpacity = document.getElementById('inputOpacity');
+inputOpacity.addEventListener('change', function(){
+	Opacity = inputOpacity.value;
+});
+
 
 // 関数/////////////////////////////////////////////////////////////////
 

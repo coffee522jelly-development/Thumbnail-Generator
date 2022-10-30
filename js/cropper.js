@@ -41,14 +41,25 @@ const cropImage = function (evt) {
                             croppedCanvas.width     = croppedImageWidth * scale;
                             croppedCanvas.height    = image.height * scale;
 
-                            ctx.filter = "blur("+ Blur + "px)";
+                            ctx.filter = "brightness("+ Brightness + "%)" +
+                                         "blur("+ Blur + "px)" + 
+                                         "contrast(" + Contrast + "%)" + 
+                                         "grayscale("+ GrayScale +"%)" +
+                                         "sepia("+ Sepia +"%)" + 
+                                         "opacity("+ Opacity +")";
 
                             ctx.drawImage(image,
                                 event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
                                 0, 0, croppedCanvas.width, croppedCanvas.height
                             );
 
-                            ctx.filter = "blur("+ 0 + "px)";
+                            // 初期化
+                            ctx.filter = "brightness(100%)" + 
+                                         "blur(0px)" + 
+                                         "contrast(100%)" + 
+                                         "grayscale(0%)" + 
+                                         "sepia(0%)" +
+                                         "opacity(1.0)";
 
                             // Style
                             let fontStyle = document.getElementById("fontStyle").value;
