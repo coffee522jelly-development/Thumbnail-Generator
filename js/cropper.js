@@ -55,14 +55,6 @@ const cropImage = function (evt) {
                             let element = document.Title.caption.value;
                             let length = ctx.measureText(element).width;
                             ctx.fillText(element, (x - length / 2), y + (fontsize / 3));
-
-                            // ConvertPngImage
-                            let output = document.getElementById("output");
-                            output.src = croppedCanvas.toDataURL();
-                            output.style.display = "block"; //visible
-
-                            // NoneDummyCanvas
-                            croppedCanvas.style.display = "none";
                         }
                     }
                 });

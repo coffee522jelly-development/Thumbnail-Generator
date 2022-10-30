@@ -49,6 +49,9 @@ function OnAspectButton(){
 		cropper.cropBoxData.width = cropper.cropBoxData.height * cropAspectRatio;
 		cropper.setCropBoxData(cropper.cropBoxData);
 	}
+	else{
+		alert('画像を読み込んでください。');
+	}
 }
 
 // Clear
@@ -61,18 +64,56 @@ function OnClearButton(){
 		cropper.clear();
 		cropper.reset();
 	}
+	else{
+		alert('画像を読み込んでください。');
+	}
 }
 
-// Rotate
-let btnRotate = document.getElementById('Rotate');
-btnRotate.addEventListener('click', OnRotateButton);
+// // Rotate
+// let btnRotate = document.getElementById('Rotate');
+// btnRotate.addEventListener('click', OnRotateButton);
 
-// OnbtnRotate
-function OnRotateButton(){
+// // OnbtnRotate
+// function OnRotateButton(){
+// 	if (cropper != null){
+// 		cropper.rotate(45);
+// 		angle += 45.0;
+// 	}
+// }
+
+// Download
+let btnDownload = document.getElementById('Download');
+btnDownload.addEventListener('click', OnDownloadButton);
+
+// OnbtnDownload
+function OnDownloadButton(){
 	if (cropper != null){
-		cropper.rotate(45);
-		angle += 45.0;
+		// ConvertPngImage
+		let output = document.getElementById("output");
+		const croppedCanvas = document.getElementById("croppedCanvas");
+		output.src = croppedCanvas.toDataURL();
+		output.style.display = "block"; //visible
+
+		// NoneDummyCanvas
+		croppedCanvas.style.display = "none";
+		cropper.reset();
+		croppedCanvas.remove();
+
+		alert('変換に成功しました。右クリックで保存できます。');
 	}
+	else{
+		alert('画像を読み込んでください。');
+	}
+}
+
+
+// Reload
+let btnReload = document.getElementById('Reload');
+btnReload.addEventListener('click', OnReloadButton);
+
+// OnbtnReload
+function OnReloadButton(){
+	location.reload();
 }
 
 // mobile editor adjust
