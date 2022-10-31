@@ -39,17 +39,6 @@ inputFontSize.addEventListener('change', function(){
 let btnAspectRatio = document.getElementById('aspectRatio');
 btnAspectRatio.addEventListener('click', OnAspectButton);
 
-// Clear
-let btnClear = document.getElementById('Clear');
-btnClear.addEventListener('click',  function(){
-	if (cropper != null){
-		cropper.clear();
-	}
-	else{
-		alert('画像を読み込んでください。');
-	}
-});
-
 // Download
 let btnDownload = document.getElementById('Download');
 btnDownload.addEventListener('click', OnDownloadButton);
