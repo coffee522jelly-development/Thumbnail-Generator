@@ -41,12 +41,11 @@
 				<div class="accordion" id="accordion1">
 					<div class="accordion-item">
 						<h2 class="accordion-header" id="headingOne">
-							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TitleAndFile" aria-expanded="true" aria-controls="TitleAndFile">Title&File </button>
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TitleAndFile" aria-expanded="true" aria-controls="TitleAndFile">Edit</button>
 						</h2>
 						<div id="TitleAndFile" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
 							<div class="accordion-body row">
 								<div class="setParam col">
-									<p>Title</p>
 									<form name="Title">
 										<div class="ui input focus">
 											<input type="text" name="caption" size="20" value="Hello.">
@@ -54,7 +53,6 @@
 									</form>
 								</div>
 								<div class="setParam col">
-									<p>FileSelecter</p>
 									<div>
 										<label for="uploader" class="ui icon button">
 											<img class="icon" src="icon/folder.svg" width="16" height="16">Open File 
@@ -63,13 +61,11 @@
 									</div>
 								</div>
 								<div class="setParam col">
-									<p>Reload</p>
 									<button id="Reload" class="ui button">
 										<img class="icon" src="icon/rotate.svg" width="16" height="16">Reload 
 									</button>
 								</div>
 								<div class="setParam col">
-									<p>Embed</p>
 									<button id="Download" class="ui button">
 										<img class="icon" src="icon/convert.svg" width="16" height="16">Convert 
 									</button>
@@ -90,28 +86,6 @@
 						</h2>
 						<div id="FontEdit" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordion2">
 							<div class="accordion-body row">
-								<div class="setParam col">
-									<p>FontSize</p>
-									<input type="range" id="inputFontSize" min="0" max="500" step="50">
-								</div>
-                				<div class="setParam col">
-									<p>FontRotate</p>
-									<input type="range" id="inputFontRotate" min="0" max="180" step="20" value="0">
-								</div>
-               					 <div class="setParam col">
-									<p>LetterSpacing</p>
-									<input type="range" id="inputFontSpacing" min="0" max="100" step="5" value="10">
-								</div>
-								<div class="setParam col">
-									<p>FontColor</p>
-									<input type="color" id="fontColor" value="#ffffff" list="colors">
-									<datalist id="colors">
-										<option value="#FFFFFF">
-										<option value="#0F4C81">
-										<option value="#939597">
-										<option value="#F5DF4D">
-									</datalist>
-								</div>
 								<div class="setParam row-cols-1">
 									<p>FontStyle</p>
 									<select id="fontStyle" class="form-select  mb-3 ui dropdown" aria-label=" example">
@@ -133,6 +107,28 @@
 										<option id="Montserrat"           value="Montserrat">Montserrat</option>
 										<option id="Neuton"               value="Neuton">Neuton</option>
 									</select>
+								</div>
+								<div class="setParam col">
+									<p>FontSize</p>
+									<input type="range" id="inputFontSize" min="0" max="500" step="50">
+								</div>
+                				<div class="setParam col">
+									<p>FontRotate</p>
+									<input type="range" id="inputFontRotate" min="0" max="180" step="20" value="0">
+								</div>
+               					 <div class="setParam col">
+									<p>LetterSpacing</p>
+									<input type="range" id="inputFontSpacing" min="0" max="100" step="5" value="10">
+								</div>
+								<div class="setParam col">
+									<p>FontColor</p>
+									<input type="color" id="fontColor" value="#ffffff" list="colors">
+									<datalist id="colors">
+										<option value="#FFFFFF">
+										<option value="#0F4C81">
+										<option value="#939597">
+										<option value="#F5DF4D">
+									</datalist>
 								</div>
 							</div>
 						</div>
@@ -172,9 +168,9 @@
 					</div>
          			 <div class="accordion-item">
 						<h2 class="accordion-header" id="headingFour">
-							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">ImageFilter </button>
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">ImageFilter </button>
 						</h2>
-						<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFour">
+						<div id="collapseFour" class="accordion-collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFour">
 							<div class="accordion-body row">
 								<div class="setParam col">
 									<p>Brightness</p>

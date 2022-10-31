@@ -1,5 +1,7 @@
-body {
+html,body {
     user-select: none;
+    width: 100vw;
+    height: 100vh;
 }
 
 label {
@@ -39,28 +41,28 @@ p {
 .controlPanel {
     display: flex;
     justify-content:left;
-    margin : 10px;
+    margin : 5px;
     border: 1px dotted #333333;
     border-radius: 7px;
 }
 
 .setParam {
-    padding: 20px;
+    padding: 5px;
 }
 
 .editView {
     display: flex;
     justify-content:left;
-    padding: 10px;
-    margin : 10px;
+    padding: 5px;
+    margin : 5px;
     border: 1px dotted #333333;
     border-radius: 7px;
 }
 
 .imageItem {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
 .preView {
