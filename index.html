@@ -1,263 +1,215 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=414, user-scalable=yes">
-      <!-- CSS load -->
-      <link rel="stylesheet" type="text/css" media="all" href="dist/css/cropper.css" />
-      <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="dist/css/semantic.min.css">
-      
-      <!-- Javascript load -->
-      <script type="text/javascript" src="dist/js/jquery-3.6.1.min.js"></script>
-      <script type="text/javascript" src="dist/js/cropper.min.js"></script>
-      <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
-      <script type="text/javascript" src="dist/js/semantic.min.js"></script>
-
-      <title>ThumbnailGenerator</title>
-  </head>
-  <body>
-      <!-- As a heading -->
-      <nav class="navbar navbar-light bg-light">
-          <div class="container-fluid">
-          <span class="navbar-brand mt-1 mb-1 h1">
-            <img class="icon" src="icon/pen.svg" width="16" height="16">
-            Thumbanil Generator
-          </span>
-          </div>
-      </nav>
-
-      <!--controlPanel-->
-      <div class="container-fluid">
-          <div class="controlPanel row row-cols-1">
-              <div class="accordion" id="accordion1">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TitleAndFile" aria-expanded="true" aria-controls="TitleAndFile">
-                        Title&File
-                      </button>
-                    </h2>
-                    <div id="TitleAndFile" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
-                      <div class="accordion-body row">
-                          <div class="setParam col">
-                              <p>Title</p>
-                              <form name="Title">
-                                <div class="ui input focus">
-                                  <input type="text" name="caption" size="20" value="Hello.">
-                                </div>
-                              </form>
-                          </div>
-                          <div class="setParam col">
-                              <p>FileSelecter</p>
-                              <div>
-                                <label for="uploader" class="ui icon button">
-                                <img class="icon" src="icon/folder.svg" width="16" height="16">
-                                  Open File
-                                </label>
-                                <input type="file" id="uploader" style="display: none">
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      <!--controlPanel-->
-      <div class="container-fluid">
-          <div id="ControlView" class="controlPanel row row-cols-2">
-              <div class="accordion col" id="accordion2">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#FontEdit" aria-expanded="true" aria-controls="FontEdit">
-                        FontEdit
-                      </button>
-                    </h2>
-                    <div id="FontEdit" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordion2">
-                      <div class="accordion-body row">
-                          <div class="setParam col">
-                              <p>FontSize</p>
-                                <input type="range" id="inputFontSize" min="0" max="500" step="50">
-                          </div>
-                          <div class="setParam col">
-                              <p>FontColor</p>
-                              <input type="color" id="fontColor" value="#ffffff" list="colors">
-                              <datalist id="colors">
-                                  <option value="#FFFFFF">
-                                  <option value="#0F4C81">
-                                  <option value="#939597">
-                                  <option value="#F5DF4D">
-                              </datalist>
-                          </div>
-                          <div class="setParam col">
-                              <p>FontStyle</p>
-                              <select id="fontStyle" class="form-select  mb-3 ui dropdown" aria-label=" example">
-                                <option selected>Font-Family</option>
-                                <optgroup label="-JPFont-"></optgroup>
-                                <option id="Kiwimaru-Light"   value="Kiwimaru-Light">Kiwimaru-Light</option>
-                                <option id="Kiwimaru-Regular" value="Kiwimaru-Regular">Kiwimaru-Regular</option>
-                                <option id="Kosugi-Maru"      value="Kosugi-Maru">Kosugi-Maru</option>
-                                <option id="KleeOne-Regular"  value="KleeOne-Regular">KleeOne-Regular</option>
-                                <option id="KleeOne-SemiBold" value="KleeOne-SemiBold">KleeOne-SemiBold</option>
-                                <option id="Train-One"        value="Train-One">Train-One</option>
-                                <option id="Rampart-One"      value="Rampart-One">Rampart-One</option>
-                                <optgroup label="-WorldFont-"></optgroup>
-                                <option id="Archivo-Narrow"   value="Archivo-Narrow">Archivo-Narrow</option>
-                                <option id="Cardo"            value="Cardo">Cardo</option>
-                                <option id="inconsolata"      value="inconsolata">inconsolata</option>
-                                <option id="Lato"             value="Lato">Lato</option>
-                                <option id="Manrope"          value="Manrope">Manrope</option>
-                                <option id="Montserrat"       value="Montserrat">Montserrat</option>
-                                <option id="Neuton"           value="Neuton">Neuton</option>
-                              </select>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFour">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        ImageFilter
-                      </button>
-                    </h2>
-                    <div id="collapseFour" class="accordion-collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFour">
-                      <div class="accordion-body row">
-                        <div class="setParam col">
-                          <p>Brightness</p>
-                          <input type="range" id="inputBrightness" min="0" max="200" step="20" value="100">
-                          <p>Blur</p>
-                          <input type="range" id="inputBlur" min="0" max="20" step="2" value="0">
-                          <p>Contrast</p>
-                          <input type="range" id="inputContrast" min="0" max="200" step="10" value="100">
-                        </div>
-                        <div class="setParam col">
-                          <p>GrayScale</p>
-                          <input type="range" id="inputGrayScale" min="0" max="100" step="10" value="0">
-                          <p>Sepia</p>
-                          <input type="range" id="inputSepia" min="0" max="100" step="10" value="0">
-                          <p>Opacity</p>
-                          <input type="range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
-                        </div>
-                        <button id="ResetParam" class="ui button">
-                          Filter Reset
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Accordion Item #2
-                      </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Accordion Item #3
-                      </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                      </div>
-                    </div>
-                  </div> -->
-                </div>
-              <div class="accordion col" id="accordion3">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#PhotoEdit" aria-expanded="true" aria-controls="PhotoEdit">
-                        PhotoEdit
-                      </button>
-                    </h2>
-                    <div id="PhotoEdit" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordion3">
-                      <div class="accordion-body row">
-                          <div class="setParam col">
-                              <p>Aspect Ratio</p>
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
-                                  <label class="form-check-label" for="exampleRadios1">16:9</label>
-                              </div>
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
-                                  <label class="form-check-label" for="exampleRadios2">4:3</label>
-                              </div>
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
-                                  <label class="form-check-label" for="exampleRadios3">3:2</label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
-                                <label class="form-check-label" for="exampleRadios4">1:1</label>
-                              </div>
-                              <button id="aspectRatio" class="ui button">
-                                <img class="icon" src="icon/triming.svg" width="16" height="16">
-                                Crop
-                              </button>
-                            </div>
-                            <div class="setParam col">
-                              <p>Edit</p>
-                              <button id="Reload" class="ui button">
-                                <img class="icon" src="icon/rotate.svg" width="16" height="16">
-                                Reload
-                              </button>
-                              <button id="Download" class="ui button">
-                                <img class="icon" src="icon/convert.svg" width="16" height="16">
-                                ConvertToPNG
-                              </button>
-                            </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Accordion Item #3
-                      </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                      </div>
-                    </div>
-                  </div> -->
-              </div>
-          </div>
-      </div>
-
-      <!--EditView-->
-      <div class="container-fluid">
-          <div id="EditView" class="editView row-cols-2">
-              <div id="sourceImage" class="imageItem col">
-                  <h1>Source</h1>
-                  <canvas id="sourceCanvas"></canvas>
-              </div>
-              <div id="croppedImage" class="imageItem col"> 
-                  <h1>Result</h1>
-                  <canvas id="croppedCanvas"></canvas>
-                  <img id="output" src=""> 
-              </div>
-          </div>
-      </div>
-
-      <footer class="footer mt-auto py-3 bg-light">
-          <div class="container">
-          <span class="text-muted">Copyright © 2022 Team.A All rights reserved.</span>
-          </div>
-      </footer>
-
-  </body>
-  <!-- Javascript load -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/font.css">
-  <script src="js/common.js"></script>
-  <script src="js/cropper.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=414, user-scalable=yes">
+		<!-- CSS load -->
+		<link rel="stylesheet" type="text/css" media="all" href="dist/css/cropper.css" />
+		<link rel="stylesheet" href="dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="dist/css/semantic.min.css">
+		<!-- Javascript load -->
+		<script type="text/javascript" src="dist/js/jquery-3.6.1.min.js"></script>
+		<script type="text/javascript" src="dist/js/cropper.min.js"></script>
+		<script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
+		<script type="text/javascript" src="dist/js/semantic.min.js"></script>
+		<title>ThumbnailGenerator</title>
+	</head>
+	<body>
+		<!-- As a heading -->
+		<nav class="navbar navbar-light bg-light">
+			<div class="container-fluid">
+				<span class="navbar-brand mt-1 mb-1 h1">
+					<img class="icon" src="icon/pen.svg" width="16" height="16">Thumbanil Generator 
+				</span>
+			</div>
+		</nav>
+		<!--controlPanel-->
+		<div class="container-fluid">
+			<div class="controlPanel row row-cols-1">
+				<div class="accordion" id="accordion1">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TitleAndFile" aria-expanded="true" aria-controls="TitleAndFile">Title&File </button>
+						</h2>
+						<div id="TitleAndFile" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
+							<div class="accordion-body row">
+								<div class="setParam col">
+									<p>Title</p>
+									<form name="Title">
+										<div class="ui input focus">
+											<input type="text" name="caption" size="20" value="Hello.">
+										</div>
+									</form>
+								</div>
+								<div class="setParam col">
+									<p>FileSelecter</p>
+									<div>
+										<label for="uploader" class="ui icon button">
+											<img class="icon" src="icon/folder.svg" width="16" height="16">Open File 
+										</label>
+										<input type="file" id="uploader" style="display: none">
+									</div>
+								</div>
+								<div class="setParam col">
+									<p>Reload</p>
+									<button id="Reload" class="ui button">
+										<img class="icon" src="icon/rotate.svg" width="16" height="16">Reload 
+									</button>
+								</div>
+								<div class="setParam col">
+									<p>Embed</p>
+									<button id="Download" class="ui button">
+										<img class="icon" src="icon/convert.svg" width="16" height="16">ConvertToPNG 
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--controlPanel-->
+		<div class="container-fluid">
+			<div id="ControlView" class="controlPanel row row-cols-2">
+				<div class="accordion col" id="accordion2">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#FontEdit" aria-expanded="true" aria-controls="FontEdit">FontEdit </button>
+						</h2>
+						<div id="FontEdit" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordion2">
+							<div class="accordion-body row">
+								<div class="setParam col">
+									<p>FontSize</p>
+									<input type="range" id="inputFontSize" min="0" max="500" step="50">
+								</div>
+                <div class="setParam col">
+									<p>FontRotate</p>
+									<input type="range" id="inputFontRotate" min="0" max="180" step="20" value="0">
+								</div>
+                <div class="setParam col">
+									<p>LetterSpacing</p>
+									<input type="range" id="inputFontSpacing" min="0" max="100" step="5" value="10">
+								</div>
+								<div class="setParam col">
+									<p>FontColor</p>
+									<input type="color" id="fontColor" value="#ffffff" list="colors">
+									<datalist id="colors">
+										<option value="#FFFFFF">
+										<option value="#0F4C81">
+										<option value="#939597">
+										<option value="#F5DF4D">
+									</datalist>
+								</div>
+								<div class="setParam row-cols-1">
+									<p>FontStyle</p>
+									<select id="fontStyle" class="form-select  mb-3 ui dropdown" aria-label=" example">
+										<option selected>Font-Family</option>
+										<optgroup label="-JPFont-"></optgroup>
+										<option id="Kiwimaru-Light"       value="Kiwimaru-Light">Kiwimaru-Light</option>
+										<option id="Kiwimaru-Regular"     value="Kiwimaru-Regular">Kiwimaru-Regular</option>
+										<option id="Kosugi-Maru"          value="Kosugi-Maru">Kosugi-Maru</option>
+										<option id="KleeOne-Regular"      value="KleeOne-Regular">KleeOne-Regular</option>
+										<option id="KleeOne-SemiBold"     value="KleeOne-SemiBold">KleeOne-SemiBold</option>
+										<option id="Train-One"            value="Train-One">Train-One</option>
+										<option id="Rampart-One"          value="Rampart-One">Rampart-One</option>
+										<optgroup label="-WorldFont-"></optgroup>
+										<option id="Archivo-Narrow"       value="Archivo-Narrow">Archivo-Narrow</option>
+										<option id="Cardo"                value="Cardo">Cardo</option>
+										<option id="inconsolata"          value="inconsolata">inconsolata</option>
+										<option id="Lato"                 value="Lato">Lato</option>
+										<option id="Manrope"              value="Manrope">Manrope</option>
+										<option id="Montserrat"           value="Montserrat">Montserrat</option>
+										<option id="Neuton"               value="Neuton">Neuton</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion col" id="accordion3">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#PhotoEdit" aria-expanded="true" aria-controls="PhotoEdit">PhotoEdit </button>
+						</h2>
+						<div id="PhotoEdit" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordion3">
+							<div class="accordion-body row">
+								<div class="setParam col">
+									<p>Aspect Ratio</p>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
+										<label class="form-check-label" for="exampleRadios1">16:9</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
+										<label class="form-check-label" for="exampleRadios2">4:3</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
+										<label class="form-check-label" for="exampleRadios3">3:2</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
+										<label class="form-check-label" for="exampleRadios4">1:1</label>
+									</div>
+									<button id="aspectRatio" class="ui button">
+										<img class="icon" src="icon/triming.svg" width="16" height="16">Crop 
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+          <div class="accordion-item">
+						<h2 class="accordion-header" id="headingFour">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">ImageFilter </button>
+						</h2>
+						<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFour">
+							<div class="accordion-body row">
+								<div class="setParam col">
+									<p>Brightness</p>
+									<input type="range" id="inputBrightness" min="0" max="200" step="20" value="100">
+									<p>Blur</p>
+									<input type="range" id="inputBlur" min="0" max="20" step="2" value="0">
+									<p>Contrast</p>
+									<input type="range" id="inputContrast" min="0" max="200" step="10" value="100">
+								</div>
+								<div class="setParam col">
+									<p>GrayScale</p>
+									<input type="range" id="inputGrayScale" min="0" max="100" step="10" value="0">
+									<p>Sepia</p>
+									<input type="range" id="inputSepia" min="0" max="100" step="10" value="0">
+									<p>Opacity</p>
+									<input type="range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
+								</div>
+								<button id="ResetParam" class="ui button">Filter Reset </button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--EditView-->
+		<div class="container-fluid">
+			<div id="EditView" class="editView row-cols-2">
+				<div id="sourceImage" class="imageItem col">
+					<h1>Source</h1>
+					<canvas id="sourceCanvas"></canvas>
+				</div>
+				<div id="croppedImage" class="imageItem col">
+					<h1>Result</h1>
+					<canvas id="croppedCanvas"></canvas>
+					<img id="output" src="">
+				</div>
+			</div>
+		</div>
+		<footer class="footer mt-auto py-3 bg-light">
+			<div class="container">
+				<span class="text-muted">Copyright © 2022 Team.A All rights reserved.</span>
+			</div>
+		</footer>
+	</body>
+	<!-- Javascript load -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/font.css">
+	<script src="js/common.js"></script>
+	<script src="js/cropper.js"></script>
 </html>

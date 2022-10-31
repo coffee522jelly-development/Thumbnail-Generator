@@ -1,7 +1,10 @@
 // GrobalVariables
 let   fontSize 			= 150;
+let   fontRotate 		= 0;
+let   fontSpacing 		= 10;
 let   cropAspectRatio 	= 16 / 9;
 let   angle 			= 0.0;
+
 
 // Effects GrobalVariables
 let   Brightness 	= 100;
@@ -33,6 +36,18 @@ btnReload.addEventListener('click', function(){
 let inputFontSize = document.getElementById('inputFontSize');
 inputFontSize.addEventListener('change', function(){
 	fontSize = inputFontSize.value;
+});
+
+// FontSpacing
+let inputFontSpacing = document.getElementById('inputFontSpacing');
+inputFontSpacing.addEventListener('change', function(){
+	fontSpacing = inputFontSpacing.value;
+});
+
+// FontRotate
+let inputFontRotate = document.getElementById('inputFontRotate');
+inputFontRotate.addEventListener('change', function(){
+	fontRotate = inputFontRotate.value;
 });
 
 // AspectRatioCheck

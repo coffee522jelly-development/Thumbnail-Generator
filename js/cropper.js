@@ -81,6 +81,10 @@ function initResultSetting(context){
 			let fontStyle = document.getElementById("fontStyle").value;
 			ctx.font = fontSize + 'px ' + fontStyle;
 			ctx.fillStyle = document.getElementById("fontColor").value;
+			ctx.letterSpacing = fontSpacing + "px";
+			ctx.translate(parseInt(context.width / 2), parseInt(context.height / 2));
+			ctx.rotate(fontRotate / 180 * Math.PI);
+			ctx.translate(parseInt(context.width  / -2), parseInt(context.height / -2));
 
 			// ImageSizer
 			let x = croppedCanvas.width / 2;
