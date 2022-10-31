@@ -36,27 +36,18 @@ btnReload.addEventListener('click', function(){
 let inputFontSize = document.getElementById('inputFontSize');
 inputFontSize.addEventListener('change', function(){
 	fontSize = inputFontSize.value;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 // FontSpacing
 let inputFontSpacing = document.getElementById('inputFontSpacing');
 inputFontSpacing.addEventListener('change', function(){
 	fontSpacing = inputFontSpacing.value;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 // FontRotate
 let inputFontRotate = document.getElementById('inputFontRotate');
 inputFontRotate.addEventListener('change', function(){
 	fontRotate = inputFontRotate.value;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 // AspectRatioCheck
@@ -71,54 +62,36 @@ btnDownload.addEventListener('click', OnDownloadButton);
 let inputBrightness = document.getElementById('inputBrightness');
 inputBrightness.addEventListener('change', function(){
 	Brightness = inputBrightness.value;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 // Blur
 let inputBlur = document.getElementById('inputBlur');
 inputBlur.addEventListener('change', function(){
 	Blur = inputBlur.value;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 // Contrast
 let inputContrast = document.getElementById('inputContrast');
 inputContrast.addEventListener('change', function(){
 	Contrast = inputContrast.value;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 // GrayScale
 let inputGrayScale = document.getElementById('inputGrayScale');
 inputGrayScale.addEventListener('change', function(){
 	GrayScale = inputGrayScale.value;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 // Sepia
 let inputSepia = document.getElementById('inputSepia');
 inputSepia.addEventListener('change', function(){
 	Sepia = inputSepia.value;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 // Opacity
 let inputOpacity = document.getElementById('inputOpacity');
 inputOpacity.addEventListener('change', function(){
 	Opacity = inputOpacity.value;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 // ResetParams
@@ -136,9 +109,6 @@ btnResetParam.addEventListener('click', function(){
 	inputGrayScale.value = GrayScale;
 	inputSepia.value = Sepia;
 	inputOpacity.value = Opacity;
-
-	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
 });
 
 
