@@ -12,12 +12,19 @@ canvas {
 }
 
 h1 {
-    padding-bottom:12px;
-    font-size:18px;
+    font-size:12px;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    color:#aaa;
+    font-family: 'Archivo-Narrow';
+    letter-spacing: 1px;
 }
 
 p {
     font-size: 12px;
+    letter-spacing: 1px;
+    color:#aaa;
+    font-family: 'Archivo-Narrow';
 }
 
 #output {
@@ -51,7 +58,9 @@ p {
 }
 
 .imageItem {
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 .preView {

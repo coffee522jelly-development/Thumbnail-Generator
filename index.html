@@ -15,14 +15,26 @@
 		<title>ThumbnailGenerator</title>
 	</head>
 	<body>
-		<!-- As a heading -->
+	<!-- As a heading -->
 		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
-				<span class="navbar-brand mt-1 mb-1 h1">
-					<img class="icon" src="icon/pen.svg" width="16" height="16">Thumbanil Generator 
-				</span>
+				<span class="navbar-brand"><h1>Thumbnail-Generator</h1></span>
 			</div>
 		</nav>
+		<!--EditView-->
+		<div class="container-fluid">
+			<div id="EditView" class="editView row-cols-2">
+				<div id="sourceImage" class="imageItem col">
+					<h1>Source</h1>
+					<canvas id="sourceCanvas"></canvas>
+				</div>
+				<div id="croppedImage" class="imageItem col">
+					<h1>Result</h1>
+					<canvas id="croppedCanvas"></canvas>
+					<img id="output" src="">
+				</div>
+			</div>
+		</div>
 		<!--controlPanel-->
 		<div class="container-fluid">
 			<div class="controlPanel row row-cols-1">
@@ -59,7 +71,7 @@
 								<div class="setParam col">
 									<p>Embed</p>
 									<button id="Download" class="ui button">
-										<img class="icon" src="icon/convert.svg" width="16" height="16">ConvertToPNG 
+										<img class="icon" src="icon/convert.svg" width="16" height="16">Convert 
 									</button>
 								</div>
 							</div>
@@ -82,11 +94,11 @@
 									<p>FontSize</p>
 									<input type="range" id="inputFontSize" min="0" max="500" step="50">
 								</div>
-                <div class="setParam col">
+                				<div class="setParam col">
 									<p>FontRotate</p>
 									<input type="range" id="inputFontRotate" min="0" max="180" step="20" value="0">
 								</div>
-                <div class="setParam col">
+               					 <div class="setParam col">
 									<p>LetterSpacing</p>
 									<input type="range" id="inputFontSpacing" min="0" max="100" step="5" value="10">
 								</div>
@@ -158,7 +170,7 @@
 							</div>
 						</div>
 					</div>
-          <div class="accordion-item">
+         			 <div class="accordion-item">
 						<h2 class="accordion-header" id="headingFour">
 							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">ImageFilter </button>
 						</h2>
@@ -184,20 +196,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-		<!--EditView-->
-		<div class="container-fluid">
-			<div id="EditView" class="editView row-cols-2">
-				<div id="sourceImage" class="imageItem col">
-					<h1>Source</h1>
-					<canvas id="sourceCanvas"></canvas>
-				</div>
-				<div id="croppedImage" class="imageItem col">
-					<h1>Result</h1>
-					<canvas id="croppedCanvas"></canvas>
-					<img id="output" src="">
 				</div>
 			</div>
 		</div>
