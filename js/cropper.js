@@ -32,7 +32,6 @@ const cropImage = function (evt) {
 const uploader = document.getElementById('uploader');
 uploader.addEventListener('change', cropImage);
 
-
 // ResultViewerSetting
 function initResultSetting(context){
     if (cropper != null){

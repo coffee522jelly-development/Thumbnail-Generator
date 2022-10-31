@@ -63,6 +63,24 @@ p {
     border-radius: 7px;
 }
 
+/* Fontselect*/
+#Kiwimaru-Light{font-family:'Kiwimaru-Light';}
+#Kiwimaru-Regular{font-family:'Kiwimaru-Regular';}
+#Kosugi-Maru{font-family:'Kosugi-Maru';}
+#KleeOne-Regular{font-family:'KleeOne-Regular';}
+#KleeOne-SemiBold{font-family:'KleeOne-SemiBold';}
+#Train-One{font-family:'Train-One';}
+#Rampart-One{font-family:'Rampart-One';}
+
+#Archivo-Narrow{font-family:'Archivo-Narrow';}
+#Cardo{font-family:'Cardo';}
+#inconsolata{font-family:'inconsolata';}
+#Lato{font-family:'Lato';}
+#Manrope{font-family:'Manrope';}
+#Montserrat{font-family:'Montserrat';}
+#Neuton{font-family:'Neuton';}
+
+
 
 /* モバイル向けのスタイル */
 /* 768px 未満 */
