@@ -1,15 +1,19 @@
 html,body {
     user-select: none;
-    width: 100vw;
-    height: 100vh;
 }
 
 label {
     font-size: 12px;
 }
 
-canvas {
-    background-color: #ddd;
+#sourceCanvas {
+    background-image: radial-gradient(rgba(233, 233, 233, 1), rgba(172, 172, 172, 1));
+    width:100%;
+}
+
+#croppedCanvas {
+    background-image: radial-gradient(rgba(233, 233, 233, 1), rgba(172, 172, 172, 1));
+    justify-content: center;
     width:100%;
 }
 
@@ -27,6 +31,10 @@ p {
     letter-spacing: 1px;
     color:#aaa;
     font-family: 'Archivo-Narrow';
+}
+
+#explain{
+    font-family: 'Kosugi-Maru';
 }
 
 #output {
@@ -52,11 +60,10 @@ p {
 
 .editView {
     display: flex;
-    justify-content:left;
-    padding: 5px;
     margin : 5px;
     border: 1px dotted #333333;
     border-radius: 7px;
+    padding-top: 4px;
 }
 
 .imageItem {
@@ -102,15 +109,12 @@ p {
     .editView  {
         flex-wrap: wrap;
     }
-    canvas {
-        width:100%;
-    }
     #output {
         width:100%;
     }
-    .cropper-container div{
+    /* .cropper-container div{
         width:100%;
-    }
+    } */
 }
 
 /* デスクトップ向けのスタイル */

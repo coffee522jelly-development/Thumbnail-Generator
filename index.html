@@ -18,63 +18,66 @@
 	<!-- As a heading -->
 		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
-				<span class="navbar-brand"><h1>Thumbnail-Generator</h1></span>
+				<span class="navbar-brand"><h1>さむねいるじぇねれーた</h1></span>
 			</div>
 		</nav>
 		<!--EditView-->
 		<div class="container-fluid">
-			<div id="EditView" class="editView row-cols-2">
+			<div id="EditView"  class="editView row">
+			  <div class="col-8">
 				<div id="sourceImage" class="imageItem col">
 					<h1>Source</h1>
 					<canvas id="sourceCanvas"></canvas>
 				</div>
+			  </div>
+			  <div class="col-4">
 				<div id="croppedImage" class="imageItem col">
 					<h1>Result</h1>
 					<canvas id="croppedCanvas"></canvas>
 					<img id="output" src="">
-				</div>
-			</div>
-		</div>
-		<!--controlPanel-->
-		<div class="container-fluid">
-			<div class="controlPanel row row-cols-1">
-				<div class="accordion" id="accordion1">
-					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingOne">
-							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TitleAndFile" aria-expanded="true" aria-controls="TitleAndFile">Edit</button>
-						</h2>
-						<div id="TitleAndFile" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
-							<div class="accordion-body row">
-								<div class="setParam col">
-									<form name="Title">
-										<div class="ui input focus">
-											<input type="text" name="caption" size="20" value="Hello.">
-										</div>
-									</form>
-								</div>
-								<div class="setParam col">
-									<div>
-										<label for="uploader" class="ui icon button">
-											<img class="icon" src="icon/folder.svg" width="16" height="16">Open File 
-										</label>
-										<input type="file" id="uploader" style="display: none">
+
+				<div class="controlPanel row row-cols-1">
+					<div class="accordion" id="accordion1">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TitleAndFile" aria-expanded="true" aria-controls="TitleAndFile">Title</button>
+							</h2>
+							<div id="TitleAndFile" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
+								<div class="accordion-body row">
+									<div class="setParam row-col-2">
+										<form name="Title">
+											<div class="ui input focus">
+												<input type="text" name="caption" size="20" value="Hello.">
+											</div>
+										</form>
 									</div>
-								</div>
-								<div class="setParam col">
-									<button id="Reload" class="ui button">
-										<img class="icon" src="icon/rotate.svg" width="16" height="16">Reload 
-									</button>
-								</div>
-								<div class="setParam col">
-									<button id="Download" class="ui button">
-										<img class="icon" src="icon/convert.svg" width="16" height="16">Convert 
-									</button>
+									<div class="setParam row-col-2">
+										<div>
+											<label for="uploader" class="ui icon button">
+												<img class="icon" src="icon/folder.svg" width="16" height="16">Open File 
+											</label>
+											<input type="file" id="uploader" style="display: none">
+										</div>
+									</div>
+									<div class="setParam row-col-2">
+										<button id="Reload" class="ui button">
+											<img class="icon" src="icon/rotate.svg" width="16" height="16">Reload 
+										</button>
+										<button id="Download" class="ui button">
+											<img class="icon" src="icon/convert.svg" width="16" height="16">Convert 
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			  </div>
+			</div>
+		</div>
+		<!--controlPanel-->
+		<div class="container-fluid">
 		</div>
 		<!--controlPanel-->
 		<div class="container-fluid">
@@ -114,7 +117,7 @@
 								</div>
                 				<div class="setParam col">
 									<p>FontRotate</p>
-									<input type="range" id="inputFontRotate" min="0" max="180" step="20" value="0">
+									<input type="range" id="inputFontRotate" min="0" max="360" step="30" value="0">
 								</div>
                					 <div class="setParam col">
 									<p>LetterSpacing</p>
@@ -133,6 +136,25 @@
 							</div>
 						</div>
 					</div>
+					<div id="explain" class="ui card">
+						<div class="content">
+						  <div class="header">画像編集のチュートリアル</div>
+						</div>
+						<div class="content">
+						  <h4 class="ui sub header">画像編集をはじめましょう。</h4>
+						  <div class="ui small feed">
+							<div class="event">
+							  <div class="content">
+								<li>「OpenFile」ボタンで画像を開きます。</li>
+								<li>好きな比率で切り抜きを行います。</li>
+								<li>フィルターを設定します。</li>
+								<li>「Convert」ボタンを押します。</li>
+								<li>Result画面を右クリックで保存します。</li>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
 				</div>
 				<div class="accordion col" id="accordion3">
 					<div class="accordion-item">
