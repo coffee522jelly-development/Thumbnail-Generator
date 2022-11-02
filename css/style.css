@@ -33,8 +33,8 @@ label {
     background-image: radial-gradient(rgba(233, 233, 233, 1), rgba(172, 172, 172, 1));
     justify-content: center;
     max-height:500px;
-    width:92%;
-    margin:8px;
+    width:96%;
+    margin:6px;
 }
 
 h1 {
@@ -64,14 +64,6 @@ p {
 
 .accordion {
     padding:10px;
-}
-
-.controlPanel {
-    display: flex;
-    justify-content:left;
-    margin : 5px;
-    border: 1px dotted #333333;
-    border-radius: 7px;
 }
 
 .setParam {

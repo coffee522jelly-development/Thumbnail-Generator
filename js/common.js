@@ -154,19 +154,37 @@ function OnDownloadButton(){
 // mobile editor adjust
 function getViewportSizeAndAdjust() {
 	const w = initWidth;
+	if (w < 768){
+		document.getElementById("ImageFilter").classList.remove("col-2");
+		document.getElementById("sourceImage").classList.remove("col-2");
+		document.getElementById("TitleEdit").classList.remove("col-3");
+		document.getElementById("FontEdit").classList.remove("col-4");
+		document.getElementById("PhotoEdit").classList.remove("col-5");
+		document.getElementById("TitleEdit").classList.add("row-cols-1");
+		document.getElementById("FontEdit").classList.add("row-cols-1");
+		document.getElementById("PhotoEdit").classList.add("row-cols-1");
+
+		document.getElementById("sourceImage").classList.add("col-4");
+	}
+
 	if (w < 414){
 		document.getElementById("EditView").classList.remove("row-cols-2");
-		document.getElementById("ControlView").classList.remove("row-cols-2");
+		// document.getElementById("ControlView").classList.remove("row-cols-2");
+		document.getElementById("sourceImage").classList.remove("col-2");
+		document.getElementById("sourceImage").classList.remove("col-4");
+		document.getElementById("croppedImage").classList.remove("col-8");
+		document.getElementById("ImageFilter").classList.remove("col-2");
 
 		document.getElementById("EditView").classList.add("row-cols-1");
-		document.getElementById("ControlView").classList.add("row-cols-1");
+		// document.getElementById("ControlView").classList.add("row-cols-1");
+		document.getElementById("ImageFilter").classList.add("row-cols-1");
 	}
 	else{
 		document.getElementById("EditView").classList.remove("row-cols-1");
-		document.getElementById("ControlView").classList.remove("row-cols-1");
+		// document.getElementById("ControlView").classList.remove("row-cols-1");
 
 		document.getElementById("EditView").classList.add("row-cols-2");
-		document.getElementById("ControlView").classList.add("row-cols-2");
+		// document.getElementById("ControlView").classList.add("row-cols-2");
 	}
 }
 
