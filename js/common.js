@@ -119,6 +119,13 @@ btnResetParam.addEventListener('click', function(){
 	inputOpacity.value = Opacity;
 });
 
+// fullScreen
+let fullScreen = document.getElementById('fullScreen');
+fullScreen.addEventListener ('click', function(){     
+    let main = document.getElementById('main');
+	main.requestFullscreen();
+});
+
 
 // 関数/////////////////////////////////////////////////////////////////
 
@@ -178,9 +185,9 @@ function getViewportSizeAndAdjust() {
 	if (w < 400){
 		document.getElementById("EditView").classList.remove("row-cols-2");
 		// document.getElementById("ControlView").classList.remove("row-cols-2");
-		document.getElementById("sourceImage").classList.remove("col-2");
+		document.getElementById("sourceImage").classList.remove("col-3");
 		document.getElementById("sourceImage").classList.remove("col-4");
-		document.getElementById("croppedImage").classList.remove("col-8");
+		document.getElementById("croppedImage").classList.remove("col-7");
 		document.getElementById("ImageFilter").classList.remove("col-2");
 
 		document.getElementById("EditView").classList.add("row-cols-1");

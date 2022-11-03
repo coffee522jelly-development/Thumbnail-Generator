@@ -2,39 +2,28 @@ html,body {
     user-select: none;
 }
 
-label {
+/* 基本装飾 */
+header {
+    background: rgb(1, 52, 75);
+    padding: .5rem;
+    text-align: right;
+}
+
+p {
     font-size: 12px;
+    letter-spacing: 1px;
+    color:#aaa;
+    font-family: 'Archivo-Narrow';
 }
 
-::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-  }
-
-#Title {
-    text-align: left;
-    margin-bottom:-24px;
+a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Archivo-Narrow';
 }
 
-
-#Edit{
-    padding-top: 30px;
-}
-
-#sourceCanvas {
-    background-image: radial-gradient(rgba(233, 233, 233, 1), rgba(172, 172, 172, 1));
-    justify-content: center;
-    max-height:500px;
-    width:96%;
-    margin:6px;
-}
-
-#croppedCanvas {
-    background-image: radial-gradient(rgba(233, 233, 233, 1), rgba(172, 172, 172, 1));
-    justify-content: center;
-    max-height:500px;
-    width:96%;
-    margin:6px;
+li {
+    margin: 2rem 0;
 }
 
 h1 {
@@ -46,24 +35,72 @@ h1 {
     letter-spacing: 1px;
 }
 
-p {
+label {
     font-size: 12px;
-    letter-spacing: 1px;
-    color:#aaa;
-    font-family: 'Archivo-Narrow';
 }
 
-#explain{
-    font-family: 'Kosugi-Maru';
+/* メニュー */
+nav {
+    /* background: rgba(255,255,255,0); */
+    background: #aaaaaa;
+    position: absolute;
+    z-index: 1;
+    top: 3.125rem;
+    right: 0;
+    overflow-x: hidden;
+    text-align: left;
+    width: 0;
+    transition: .5s;
+}
+/* メニューを開いた時 */
+nav.open-menu {
+    width:  100%;
+    height: 100%;
 }
 
+  /* ボタン */
+.btn-menu {
+    border: 1px solid #999;
+    background: transparent;
+    color: #fff;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+#main{
+    padding:20px;
+    background-color: #fff;
+}
+
+#Title {
+    text-align: left;
+    margin-bottom:-24px;
+}
+
+/*ソースキャンバス*/
+#sourceCanvas {
+    background-image: radial-gradient(rgba(233, 233, 233, 1), rgba(172, 172, 172, 1));
+    justify-content: center;
+    max-height:500px;
+    width:96%;
+    margin:6px;
+}
+
+/*クロップ後キャンバス*/
+#croppedCanvas {
+    background-image: radial-gradient(rgba(233, 233, 233, 1), rgba(172, 172, 172, 1));
+    justify-content: center;
+    max-height: 500px;
+    width:96%;
+    margin:6px;
+}
+
+/*ダウンロード時イメージ*/
 #output {
     width:100%;
     display:none;
-}
-
-.accordion {
-    padding:10px;
 }
 
 .setParam {
@@ -72,26 +109,20 @@ p {
 
 .editView {
     display: flex;
-    margin : 5px;
     border: 1px dotted #333333;
     border-radius: 7px;
-    padding-top: 4px;
     margin: -1px;
+    padding: 10px;
+}
+
+#paramEditView{
+  margin-top: 20px;
 }
 
 .imageItem {
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 5px;
-}
-
-.preView {
-    display: flex;
-    justify-content:left;
-    padding: 30px;
-    margin : 10px;
-    border: 1px dotted #333333;
-    border-radius: 7px;
 }
 
 /* Fontselect*/
@@ -111,57 +142,12 @@ p {
 #Montserrat{font-family:'Montserrat';}
 #Neuton{font-family:'Neuton';}
 
-/* 基本装飾 */
-header {
-    background: rgb(3, 111, 141);
-    padding: .5rem;
-    text-align: right;
-  }
-  a {
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Archivo-Narrow';
-  }
-  li {
-    margin: 2rem 0;
-  }
-  
-  /* ボタン */
-  .btn-menu {
-    border: 1px solid #999;
-    background: transparent;
-    color: #fff;
-    padding: .5rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    line-height: 1;
-  }
-  
-/* メニュー */
-nav {
-    /* background: rgba(255,255,255,0); */
-    background: #aaaaaa;
-    position: absolute;
-    z-index: 1;
-    top: 3.125rem;
-    right: 0;
-    overflow-x: hidden;
-    text-align: left;
-    width: 0;
-    transition: .5s;
-}
-/* メニューを開いた時 */
-nav.open-menu {
-width:  100%;
-height: 100%;
-}
-
 /* モバイル向けのスタイル */
 /* 768px 未満 */
 @media not screen and (min-width: 768px) {
     #controlPanel  {
         flex-wrap: wrap;
-    }
+    }[]
     .editView  {
         flex-wrap: wrap;
     }
@@ -178,7 +164,6 @@ height: 100%;
 @media screen and (min-width: 768px) {
    
 }
-
 
 @media (prefers-color-scheme: dark) {
     body {

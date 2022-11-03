@@ -13,26 +13,27 @@
   <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="dist/js/jquery-3.6.1.min.js"></script>
   <script type="text/javascript" src="dist/js/semantic.min.js"></script>
-  <title>ThumbnailGenerator</title>
+  <title>Thumbnail-Generator</title>
 </head>
 
 <body>
+  <!-- As a heading -->
   <header>
     <h1 id="Title">Thumbnail-Generator</h1>
     <button class="btn-menu">Menu</button>
     <nav>
     </nav>
   </header>
-  <!-- As a heading -->
-  <!--EditView-->
-  <div id="Edit" class="container-fluid">
+
+  <!--As a EditView -->
+  <div id="main">
     <div id="EditView" class="editView row">
-      <div id="sourceImage" class="imageItem col-2">
+      <div id="sourceImage" class="imageItem col-3">
         <h1>Source</h1>
         <canvas id="sourceCanvas">
         </canvas>
       </div>
-      <div id="croppedImage" class="imageItem col-8">
+      <div id="croppedImage" class="imageItem col-7">
         <h1>Result</h1>
         <canvas id="croppedCanvas">
         </canvas>
@@ -57,117 +58,91 @@
         <button id="ResetParam" class="ui button mini">Filter Reset</button>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div id="TitleEdit" class="col-3">
-      <div class="accordion" id="accordion1">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TitleAndFile" aria-expanded="true" aria-controls="TitleAndFile">Title</button>
-          </h2>
-          <div class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
-            <div class="accordion-body">
-				<div class="setParam row-cols-1">
-					<form name="Title">
-						<div class="ui input mini focus">
-							<input type="text" name="caption" value="Hello.">
-						</div>
-					</form>
-					<label for="uploader" class="ui icon button mini">
-					<img class="icon" src="icon/folder.svg" width="20" height="20">Open File</label>
-					<input type="file" id="uploader" style="display: none">
-					<button id="Reload" class="ui button mini">
-					<img class="icon" src="icon/rotate.svg" width="16" height="16">Reload</button>
-					<button id="Download" class="ui button mini">
-					<img class="icon" src="icon/convert.svg" width="16" height="16">Download</button>
-				</div>
-            </div>
+    <div id="paramEditView" class="editView row">
+      <div id="TitleEdit" class="col-3">
+          <div class="setParam row-cols-1">
+            <p>Title</p>
+            <form name="Title">
+              <div class="ui input mini focus">
+                <input type="text" name="caption" value="Hello.">
+              </div>
+            </form>
           </div>
+
+          <div id="controlButton" class="setParam row-cols-1">
+            <p>Control</p>
+            <label for="uploader" class="ui icon button mini">
+            <img class="icon" src="icon/folder.svg" width="20" height="20">Open File</label>
+            <input type="file" id="uploader" style="display: none">
+            <button id="Reload" class="ui button mini">
+            <img class="icon" src="icon/rotate.svg" width="16" height="16">Reload</button>
+            <button id="Download" class="ui button mini">
+            <img class="icon" src="icon/convert.svg" width="16" height="16">Download</button>
+            <p>Utility</p>
+            <button id="fullScreen" class="ui button mini">FullScreen</button>
+          </div>
+      </div>
+      <div id="FontEdit" class="col-4">
+        <div class="setParam row-cols-1">
+          <p>FontStyle</p>
+          <div class="ui checkbox">
+            <input type="checkbox" id="outlineFont">
+            <label>Outline</label>
+          </div>
+          <select id="fontStyle" class="form-select  mb-3 ui dropdown" aria-label=" example">
+            <option selected>Font-Family</option>
+            <optgroup label="-JPFont-">
+            </optgroup>
+            <option id="Kiwimaru-Light" value="Kiwimaru-Light">Kiwimaru-Light</option>
+            <option id="Kiwimaru-Regular" value="Kiwimaru-Regular">Kiwimaru-Regular</option>
+            <option id="Kosugi-Maru" value="Kosugi-Maru">Kosugi-Maru</option>
+            <option id="KleeOne-Regular" value="KleeOne-Regular">KleeOne-Regular</option>
+            <option id="KleeOne-SemiBold" value="KleeOne-SemiBold">KleeOne-SemiBold</option>
+            <option id="Train-One" value="Train-One">Train-One</option>
+            <option id="Rampart-One" value="Rampart-One">Rampart-One</option>
+            <optgroup label="-WorldFont-">
+            </optgroup>
+            <option id="Archivo-Narrow" value="Archivo-Narrow">Archivo-Narrow</option>
+            <option id="Cardo" value="Cardo">Cardo</option>
+            <option id="inconsolata" value="inconsolata">inconsolata</option>
+            <option id="Lato" value="Lato">Lato</option>
+            <option id="Manrope" value="Manrope">Manrope</option>
+            <option id="Montserrat" value="Montserrat">Montserrat</option>
+            <option id="Neuton" value="Neuton">Neuton</option>
+          </select>
+        </div>
+        <div class="setParam row-cols-1">
+          <p>FontSize</p>
+          <input type="range" id="inputFontSize" min="0" max="500" step="50">
+          <p>FontRotate</p>
+          <input type="range" id="inputFontRotate" min="0" max="360" step="30" value="0">
+          <p>LetterSpacing</p>
+          <input type="range" id="inputFontSpacing" min="0" max="100" step="5" value="10">
+          <p>FontColor</p>
+          <input type="color" id="fontColor" value="#ffffff" list="defaultcolors">
         </div>
       </div>
-    </div>
-    <div id="FontEdit" class="col-4">
-      <div class="accordion" id="accordion2">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#FontEdit" aria-expanded="true" aria-controls="FontEdit">FontEdit</button>
-          </h2>
-          <div class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordion2">
-            <div class="accordion-body row">
-              <div class="setParam row-cols-1">
-                <p>FontStyle</p>
-                <div class="ui checkbox">
-                  <input type="checkbox" id="outlineFont">
-                  <label>Outline</label>
-                </div>
-                <select id="fontStyle" class="form-select  mb-3 ui dropdown" aria-label=" example">
-                  <option selected>Font-Family</option>
-                  <optgroup label="-JPFont-">
-                  </optgroup>
-                  <option id="Kiwimaru-Light" value="Kiwimaru-Light">Kiwimaru-Light</option>
-                  <option id="Kiwimaru-Regular" value="Kiwimaru-Regular">Kiwimaru-Regular</option>
-                  <option id="Kosugi-Maru" value="Kosugi-Maru">Kosugi-Maru</option>
-                  <option id="KleeOne-Regular" value="KleeOne-Regular">KleeOne-Regular</option>
-                  <option id="KleeOne-SemiBold" value="KleeOne-SemiBold">KleeOne-SemiBold</option>
-                  <option id="Train-One" value="Train-One">Train-One</option>
-                  <option id="Rampart-One" value="Rampart-One">Rampart-One</option>
-                  <optgroup label="-WorldFont-">
-                  </optgroup>
-                  <option id="Archivo-Narrow" value="Archivo-Narrow">Archivo-Narrow</option>
-                  <option id="Cardo" value="Cardo">Cardo</option>
-                  <option id="inconsolata" value="inconsolata">inconsolata</option>
-                  <option id="Lato" value="Lato">Lato</option>
-                  <option id="Manrope" value="Manrope">Manrope</option>
-                  <option id="Montserrat" value="Montserrat">Montserrat</option>
-                  <option id="Neuton" value="Neuton">Neuton</option>
-                </select>
-              </div>
-              <div class="setParam row-cols-1">
-                <p>FontSize</p>
-                <input type="range" id="inputFontSize" min="0" max="500" step="50">
-                <p>FontRotate</p>
-                <input type="range" id="inputFontRotate" min="0" max="360" step="30" value="0">
-                <p>LetterSpacing</p>
-                <input type="range" id="inputFontSpacing" min="0" max="100" step="5" value="10">
-                <p>FontColor</p>
-                <input type="color" id="fontColor" value="#ffffff" list="defaultcolors">
-              </div>
-            </div>
+      <div id="PhotoEdit" class="col-5">
+        <div class="setParam col">
+          <p>Aspect Ratio</p>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
+            <label class="form-check-label" for="exampleRadios1">16:9</label>
           </div>
-        </div>
-      </div>
-    </div>
-    <div id="PhotoEdit" class="col-5">
-      <div class="accordion col" id="accordion3">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#PhotoEdit" aria-expanded="true" aria-controls="PhotoEdit">PhotoEdit</button>
-          </h2>
-          <div class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordion3">
-            <div class="accordion-body row">
-              <div class="setParam col">
-                <p>Aspect Ratio</p>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
-                  <label class="form-check-label" for="exampleRadios1">16:9</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
-                  <label class="form-check-label" for="exampleRadios2">4:3</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
-                  <label class="form-check-label" for="exampleRadios3">3:2</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
-                  <label class="form-check-label" for="exampleRadios4">1:1</label>
-                </div>
-                <button id="aspectRatio" class="ui button mini">
-                  <img class="icon" src="icon/triming.svg" width="16" height="16">Crop</button>
-              </div>
-            </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
+            <label class="form-check-label" for="exampleRadios2">4:3</label>
           </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
+            <label class="form-check-label" for="exampleRadios3">3:2</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
+            <label class="form-check-label" for="exampleRadios4">1:1</label>
+          </div>
+          <button id="aspectRatio" class="ui button mini">
+            <img class="icon" src="icon/triming.svg" width="16" height="16">Crop</button>
         </div>
       </div>
     </div>
@@ -181,6 +156,7 @@
 <!-- Javascript load -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/parts.css">
 <script src="js/common.js"></script>
 <script src="js/cropper.js"></script>
 
