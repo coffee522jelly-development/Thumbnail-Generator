@@ -16,7 +16,7 @@ const cropImage = function (evt) {
 
             // initializeSoureCanvas
             const canvas = document.getElementById("sourceCanvas");
-            let ctx = canvas.getContext("2d");
+            let ctx = canvas.getContext("2d", { alpha: false });
             canvas.width = image.width * scale;
             canvas.height = image.height * scale;
             ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
@@ -52,7 +52,7 @@ function initResultSetting(context){
             let scale = scalewidth / image.width;
 
 			const croppedCanvas = document.getElementById("croppedCanvas");
-			let ctx = croppedCanvas.getContext("2d");
+			let ctx = croppedCanvas.getContext("2d", { alpha: false });
 			let croppedImageWidth   = image.height * cropAspectRatio;
 			croppedCanvas.width     = croppedImageWidth * scale;
 			croppedCanvas.height    = image.height * scale;
@@ -69,18 +69,11 @@ function initResultSetting(context){
 				0, 0, croppedCanvas.width, croppedCanvas.height
 			);
 
-			// 初期化
-			ctx.filter = "brightness(100%)" + 
-							"blur(0px)" + 
-							"contrast(100%)" + 
-							"grayscale(0%)" + 
-							"sepia(0%)" +
-							"opacity(1.0)";
+			ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "sepia(0%)" + "opacity(1.0)";
 
 			// Style
 			let fontStyle = document.getElementById("fontStyle").value;
 			ctx.font = fontSize + 'px ' + fontStyle;
-			ctx.fillStyle = document.getElementById("fontColor").value;
 			ctx.letterSpacing = fontSpacing + "px";
 			ctx.translate(parseInt(context.width / 2), parseInt(context.height / 2));
 			ctx.rotate(fontRotate / 180 * Math.PI);
@@ -91,7 +84,15 @@ function initResultSetting(context){
 			let y = (croppedCanvas.height / 2);
 			let element = document.Title.caption.value;
 			let length = ctx.measureText(element).width;
-			ctx.fillText(element, (x - length / 2), y + (fontSize / 3));
+
+			if (bOutlineFont){
+				ctx.strokeStyle = document.getElementById("fontColor").value;
+				ctx.strokeText(element, (x - length / 2), y + (fontSize / 3));
+			}
+			else{
+				ctx.fillStyle = document.getElementById("fontColor").value;
+				ctx.fillText(element, (x - length / 2), y + (fontSize / 3));
+			}
 		}
-	});   
+	});
 }

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=414, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- CSS load -->
   <link rel="stylesheet" type="text/css" media="all" href="dist/css/cropper.css">
   <link rel="stylesheet" href="dist/css/bootstrap.min.css">
@@ -96,6 +96,10 @@
             <div class="accordion-body row">
               <div class="setParam row-cols-1">
                 <p>FontStyle</p>
+                <div class="ui checkbox">
+                  <input type="checkbox" id="outlineFont">
+                  <label>Outline</label>
+                </div>
                 <select id="fontStyle" class="form-select  mb-3 ui dropdown" aria-label=" example">
                   <option selected>Font-Family</option>
                   <optgroup label="-JPFont-">
@@ -123,22 +127,10 @@
                 <input type="range" id="inputFontSize" min="0" max="500" step="50">
                 <p>FontRotate</p>
                 <input type="range" id="inputFontRotate" min="0" max="360" step="30" value="0">
-              </div>
-              <div class="setParam row-cols-1">
                 <p>LetterSpacing</p>
                 <input type="range" id="inputFontSpacing" min="0" max="100" step="5" value="10">
                 <p>FontColor</p>
-                <input type="color" id="fontColor" value="#ffffff" list="colors">
-                <datalist id="colors">
-                  <option value="#FFFFFF">
-                  </option>
-                  <option value="#0F4C81">
-                  </option>
-                  <option value="#939597">
-                  </option>
-                  <option value="#F5DF4D">
-                  </option>
-                </datalist>
+                <input type="color" id="fontColor" value="#ffffff" list="defaultcolors">
               </div>
             </div>
           </div>

@@ -4,7 +4,8 @@ let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
 let   cropAspectRatio 	= 16 / 9;
 let   angle 			= 0.0;
-
+let   bFilter 			= false;
+let   bOutlineFont 		= false;
 
 // Effects GrobalVariables
 let   Brightness 	= 100;
@@ -30,7 +31,14 @@ getViewportSizeAndAdjust();
 // window Reload
 let btnReload = document.getElementById('Reload');
 btnReload.addEventListener('click', function(){
-	location.reload();});
+	location.reload();
+});
+
+// outlineOnOff
+let outlineFont = document.getElementById('outlineFont');
+outlineFont.addEventListener('change', function(){
+	bOutlineFont = outlineFont.checked;
+});
 
 // FontSize
 let inputFontSize = document.getElementById('inputFontSize');
@@ -167,7 +175,7 @@ function getViewportSizeAndAdjust() {
 		document.getElementById("sourceImage").classList.add("col-4");
 	}
 
-	if (w < 414){
+	if (w < 400){
 		document.getElementById("EditView").classList.remove("row-cols-2");
 		// document.getElementById("ControlView").classList.remove("row-cols-2");
 		document.getElementById("sourceImage").classList.remove("col-2");
@@ -223,3 +231,4 @@ xhr.onload = function(e){
 };
 xhr.send();
 }
+
