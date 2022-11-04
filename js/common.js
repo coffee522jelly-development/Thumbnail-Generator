@@ -1,19 +1,30 @@
-// GrobalVariables
+// canvas
+let   cropAspectRatio 	= 16 / 9;
+
+// fonts
+let   bOutlineFont 		= false;
+let   fontBold 	        = '';
+let   fontItalic 	    = '';
 let   fontSize 			= 150;
 let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
-let   cropAspectRatio 	= 16 / 9;
+let   fontColor         = "#ffffff";
 let   angle 			= 0.0;
-let   bFilter 			= false;
-let   bOutlineFont 		= false;
 
-// Effects GrobalVariables
+// ImageFilterEffects
+let   bFilter 			= false;
 let   Brightness 	= 100;
 let   Blur 			= 0;
 let   Contrast 		= 100;
 let   GrayScale 	= 0;
 let   Sepia 		= 0;
 let   Opacity 		= 1.0;
+
+// ShaperEffects
+let   bShape 			= false;	
+let   shapeColor 		= "#0068b7";
+let   shapeOpacity		= 0.6;
+let   shapeSize 		= 420;
 
 const initWidth = window.innerWidth;
 const initHeight = window.innerHeight;
@@ -34,28 +45,93 @@ btnReload.addEventListener('click', function(){
 	location.reload();
 });
 
+// BoldOnOff
+let boldFont = document.getElementById('fontBold');
+boldFont.addEventListener('change', function(){
+	if (boldFont.checked){
+		fontBold = 'bold';
+	}
+	else{
+		fontBold = '';
+	}
+
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
+// DrawShapeOnOff
+let drawShape = document.getElementById('drawShape');
+drawShape.addEventListener('change', function(){
+	bShape = drawShape.checked;
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
+// ItalicOnOff
+let ItalicFont = document.getElementById('fontItalic');
+ItalicFont.addEventListener('change', function(){
+	if (ItalicFont.checked){
+		fontItalic = 'italic';
+	}
+	else{
+		fontItalic = '';
+	}
+
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
 // outlineOnOff
 let outlineFont = document.getElementById('outlineFont');
 outlineFont.addEventListener('change', function(){
 	bOutlineFont = outlineFont.checked;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // FontSize
 let inputFontSize = document.getElementById('inputFontSize');
 inputFontSize.addEventListener('change', function(){
 	fontSize = inputFontSize.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // FontSpacing
 let inputFontSpacing = document.getElementById('inputFontSpacing');
 inputFontSpacing.addEventListener('change', function(){
 	fontSpacing = inputFontSpacing.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // FontRotate
 let inputFontRotate = document.getElementById('inputFontRotate');
 inputFontRotate.addEventListener('change', function(){
 	fontRotate = inputFontRotate.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
+// FontColor
+let inputFontColor = document.getElementById('inputFontColor');
+inputFontColor.addEventListener('change', function(){
+	fontColor = inputFontColor.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
+// ShapeColor
+let inputShapeColor = document.getElementById('inputShapeColor');
+inputShapeColor.addEventListener('change', function(){
+	shapeColor = inputShapeColor.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
+// ShapeOpacity
+let inputShapeOpacity = document.getElementById('inputShapeOpacity');
+inputShapeOpacity.addEventListener('change', function(){
+	shapeOpacity = inputShapeOpacity.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
+// ShapeSize
+let inputShapeSize = document.getElementById('inputShapeSize');
+inputShapeSize.addEventListener('change', function(){
+	shapeSize = inputShapeSize.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // AspectRatioCheck
@@ -70,36 +146,42 @@ btnDownload.addEventListener('click', OnDownloadButton);
 let inputBrightness = document.getElementById('inputBrightness');
 inputBrightness.addEventListener('change', function(){
 	Brightness = inputBrightness.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // Blur
 let inputBlur = document.getElementById('inputBlur');
 inputBlur.addEventListener('change', function(){
 	Blur = inputBlur.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // Contrast
 let inputContrast = document.getElementById('inputContrast');
 inputContrast.addEventListener('change', function(){
 	Contrast = inputContrast.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // GrayScale
 let inputGrayScale = document.getElementById('inputGrayScale');
 inputGrayScale.addEventListener('change', function(){
 	GrayScale = inputGrayScale.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // Sepia
 let inputSepia = document.getElementById('inputSepia');
 inputSepia.addEventListener('change', function(){
 	Sepia = inputSepia.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // Opacity
 let inputOpacity = document.getElementById('inputOpacity');
 inputOpacity.addEventListener('change', function(){
 	Opacity = inputOpacity.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // ResetParams
@@ -117,6 +199,7 @@ btnResetParam.addEventListener('click', function(){
 	inputGrayScale.value = GrayScale;
 	inputSepia.value = Sepia;
 	inputOpacity.value = Opacity;
+	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
 // fullScreen
@@ -139,6 +222,7 @@ function OnAspectButton(){
 		break;
 		}
 	}
+
 	cropAspectRatio = parseFloat(str);
 
 	const canvas = document.getElementById("sourceCanvas");

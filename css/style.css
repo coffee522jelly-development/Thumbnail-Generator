@@ -1,4 +1,4 @@
-html,body {
+html, body {
     user-select: none;
 }
 
@@ -81,20 +81,16 @@ nav.open-menu {
 
 /*ソースキャンバス*/
 #sourceCanvas {
-    background-image: radial-gradient(rgba(233, 233, 233, 1), rgba(172, 172, 172, 1));
-    justify-content: center;
-    max-height:500px;
-    width:96%;
-    margin:6px;
+    max-height: 100px;
+    display: block;
 }
+
 
 /*クロップ後キャンバス*/
 #croppedCanvas {
-    background-image: radial-gradient(rgba(233, 233, 233, 1), rgba(172, 172, 172, 1));
-    justify-content: center;
-    max-height: 500px;
-    width:96%;
-    margin:6px;
+    max-width: 100%;
+    display: block;
+    padding-left:10px;
 }
 
 /*ダウンロード時イメージ*/

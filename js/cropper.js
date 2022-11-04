@@ -17,10 +17,10 @@ const cropImage = function (evt) {
             // initializeSoureCanvas
             const canvas = document.getElementById("sourceCanvas");
             let ctx = canvas.getContext("2d", { alpha: false });
+			ctx.imageSmoothingEnabled = true;
             canvas.width = image.width * scale;
             canvas.height = image.height * scale;
             ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
-
             initResultSetting(canvas);
         }
         image.src = evt.target.result;
@@ -33,7 +33,7 @@ const uploader = document.getElementById('uploader');
 uploader.addEventListener('change', cropImage);
 
 // ResultViewerSetting
-function initResultSetting(context){
+function initResultSetting(context, x, y){
     if (cropper != null){
 		cropper.destroy();
 	}
@@ -43,6 +43,7 @@ function initResultSetting(context){
 		movable: false,
 		scalable: false,
 		zoomable: false,
+		checkOrientation    : true,
 		data: {
 			width: context.width,
 			height: context.width * cropAspectRatio
@@ -53,9 +54,11 @@ function initResultSetting(context){
 
 			const croppedCanvas = document.getElementById("croppedCanvas");
 			let ctx = croppedCanvas.getContext("2d", { alpha: false });
-			let croppedImageWidth   = image.height * cropAspectRatio;
-			croppedCanvas.width     = croppedImageWidth * scale;
-			croppedCanvas.height    = image.height * scale;
+			ctx.imageSmoothingEnabled = true;
+			let croppedImageWidth = image.height * cropAspectRatio;
+			croppedCanvas.height = image.height;
+			croppedCanvas.width = croppedImageWidth;
+			croppedCanvas.height = image.height;
 
 			ctx.filter = "brightness("+ Brightness + "%)" +
 							"blur("+ Blur + "px)" + 
@@ -71,9 +74,20 @@ function initResultSetting(context){
 
 			ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "sepia(0%)" + "opacity(1.0)";
 
+			// DrawShape
+			if (bShape){
+				ctx.arc(croppedCanvas.width / 2, croppedCanvas.height / 2, shapeSize, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
+				ctx.fillStyle = shapeColor;
+				ctx.filter = "opacity(" + shapeOpacity + ")";
+				ctx.fill();
+				ctx.lineWidth = 0;
+				ctx.stroke();
+				ctx.filter = "opacity(1.0)";
+			}
+
 			// Style
 			let fontStyle = document.getElementById("fontStyle").value;
-			ctx.font = fontSize + 'px ' + fontStyle;
+			ctx.font = fontItalic + ' ' + fontBold + ' ' + fontSize + 'px ' + fontStyle;
 			ctx.letterSpacing = fontSpacing + "px";
 			ctx.translate(parseInt(context.width / 2), parseInt(context.height / 2));
 			ctx.rotate(fontRotate / 180 * Math.PI);
@@ -86,11 +100,11 @@ function initResultSetting(context){
 			let length = ctx.measureText(element).width;
 
 			if (bOutlineFont){
-				ctx.strokeStyle = document.getElementById("fontColor").value;
+				ctx.strokeStyle = fontColor;
 				ctx.strokeText(element, (x - length / 2), y + (fontSize / 3));
 			}
 			else{
-				ctx.fillStyle = document.getElementById("fontColor").value;
+				ctx.fillStyle = fontColor;
 				ctx.fillText(element, (x - length / 2), y + (fontSize / 3));
 			}
 		}

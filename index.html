@@ -30,8 +30,7 @@
     <div id="EditView" class="editView row">
       <div id="sourceImage" class="imageItem col-3">
         <h1>Source</h1>
-        <canvas id="sourceCanvas">
-        </canvas>
+        <canvas id="sourceCanvas"></canvas>
       </div>
       <div id="croppedImage" class="imageItem col-7">
         <h1>Result</h1>
@@ -83,12 +82,21 @@
           </div>
       </div>
       <div id="FontEdit" class="col-4">
-        <div class="setParam row-cols-1">
           <p>FontStyle</p>
+          <div class="ui checkbox">
+            <input type="checkbox" id="fontBold">
+            <label>Bold</label>
+          </div>
+          <div class="ui checkbox">
+            <input type="checkbox" id="fontItalic">
+            <label>Italic</label>
+          </div>
           <div class="ui checkbox">
             <input type="checkbox" id="outlineFont">
             <label>Outline</label>
           </div>
+
+        <div class="setParam row-cols-1">
           <select id="fontStyle" class="form-select  mb-3 ui dropdown" aria-label=" example">
             <option selected>Font-Family</option>
             <optgroup label="-JPFont-">
@@ -119,7 +127,7 @@
           <p>LetterSpacing</p>
           <input type="range" id="inputFontSpacing" min="0" max="100" step="5" value="10">
           <p>FontColor</p>
-          <input type="color" id="fontColor" value="#ffffff" list="defaultcolors">
+          <input type="color" id="inputFontColor" value="#ffffff" list="defaultcolors">
         </div>
       </div>
       <div id="PhotoEdit" class="col-5">
@@ -142,7 +150,20 @@
             <label class="form-check-label" for="exampleRadios4">1:1</label>
           </div>
           <button id="aspectRatio" class="ui button mini">
-            <img class="icon" src="icon/triming.svg" width="16" height="16">Crop</button>
+          <img class="icon" src="icon/triming.svg" width="16" height="16">Crop</button>
+        </div>
+        <div class="setParam col">
+          <p>Draw Shape(beta)</p>
+          <div class="ui checkbox">
+            <input type="checkbox" id="drawShape">
+            <label>Draw</label>
+          </div>
+          <p>Color</p>
+          <input type="color" id="inputShapeColor" value="#0068b7" list="defaultcolors">
+          <p>Opacity</p>
+          <input type="range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="0.6">
+          <p>Size</p>
+          <input type="range" id="inputShapeSize" min="0" max="600" step="60" value="420">
         </div>
       </div>
     </div>
