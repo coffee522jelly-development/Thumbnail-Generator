@@ -85,6 +85,7 @@ nav.open-menu {
 #sourceCanvas {
     max-height: 100px;
     display: block;
+    display: none;
 }
 
 #croppedImage{

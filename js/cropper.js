@@ -45,7 +45,7 @@ function initResultSetting(context, initial){
 	{
 		if (!initial)	return;
 	}
-	
+
 	cropper = new Cropper(context,{
 		aspectRatio: cropAspectRatio,
 		movable: false,

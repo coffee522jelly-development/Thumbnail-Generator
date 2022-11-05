@@ -55,7 +55,6 @@ boldFont.addEventListener('change', function(){
 	else{
 		fontBold = '';
 	}
-
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
