@@ -1,6 +1,6 @@
 html, body {
     user-select: none;
-    font-family: 'Archivo-Narrow';
+    font-family: 'Lato';
 }
 
 /* 基本装飾 */
@@ -30,6 +30,7 @@ h1 {
     margin-left: 5px;
     margin-bottom: 5px;
     color:#bbb;
+    font-family: 'Lato';
 }
 
 label {
@@ -134,21 +135,29 @@ nav.open-menu {
 }
 
 /* Fontselect*/
-#Kiwimaru-Light{font-family:'Kiwimaru-Light';}
+/*JP*/
+#IPAex{font-family: 'IPAex';}
+#Timemachine-wa{font-family: 'Timemachine-wa';}
+#Senobi-Gothic{font-family: 'Senobi-Gothic';}
+#Kirin{font-family: 'Kirin';}
 #Kiwimaru-Regular{font-family:'Kiwimaru-Regular';}
 #Kosugi-Maru{font-family:'Kosugi-Maru';}
 #KleeOne-Regular{font-family:'KleeOne-Regular';}
-#KleeOne-SemiBold{font-family:'KleeOne-SemiBold';}
 #Train-One{font-family:'Train-One';}
 #Rampart-One{font-family:'Rampart-One';}
 
+/*World*/
 #Archivo-Narrow{font-family:'Archivo-Narrow';}
+#CornerStone{font-family: 'CornerStone';}
 #Cardo{font-family:'Cardo';}
 #inconsolata{font-family:'inconsolata';}
 #Lato{font-family:'Lato';}
 #Manrope{font-family:'Manrope';}
 #Montserrat{font-family:'Montserrat';}
 #Neuton{font-family:'Neuton';}
+#Oraniebaum{font-family: 'Oraniebaum';}
+#Prokopis{font-family: 'Prokopis';}
+#Smarta{font-family:'Smarta';}
 
 /* モバイル向けのスタイル */
 /* 768px 未満 */
