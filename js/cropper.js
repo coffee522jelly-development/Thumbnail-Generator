@@ -49,14 +49,13 @@ function initResultSetting(context){
 			height: context.width * cropAspectRatio
 		 },
 		crop: function (event) {
-			const scalewidth = 768;
+			const scalewidth = 1024;
             let scale = scalewidth / image.width;
 
 			const croppedCanvas = document.getElementById("croppedCanvas");
 			let ctx = croppedCanvas.getContext("2d", { alpha: false });
 			ctx.imageSmoothingEnabled = true;
 			let croppedImageWidth = image.height * cropAspectRatio;
-			croppedCanvas.height = image.height;
 			croppedCanvas.width = croppedImageWidth;
 			croppedCanvas.height = image.height;
 
@@ -82,19 +81,26 @@ function initResultSetting(context){
 
 			// DrawShape
 			if (bShape){
+				ctx.translate(centerX, centerY);
+				ctx.rotate(shapeRotate / 180 * Math.PI);
+				ctx.translate(-1.0 * centerX, -1.0 * centerY);
+
 				let shapeType = document.getElementById("shapeType").value;
 				if (shapeType == "Arc"){
 					ctx.arc(Width / 2, Height / 2, shapeSize, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
 				}
+				else if(shapeType == "Square"){
+					ctx.rect(Width / 2 - shapeSize / 2, Height / 2 - shapeSize / 2, shapeSize, shapeSize);
+				}
 				else if(shapeType == "justify-Rect"){
 					ctx.rect(Width / 2 - Width / 2, Height / 2 - shapeSize / 2, Width, shapeSize);
 				}
-
 				ctx.fillStyle = shapeColor;
 				ctx.filter = "opacity(" + shapeOpacity + ")";
 				ctx.fill();
 				ctx.lineWidth = 0;
 				ctx.stroke();
+				ctx.rotate(0 / 180 * Math.PI);
 				ctx.filter = "opacity(1.0)";
 			}
 

@@ -25,6 +25,7 @@ let   bShape 			= false;
 let   shapeColor 		= "#0068b7";
 let   shapeOpacity		= 0.6;
 let   shapeSize 		= 420;
+let   shapeRotate 		= 0;
 
 const initWidth = window.innerWidth;
 const initHeight = window.innerHeight;
@@ -137,6 +138,13 @@ inputShapeOpacity.addEventListener('change', function(){
 let inputShapeSize = document.getElementById('inputShapeSize');
 inputShapeSize.addEventListener('change', function(){
 	shapeSize = inputShapeSize.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
+// FontRotate
+let inputShapeRotate = document.getElementById('inputShapeRotate');
+inputShapeRotate.addEventListener('change', function(){
+	shapeRotate = inputShapeRotate.value;
 	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
@@ -269,10 +277,10 @@ function getViewportSizeAndAdjust() {
 		document.getElementById("sourceImage").classList.remove("col-2");
 		document.getElementById("TitleEdit").classList.remove("col-3");
 		document.getElementById("FontEdit").classList.remove("col-4");
-		document.getElementById("PhotoEdit").classList.remove("col-5");
+		document.getElementById("ShapeEdit").classList.remove("col-5");
 		document.getElementById("TitleEdit").classList.add("row-cols-1");
 		document.getElementById("FontEdit").classList.add("row-cols-1");
-		document.getElementById("PhotoEdit").classList.add("row-cols-1");
+		document.getElementById("ShapeEdit").classList.add("row-cols-1");
 
 		document.getElementById("sourceImage").classList.add("col-4");
 	}

@@ -36,7 +36,6 @@ label {
     font-size: 12px;
 }
 
-
 /* メニュー */
 nav {
     /* background: rgba(255,255,255,0); */
@@ -115,6 +114,14 @@ nav.open-menu {
     margin: -1px;
     padding: 10px;
 }
+
+.StyleBox {
+    border: 1px dotted #333333;
+    border-radius: 7px;
+    padding : 10px;
+    margin: 10px;
+}
+
 
 #paramEditView{
   margin-top: 20px;
