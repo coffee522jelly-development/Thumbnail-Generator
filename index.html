@@ -29,11 +29,9 @@
   <div id="main">
     <div id="EditView" class="editView row">
       <div id="sourceImage" class="imageItem col-3">
-        <h1>Source</h1>
         <canvas id="sourceCanvas"></canvas>
       </div>
       <div id="croppedImage" class="imageItem col-7">
-        <h1>Result</h1>
         <canvas id="croppedCanvas">
         </canvas>
         <img id="output" src="">
@@ -82,23 +80,24 @@
           </div>
       </div>
       <div id="FontEdit" class="col-4">
-          <p>FontStyle</p>
-          <div class="ui checkbox">
-            <input type="checkbox" id="fontBold">
-            <label>Bold</label>
-          </div>
-          <div class="ui checkbox">
-            <input type="checkbox" id="fontItalic">
-            <label>Italic</label>
-          </div>
-          <div class="ui checkbox">
-            <input type="checkbox" id="outlineFont">
-            <label>Outline</label>
-          </div>
+        <div class="contents row-cols-4">
+        <p>FontStyle</p>
+        <div class="ui checkbox">
+          <input type="checkbox" id="fontBold">
+          <label class="form-check-label">Bold</label>
+        </div>
+        <div class="ui checkbox">
+          <input type="checkbox" id="fontItalic">
+          <label class="form-check-label">Italic</label>
+        </div>
+        <div class="ui checkbox">
+          <input type="checkbox" id="outlineFont">
+          <label class="form-check-label">Outline</label>
+        </div>
+      </div>
 
         <div class="setParam row-cols-1">
-          <select id="fontStyle" class="form-select  mb-3 ui dropdown" aria-label=" example">
-            <option selected>Font-Family</option>
+          <select id="fontStyle" class="form-select ui conpact dropdown" aria-label=" example" value="Train-One">
             <optgroup label="-JPFont-">
             </optgroup>
             <option id="Kiwimaru-Light" value="Kiwimaru-Light">Kiwimaru-Light</option>
@@ -106,7 +105,7 @@
             <option id="Kosugi-Maru" value="Kosugi-Maru">Kosugi-Maru</option>
             <option id="KleeOne-Regular" value="KleeOne-Regular">KleeOne-Regular</option>
             <option id="KleeOne-SemiBold" value="KleeOne-SemiBold">KleeOne-SemiBold</option>
-            <option id="Train-One" value="Train-One">Train-One</option>
+            <option selected id="Train-One" value="Train-One">Train-One</option>
             <option id="Rampart-One" value="Rampart-One">Rampart-One</option>
             <optgroup label="-WorldFont-">
             </optgroup>
@@ -152,18 +151,22 @@
           <button id="aspectRatio" class="ui button mini">
           <img class="icon" src="icon/triming.svg" width="16" height="16">Crop</button>
         </div>
-        <div class="setParam col">
+        <div class="setParam row-cols-1">
           <p>Draw Shape(beta)</p>
           <div class="ui checkbox">
             <input type="checkbox" id="drawShape">
             <label>Draw</label>
           </div>
-          <p>Color</p>
-          <input type="color" id="inputShapeColor" value="#0068b7" list="defaultcolors">
+          <select id="shapeType" class="form-select ui dropdown" aria-label=" example" value="Arc">
+            <option selected id="Arc" value="Arc">Arc</option>
+            <option id="justify-Rect" value="justify-Rect">justify-Rect</option>
+          </select>
           <p>Opacity</p>
           <input type="range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="0.6">
           <p>Size</p>
-          <input type="range" id="inputShapeSize" min="0" max="600" step="60" value="420">
+          <input type="range" id="inputShapeSize" min="0" max="1000" step="100" value="400">
+          <p>Color</p>
+          <input type="color" id="inputShapeColor" value="#0068b7" list="defaultcolors">
         </div>
       </div>
     </div>

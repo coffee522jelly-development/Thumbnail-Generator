@@ -113,6 +113,12 @@ inputFontColor.addEventListener('change', function(){
 	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
+// FontStyle
+var selectFontStyle = document.getElementById('fontStyle');
+selectFontStyle.addEventListener('change', function(){
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
 // ShapeColor
 let inputShapeColor = document.getElementById('inputShapeColor');
 inputShapeColor.addEventListener('change', function(){
@@ -131,6 +137,12 @@ inputShapeOpacity.addEventListener('change', function(){
 let inputShapeSize = document.getElementById('inputShapeSize');
 inputShapeSize.addEventListener('change', function(){
 	shapeSize = inputShapeSize.value;
+	initResultSetting(document.getElementById("sourceCanvas"));
+});
+
+// FontStyle
+var selectShapeType = document.getElementById('shapeType');
+selectShapeType.addEventListener('change', function(){
 	initResultSetting(document.getElementById("sourceCanvas"));
 });
 
@@ -208,7 +220,6 @@ fullScreen.addEventListener ('click', function(){
     let main = document.getElementById('main');
 	main.requestFullscreen();
 });
-
 
 // 関数/////////////////////////////////////////////////////////////////
 

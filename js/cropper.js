@@ -33,7 +33,7 @@ const uploader = document.getElementById('uploader');
 uploader.addEventListener('change', cropImage);
 
 // ResultViewerSetting
-function initResultSetting(context, x, y){
+function initResultSetting(context){
     if (cropper != null){
 		cropper.destroy();
 	}
@@ -60,6 +60,12 @@ function initResultSetting(context, x, y){
 			croppedCanvas.width = croppedImageWidth;
 			croppedCanvas.height = image.height;
 
+			// SizeVariables
+			const Width = croppedCanvas.width;
+			const Height = croppedCanvas.height;
+			const centerX = Width / 2;
+			const centerY = Height / 2;
+
 			ctx.filter = "brightness("+ Brightness + "%)" +
 							"blur("+ Blur + "px)" + 
 							"contrast(" + Contrast + "%)" + 
@@ -69,14 +75,21 @@ function initResultSetting(context, x, y){
 
 			ctx.drawImage(image,
 				event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
-				0, 0, croppedCanvas.width, croppedCanvas.height
+				0, 0, Width, Height
 			);
 
 			ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "sepia(0%)" + "opacity(1.0)";
 
 			// DrawShape
 			if (bShape){
-				ctx.arc(croppedCanvas.width / 2, croppedCanvas.height / 2, shapeSize, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
+				let shapeType = document.getElementById("shapeType").value;
+				if (shapeType == "Arc"){
+					ctx.arc(Width / 2, Height / 2, shapeSize, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
+				}
+				else if(shapeType == "justify-Rect"){
+					ctx.rect(Width / 2 - Width / 2, Height / 2 - shapeSize / 2, Width, shapeSize);
+				}
+
 				ctx.fillStyle = shapeColor;
 				ctx.filter = "opacity(" + shapeOpacity + ")";
 				ctx.fill();
@@ -89,23 +102,21 @@ function initResultSetting(context, x, y){
 			let fontStyle = document.getElementById("fontStyle").value;
 			ctx.font = fontItalic + ' ' + fontBold + ' ' + fontSize + 'px ' + fontStyle;
 			ctx.letterSpacing = fontSpacing + "px";
-			ctx.translate(parseInt(context.width / 2), parseInt(context.height / 2));
+			ctx.translate(centerX, centerY);
 			ctx.rotate(fontRotate / 180 * Math.PI);
-			ctx.translate(parseInt(context.width  / -2), parseInt(context.height / -2));
+			ctx.translate(-1.0 * centerX, -1.0 * centerY);
 
 			// ImageSizer
-			let x = croppedCanvas.width / 2;
-			let y = (croppedCanvas.height / 2);
 			let element = document.Title.caption.value;
 			let length = ctx.measureText(element).width;
 
 			if (bOutlineFont){
 				ctx.strokeStyle = fontColor;
-				ctx.strokeText(element, (x - length / 2), y + (fontSize / 3));
+				ctx.strokeText(element, (centerX - length / 2), centerY + (fontSize / 3));
 			}
 			else{
 				ctx.fillStyle = fontColor;
-				ctx.fillText(element, (x - length / 2), y + (fontSize / 3));
+				ctx.fillText(element, (centerX - length / 2), centerY + (fontSize / 3));
 			}
 		}
 	});

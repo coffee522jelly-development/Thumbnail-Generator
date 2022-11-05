@@ -1,5 +1,6 @@
 html, body {
     user-select: none;
+    font-family: 'Archivo-Narrow';
 }
 
 /* 基本装飾 */
@@ -13,13 +14,11 @@ p {
     font-size: 12px;
     letter-spacing: 1px;
     color:#aaa;
-    font-family: 'Archivo-Narrow';
 }
 
 a {
     color: #fff;
     text-decoration: none;
-    font-family: 'Archivo-Narrow';
 }
 
 li {
@@ -31,8 +30,6 @@ h1 {
     margin-left: 5px;
     margin-bottom: 5px;
     color:#bbb;
-    font-family: 'Archivo-Narrow';
-    letter-spacing: 1px;
 }
 
 label {
@@ -80,17 +77,24 @@ nav.open-menu {
 }
 
 /*ソースキャンバス*/
+#sourceImage  {
+    background-image: linear-gradient(90deg, rgba(172, 172, 172, 0.38), rgba(233, 233, 233, 1));
+}
+
 #sourceCanvas {
     max-height: 100px;
     display: block;
 }
 
+#croppedImage{
+    background-image: linear-gradient(90deg, rgba(172, 172, 172, 0.38), rgba(233, 233, 233, 1));
+}
 
 /*クロップ後キャンバス*/
 #croppedCanvas {
     max-width: 100%;
     display: block;
-    padding-left:10px;
+    padding-left: 10px;
 }
 
 /*ダウンロード時イメージ*/
