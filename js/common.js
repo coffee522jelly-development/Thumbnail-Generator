@@ -306,22 +306,6 @@ function getViewportSizeAndAdjust() {
 	}
 }
 
-const btn = document.querySelector('.btn-menu');
-const nav = document.querySelector('nav');
-
-btn.addEventListener('click', () => {
-  nav.classList.toggle('open-menu')
-  // if (btn.innerHTML === 'メニュー') {
-  //   btn.innerHTML = '閉じる';
-  // } else {
-  //   btn.innerHTML = 'メニュー';
-  // }
-  // ↑ これと同じ意味の三項演算子での書き方 ↓
-  btn.innerHTML = btn.innerHTML === 'Menu'
-    ? '×'
-    : 'Menu'
-});
-
 /** URLから自動DLさせる関数 */
 function downloadFromUrlAutomatically(url, fileName){
 var xhr = new XMLHttpRequest();

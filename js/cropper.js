@@ -34,7 +34,11 @@ uploader.addEventListener('change', cropImage);
 
 // ResultViewerSetting
 function initResultSetting(context, initial){
-    if (cropper != null){
+    
+	let cropBoxData = null;
+
+	if (cropper != null){
+		cropBoxData = cropper.getCropBoxData();
 		cropper.destroy();
 	}
 	else
@@ -128,6 +132,9 @@ function initResultSetting(context, initial){
 				ctx.fillStyle = fontColor;
 				ctx.fillText(element, (centerX - length / 2), centerY + (fontSize / 3));
 			}
+		},
+		ready(){
+			cropper.setCropBoxData(cropBoxData);
 		}
 	});
 }
