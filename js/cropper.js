@@ -21,7 +21,7 @@ const cropImage = function (evt) {
             canvas.width = image.width * scale;
             canvas.height = image.height * scale;
             ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
-            initResultSetting(canvas);
+            initResultSetting(canvas, true);
         }
         image.src = evt.target.result;
     }
@@ -33,9 +33,13 @@ const uploader = document.getElementById('uploader');
 uploader.addEventListener('change', cropImage);
 
 // ResultViewerSetting
-function initResultSetting(context){
+function initResultSetting(context, initial){
     if (cropper != null){
 		cropper.destroy();
+	}
+	else
+	{
+		if (!initial)	return;
 	}
 	
 	cropper = new Cropper(context,{

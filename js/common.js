@@ -56,14 +56,14 @@ boldFont.addEventListener('change', function(){
 		fontBold = '';
 	}
 
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // DrawShapeOnOff
 let drawShape = document.getElementById('drawShape');
 drawShape.addEventListener('change', function(){
 	bShape = drawShape.checked;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // ItalicOnOff
@@ -76,82 +76,82 @@ ItalicFont.addEventListener('change', function(){
 		fontItalic = '';
 	}
 
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // outlineOnOff
 let outlineFont = document.getElementById('outlineFont');
 outlineFont.addEventListener('change', function(){
 	bOutlineFont = outlineFont.checked;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // FontSize
 let inputFontSize = document.getElementById('inputFontSize');
 inputFontSize.addEventListener('change', function(){
 	fontSize = inputFontSize.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // FontSpacing
 let inputFontSpacing = document.getElementById('inputFontSpacing');
 inputFontSpacing.addEventListener('change', function(){
 	fontSpacing = inputFontSpacing.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // FontRotate
 let inputFontRotate = document.getElementById('inputFontRotate');
 inputFontRotate.addEventListener('change', function(){
 	fontRotate = inputFontRotate.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // FontColor
 let inputFontColor = document.getElementById('inputFontColor');
 inputFontColor.addEventListener('change', function(){
 	fontColor = inputFontColor.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // FontStyle
 var selectFontStyle = document.getElementById('fontStyle');
 selectFontStyle.addEventListener('change', function(){
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // ShapeColor
 let inputShapeColor = document.getElementById('inputShapeColor');
 inputShapeColor.addEventListener('change', function(){
 	shapeColor = inputShapeColor.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // ShapeOpacity
 let inputShapeOpacity = document.getElementById('inputShapeOpacity');
 inputShapeOpacity.addEventListener('change', function(){
 	shapeOpacity = inputShapeOpacity.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // ShapeSize
 let inputShapeSize = document.getElementById('inputShapeSize');
 inputShapeSize.addEventListener('change', function(){
 	shapeSize = inputShapeSize.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // FontRotate
 let inputShapeRotate = document.getElementById('inputShapeRotate');
 inputShapeRotate.addEventListener('change', function(){
 	shapeRotate = inputShapeRotate.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // FontStyle
 var selectShapeType = document.getElementById('shapeType');
 selectShapeType.addEventListener('change', function(){
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // AspectRatioCheck
@@ -166,42 +166,42 @@ btnDownload.addEventListener('click', OnDownloadButton);
 let inputBrightness = document.getElementById('inputBrightness');
 inputBrightness.addEventListener('change', function(){
 	Brightness = inputBrightness.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // Blur
 let inputBlur = document.getElementById('inputBlur');
 inputBlur.addEventListener('change', function(){
 	Blur = inputBlur.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // Contrast
 let inputContrast = document.getElementById('inputContrast');
 inputContrast.addEventListener('change', function(){
 	Contrast = inputContrast.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // GrayScale
 let inputGrayScale = document.getElementById('inputGrayScale');
 inputGrayScale.addEventListener('change', function(){
 	GrayScale = inputGrayScale.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // Sepia
 let inputSepia = document.getElementById('inputSepia');
 inputSepia.addEventListener('change', function(){
 	Sepia = inputSepia.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // Opacity
 let inputOpacity = document.getElementById('inputOpacity');
 inputOpacity.addEventListener('change', function(){
 	Opacity = inputOpacity.value;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // ResetParams
@@ -219,7 +219,7 @@ btnResetParam.addEventListener('click', function(){
 	inputGrayScale.value = GrayScale;
 	inputSepia.value = Sepia;
 	inputOpacity.value = Opacity;
-	initResultSetting(document.getElementById("sourceCanvas"));
+	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // fullScreen
@@ -245,7 +245,7 @@ function OnAspectButton(){
 	cropAspectRatio = parseFloat(str);
 
 	const canvas = document.getElementById("sourceCanvas");
-	initResultSetting(canvas);
+	initResultSetting(canvas, false);
 }
 
 // OnbtnDownload
