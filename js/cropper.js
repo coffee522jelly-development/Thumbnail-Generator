@@ -74,18 +74,19 @@ function initResultSetting(context, initial){
 			const centerY = Height / 2;
 
 			ctx.filter = "brightness("+ Brightness + "%)" +
-							"blur("+ Blur + "px)" + 
-							"contrast(" + Contrast + "%)" + 
-							"grayscale("+ GrayScale +"%)" +
-							"sepia("+ Sepia +"%)" + 
-							"opacity("+ Opacity +")";
+						 "blur("+ Blur + "px)" + 
+						 "contrast(" + Contrast + "%)" + 
+						 "grayscale("+ GrayScale +"%)" +
+						 "hue-rotate("+ Hue +"deg)" +
+						 "sepia("+ Sepia +"%)" + 
+						 "opacity("+ Opacity +")";
 
 			ctx.drawImage(image,
 				event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
 				0, 0, Width, Height
 			);
 
-			ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "sepia(0%)" + "opacity(1.0)";
+			ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "hue-rotate(0)" + "sepia(0%)" + "opacity(1.0)";
 
 			// DrawShape
 			if (bShape){
@@ -124,7 +125,17 @@ function initResultSetting(context, initial){
 			let element = document.Title.caption.value;
 			let length = ctx.measureText(element).width;
 
-			if (bOutlineFont){
+			if (bemphasisFont){
+				// ctx.strokeStyle = '#000000';
+				ctx.lineWidth = String(fontLineWidth);
+				ctx.lineJoin = "miter";
+				ctx.strokeStyle = shapeColor;
+				ctx.miterLimit = "5"
+				ctx.strokeText(element, (centerX - length / 2), centerY + (fontSize / 3));
+				ctx.fillStyle = fontColor;
+				ctx.fillText(element, (centerX - length / 2), centerY + (fontSize / 3));
+			}
+			if (boutlineFont){
 				ctx.strokeStyle = fontColor;
 				ctx.strokeText(element, (centerX - length / 2), centerY + (fontSize / 3));
 			}

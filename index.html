@@ -30,28 +30,27 @@
       </div>
       <div id="ImageFilter" class="imageItem col-2">
         <div class="StyleBox">
-          <h1>Filter</h1>
-          <div class="setParam row-cols-1">
-            <p>Brightness</p>
-            <input type="range" id="inputBrightness" min="0" max="200" step="20" value="100">
-            <p>Blur</p>
-            <input type="range" id="inputBlur" min="0" max="20" step="2" value="0">
-            <p>Contrast</p>
-            <input type="range" id="inputContrast" min="0" max="200" step="10" value="100">
-            <p>GrayScale</p>
-            <input type="range" id="inputGrayScale" min="0" max="100" step="10" value="0">
-            <p>Sepia</p>
-            <input type="range" id="inputSepia" min="0" max="100" step="10" value="0">
-            <p>Opacity</p>
-            <input type="range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
-          </div>
+          <p>Brightness</p>
+          <input type="range" id="inputBrightness" min="0" max="200" step="20" value="100">
+          <p>Blur</p>
+          <input type="range" id="inputBlur" min="0" max="20" step="2" value="0">
+          <p>Contrast</p>
+          <input type="range" id="inputContrast" min="0" max="200" step="10" value="100">
+          <p>GrayScale</p>
+          <input type="range" id="inputGrayScale" min="0" max="100" step="10" value="0">
+          <p>Hue</p>
+          <input type="range" id="inputHue" min="0" max="360" step="1" value="0">
+          <p>Sepia</p>
+          <input type="range" id="inputSepia" min="0" max="100" step="10" value="0">
+          <p>Opacity</p>
+          <input type="range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
           <button id="ResetParam" class="ui button mini">Filter Reset</button>
         </div>
       </div>
     </div>
     <div id="paramEditView" class="editView row">
       <div id="TitleEdit" class="col-3">
-          <div class="setParam row-cols-1">
+          <div class="setParam col">
             <p>Title</p>
             <form name="Title">
               <div class="ui input mini focus">
@@ -114,6 +113,10 @@
               <input type="checkbox" id="outlineFont">
               <label class="form-check-label">Outline</label>
             </div>
+            <div class="ui checkbox">
+              <input type="checkbox" id="emphasisFont">
+              <label class="form-check-label">Emphasis(beta)</label>
+            </div>
             <select id="fontStyle" class="form-select ui conpact dropdown" aria-label=" example" value="Train-One">
               <optgroup label="-JPFont-"></optgroup>
               <option id="IPAex" value="IPAex">IPAex明朝</option>
@@ -126,7 +129,7 @@
               <optgroup label="-WorldFont-"></optgroup>
               <option id="Archivo-Narrow" value="Archivo-Narrow">Archivo-Narrow</option>
               <option id="Cardo" value="Cardo">Cardo</option>
-              <option id="CornerStone" value="CornerStone">CornerStone</option>
+              <option selected id="CornerStone" value="CornerStone">CornerStone</option>
               <option id="inconsolata" value="inconsolata">inconsolata</option>
               <option id="Lato" value="Lato">Lato</option>
               <option id="Manrope" value="Manrope">Manrope</option>
@@ -136,7 +139,7 @@
               <option id="Prokopis" value="Prokopis">Prokopis</option>
               <option id="Rampart-One" value="Rampart-One">Rampart-One</option>
               <option id="Smarta" value="Smarta">Smarta</option>
-              <option selected id="Train-One" value="Train-One">Train-One</option>
+              <option id="Train-One" value="Train-One">Train-One</option>
             </select>
             <input type="color" id="inputFontColor" value="#ffffff" list="defaultcolors">
           </div>
@@ -148,6 +151,8 @@
           <input type="range" id="inputFontRotate" min="0" max="360" step="30" value="0">
           <p>LetterSpacing</p>
           <input type="range" id="inputFontSpacing" min="0" max="100" step="5" value="10">
+          <p>LineWidth(beta)</p>
+          <input type="range" id="inputFontLineWidth" min="0" max="150" step="5" value="10">
         </div>
       </div>
       <div id="ShapeEdit" class="col-5">

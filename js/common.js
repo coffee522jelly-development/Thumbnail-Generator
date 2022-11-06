@@ -2,21 +2,24 @@
 let   cropAspectRatio 	= 16 / 9;
 
 // fonts
-let   bOutlineFont 		= false;
+let   boutlineFont 		= false;
+let   bemphasisFont 	= false;
 let   fontBold 	        = '';
 let   fontItalic 	    = '';
 let   fontSize 			= 150;
 let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
 let   fontColor         = "#ffffff";
+let   fontLineWidth 	= 10;
 let   angle 			= 0.0;
 
 // ImageFilterEffects
-let   bFilter 			= false;
+let   bFilter 		= false;
 let   Brightness 	= 100;
 let   Blur 			= 0;
 let   Contrast 		= 100;
 let   GrayScale 	= 0;
+let   Hue			= 0;
 let   Sepia 		= 0;
 let   Opacity 		= 1.0;
 
@@ -81,7 +84,14 @@ ItalicFont.addEventListener('change', function(){
 // outlineOnOff
 let outlineFont = document.getElementById('outlineFont');
 outlineFont.addEventListener('change', function(){
-	bOutlineFont = outlineFont.checked;
+	boutlineFont = outlineFont.checked;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+// EmphasisOnOff
+let emphasisFont = document.getElementById('emphasisFont');
+emphasisFont.addEventListener('change', function(){
+	bemphasisFont = emphasisFont.checked;
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
@@ -116,6 +126,13 @@ inputFontColor.addEventListener('change', function(){
 // FontStyle
 var selectFontStyle = document.getElementById('fontStyle');
 selectFontStyle.addEventListener('change', function(){
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+// FontLineWidth
+let inputFontLineWidth = document.getElementById('inputFontLineWidth');
+inputFontLineWidth.addEventListener('change', function(){
+	fontLineWidth = inputFontLineWidth.value;
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
@@ -189,6 +206,13 @@ inputGrayScale.addEventListener('change', function(){
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
+// Hue
+let inputHue = document.getElementById('inputHue');
+inputHue.addEventListener('change', function(){
+	Hue = inputHue.value;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
 // Sepia
 let inputSepia = document.getElementById('inputSepia');
 inputSepia.addEventListener('change', function(){
@@ -210,12 +234,15 @@ btnResetParam.addEventListener('click', function(){
 	Blur 		= 0;
 	Contrast 	= 100;
 	GrayScale 	= 0;
+	Hue	 		= 0;
 	Sepia 		= 0;
 	Opacity 	= 1.0;
+
 	inputBrightness.value = Brightness;
 	inputBlur.value = Blur;
 	inputContrast.value = Contrast;
 	inputGrayScale.value = GrayScale;
+	inputHue.value = Hue;
 	inputSepia.value = Sepia;
 	inputOpacity.value = Opacity;
 	initResultSetting(document.getElementById("sourceCanvas"), false);
