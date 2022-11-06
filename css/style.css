@@ -11,7 +11,6 @@ html, body {
 
 p {
     font-size: 12px;
-    letter-spacing: 1px;
     color:#aaa;
     font-family: var(--default-font);
 }
@@ -56,25 +55,27 @@ canvas {
 
 /*ソースキャンバス*/
 #sourceImage  {
-    max-height: 400px;
+    max-height: 350px;
+    height: 350px;
     border-radius: 7px;
 }
 
 #sourceCanvas {
     max-width: 100%;
-    max-height: 400px;
+    max-height: 350px;
     display: none;
 }
 
 #croppedImage{
-    max-height: 400px;
+    max-height: 350px;
+    height: 350px;
     border-radius: 7px;
 }
 
 /*クロップ後キャンバス*/
 #croppedCanvas {
     max-width: 100%;
-    max-height: 400px;
+    max-height: 350px;
     display: block;
 }
 
