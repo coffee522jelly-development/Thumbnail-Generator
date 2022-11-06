@@ -38,9 +38,6 @@ const initWidth = window.innerWidth;
 const initHeight = window.innerHeight;
 
 // イベントリスナー/////////////////////////////////////////////////////////////////
-// window.onload = function() {
-// 	getViewportSizeAndAdjust();
-// }
 
 // window load
 window.addEventListener('load', (e) => {
@@ -56,24 +53,14 @@ btnReload.addEventListener('click', function(){
 // BoldOnOff
 let boldFont = document.getElementById('fontBold');
 boldFont.addEventListener('change', function(){
-	if (boldFont.checked){
-		fontBold = 'bold';
-	}
-	else{
-		fontBold = '';
-	}
+	fontBold = (boldFont.checked) ? 'bold' : '';
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
 // ItalicOnOff
 let ItalicFont = document.getElementById('fontItalic');
 ItalicFont.addEventListener('change', function(){
-	if (ItalicFont.checked){
-		fontItalic = 'italic';
-	}
-	else{
-		fontItalic = '';
-	}
+	fontItalic = (ItalicFont.checked) ? 'italic' : '';
 
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
@@ -276,6 +263,7 @@ fullScreen.addEventListener ('click', function(){
 
 // 関数/////////////////////////////////////////////////////////////////
 
+
 // OnbtnAspectRatio
 function OnAspectButton(){
 	let radioList = document.getElementsByName("AspectRatio");
@@ -293,6 +281,7 @@ function OnAspectButton(){
 	initResultSetting(canvas, false);
 }
 
+
 // OnbtnDownload
 function OnDownloadButton(){
 	if (cropper != null){
@@ -301,6 +290,9 @@ function OnDownloadButton(){
 		const croppedCanvas = document.getElementById("croppedCanvas");
 		output.src = croppedCanvas.toDataURL();
 		output.style.display = "block"; //visible
+
+		let el = document.getElementById('indicator');
+		el.innerHTML = '<p>Embed image-size('+ String(croppedCanvas.width) +'×'+ String(croppedCanvas.height) +')</p>';
 
 		// NoneDummyCanvas
 		croppedCanvas.style.display = "none";
@@ -314,10 +306,10 @@ function OnDownloadButton(){
 	}
 }
 
+
 // mobile editor adjust
 function getViewportSizeAndAdjust() {
-	const w = initWidth;
-	if (w < 768){
+	if (initWidth < 768){
 		document.getElementById("ImageFilter").classList.remove("col-2");
 		document.getElementById("sourceImage").classList.remove("col-2");
 		document.getElementById("TitleEdit").classList.remove("col-3");
@@ -330,7 +322,7 @@ function getViewportSizeAndAdjust() {
 		document.getElementById("sourceImage").classList.add("col-4");
 	}
 
-	if (w < 400){
+	if (initWidth < 400){
 		document.getElementById("EditView").classList.remove("row-cols-2");
 		document.getElementById("sourceImage").classList.remove("col-3");
 		document.getElementById("sourceImage").classList.remove("col-4");
@@ -345,23 +337,23 @@ function getViewportSizeAndAdjust() {
 	}
 }
 
-/** URLから自動DLさせる関数 */
+
 function downloadFromUrlAutomatically(url, fileName){
-var xhr = new XMLHttpRequest();
-xhr.open('GET', url, true);
-xhr.responseType = 'blob';
-xhr.onload = function(e){
-	if(this.status == 200){
-	var urlUtil = window.URL || window.webkitURL;
-	var imgUrl = urlUtil.createObjectURL(this.response);
-	var link = document.createElement('a');
-	link.href=imgUrl;
-	link.download = fileName;
-	document.body.appendChild(link);
-	link.click();
-	document.body.removeChild(link)
-	}
-};
-xhr.send();
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', url, true);
+	xhr.responseType = 'blob';
+	xhr.onload = function(e){
+		if(this.status == 200){
+		var urlUtil = window.URL || window.webkitURL;
+		var imgUrl = urlUtil.createObjectURL(this.response);
+		var link = document.createElement('a');
+		link.href=imgUrl;
+		link.download = fileName;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+		}
+	};
+	xhr.send();
 }
 

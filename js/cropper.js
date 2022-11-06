@@ -36,14 +36,12 @@ uploader.addEventListener('change', cropImage);
 function initResultSetting(context, initial){
     
 	let cropBoxData = null;
-
 	if (cropper != null){
 		cropBoxData = cropper.getCropBoxData();
 		cropper.destroy();
 	}
-	else
-	{
-		if (!initial)	return;
+	else if (!initial){
+		return;
 	}
 
 	cropper = new Cropper(context,{
@@ -91,6 +89,8 @@ function initResultSetting(context, initial){
 		},
 		ready(){
 			cropper.setCropBoxData(cropBoxData);
+			let el = document.getElementById('indicator');
+			el.innerHTML = '<p>Read image-size('+ String(image.width) +'×'+ String(image.height) +')</p>';
 		}
 	});
 }
@@ -131,7 +131,7 @@ function drawText(context, centerX, centerY){
 	}
 }
 
-// drawShape
+// drawBackShape
 function drawBackShape(context, centerX, centerY){
 	// Rotate the shape
 	context.translate(centerX, centerY);
