@@ -4,6 +4,7 @@ let   cropAspectRatio 	= 16 / 9;
 // fonts
 let   boutlineFont 		= false;
 let   bemphasisFont 	= false;
+
 let   fontBold 	        = '';
 let   fontItalic 	    = '';
 let   fontSize 			= 150;
@@ -11,10 +12,10 @@ let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
 let   fontColor         = "#ffffff";
 let   fontLineWidth 	= 10;
-let   angle 			= 0.0;
 
 // ImageFilterEffects
 let   bFilter 		= false;
+
 let   Brightness 	= 100;
 let   Blur 			= 0;
 let   Contrast 		= 100;
@@ -25,7 +26,8 @@ let   Opacity 		= 1.0;
 
 // ShaperEffects
 let   bShape 			= false;	
-let   bShapeFill 		= false;	
+let   bShapeFill 		= false;
+
 let   shapeColor 		= "#0068b7";
 let   shapeOpacity		= 0.6;
 let   shapeSize 		= 420;
@@ -330,22 +332,16 @@ function getViewportSizeAndAdjust() {
 
 	if (w < 400){
 		document.getElementById("EditView").classList.remove("row-cols-2");
-		// document.getElementById("ControlView").classList.remove("row-cols-2");
 		document.getElementById("sourceImage").classList.remove("col-3");
 		document.getElementById("sourceImage").classList.remove("col-4");
 		document.getElementById("croppedImage").classList.remove("col-7");
 		document.getElementById("ImageFilter").classList.remove("col-2");
-
 		document.getElementById("EditView").classList.add("row-cols-1");
-		// document.getElementById("ControlView").classList.add("row-cols-1");
 		document.getElementById("ImageFilter").classList.add("row-cols-1");
 	}
 	else{
 		document.getElementById("EditView").classList.remove("row-cols-1");
-		// document.getElementById("ControlView").classList.remove("row-cols-1");
-
 		document.getElementById("EditView").classList.add("row-cols-2");
-		// document.getElementById("ControlView").classList.add("row-cols-2");
 	}
 }
 

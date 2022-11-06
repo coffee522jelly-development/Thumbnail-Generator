@@ -11,15 +11,16 @@ const cropImage = function (evt) {
     let reader = new FileReader();
     reader.onload = function (evt) {
         image.onload = function () {
-            const scalewidth = 768;
-            let scale = scalewidth / image.width;
-
+			const imageWidth  = image.width;
+			const imageHeight  = image.height;
+            const scale = 768 / imageWidth;
+			
             // initializeSoureCanvas
             const canvas = document.getElementById("sourceCanvas");
             let ctx = canvas.getContext("2d", { alpha: false });
-            canvas.width = image.width * scale;
-            canvas.height = image.height * scale;
-            ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
+            const Width = canvas.width = imageWidth * scale;
+			const Height = canvas.height = imageHeight * scale;
+            ctx.drawImage(image, 0, 0, imageWidth, imageHeight, 0, 0, Width, Height);
             initResultSetting(canvas, true);
         }
         image.src = evt.target.result;
@@ -49,27 +50,18 @@ function initResultSetting(context, initial){
 		aspectRatio: cropAspectRatio,
 		scalable: false,
 		zoomable: false,
-		checkOrientation    : true,
+		checkOrientation : true,
 		data: {
 			width: context.width,
 			height: context.width * cropAspectRatio
 		 },
 		crop: function (event) {
-			const scalewidth = 768;
-            let scale = scalewidth / image.width;
+            const scale = 768 / image.width;
 
 			const croppedCanvas = document.getElementById("croppedCanvas");
 			let ctx = croppedCanvas.getContext("2d", { alpha: false });
-			ctx.imageSmoothingEnabled = true;
-			let croppedImageWidth = image.height * cropAspectRatio;
-			croppedCanvas.width = croppedImageWidth;
-			croppedCanvas.height = image.height;
-
-			// SizeVariables
-			const Width = croppedCanvas.width;
-			const Height = croppedCanvas.height;
-			const centerX = Width / 2;
-			const centerY = Height / 2;
+			const Width = croppedCanvas.width = image.height * cropAspectRatio;
+			const Height = croppedCanvas.height = image.height;
 
 			ctx.filter = "brightness("+ Brightness + "%)" +
 						 "blur("+ Blur + "px)" + 
@@ -86,85 +78,104 @@ function initResultSetting(context, initial){
 
 			ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "hue-rotate(0)" + "sepia(0%)" + "opacity(1.0)";
 
-			// DrawShape
+			// drawBackShape
+			const centerX = Width / 2;
+			const centerY = Height / 2;
+
 			if (bShape){
-				ctx.translate(centerX, centerY);
-				ctx.rotate(shapeRotate / 180 * Math.PI);
-				ctx.translate(-1.0 * centerX, -1.0 * centerY);
-
-				const shapeType = document.getElementById("shapeType").value;
-				switch (shapeType) {
-				case "Arc":
-					ctx.arc(Width / 2, Height / 2, shapeSize, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
-					break;
-				case "Square":
-					ctx.rect(Width / 2 - shapeSize / 2, Height / 2 - shapeSize / 2, shapeSize, shapeSize);
-					break;
-				case "justify-Rect":
-					ctx.rect(Width / 2 - Width / 2, Height / 2 - shapeSize / 2, Width, shapeSize);
-					break;
-				case "Line":
-					ctx.moveTo(0, centerY);
-					ctx.lineTo(Width, centerY);
-					break;
-				case "Sector":
-					ctx.beginPath();
-					ctx.moveTo(centerX, centerY);
-					ctx.arc(centerX, centerY, shapeSize, Math.PI*0.3, Math.PI*1,false);
-					ctx.closePath();
-					break;
-				default:
-					console.log(`Sorry, we are out of ${shapeType}.`);
-				}
-
-				ctx.filter = "opacity(" + shapeOpacity + ")";
-				ctx.rotate(shapeRotate / 180 * Math.PI);
-				
-				ctx.fillStyle = shapeColor;
-				ctx.lineWidth = shapeLineWidth;
-				if (bShapeFill){
-					ctx.fill();
-				}
-				ctx.strokeStyle = shapeColor;
-				ctx.stroke();
-				
-				ctx.filter = "opacity(1.0)";
-				ctx.setTransform(1,0,0,1,0,0);
+				drawBackShape(ctx , centerX, centerY);
 			}
 
-			// Style
-			let fontStyle = document.getElementById("fontStyle").value;
-			ctx.font = fontItalic + ' ' + fontBold + ' ' + fontSize + 'px ' + fontStyle;
-			ctx.letterSpacing = fontSpacing + "px";
-			ctx.translate(centerX, centerY);
-			ctx.rotate(fontRotate / 180 * Math.PI);
-			ctx.translate(-1.0 * centerX, -1.0 * centerY);
+			drawText(ctx, centerX, centerY);
 
-			// ImageSizer
-			let element = document.Title.caption.value;
-			let length = ctx.measureText(element).width;
-
-			if (bemphasisFont){
-				// ctx.strokeStyle = '#000000';
-				ctx.lineWidth = String(fontLineWidth);
-				ctx.lineJoin = "miter";
-				ctx.strokeStyle = shapeColor;
-				ctx.miterLimit = "5"
-				ctx.strokeText(element, (centerX - length / 2), centerY + (fontSize / 3));
-				ctx.fillStyle = fontColor;
-				ctx.fillText(element, (centerX - length / 2), centerY + (fontSize / 3));
-			}
-			else if (boutlineFont){
-				ctx.strokeStyle = fontColor;
-				ctx.strokeText(element, (centerX - length / 2), centerY + (fontSize / 3));
-			}
-			else{
-				ctx.fillStyle = fontColor;
-				ctx.fillText(element, (centerX - length / 2), centerY + (fontSize / 3));
-			}
 		},
 		ready(){
 			cropper.setCropBoxData(cropBoxData);
 		}
 	});
+}
+
+// drawText
+function drawText(context, centerX, centerY){
+	let fontStyle = document.getElementById("fontStyle").value;
+	context.font = fontItalic + ' ' + fontBold + ' ' + fontSize + 'px ' + fontStyle;
+	context.letterSpacing = fontSpacing + "px";
+
+	// RotateText
+	context.translate(centerX, centerY);
+	context.rotate(fontRotate / 180 * Math.PI);
+	context.translate(-1* centerX, -1* centerY);
+
+	// ImageSizer
+	const element = document.Title.caption.value;
+	const fontX = centerX - context.measureText(element).width / 2;
+	const fontY = centerY + (fontSize / 3);
+
+	if (bemphasisFont){
+		context.lineWidth = String(fontLineWidth);
+		context.lineJoin = "miter";
+		context.miterLimit = "5"
+
+		context.strokeStyle = shapeColor;
+		context.strokeText(element, fontX, fontY);
+		context.fillStyle = fontColor;
+		context.fillText(element, fontX, fontY);
+	}
+	else if (boutlineFont){
+		context.strokeStyle = fontColor;
+		context.strokeText(element, fontX, fontY);
+	}
+	else{
+		context.fillStyle = fontColor;
+		context.fillText(element, fontX, fontY);
+	}
+}
+
+// drawShape
+function drawBackShape(context, centerX, centerY){
+	// Rotate the shape
+	context.translate(centerX, centerY);
+	context.rotate(shapeRotate / 180 * Math.PI);
+	context.translate(-1.0 * centerX, -1.0 * centerY);
+
+	const shapeType = document.getElementById("shapeType").value;
+	switch (shapeType) {
+	case "Arc":
+		context.arc(centerX, centerY, shapeSize, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
+		break;
+	case "Square":
+		context.rect(centerX - shapeSize / 2, centerY - shapeSize / 2, shapeSize, shapeSize);
+		break;
+	case "justify-Rect":
+		context.rect(0, centerY - shapeSize / 2, 2 * centerX, shapeSize);
+		break;
+	case "Line":
+		context.moveTo(0, centerY);
+		context.lineTo(2 * centerX, centerY);
+		break;
+	case "Sector":
+		context.beginPath();
+		context.moveTo(centerX, centerY);
+		context.arc(centerX, centerY, shapeSize, Math.PI*0.3, Math.PI*1,false);
+		context.closePath();
+		break;
+	default:
+		console.log(`Sorry, we are out of ${shapeType}.`);
+		return;
+	}
+
+	// ShapeSetting
+	context.filter = "opacity(" + shapeOpacity + ")";
+	context.lineWidth = shapeLineWidth;
+
+	if (bShapeFill){
+		context.fillStyle = shapeColor;
+		context.fill();
+	}
+	context.strokeStyle = shapeColor;
+	context.stroke();
+	
+	// initialize
+	context.filter = "opacity(1.0)";
+	context.setTransform(1, 0, 0, 1, 0, 0);
 }
