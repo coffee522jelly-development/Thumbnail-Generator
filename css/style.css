@@ -1,17 +1,40 @@
+
+ :root {
+    --default-font: 'inconsolata';
+}
+
+
 html, body {
     user-select: none;
-    font-family: 'Lato';
+    font-family: var(--default-font);
 }
 
 p {
     font-size: 12px;
     letter-spacing: 1px;
     color:#aaa;
+    font-family: var(--default-font);
 }
 
 a {
     color: #fff;
     text-decoration: none;
+}
+
+input {
+    font-family: var(--default-font);
+}
+
+label {
+    font-family: var(--default-font);
+}
+
+select {
+    font-family: var(--default-font);
+}
+
+button {
+    font-family: var(--default-font);
 }
 
 li {
