@@ -57,7 +57,7 @@ function initResultSetting(context, initial){
 			height: context.width * cropAspectRatio
 		 },
 		crop: function (event) {
-			const scalewidth = 1024;
+			const scalewidth = 768;
             let scale = scalewidth / image.width;
 
 			const croppedCanvas = document.getElementById("croppedCanvas");
