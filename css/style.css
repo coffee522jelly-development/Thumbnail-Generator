@@ -80,21 +80,23 @@ nav.open-menu {
 /*ソースキャンバス*/
 #sourceImage  {
     background-image: linear-gradient(90deg, rgba(172, 172, 172, 0.38), rgba(233, 233, 233, 1));
+    max-height: 400px;
 }
 
 #sourceCanvas {
-    max-height: 100px;
+    max-height: 400px;
     display: block;
     display: none;
 }
 
 #croppedImage{
     background-image: linear-gradient(90deg, rgba(172, 172, 172, 0.38), rgba(233, 233, 233, 1));
+    max-height: 400px;
 }
 
 /*クロップ後キャンバス*/
 #croppedCanvas {
-    max-width: 100%;
+    max-height: 400px;
     display: block;
     padding-left: 10px;
 }

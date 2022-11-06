@@ -1,7 +1,7 @@
 <!--?xml version="1.0" encoding="utf-8"?-->
 <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
-<svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 256px; height: 256px; opacity: 1;" xml:space="preserve">
+<svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#4B4B4B;}
 </style>
@@ -21,6 +21,6 @@
 		c-0.793,0.772-1.326,1.086-1.511,1.169l-0.246,0.054H88.698c-1.682-0.021-1.839-0.232-1.846-0.212l-0.472-0.396
 		c-0.602-0.588-1.894-2.311-3.487-5.258c-1.498-2.728-3.268-6.44-5.394-10.789L35.697,264.823c-0.465-1.333-0.684-2.686-0.691-4.054
 		c0.007-2.516,0.773-4.99,2.264-7.096c2.297-3.241,6.037-5.169,10.01-5.169h417.45c3.972,0,7.712,1.928,10.002,5.162
-		c1.497,2.106,2.263,4.588,2.263,7.103C476.994,262.129,476.769,263.497,476.304,264.823z" style="fill: rgb(75, 75, 75);"></path>
+		c1.497,2.106,2.263,4.588,2.263,7.103C476.994,262.129,476.769,263.497,476.304,264.823z" style="fill: rgb(255, 255, 255);"></path>
 </g>
 </svg>
