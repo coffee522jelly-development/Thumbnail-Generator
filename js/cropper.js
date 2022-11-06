@@ -17,7 +17,6 @@ const cropImage = function (evt) {
             // initializeSoureCanvas
             const canvas = document.getElementById("sourceCanvas");
             let ctx = canvas.getContext("2d", { alpha: false });
-			ctx.imageSmoothingEnabled = true;
             canvas.width = image.width * scale;
             canvas.height = image.height * scale;
             ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
@@ -48,7 +47,6 @@ function initResultSetting(context, initial){
 
 	cropper = new Cropper(context,{
 		aspectRatio: cropAspectRatio,
-		movable: false,
 		scalable: false,
 		zoomable: false,
 		checkOrientation    : true,
@@ -94,23 +92,44 @@ function initResultSetting(context, initial){
 				ctx.rotate(shapeRotate / 180 * Math.PI);
 				ctx.translate(-1.0 * centerX, -1.0 * centerY);
 
-				let shapeType = document.getElementById("shapeType").value;
-				if (shapeType == "Arc"){
+				const shapeType = document.getElementById("shapeType").value;
+				switch (shapeType) {
+				case "Arc":
 					ctx.arc(Width / 2, Height / 2, shapeSize, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
-				}
-				else if(shapeType == "Square"){
+					break;
+				case "Square":
 					ctx.rect(Width / 2 - shapeSize / 2, Height / 2 - shapeSize / 2, shapeSize, shapeSize);
-				}
-				else if(shapeType == "justify-Rect"){
+					break;
+				case "justify-Rect":
 					ctx.rect(Width / 2 - Width / 2, Height / 2 - shapeSize / 2, Width, shapeSize);
+					break;
+				case "Line":
+					ctx.moveTo(0, centerY);
+					ctx.lineTo(Width, centerY);
+					break;
+				case "Sector":
+					ctx.beginPath();
+					ctx.moveTo(centerX, centerY);
+					ctx.arc(centerX, centerY, shapeSize, Math.PI*0.3, Math.PI*1,false);
+					ctx.closePath();
+					break;
+				default:
+					console.log(`Sorry, we are out of ${shapeType}.`);
 				}
-				ctx.fillStyle = shapeColor;
+
 				ctx.filter = "opacity(" + shapeOpacity + ")";
-				ctx.fill();
-				ctx.lineWidth = 0;
+				ctx.rotate(shapeRotate / 180 * Math.PI);
+				
+				ctx.fillStyle = shapeColor;
+				ctx.lineWidth = shapeLineWidth;
+				if (bShapeFill){
+					ctx.fill();
+				}
+				ctx.strokeStyle = shapeColor;
 				ctx.stroke();
-				ctx.rotate(0 / 180 * Math.PI);
+				
 				ctx.filter = "opacity(1.0)";
+				ctx.setTransform(1,0,0,1,0,0);
 			}
 
 			// Style
@@ -135,7 +154,7 @@ function initResultSetting(context, initial){
 				ctx.fillStyle = fontColor;
 				ctx.fillText(element, (centerX - length / 2), centerY + (fontSize / 3));
 			}
-			if (boutlineFont){
+			else if (boutlineFont){
 				ctx.strokeStyle = fontColor;
 				ctx.strokeText(element, (centerX - length / 2), centerY + (fontSize / 3));
 			}

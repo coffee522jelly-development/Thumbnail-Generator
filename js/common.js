@@ -25,10 +25,12 @@ let   Opacity 		= 1.0;
 
 // ShaperEffects
 let   bShape 			= false;	
+let   bShapeFill 		= false;	
 let   shapeColor 		= "#0068b7";
 let   shapeOpacity		= 0.6;
 let   shapeSize 		= 420;
 let   shapeRotate 		= 0;
+let   shapeLineWidth 	= 10;
 
 const initWidth = window.innerWidth;
 const initHeight = window.innerHeight;
@@ -58,13 +60,6 @@ boldFont.addEventListener('change', function(){
 	else{
 		fontBold = '';
 	}
-	initResultSetting(document.getElementById("sourceCanvas"), false);
-});
-
-// DrawShapeOnOff
-let drawShape = document.getElementById('drawShape');
-drawShape.addEventListener('change', function(){
-	bShape = drawShape.checked;
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
@@ -136,6 +131,21 @@ inputFontLineWidth.addEventListener('change', function(){
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
+// DrawShapeOnOff
+let drawShape = document.getElementById('drawShape');
+drawShape.addEventListener('change', function(){
+	bShape = drawShape.checked;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+
+// DrawShapeFillOnOff
+let drawShapeFill = document.getElementById('drawShapeFill');
+drawShapeFill.addEventListener('change', function(){
+	bShapeFill = drawShapeFill.checked;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
 // ShapeColor
 let inputShapeColor = document.getElementById('inputShapeColor');
 inputShapeColor.addEventListener('change', function(){
@@ -154,6 +164,13 @@ inputShapeOpacity.addEventListener('change', function(){
 let inputShapeSize = document.getElementById('inputShapeSize');
 inputShapeSize.addEventListener('change', function(){
 	shapeSize = inputShapeSize.value;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+// ShapeLineWidth
+let inputShapeLineWidth = document.getElementById('inputShapeLineWidth');
+inputShapeLineWidth.addEventListener('change', function(){
+	shapeLineWidth = inputShapeLineWidth.value;
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
