@@ -15,7 +15,7 @@ input[type="range"] {
   /******** Chrome, Safari, Opera and Edge Chromium styles ********/
   /* slider track */
   input[type="range"]::-webkit-slider-runnable-track {
-    background-color: #d9d9d9;
+    background-color: #dee2e6;
     border-radius: 0.5rem;
     height: 0.2rem;
     margin-top: -40px;
@@ -40,14 +40,14 @@ input[type="range"] {
   /*********** Firefox styles ***********/
   /* slider track */
   input[type="range"]::-moz-range-track {
-    background-color: #d9d9d9;
+    background-color: #dee2e6;
     border-radius: 0.5rem;
     height: 0.5rem;
   }
   
   /* slider thumb */
   input[type="range"]::-moz-range-thumb {
-    background-color: #bababa;
+    background-color: #dee2e6;
     border: none; /*Removes extra border that FF applies*/
     border-radius: 0.5rem;
     height: 1rem;
@@ -55,7 +55,7 @@ input[type="range"] {
   }
   
   input[type="range"]:focus::-moz-range-thumb{
-    outline: 3px solid #bababa;
+    outline: 3px solid #dee2e6;
     outline-offset: 0.125rem;
   }
 
@@ -73,4 +73,5 @@ input[type="color" i] {
   margin-top:5px;
   border-radius: 4px;
   background: none;
+  border: 3px solid #dee2e6;
 }
