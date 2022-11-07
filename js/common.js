@@ -358,7 +358,7 @@ function OnDownloadButton(){
 // mobile editor adjust
 function getViewportSizeAndAdjust() {
 	if (initWidth < 768){
-		document.getElementById("ImageFilter").classList.remove("col-2");
+		document.getElementById("ImageFilter").classList.remove("col-3");
 		document.getElementById("sourceImage").classList.remove("col-2");
 		document.getElementById("TitleEdit").classList.remove("col-3");
 		document.getElementById("FontEdit").classList.remove("col-4");
@@ -375,7 +375,7 @@ function getViewportSizeAndAdjust() {
 		document.getElementById("sourceImage").classList.remove("col-3");
 		document.getElementById("sourceImage").classList.remove("col-4");
 		document.getElementById("croppedImage").classList.remove("col-7");
-		document.getElementById("ImageFilter").classList.remove("col-2");
+		document.getElementById("ImageFilter").classList.remove("col-3");
 		document.getElementById("EditView").classList.add("row-cols-1");
 		document.getElementById("ImageFilter").classList.add("row-cols-1");
 	}
