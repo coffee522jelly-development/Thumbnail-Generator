@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/semantic.min.css">
   <!-- Javascript load -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="dist/js/cropper.min.js"></script>
   <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="dist/js/jquery-3.6.1.min.js"></script>
-  <script type="text/javascript" src="dist/js/vue.min.js"></script>
   <script type="text/javascript" src="dist/js/semantic.min.js"></script>
   <title>Thumbnail-Generator</title>
 </head>
@@ -225,6 +225,10 @@
                   <label>Draw</label>
                 </div>
                 <div class="ui checkbox">
+                  <input type="checkbox" id="drawShapeDash">
+                  <label>Dash</label>
+                </div>
+                <div class="ui checkbox">
                   <input type="checkbox" id="drawShapeFill">
                   <label>Fill</label>
                 </div>
@@ -253,7 +257,9 @@
                 <p>Opacity</p>
                 <input type="range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="0.6">
                 <p>LineWidth</p>
-                <input type="range" id="inputShapeLineWidth" min="0" max="150" step="5" value="10">
+                <input type="range" id="inputShapeLineWidth" min="0" max="300" step="10" value="10">
+                <p>DashInterval(Optional)</p>
+                <input type="range" id="inputShapeDash" min="0" max="150" step="1" value="1">
                 <p>SectorAngle(Optional)</p>
                 <input type="range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
                 <p>PolygonVertexSize(Optional)</p>

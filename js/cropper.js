@@ -16,7 +16,7 @@ const cropImage = function (evt) {
             const scale = 768 / imageWidth;
 			
             // initializeSoureCanvas
-            const canvas = document.getElementById("sourceCanvas");
+            const canvas = document.querySelector("#sourceCanvas");
             let ctx = canvas.getContext("2d", { alpha: false });
             const Width = canvas.width = imageWidth * scale;
 			const Height = canvas.height = imageHeight * scale;
@@ -29,7 +29,7 @@ const cropImage = function (evt) {
 }
 
 //　Uploader
-const uploader = document.getElementById('uploader');
+const uploader = document.querySelector('#uploader');
 uploader.addEventListener('change', cropImage);
 
 // ResultViewerSetting
@@ -56,7 +56,7 @@ function initResultSetting(context, initial){
 		crop: function (event) {
             const scale = 768 / image.width;
 
-			const croppedCanvas = document.getElementById("croppedCanvas");
+			const croppedCanvas = document.querySelector("#croppedCanvas");
 			let ctx = croppedCanvas.getContext("2d", { alpha: false });
 			const Width = croppedCanvas.width = image.height * cropAspectRatio;
 			const Height = croppedCanvas.height = image.height;
@@ -89,7 +89,7 @@ function initResultSetting(context, initial){
 		},
 		ready(){
 			cropper.setCropBoxData(cropBoxData);
-			let el = document.getElementById('indicator');
+			let el = document.querySelector('#indicator');
 			el.innerHTML = '<p>ImageSize('+ String(image.width) +'×'+ String(image.height) +');</p>';
 		}
 	});
@@ -97,7 +97,7 @@ function initResultSetting(context, initial){
 
 // drawText
 function drawText(context, centerX, centerY){
-	let fontStyle = document.getElementById("fontStyle").value;
+	let fontStyle = document.querySelector("#fontStyle").value;
 	context.font = fontItalic + ' ' + fontBold + ' ' + fontSize + 'px ' + fontStyle;
 	context.letterSpacing = fontSpacing + "px";
 
@@ -138,7 +138,10 @@ function drawBackShape(context, centerX, centerY){
 	context.rotate(shapeRotate / 180 * Math.PI);
 	context.translate(-1.0 * centerX, -1.0 * centerY);
 
-	const shapeType = document.getElementById("shapeType").value;
+	if (bShapeDash)
+		context.setLineDash([shapeDashInterval]);
+
+	const shapeType = document.querySelector("#shapeType").value;
 	switch (shapeType) {
 	case "Arc":
 		context.arc(centerX, centerY, shapeSize, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
