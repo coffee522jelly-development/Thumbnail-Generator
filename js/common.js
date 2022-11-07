@@ -371,13 +371,17 @@ function getViewportSizeAndAdjust() {
 	}
 
 	if (initWidth < 400){
+		const element = document.getElementById('ImageFilter');
+		element.remove();
+
+		const elem = document.getElementById('ShapeEdit');
+		elem.remove();
+
 		document.getElementById("EditView").classList.remove("row-cols-2");
 		document.getElementById("sourceImage").classList.remove("col-3");
 		document.getElementById("sourceImage").classList.remove("col-4");
 		document.getElementById("croppedImage").classList.remove("col-7");
-		document.getElementById("ImageFilter").classList.remove("col-3");
 		document.getElementById("EditView").classList.add("row-cols-1");
-		document.getElementById("ImageFilter").classList.add("row-cols-1");
 	}
 	else{
 		document.getElementById("EditView").classList.remove("row-cols-1");
