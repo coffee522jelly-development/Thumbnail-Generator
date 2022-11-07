@@ -11,6 +11,7 @@ let   fontSize 			= 150;
 let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
 let   fontColor         = "#ffffff";
+let   fontBackColor     = "#0068b7";
 let   fontLineWidth 	= 10;
 let   fontLocateX       = 0;
 let   fontLocateY       = 0;
@@ -30,7 +31,7 @@ let   Opacity 		= 1.0;
 let   bShape 			= false;	
 let   bShapeFill 		= false;
 
-let   shapeColor 		= "#0068b7";
+let   shapeColor 		= "#aaaaaa";
 let   shapeOpacity		= 0.6;
 let   shapeSize 		= 420;
 let   shapeRotate 		= 0;
@@ -110,6 +111,13 @@ inputFontRotate.addEventListener('change', function(){
 let inputFontColor = document.getElementById('inputFontColor');
 inputFontColor.addEventListener('change', function(){
 	fontColor = inputFontColor.value;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+// FontBackColor
+let inputFontBackColor = document.getElementById('inputFontBackColor');
+inputFontBackColor.addEventListener('change', function(){
+	fontBackColor = inputFontBackColor.value;
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 

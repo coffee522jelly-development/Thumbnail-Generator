@@ -116,7 +116,7 @@ function drawText(context, centerX, centerY){
 		context.lineJoin = "miter";
 		context.miterLimit = "5"
 
-		context.strokeStyle = shapeColor;
+		context.strokeStyle = fontBackColor;
 		context.strokeText(element, fontX, fontY);
 		context.fillStyle = fontColor;
 		context.fillText(element, fontX, fontY);
