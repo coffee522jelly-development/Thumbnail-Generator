@@ -81,16 +81,16 @@ function initResultSetting(context, initial){
 			const centerY = Height / 2;
 
 			if (bShape){
-				drawBackShape(ctx , centerX, centerY);
+				drawBackShape(ctx , centerX + (shapeLocateX * 10), centerY + (shapeLocateY * 10));
 			}
 
-			drawText(ctx, centerX, centerY);
+			drawText(ctx, centerX + (fontLocateX * 10), centerY + (fontLocateY * 10));
 
 		},
 		ready(){
 			cropper.setCropBoxData(cropBoxData);
 			let el = document.getElementById('indicator');
-			el.innerHTML = '<p>Read image-size('+ String(image.width) +'×'+ String(image.height) +')</p>';
+			el.innerHTML = '<p>ImageSize('+ String(image.width) +'×'+ String(image.height) +');</p>';
 		}
 	});
 }
@@ -156,8 +156,11 @@ function drawBackShape(context, centerX, centerY){
 	case "Sector":
 		context.beginPath();
 		context.moveTo(centerX, centerY);
-		context.arc(centerX, centerY, shapeSize, Math.PI*0.3, Math.PI*1,false);
+		context.arc(centerX, centerY, shapeSize, 0 * Math.PI / 180, shapeSectorAngle * Math.PI / 180,false);
 		context.closePath();
+		break;
+	case "Polygon":
+		drawPolygon(context, centerX, centerY, shapeSize, shapeVertexSize, 0);
 		break;
 	default:
 		console.log(`Sorry, we are out of ${shapeType}.`);
@@ -179,3 +182,41 @@ function drawBackShape(context, centerX, centerY){
 	context.filter = "opacity(1.0)";
 	context.setTransform(1, 0, 0, 1, 0, 0);
 }
+
+
+// drawPolygon
+function drawPolygon(context, position_x, position_y, radius, num, rotation) {
+	if (num < 3) return false;
+
+	context.lineWidth = 10;
+  
+	const angle = 360 / num;
+	const angleOffset = -90;
+  
+	context.beginPath();
+  
+	for (let i = 0; i < num; i++) {
+	  const x1 =
+		radius *
+		  Math.cos((2 * Math.PI * (rotation + angle * i + angleOffset)) / 360) +
+		position_x;
+	  const y1 =
+		radius *
+		  Math.sin((2 * Math.PI * (rotation + angle * i + angleOffset)) / 360) +
+		position_y;
+	  if ((i === 0)) context.moveTo(x1, y1); else context.lineTo(x1, y1);
+	
+	}
+  
+	context.closePath();
+
+	context.filter = "opacity(" + shapeOpacity + ")";
+
+	context.strokeStyle = shapeColor;
+	context.stroke();
+
+	if (bShapeFill){
+		context.fillStyle = shapeColor;
+		context.fill();
+	}
+  }

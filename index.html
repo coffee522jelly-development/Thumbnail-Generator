@@ -196,6 +196,19 @@
                 </div>
               </div>
             </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">FontLocater</button>
+              </h2>
+              <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
+                <div class="accordion-body">
+                  <p>LocateX</p>
+                  <input type="range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
+                  <p>LocateY</p>
+                  <input type="range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -222,6 +235,7 @@
                   <option id="justify-Rect" value="justify-Rect">justify-Rect</option>
                   <option id="Line" value="Line">Line</option>
                   <option id="Sector" value="Sector">Sector</option>
+                  <option id="Polygon" value="Polygon">Polygon</option>
                 </select>
                 <input type="color" id="inputShapeColor" value="#0068b7" list="defaultcolors">
               </div>
@@ -241,6 +255,23 @@
                 <input type="range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="0.6">
                 <p>LineWidth</p>
                 <input type="range" id="inputShapeLineWidth" min="0" max="150" step="5" value="10">
+                <p>SectorAngle(Optional)</p>
+                <input type="range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
+                <p>PolygonVertexSize(Optional)</p>
+                <input type="range" id="inputVertexSize" min="3" max="12" step="1" value="3">
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingEight">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">ShapeLocater</button>
+            </h2>
+            <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
+              <div class="accordion-body">
+                <p>LocateX</p>
+                <input type="range" id="inputShapeLocateX" min="-50" max="50" step="10" value="0">
+                <p>LocateY</p>
+                <input type="range" id="inputShapeLocateY" min="-50" max="50" step="10" value="0">
               </div>
             </div>
           </div>

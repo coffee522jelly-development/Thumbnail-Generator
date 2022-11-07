@@ -12,6 +12,8 @@ let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
 let   fontColor         = "#ffffff";
 let   fontLineWidth 	= 10;
+let   fontLocateX       = 0;
+let   fontLocateY       = 0;
 
 // ImageFilterEffects
 let   bFilter 		= false;
@@ -33,6 +35,10 @@ let   shapeOpacity		= 0.6;
 let   shapeSize 		= 420;
 let   shapeRotate 		= 0;
 let   shapeLineWidth 	= 10;
+let   shapeSectorAngle	= 30;
+let   shapeVertexSize	= 3;
+let   shapeLocateX       = 0;
+let   shapeLocateY       = 0;
 
 const initWidth = window.innerWidth;
 const initHeight = window.innerHeight;
@@ -120,6 +126,20 @@ inputFontLineWidth.addEventListener('change', function(){
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
+// FontLocateX
+let inputFontLocateX = document.getElementById('inputFontLocateX');
+inputFontLocateX.addEventListener('change', function(){
+	fontLocateX = inputFontLocateX.value;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+// FontLocateY
+let inputFontLocateY = document.getElementById('inputFontLocateY');
+inputFontLocateY.addEventListener('change', function(){
+	fontLocateY = inputFontLocateY.value;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
 // DrawShapeOnOff
 let drawShape = document.getElementById('drawShape');
 drawShape.addEventListener('change', function(){
@@ -160,6 +180,34 @@ inputShapeSize.addEventListener('change', function(){
 let inputShapeLineWidth = document.getElementById('inputShapeLineWidth');
 inputShapeLineWidth.addEventListener('change', function(){
 	shapeLineWidth = inputShapeLineWidth.value;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+// ShapeVertexSize
+let inputShapeVertexSize = document.getElementById('inputVertexSize');
+inputShapeVertexSize.addEventListener('change', function(){
+	shapeVertexSize = inputShapeVertexSize.value;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+// ShapeSectorAngle
+let inputSectorAngle = document.getElementById('inputSectorAngle');
+inputSectorAngle.addEventListener('change', function(){
+	shapeSectorAngle = inputSectorAngle.value;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+// FontLocateX
+let inputShapeLocateX = document.getElementById('inputShapeLocateX');
+inputShapeLocateX.addEventListener('change', function(){
+	shapeLocateX = inputShapeLocateX.value;
+	initResultSetting(document.getElementById("sourceCanvas"), false);
+});
+
+// FontLocateY
+let inputShapeLocateY = document.getElementById('inputShapeLocateY');
+inputShapeLocateY.addEventListener('change', function(){
+	shapeLocateY = inputShapeLocateY.value;
 	initResultSetting(document.getElementById("sourceCanvas"), false);
 });
 
