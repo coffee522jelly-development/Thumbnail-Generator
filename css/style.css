@@ -49,6 +49,14 @@ label {
     background-color: #fff;
 }
 
+#indicator{
+    width: 100%;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 7px;
+    border: 1px dotted;
+}
+
 /*ソースキャンバス*/
 #sourceImage  {
     max-height: 90px;

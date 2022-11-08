@@ -1,15 +1,24 @@
 let   cropper = null;
 let   image = null;
+let   file = null;
 
 const cropImage = function (evt) {
     const files = evt.target.files;
     if (files.length == 0) {
         return;
     }
-    let file = files[0];
+    file = files[0];	// 先頭のイメージファイルの読み込み
+
+	// 選択されたファイルが画像かどうか確認
+	if(!file.type.match(/^image/)) {
+		alert('画像を選択してください');
+		return;
+	}
+
     image = new Image();
     let reader = new FileReader();
     reader.onload = function (evt) {
+
         image.onload = function () {
 			const imageWidth  = image.width;
 			const imageHeight  = image.height;
@@ -34,7 +43,7 @@ uploader.addEventListener('change', cropImage);
 
 // ResultViewerSetting
 function initResultSetting(context, initial){
-    
+
 	let cropBoxData = null;
 	if (cropper != null){
 		cropBoxData = cropper.getCropBoxData();
@@ -90,7 +99,7 @@ function initResultSetting(context, initial){
 		ready(){
 			cropper.setCropBoxData(cropBoxData);
 			let el = document.querySelector('#indicator');
-			el.innerHTML = '<p>ImageSize('+ String(image.width) +'×'+ String(image.height) +');</p>';
+			el.innerHTML = '<p>ImageSize : '+ String(image.width) +'×'+ String(image.height) +'<br> FileName : ' + file.name + '<br> FileSize : ' + ag2fileSizeOpt(file.size, true, 1); +'</p>';
 		}
 	});
 }
@@ -222,4 +231,43 @@ function drawPolygon(context, position_x, position_y, radius, num, rotation) {
 		context.fillStyle = shapeColor;
 		context.fill();
 	}
+  }
+
+
+  function ag2fileSizeOpt(a,b,c){
+	let thisSize, fileUnit, thisUnit;
+  
+	//数値に変換
+	thisSize = Number(a);
+	//数値に変換できなかった場合
+	if(isNaN(thisSize)) return 'Error : Not a Number.';
+	//小数点を含めている場合
+	if(String(thisSize).split('.').length > 1) return 'Error : Unaccetable Number.';
+  
+	//基準のバイト数と単位の配列を設定
+	if(b){
+	  b = 1000;
+	  fileUnit = ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+	}else{
+	  b = 1024;
+	  fileUnit = ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+	}
+  
+	//有効小数点 デフォルト小数第2位まで(小数第3位で四捨五入)
+	if(c !== 0){c = c ? c : 2;}
+  
+	if(thisSize >= b){
+	  for(let i = 0, j = 0, sizeTemp = (thisSize / b); sizeTemp >= 1 && j < fileUnit.length; i++, j++, sizeTemp /= b){
+		thisUnit = i;
+		thisSize = sizeTemp;
+	  }
+	  thisSize = (Math.round(thisSize * (10**c))/(10**c))+' '+fileUnit[thisUnit];
+	}else{
+	  if(a === 1) thisUnit = 'byte';
+	  else thisUnit = 'bytes';
+	  thisSize = a+' '+thisUnit;
+	}
+  
+	//変換した表記の文字列を返す
+	return thisSize;
   }
