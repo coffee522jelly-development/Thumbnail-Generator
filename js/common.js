@@ -50,265 +50,320 @@ const initHeight = window.innerHeight;
 
 // window load
 window.addEventListener('load', (e) => {
-getViewportSizeAndAdjust();
-// init();
+
+	getViewportSizeAndAdjust();
+	initCheckBox();
+
 });
+
 
 // window Reload
 let btnReload = document.querySelector('#Reload');
-btnReload.addEventListener('click', function(){
+btnReload.addEventListener('click', (e) => {
 	location.reload();
 });
 
+
 // BoldOnOff
 let boldFont = document.querySelector('#fontBold');
-boldFont.addEventListener('change', function(){
+boldFont.addEventListener('change', (e) => {
 	fontBold = (boldFont.checked) ? 'bold' : '';
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // ItalicOnOff
 let ItalicFont = document.querySelector('#fontItalic');
-ItalicFont.addEventListener('change', function(){
+ItalicFont.addEventListener('change', (e) => {
 	fontItalic = (ItalicFont.checked) ? 'italic' : '';
 
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // outlineOnOff
 let outlineFont = document.querySelector('#outlineFont');
-outlineFont.addEventListener('change', function(){
+outlineFont.addEventListener('change', (e) => {
 	boutlineFont = outlineFont.checked;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // EmphasisOnOff
 let emphasisFont = document.querySelector('#emphasisFont');
-emphasisFont.addEventListener('change', function(){
+emphasisFont.addEventListener('change', (e) => {
 	bemphasisFont = emphasisFont.checked;
+
+	let outline = document.querySelector('#outlineFont');
+	outline.disabled = bemphasisFont;
+
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontSize
 let inputFontSize = document.querySelector('#inputFontSize');
-inputFontSize.addEventListener('change', function(){
+inputFontSize.addEventListener('change', (e) => {
 	fontSize = inputFontSize.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontSpacing
 let inputFontSpacing = document.querySelector('#inputFontSpacing');
-inputFontSpacing.addEventListener('change', function(){
+inputFontSpacing.addEventListener('change', (e) => {
 	fontSpacing = inputFontSpacing.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontRotate
 let inputFontRotate = document.querySelector('#inputFontRotate');
-inputFontRotate.addEventListener('change', function(){
+inputFontRotate.addEventListener('change', (e) => {
 	fontRotate = inputFontRotate.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontColor
 let inputFontColor = document.querySelector('#inputFontColor');
-inputFontColor.addEventListener('change', function(){
+inputFontColor.addEventListener('change', (e) => {
 	fontColor = inputFontColor.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontBackColor
 let inputFontBackColor = document.querySelector('#inputFontBackColor');
-inputFontBackColor.addEventListener('change', function(){
+inputFontBackColor.addEventListener('change', (e) => {
 	fontBackColor = inputFontBackColor.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontStyle
 var selectFontStyle = document.querySelector('#fontStyle');
-selectFontStyle.addEventListener('change', function(){
+selectFontStyle.addEventListener('change', (e) => {
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontLineWidth
 let inputFontLineWidth = document.querySelector('#inputFontLineWidth');
-inputFontLineWidth.addEventListener('change', function(){
+inputFontLineWidth.addEventListener('change', (e) => {
 	fontLineWidth = inputFontLineWidth.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontLocateX
 let inputFontLocateX = document.querySelector('#inputFontLocateX');
-inputFontLocateX.addEventListener('change', function(){
+inputFontLocateX.addEventListener('change', (e) => {
 	fontLocateX = inputFontLocateX.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontLocateY
 let inputFontLocateY = document.querySelector('#inputFontLocateY');
-inputFontLocateY.addEventListener('change', function(){
+inputFontLocateY.addEventListener('change', (e) => {
 	fontLocateY = inputFontLocateY.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // DrawShapeOnOff
 let drawShape = document.querySelector('#drawShape');
-drawShape.addEventListener('change', function(){
+drawShape.addEventListener('change', (e) => {
 	bShape = drawShape.checked;
+	let fill = document.querySelector('#drawShapeFill');
+	let dash = document.querySelector('#drawShapeDash');
+
+	if (bShape){
+		fill.disabled = false;
+		dash.disabled = false;
+	}
+	else{
+		fill.disabled = true;
+		dash.disabled = true;
+	}
+
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
 
 // DrawShapeFillOnOff
 let drawShapeFill = document.querySelector('#drawShapeFill');
-drawShapeFill.addEventListener('change', function(){
+drawShapeFill.addEventListener('change', (e) => {
 	bShapeFill = drawShapeFill.checked;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // DrawShapeDashOnOff
 let drawShapeDash = document.querySelector('#drawShapeDash');
-drawShapeDash.addEventListener('change', function(){
+drawShapeDash.addEventListener('change', (e) => {
 	bShapeDash = drawShapeDash.checked;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // ShapeColor
 let inputShapeColor = document.querySelector('#inputShapeColor');
-inputShapeColor.addEventListener('change', function(){
+inputShapeColor.addEventListener('change', (e) => {
 	shapeColor = inputShapeColor.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // ShapeOpacity
 let inputShapeOpacity = document.querySelector('#inputShapeOpacity');
-inputShapeOpacity.addEventListener('change', function(){
+inputShapeOpacity.addEventListener('change', (e) => {
 	shapeOpacity = inputShapeOpacity.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // ShapeSize
 let inputShapeSize = document.querySelector('#inputShapeSize');
-inputShapeSize.addEventListener('change', function(){
+inputShapeSize.addEventListener('change', (e) => {
 	shapeSize = inputShapeSize.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // ShapeLineWidth
 let inputShapeLineWidth = document.querySelector('#inputShapeLineWidth');
-inputShapeLineWidth.addEventListener('change', function(){
+inputShapeLineWidth.addEventListener('change', (e) => {
 	shapeLineWidth = inputShapeLineWidth.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // ShapeVertexSize
 let inputShapeVertexSize = document.querySelector('#inputVertexSize');
-inputShapeVertexSize.addEventListener('change', function(){
+inputShapeVertexSize.addEventListener('change', (e) => {
 	shapeVertexSize = inputShapeVertexSize.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // ShapeSectorAngle
 let inputSectorAngle = document.querySelector('#inputSectorAngle');
-inputSectorAngle.addEventListener('change', function(){
+inputSectorAngle.addEventListener('change', (e) => {
 	shapeSectorAngle = inputSectorAngle.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // ShapeDashInterval
 let inputShapeDash = document.querySelector('#inputShapeDash');
-inputShapeDash.addEventListener('change', function(){
+inputShapeDash.addEventListener('change', (e) => {
 	shapeDashInterval = inputShapeDash.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontLocateX
 let inputShapeLocateX = document.querySelector('#inputShapeLocateX');
-inputShapeLocateX.addEventListener('change', function(){
+inputShapeLocateX.addEventListener('change', (e) => {
 	shapeLocateX = inputShapeLocateX.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontLocateY
 let inputShapeLocateY = document.querySelector('#inputShapeLocateY');
-inputShapeLocateY.addEventListener('change', function(){
+inputShapeLocateY.addEventListener('change', (e) => {
 	shapeLocateY = inputShapeLocateY.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontRotate
 let inputShapeRotate = document.querySelector('#inputShapeRotate');
-inputShapeRotate.addEventListener('change', function(){
+inputShapeRotate.addEventListener('change', (e) => {
 	shapeRotate = inputShapeRotate.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // FontStyle
 var selectShapeType = document.querySelector('#shapeType');
-selectShapeType.addEventListener('change', function(){
+selectShapeType.addEventListener('change', (e) => {
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
+
 
 // AspectRatioCheck
 let btnAspectRatio = document.querySelector('#aspectRatio');
 btnAspectRatio.addEventListener('click', OnAspectButton);
 
+
 // Download
 let btnDownload = document.querySelector('#Download');
 btnDownload.addEventListener('click', OnDownloadButton);
 
+
 // Brightness
 let inputBrightness = document.querySelector('#inputBrightness');
-inputBrightness.addEventListener('change', function(){
+inputBrightness.addEventListener('change', (e) => {
 	Brightness = inputBrightness.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // Blur
 let inputBlur = document.querySelector('#inputBlur');
-inputBlur.addEventListener('change', function(){
+inputBlur.addEventListener('change', (e) => {
 	Blur = inputBlur.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // Contrast
 let inputContrast = document.querySelector('#inputContrast');
-inputContrast.addEventListener('change', function(){
+inputContrast.addEventListener('change', (e) => {
 	Contrast = inputContrast.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // GrayScale
 let inputGrayScale = document.querySelector('#inputGrayScale');
-inputGrayScale.addEventListener('change', function(){
+inputGrayScale.addEventListener('change', (e) => {
 	GrayScale = inputGrayScale.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // Hue
 let inputHue = document.querySelector('#inputHue');
-inputHue.addEventListener('change', function(){
+inputHue.addEventListener('change', (e) => {
 	Hue = inputHue.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // Sepia
 let inputSepia = document.querySelector('#inputSepia');
-inputSepia.addEventListener('change', function(){
+inputSepia.addEventListener('change', (e) => {
 	Sepia = inputSepia.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // Opacity
 let inputOpacity = document.querySelector('#inputOpacity');
-inputOpacity.addEventListener('change', function(){
+inputOpacity.addEventListener('change', (e) => {
 	Opacity = inputOpacity.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // ResetParams
 let btnResetParam = document.querySelector('#ResetParam');
-btnResetParam.addEventListener('click', function(){
+btnResetParam.addEventListener('click', (e) => {
 	Brightness 	= 100;
 	Blur 		= 0;
 	Contrast 	= 100;
@@ -327,14 +382,23 @@ btnResetParam.addEventListener('click', function(){
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
+
 // fullScreen
 let fullScreen = document.querySelector('#fullScreen');
-fullScreen.addEventListener ('click', function(){     
+fullScreen.addEventListener ('click', (e) => {     
     let main = document.querySelector('#main');
 	main.requestFullscreen();
 });
 
 // 関数/////////////////////////////////////////////////////////////////
+
+function initCheckBox(){
+	// DrawShapeOnOff
+	let fill = document.querySelector('#drawShapeFill');
+	let dash = document.querySelector('#drawShapeDash');
+	fill.disabled = true;
+	dash.disabled = true;
+}
 
 
 // OnbtnAspectRatio
@@ -391,17 +455,12 @@ function getViewportSizeAndAdjust() {
 		document.querySelector("#TitleEdit").classList.add("row-cols-1");
 		document.querySelector("#FontEdit").classList.add("row-cols-1");
 		document.querySelector("#ShapeEdit").classList.add("row-cols-1");
-
 		document.querySelector("#sourceImage").classList.add("col-4");
 	}
 
 	if (initWidth < 400){
-		const element = document.querySelector('#ImageFilter');
-		element.remove();
-
-		const elem = document.querySelector('#ShapeEdit');
-		elem.remove();
-
+		document.querySelector('#ImageFilter').remove();
+		document.querySelector('#ShapeEdit').remove();
 		document.querySelector("#EditView").classList.remove("row-cols-2");
 		document.querySelector("#sourceImage").classList.remove("col-3");
 		document.querySelector("#sourceImage").classList.remove("col-4");
