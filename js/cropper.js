@@ -88,20 +88,21 @@ function initResultSetting(context, initial){
 			// drawBackShape
 			const centerX = Width / 2;
 			const centerY = Height / 2;
+			const RateX = centerX / 50;
+			const RateY = centerY / 50;
 
 			if (bShape){
-				drawBackShape(ctx , centerX + (shapeLocateX * 10), centerY + (shapeLocateY * 10));
+				drawBackShape(ctx , centerX + (RateX * shapeLocateX), centerY + (RateY * shapeLocateY));
 			}
 
-			drawText(ctx, centerX + (fontLocateX * 10), centerY + (fontLocateY * 10));
+			drawText(ctx, centerX + (RateX * fontLocateX), centerY + (RateY * fontLocateY));
 
 		},
 		ready(){
 			cropper.setCropBoxData(cropBoxData);
 			let el = document.querySelector('#indicator');
 			el.innerHTML = '<p>ImageSize : '+ String(image.width) +'×'+ String(image.height) +'<br> FileName : ' + file.name + '<br> FileSize : ' + ag2fileSizeOpt(file.size, true, 1); +'</p>';
-
-			// let Cropper = document.querySelector('#Crop');
+			
 		}
 	});
 }

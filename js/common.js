@@ -34,7 +34,7 @@ let   bShapeDash 		= false;
 
 let   shapeColor 		= "#aaaaaa";
 let   shapeOpacity		= 0.6;
-let   shapeSize 		= 420;
+let   shapeSize 		= 100;
 let   shapeRotate 		= 0;
 let   shapeLineWidth 	= 10;
 let   shapeVertexSize	= 3;
@@ -52,7 +52,8 @@ const initHeight = window.innerHeight;
 window.addEventListener('load', (e) => {
 
 	getViewportSizeAndAdjust();
-	initCheckBox();
+	updateShapeCheckState();
+	updateIndiXY();
 
 });
 
@@ -161,6 +162,7 @@ let inputFontLocateX = document.querySelector('#inputFontLocateX');
 inputFontLocateX.addEventListener('change', (e) => {
 	fontLocateX = inputFontLocateX.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+	updateIndiXY();
 });
 
 
@@ -169,25 +171,14 @@ let inputFontLocateY = document.querySelector('#inputFontLocateY');
 inputFontLocateY.addEventListener('change', (e) => {
 	fontLocateY = inputFontLocateY.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+	updateIndiXY();
 });
 
 
 // DrawShapeOnOff
 let drawShape = document.querySelector('#drawShape');
 drawShape.addEventListener('change', (e) => {
-	bShape = drawShape.checked;
-	let fill = document.querySelector('#drawShapeFill');
-	let dash = document.querySelector('#drawShapeDash');
-
-	if (bShape){
-		fill.disabled = false;
-		dash.disabled = false;
-	}
-	else{
-		fill.disabled = true;
-		dash.disabled = true;
-	}
-
+	updateShapeCheckState();
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
@@ -264,19 +255,21 @@ inputShapeDash.addEventListener('change', (e) => {
 });
 
 
-// FontLocateX
+// ShapeLocateX
 let inputShapeLocateX = document.querySelector('#inputShapeLocateX');
 inputShapeLocateX.addEventListener('change', (e) => {
 	shapeLocateX = inputShapeLocateX.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+	updateIndiXY();
 });
 
 
-// FontLocateY
+// ShapeLocateY
 let inputShapeLocateY = document.querySelector('#inputShapeLocateY');
 inputShapeLocateY.addEventListener('change', (e) => {
 	shapeLocateY = inputShapeLocateY.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+	updateIndiXY();
 });
 
 
@@ -392,12 +385,41 @@ fullScreen.addEventListener ('click', (e) => {
 
 // 関数/////////////////////////////////////////////////////////////////
 
-function initCheckBox(){
-	// DrawShapeOnOff
+function updateShapeCheckState(){
+	let drawShape = document.querySelector('#drawShape');
+	bShape = drawShape.checked;
+
+	// check
 	let fill = document.querySelector('#drawShapeFill');
 	let dash = document.querySelector('#drawShapeDash');
-	fill.disabled = true;
-	dash.disabled = true;
+	let shapeType = document.querySelector('#shapeType');
+	fill.disabled = !bShape;
+	dash.disabled = !bShape;
+	shapeType.disabled = !bShape;
+
+	// shapeInput
+	const shapeParam = document.querySelectorAll(".shapeParam > input[type='range']");
+	for (let i = 0; i < shapeParam.length; i++) {
+		shapeParam[i].disabled = !bShape;
+	}
+}
+
+function updateIndiXY(){
+	// Font Locator
+	let indifX = document.querySelector('#indifX');
+	let indifY = document.querySelector('#indifY');
+	let inputFontLocateX = document.querySelector('#inputFontLocateX');
+	let inputFontLocateY = document.querySelector('#inputFontLocateY');
+	indifX.innerHTML = '' + inputFontLocateX.value + '';
+	indifY.innerHTML = '' + inputFontLocateY.value + '';
+
+	// Shape Locator
+	let indisX = document.querySelector('#indisX');
+	let indisY = document.querySelector('#indisY');
+	let inputShapeLocateX = document.querySelector('#inputShapeLocateX');
+	let inputShapeLocateY = document.querySelector('#inputShapeLocateY');
+	indisX.innerHTML = '' + inputShapeLocateX.value + '';
+	indisY.innerHTML = '' + inputShapeLocateY.value + '';
 }
 
 
