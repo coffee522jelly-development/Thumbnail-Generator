@@ -7,13 +7,14 @@
   <!-- CSS load -->
   <link rel="stylesheet" type="text/css" media="all" href="dist/css/cropper.css">
   <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="dist/css/semantic.min.css">
+  <link rel="stylesheet" href="dist/css/uikit.min.css">
+
   <!-- Javascript load -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="dist/js/cropper.min.js"></script>
   <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="dist/js/jquery-3.6.1.min.js"></script>
-  <script type="text/javascript" src="dist/js/semantic.min.js"></script>
+  <script type="text/javascript" src="dist/js/uikit.min.js"></script>
+  
   <title>Thumbnail-Generator</title>
 </head>
 
@@ -23,31 +24,31 @@
     <div id="EditView" class="editView row">
       <div id="sourceImage" class="imageItem col-2">
         <p>EditView</p>
-        <div id="indicator">
+        <canvas id="sourceCanvas"></canvas>
+        <div id="indicator" class="d-block mx-auto">
           <p>Indicator : </p>
         </div>
-        <canvas id="sourceCanvas"></canvas>
       </div>
       <div id="croppedImage" class="imageItem col-7">
-        <canvas id="croppedCanvas"></canvas>
-        <img id="output" src="">
+        <canvas id="croppedCanvas" class="d-block mx-auto"></canvas>
+        <img id="output" src="" class="d-block mx-auto" >
       </div>
       <div id="ImageFilter" class="imageItem col-3">
         <p>Brightness</p>
-        <input type="range" id="inputBrightness" min="0" max="200" step="20" value="100">
+        <input type="range" class="uk-range" id="inputBrightness" min="0" max="200" step="20" value="100">
         <p>Blur</p>
-        <input type="range" id="inputBlur" min="0" max="20" step="2" value="0">
+        <input type="range" class="uk-range" id="inputBlur" min="0" max="20" step="2" value="0">
         <p>Contrast</p>
-        <input type="range" id="inputContrast" min="0" max="200" step="10" value="100">
+        <input type="range" class="uk-range" id="inputContrast" min="0" max="200" step="10" value="100">
         <p>GrayScale</p>
-        <input type="range" id="inputGrayScale" min="0" max="100" step="10" value="0">
+        <input type="range" class="uk-range" id="inputGrayScale" min="0" max="100" step="10" value="0">
         <p>Hue</p>
-        <input type="range" id="inputHue" min="0" max="360" step="1" value="0">
+        <input type="range" class="uk-range" id="inputHue" min="0" max="360" step="1" value="0">
         <p>Opacity</p>
-        <input type="range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
+        <input type="range" class="uk-range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
         <p>Sepia</p>
-        <input type="range" id="inputSepia" min="0" max="100" step="10" value="0">
-        <button id="ResetParam" class="ui button mini">Filter Reset</button>
+        <input type="range" class="uk-range" id="inputSepia" min="0" max="100" step="10" value="0">
+        <button id="ResetParam" class="uk-button uk-button-default">Reset</button>
       </div>
     </div>
     <div id="paramEditView" class="editView row">
@@ -62,26 +63,29 @@
                 <div class="setParam col">
                   <p>Title</p>
                   <form name="Title">
-                    <div class="ui input mini focus">
-                      <input type="text" name="caption" value="Hello.">
+                    <div>
+                      <input type="text" class="uk-input" name="caption" placeholder="Title" aria-label="Title" value="Hello.">
                     </div>
                   </form>
                 </div>
                 <div id="controlButton" class="setParam row-cols-1">
                   <div class="setParam col">
                     <p>Control</p>
-                    <label for="uploader" class="ui icon olive invert button mini">
-                      <img class="icon" src="icon/folder.svg" width="16" height="16">Open File</label>
-                    <input type="file" id="uploader" style="display: none">
-                    <button id="Download" class="ui blue invert button mini">
-                      <img class="icon" src="icon/image.svg" width="16" height="16">Download</button>
+                    <label id="File" class="uk-button">
+                      <input type="file" id="uploader">SelectFile
+                    </label>
+                    <label id="Download" class="uk-button uk-button-default">
+                      Download
+                    </label>
                   </div>
                   <div class="setParam col">
                     <p>Utility</p>
-                    <button id="fullScreen" class="ui button mini">
-                      <img class="icon" src="icon/fullscreen.svg" width="16" height="16">FullScreen</button>
-                    <button id="Reload" class="ui button mini">
-                      <img class="icon" src="icon/rotate.svg" width="16" height="16">Reload</button>
+                    <button id="Reload" class="uk-button uk-button-default">
+                      Reload
+                    </button>
+                    <button id="fullScreen" class="uk-button uk-button-default">
+                      FullScreen
+                    </button>
                   </div>
                 </div>
               </div>
@@ -95,27 +99,28 @@
                   <div class="setParam col">
                     <p>Aspect Ratio</p>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio5" value="2.333333">
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio5" value="2.333333">
                       <label class="form-check-label" for="exampleRadios5">21:9</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
                       <label class="form-check-label" for="exampleRadios1">16:9</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
                       <label class="form-check-label" for="exampleRadios2">4:3</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
                       <label class="form-check-label" for="exampleRadios3">3:2</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
                       <label class="form-check-label" for="exampleRadios4">1:1</label>
                     </div>
-                    <button id="aspectRatio" class="ui button mini">
-                    <img class="icon" src="icon/triming.svg" width="16" height="16">Crop</button>
+                    <button id="aspectRatio" class="uk-button-default">
+                      Crop
+                    </button>
                   </div>
                 </div>
               </div>
@@ -132,52 +137,46 @@
               </h2>
               <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                 <div class="accordion-body">
-                  <div class="row-cols-4">
-                    <div class="ui checkbox">
-                      <input type="checkbox" id="fontBold">
-                      <label class="form-check-label">Bold</label>
-                    </div>
-                    <div class="ui checkbox">
-                      <input type="checkbox" id="fontItalic">
-                      <label class="form-check-label">Italic</label>
-                    </div>
-                    <div class="ui checkbox">
-                      <input type="checkbox" id="outlineFont">
-                      <label class="form-check-label">Outline</label>
-                    </div>
-                    <div class="ui checkbox">
-                      <input type="checkbox" id="emphasisFont">
-                      <label class="form-check-label">Emphasis(beta)</label>
-                    </div>
-                    <select id="fontStyle" class="form-select ui conpact dropdown" aria-label=" example" value="Train-One">
-                      <optgroup label="-JPFont-">
-                      </optgroup>
-                      <option id="IPAex" value="IPAex">IPAex明朝</option>
-                      <option id="Timemachine-wa" value="Timemachine-wa">タイムマシンわ号</option>
-                      <option id="Senobi-Gothic" value="Senobi-Gothic">セノビゴシック</option>
-                      <option id="Kiwimaru" value="Kiwimaru">キウイ丸</option>
-                      <option id="Kosugi-Maru" value="Kosugi-Maru">小杉丸</option>
-                      <option id="KleeOne" value="KleeOner">クレーワン</option>
-                      <option id="Kirin" value="Kirin">キリン</option>
-                      <optgroup label="-WorldFont-">
-                      </optgroup>
-                      <option id="Archivo-Narrow" value="Archivo-Narrow">Archivo-Narrow</option>
-                      <option id="Cardo" value="Cardo">Cardo</option>
-                      <option selected id="CornerStone" value="CornerStone">CornerStone</option>
-                      <option id="inconsolata" value="inconsolata">inconsolata</option>
-                      <option id="Lato" value="Lato">Lato</option>
-                      <option id="Manrope" value="Manrope">Manrope</option>
-                      <option id="Montserrat" value="Montserrat">Montserrat</option>
-                      <option id="Neuton" value="Neuton">Neuton</option>
-                      <option id="Oraniebaum" value="Oraniebaum">Oraniebaum</option>
-                      <option id="Prokopis" value="Prokopis">Prokopis</option>
-                      <option id="Rampart-One" value="Rampart-One">Rampart-One</option>
-                      <option id="Smarta" value="Smarta">Smarta</option>
-                      <option id="Train-One" value="Train-One">Train-One</option>
-                    </select>
-                    <input type="color" id="inputFontColor" value="#ffffff" list="defaultcolors">
-                    <input type="color" id="inputFontBackColor" value="#0068b7" list="defaultcolors">
-                  </div>
+                  <select id="fontStyle" class="form-select uk-select" aria-label=" example" value="Train-One">
+                    <optgroup label="-JPFont-">
+                    </optgroup>
+                    <option id="IPAex" value="IPAex">IPAex明朝</option>
+                    <option id="Timemachine-wa" value="Timemachine-wa">タイムマシンわ号</option>
+                    <option id="Senobi-Gothic" value="Senobi-Gothic">セノビゴシック</option>
+                    <option id="Kiwimaru" value="Kiwimaru">キウイ丸</option>
+                    <option id="Kosugi-Maru" value="Kosugi-Maru">小杉丸</option>
+                    <option id="KleeOne" value="KleeOner">クレーワン</option>
+                    <option id="Kirin" value="Kirin">キリン</option>
+                    <optgroup label="-WorldFont-">
+                    </optgroup>
+                    <option id="Archivo-Narrow" value="Archivo-Narrow">Archivo-Narrow</option>
+                    <option id="Cardo" value="Cardo">Cardo</option>
+                    <option selected id="CornerStone" value="CornerStone">CornerStone</option>
+                    <option id="inconsolata" value="inconsolata">inconsolata</option>
+                    <option id="Lato" value="Lato">Lato</option>
+                    <option id="Manrope" value="Manrope">Manrope</option>
+                    <option id="Montserrat" value="Montserrat">Montserrat</option>
+                    <option id="Neuton" value="Neuton">Neuton</option>
+                    <option id="Oraniebaum" value="Oraniebaum">Oraniebaum</option>
+                    <option id="Prokopis" value="Prokopis">Prokopis</option>
+                    <option id="Rampart-One" value="Rampart-One">Rampart-One</option>
+                    <option id="Smarta" value="Smarta">Smarta</option>
+                    <option id="Train-One" value="Train-One">Train-One</option>
+                  </select>
+                  <input type="color" id="inputFontColor" value="#ffffff" list="defaultcolors">
+                  <input type="color" id="inputFontBackColor" value="#0068b7" list="defaultcolors">
+                  <label class="form-check-label">
+                    <input type="checkbox" id="fontBold" class="uk-checkbox"> Bold
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" id="fontItalic" class="uk-checkbox"> Italic
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" id="outlineFont" class="uk-checkbox"> Outline
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" id="emphasisFont" class="uk-checkbox"> Emphasis
+                  </label>
                 </div>
               </div>
             </div>
@@ -188,13 +187,13 @@
               <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                 <div class="accordion-body">
                   <p>Size</p>
-                  <input type="range" id="inputFontSize" min="0" max="500" step="50">
+                  <input type="range"  class="uk-range" id="inputFontSize" min="0" max="500" step="50">
                   <p>Rotate</p>
-                  <input type="range" id="inputFontRotate" min="0" max="360" step="15" value="0">
+                  <input type="range"  class="uk-range" id="inputFontRotate" min="0" max="360" step="15" value="0">
                   <p>LetterSpacing</p>
-                  <input type="range" id="inputFontSpacing" min="0" max="200" step="10" value="10">
+                  <input type="range"  class="uk-range" id="inputFontSpacing" min="0" max="200" step="10" value="10">
                   <p>LineWidth</p>
-                  <input type="range" id="inputFontLineWidth" min="0" max="150" step="5" value="10">
+                  <input type="range"  class="uk-range" id="inputFontLineWidth" min="0" max="150" step="5" value="10">
                 </div>
               </div>
             </div>
@@ -205,9 +204,9 @@
               <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
                 <div class="accordion-body">
                   <p>LocateX</p>
-                  <input type="range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
+                  <input type="range"  class="uk-range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
                   <p>LocateY</p>
-                  <input type="range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
+                  <input type="range"  class="uk-range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
                 </div>
               </div>
             </div>
@@ -222,19 +221,7 @@
             </h2>
             <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFive">
               <div class="accordion-body">
-                <div class="ui checkbox">
-                  <input type="checkbox" id="drawShape">
-                  <label>Draw</label>
-                </div>
-                <div class="ui checkbox">
-                  <input type="checkbox" id="drawShapeDash">
-                  <label>Dash</label>
-                </div>
-                <div class="ui checkbox">
-                  <input type="checkbox" id="drawShapeFill">
-                  <label>Fill</label>
-                </div>
-                <select id="shapeType" class="form-select ui dropdown" aria-label=" example" value="Arc">
+                <select id="shapeType" class="form-select uk-select" aria-label=" example" value="Arc">
                   <option selected id="Arc" value="Arc">Arc</option>
                   <option id="Square" value="Square">Square</option>
                   <option id="justify-Rect" value="justify-Rect">justify-Rect</option>
@@ -243,6 +230,12 @@
                   <option id="Polygon" value="Polygon">Polygon</option>
                 </select>
                 <input type="color" id="inputShapeColor" value="#aaaaaa" list="defaultcolors">
+                <input type="checkbox" id="drawShape" class="uk-checkbox">
+                <label>Draw</label>
+                <input type="checkbox" id="drawShapeDash" class="uk-checkbox">
+                <label>Dash</label>
+                <input type="checkbox" id="drawShapeFill" class="uk-checkbox">
+                <label>Fill</label>
               </div>
             </div>
           </div>
@@ -253,19 +246,19 @@
             <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
               <div class="accordion-body">
                 <p>Size</p>
-                <input type="range" id="inputShapeSize" min="0" max="1000" step="100" value="400">
+                <input type="range"  class="uk-range" id="inputShapeSize" min="0" max="1000" step="100" value="400">
                 <p>Rotate</p>
-                <input type="range" id="inputShapeRotate" min="0" max="360" step="15" value="0">
+                <input type="range"  class="uk-range" id="inputShapeRotate" min="0" max="360" step="15" value="0">
                 <p>Opacity</p>
-                <input type="range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="0.6">
+                <input type="range"  class="uk-range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="0.6">
                 <p>LineWidth</p>
-                <input type="range" id="inputShapeLineWidth" min="0" max="300" step="10" value="10">
+                <input type="range"  class="uk-range" id="inputShapeLineWidth" min="0" max="300" step="10" value="10">
                 <p>DashInterval(Optional)</p>
-                <input type="range" id="inputShapeDash" min="0" max="150" step="1" value="1">
+                <input type="range"  class="uk-range" id="inputShapeDash" min="0" max="150" step="1" value="1">
                 <p>SectorAngle(Optional)</p>
-                <input type="range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
+                <input type="range"  class="uk-range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
                 <p>PolygonVertexSize(Optional)</p>
-                <input type="range" id="inputVertexSize" min="3" max="12" step="1" value="3">
+                <input type="range"  class="uk-range" id="inputVertexSize" min="3" max="12" step="1" value="3">
               </div>
             </div>
           </div>
@@ -276,9 +269,9 @@
             <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
               <div class="accordion-body">
                 <p>LocateX</p>
-                <input type="range" id="inputShapeLocateX" min="-50" max="50" step="10" value="0">
+                <input type="range"  class="uk-range" id="inputShapeLocateX" min="-50" max="50" step="10" value="0">
                 <p>LocateY</p>
-                <input type="range" id="inputShapeLocateY" min="-50" max="50" step="10" value="0">
+                <input type="range"  class="uk-range" id="inputShapeLocateY" min="-50" max="50" step="10" value="0">
               </div>
             </div>
           </div>

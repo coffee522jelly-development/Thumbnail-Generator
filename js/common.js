@@ -462,8 +462,7 @@ function getViewportSizeAndAdjust() {
 		document.querySelector('#ImageFilter').remove();
 		document.querySelector('#ShapeEdit').remove();
 		document.querySelector("#EditView").classList.remove("row-cols-2");
-		document.querySelector("#sourceImage").classList.remove("col-3");
-		document.querySelector("#sourceImage").classList.remove("col-4");
+		document.querySelector("#sourceImage").classList.remove("col-2");
 		document.querySelector("#croppedImage").classList.remove("col-7");
 		document.querySelector("#EditView").classList.add("row-cols-1");
 	}
