@@ -52,6 +52,7 @@ const initHeight = window.innerHeight;
 window.addEventListener('load', (e) => {
 
 	getViewportSizeAndAdjust();
+	updateFontCheckState();
 	updateShapeCheckState();
 	updateIndiXY();
 
@@ -94,10 +95,7 @@ outlineFont.addEventListener('change', (e) => {
 let emphasisFont = document.querySelector('#emphasisFont');
 emphasisFont.addEventListener('change', (e) => {
 	bemphasisFont = emphasisFont.checked;
-
-	let outline = document.querySelector('#outlineFont');
-	outline.disabled = bemphasisFont;
-
+	updateFontCheckState();
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
@@ -386,11 +384,17 @@ fullScreen.addEventListener ('click', (e) => {
 });
 
 // 関数/////////////////////////////////////////////////////////////////
+function updateFontCheckState(){
+	let emphasisFont = document.querySelector('#emphasisFont');
+	document.querySelector("#inputFontLineWidth").disabled = (emphasisFont.checked == false);
+
+	let outline = document.querySelector('#outlineFont');
+	outline.disabled = bemphasisFont;
+}
 
 function updateShapeCheckState(){
 	let drawShape = document.querySelector('#drawShape');
 	bShape = drawShape.checked;
-
 	// check(Draw)
 	let fill = document.querySelector('#drawShapeFill');
 	let dash = document.querySelector('#drawShapeDash');
