@@ -26,7 +26,7 @@ const cropImage = function (evt) {
 			
             // initializeSoureCanvas
             const canvas = document.querySelector("#sourceCanvas");
-            let ctx = canvas.getContext("2d", { alpha: false });
+            let ctx = canvas.getContext("2d");
             const Width = canvas.width = imageWidth * scale;
 			const Height = canvas.height = imageHeight * scale;
             ctx.drawImage(image, 0, 0, imageWidth, imageHeight, 0, 0, Width, Height);
@@ -66,9 +66,11 @@ function initResultSetting(context, initial){
             const scale = 768 / image.width;
 
 			const croppedCanvas = document.querySelector("#croppedCanvas");
-			let ctx = croppedCanvas.getContext("2d", { alpha: false });
+			let ctx = croppedCanvas.getContext("2d");
 			const Width = croppedCanvas.width = image.height * cropAspectRatio;
 			const Height = croppedCanvas.height = image.height;
+
+			ctx.imageSmoothingEnabled = false;
 
 			ctx.filter = "brightness("+ Brightness + "%)" +
 						 "blur("+ Blur + "px)" + 
