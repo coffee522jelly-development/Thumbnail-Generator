@@ -110,7 +110,9 @@ function initResultSetting(context, initial){
 // drawText
 function drawText(context, centerX, centerY){
 	let fontStyle = document.querySelector("#fontStyle").value;
-	context.font = fontItalic + ' ' + fontBold + ' ' + fontSize + 'px ' + fontStyle;
+	let fontRelativeSize = 0.01 * fontSize * centerX;
+
+	context.font = fontItalic + ' ' + fontBold + ' ' + fontRelativeSize + 'px ' + fontStyle;
 	context.letterSpacing = fontSpacing + "px";
 
 	// RotateText
@@ -121,7 +123,7 @@ function drawText(context, centerX, centerY){
 	// ImageSizer
 	const element = document.Title.caption.value;
 	const fontX = centerX - context.measureText(element).width / 2;
-	const fontY = centerY + (fontSize / 3);
+	const fontY = centerY + (fontRelativeSize / 3);
 
 	if (bemphasisFont){
 		context.lineWidth = String(fontLineWidth);

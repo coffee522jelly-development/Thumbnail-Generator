@@ -7,7 +7,7 @@ let   bemphasisFont 	= false;
 
 let   fontBold 	        = '';
 let   fontItalic 	    = '';
-let   fontSize 			= 150;
+let   fontSize 			= 20;
 let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
 let   fontColor         = "#ffffff";
@@ -33,7 +33,7 @@ let   bShapeFill 		= false;
 let   bShapeDash 		= false;
 
 let   shapeColor 		= "#aaaaaa";
-let   shapeOpacity		= 0.6;
+let   shapeOpacity		= 1.0;
 let   shapeSize 		= 100;
 let   shapeRotate 		= 0;
 let   shapeLineWidth 	= 10;
@@ -195,6 +195,15 @@ drawShapeFill.addEventListener('change', (e) => {
 let drawShapeDash = document.querySelector('#drawShapeDash');
 drawShapeDash.addEventListener('change', (e) => {
 	bShapeDash = drawShapeDash.checked;
+	updateShapeCheckState();
+	initResultSetting(document.querySelector("#sourceCanvas"), false);
+});
+
+
+// ShapeType
+var selectShapeType = document.querySelector('#shapeType');
+selectShapeType.addEventListener('change', (e) => {
+	updateShapeCheckState();
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
@@ -277,13 +286,6 @@ inputShapeLocateY.addEventListener('change', (e) => {
 let inputShapeRotate = document.querySelector('#inputShapeRotate');
 inputShapeRotate.addEventListener('change', (e) => {
 	shapeRotate = inputShapeRotate.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// FontStyle
-var selectShapeType = document.querySelector('#shapeType');
-selectShapeType.addEventListener('change', (e) => {
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
@@ -389,7 +391,7 @@ function updateShapeCheckState(){
 	let drawShape = document.querySelector('#drawShape');
 	bShape = drawShape.checked;
 
-	// check
+	// check(Draw)
 	let fill = document.querySelector('#drawShapeFill');
 	let dash = document.querySelector('#drawShapeDash');
 	let shapeType = document.querySelector('#shapeType');
@@ -397,11 +399,16 @@ function updateShapeCheckState(){
 	dash.disabled = !bShape;
 	shapeType.disabled = !bShape;
 
-	// shapeInput
+	// shapeInput(Draw)
 	const shapeParam = document.querySelectorAll(".shapeParam > input[type='range']");
 	for (let i = 0; i < shapeParam.length; i++) {
 		shapeParam[i].disabled = !bShape;
 	}
+
+	let shapeTypeValue = shapeType.value;
+	document.querySelector("#inputSectorAngle").disabled = (shapeTypeValue != "Sector");
+	document.querySelector("#inputVertexSize").disabled = (shapeTypeValue != "Polygon");
+	document.querySelector("#inputShapeDash").disabled = (dash.checked == false);
 }
 
 function updateIndiXY(){

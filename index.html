@@ -35,19 +35,19 @@
       </div>
       <div id="ImageFilter" class="imageItem col-3">
         <p>Brightness</p>
-        <input type="range" class="uk-range" id="inputBrightness" min="0" max="200" step="20" value="100">
+        <input type="range" class="form-range" id="inputBrightness" min="0" max="200" step="20" value="100">
         <p>Blur</p>
-        <input type="range" class="uk-range" id="inputBlur" min="0" max="20" step="2" value="0">
+        <input type="range" class="form-range" id="inputBlur" min="0" max="20" step="2" value="0">
         <p>Contrast</p>
-        <input type="range" class="uk-range" id="inputContrast" min="0" max="200" step="10" value="100">
+        <input type="range" class="form-range" id="inputContrast" min="0" max="200" step="10" value="100">
         <p>GrayScale</p>
-        <input type="range" class="uk-range" id="inputGrayScale" min="0" max="100" step="10" value="0">
+        <input type="range" class="form-range" id="inputGrayScale" min="0" max="100" step="10" value="0">
         <p>Hue</p>
-        <input type="range" class="uk-range" id="inputHue" min="0" max="360" step="1" value="0">
+        <input type="range" class="form-range" id="inputHue" min="0" max="360" step="1" value="0">
         <p>Opacity</p>
-        <input type="range" class="uk-range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
+        <input type="range" class="form-range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
         <p>Sepia</p>
-        <input type="range" class="uk-range" id="inputSepia" min="0" max="100" step="10" value="0">
+        <input type="range" class="form-range" id="inputSepia" min="0" max="100" step="10" value="0">
         <button id="ResetParam" class="uk-button uk-button-default">Reset</button>
       </div>
     </div>
@@ -61,10 +61,10 @@
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
               <div class="accordion-body">
                 <div class="setParam col">
-                  <p>Title</p>
+                  <p>Text</p>
                   <form name="Title">
                     <div>
-                      <input type="text" class="uk-input" name="caption" placeholder="Title" aria-label="Title" value="Hello.">
+                      <input type="text" class="uk-input" name="caption" placeholder="Text" aria-label="Text" value="Hello.">
                     </div>
                   </form>
                 </div>
@@ -144,7 +144,7 @@
                     </optgroup>
                     <option id="IPAex" value="IPAex">IPAex明朝</option>
                     <option id="Timemachine-wa" value="Timemachine-wa">タイムマシンわ号</option>
-                    <option id="Senobi-Gothic" value="Senobi-Gothic">セノビゴシック</option>
+                    <option id="Senobi-Gothic" value="Senobi-Gothic">せのびゴシック</option>
                     <option id="Kiwimaru" value="Kiwimaru">キウイ丸</option>
                     <option id="Kosugi-Maru" value="Kosugi-Maru">小杉丸</option>
                     <option id="KleeOne" value="KleeOner">クレーワン</option>
@@ -177,7 +177,7 @@
                     <input type="checkbox" id="outlineFont" class="uk-checkbox"> Outline
                   </label>
                   <label class="form-check-label">
-                    <input type="checkbox" id="emphasisFont" class="uk-checkbox"> Emphasis
+                    <input type="checkbox" id="emphasisFont" class="uk-checkbox"> Em
                   </label>
                 </div>
               </div>
@@ -189,13 +189,13 @@
               <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                 <div class="accordion-body">
                   <p>Size</p>
-                  <input type="range"  class="uk-range" id="inputFontSize" min="0" max="500" step="50">
+                  <input type="range"  class="form-range" id="inputFontSize" min="0" max="100" step="1" value="20">
                   <p>Rotate</p>
-                  <input type="range"  class="uk-range" id="inputFontRotate" min="0" max="360" step="15" value="0">
+                  <input type="range"  class="form-range" id="inputFontRotate" min="0" max="360" step="15" value="0">
                   <p>LetterSpacing</p>
-                  <input type="range"  class="uk-range" id="inputFontSpacing" min="0" max="200" step="10" value="10">
+                  <input type="range"  class="form-range" id="inputFontSpacing" min="0" max="200" step="10" value="10">
                   <p>LineWidth</p>
-                  <input type="range"  class="uk-range" id="inputFontLineWidth" min="0" max="150" step="5" value="10">
+                  <input type="range"  class="form-range" id="inputFontLineWidth" min="0" max="150" step="5" value="10">
                 </div>
               </div>
             </div>
@@ -206,9 +206,9 @@
               <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
                 <div class="accordion-body">
                   <p>LocateX</p><p id="indifX"></p>
-                  <input type="range"  class="uk-range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
+                  <input type="range"  class="form-range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
                   <p>LocateY</p><p id="indifY"></p>
-                  <input type="range"  class="uk-range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
+                  <input type="range"  class="form-range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
                 </div>
               </div>
             </div>
@@ -223,7 +223,9 @@
             </h2>
             <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFive">
               <div class="accordion-body">
-                <select id="shapeType" class="form-select uk-select" aria-label=" example" value="Arc">
+                <input type="checkbox" id="drawShape" class="uk-checkbox">
+                <label>Draw</label>
+                <select id="shapeType" class="uk-select" aria-label=" example" value="Arc">
                   <option selected id="Arc" value="Arc">Arc</option>
                   <option id="Square" value="Square">Square</option>
                   <option id="justify-Rect" value="justify-Rect">justify-Rect</option>
@@ -232,8 +234,6 @@
                   <option id="Polygon" value="Polygon">Polygon</option>
                 </select>
                 <input type="color" id="inputShapeColor" value="#aaaaaa" list="defaultcolors">
-                <input type="checkbox" id="drawShape" class="uk-checkbox">
-                <label>Draw</label>
                 <input type="checkbox" id="drawShapeDash" class="uk-checkbox">
                 <label>Dash</label>
                 <input type="checkbox" id="drawShapeFill" class="uk-checkbox">
@@ -248,19 +248,19 @@
             <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
               <div class="shapeParam accordion-body">
                 <p>Size</p>
-                <input type="range"  class="uk-range" id="inputShapeSize" min="0" max="1000" step="10" value="100">
+                <input type="range"  class="form-range" id="inputShapeSize" min="0" max="1000" step="10" value="100">
                 <p>Rotate</p>
-                <input type="range"  class="uk-range" id="inputShapeRotate" min="0" max="360" step="15" value="0">
+                <input type="range"  class="form-range" id="inputShapeRotate" min="0" max="360" step="15" value="0">
                 <p>Opacity</p>
-                <input type="range"  class="uk-range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="0.6">
+                <input type="range"  class="form-range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="1.0">
                 <p>LineWidth</p>
-                <input type="range"  class="uk-range" id="inputShapeLineWidth" min="0" max="300" step="10" value="10">
+                <input type="range"  class="form-range" id="inputShapeLineWidth" min="0" max="300" step="10" value="10">
                 <p>DashInterval(Optional)</p>
-                <input type="range"  class="uk-range" id="inputShapeDash" min="0" max="150" step="1" value="1">
+                <input type="range"  class="form-range" id="inputShapeDash" min="0" max="150" step="1" value="1">
                 <p>SectorAngle(Optional)</p>
-                <input type="range"  class="uk-range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
+                <input type="range"  class="form-range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
                 <p>PolygonVertexSize(Optional)</p>
-                <input type="range"  class="uk-range" id="inputVertexSize" min="3" max="12" step="1" value="3">
+                <input type="range"  class="form-range" id="inputVertexSize" min="3" max="12" step="1" value="3">
               </div>
             </div>
           </div>
@@ -271,9 +271,9 @@
             <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
               <div class="shapeParam accordion-body">
                 <p>LocateX</p><p id="indisX"></p>
-                <input type="range"  class="uk-range" id="inputShapeLocateX" min="-50" max="50" step="10" value="0">
+                <input type="range"  class="form-range" id="inputShapeLocateX" min="-50" max="50" step="10" value="0">
                 <p>LocateY</p><p id="indisY"></p>
-                <input type="range"  class="uk-range" id="inputShapeLocateY" min="-50" max="50" step="10" value="0">
+                <input type="range"  class="form-range" id="inputShapeLocateY" min="-50" max="50" step="10" value="0">
               </div>
             </div>
           </div>
