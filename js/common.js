@@ -31,6 +31,7 @@ let   Opacity 		= 1.0;
 let   bShape 			= false;	
 let   bShapeFill 		= false;
 let   bShapeDash 		= false;
+let   bShapeBackGround 	= false;
 
 let   shapeColor 		= "#aaaaaa";
 let   shapeOpacity		= 1.0;
@@ -176,6 +177,13 @@ inputFontLocateY.addEventListener('change', (e) => {
 // DrawShapeOnOff
 let drawShape = document.querySelector('#drawShape');
 drawShape.addEventListener('change', (e) => {
+	updateShapeCheckState();
+	initResultSetting(document.querySelector("#sourceCanvas"), false);
+});
+
+// BackGroundOnOff
+let drawBackGround = document.querySelector('#drawBackGround');
+drawBackGround.addEventListener('change', (e) => {
 	updateShapeCheckState();
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
@@ -395,6 +403,16 @@ function updateFontCheckState(){
 function updateShapeCheckState(){
 	let drawShape = document.querySelector('#drawShape');
 	bShape = drawShape.checked;
+
+	let drawBackGround = document.querySelector('#drawBackGround');
+	bShapeBackGround = drawBackGround.checked;
+	drawShape.disabled = bShapeBackGround;
+
+	const ImageFilter = document.querySelectorAll(".imageItem > input[type='range']");
+	for (let i = 0; i < ImageFilter.length; i++) {
+		ImageFilter[i].disabled = bShapeBackGround;
+	}
+
 	// check(Draw)
 	let fill = document.querySelector('#drawShapeFill');
 	let dash = document.querySelector('#drawShapeDash');
@@ -406,7 +424,7 @@ function updateShapeCheckState(){
 	// shapeInput(Draw)
 	const shapeParam = document.querySelectorAll(".shapeParam > input[type='range']");
 	for (let i = 0; i < shapeParam.length; i++) {
-		shapeParam[i].disabled = !bShape;
+		shapeParam[i].disabled = (!bShape || bShapeBackGround);
 	}
 
 	let shapeTypeValue = shapeType.value;

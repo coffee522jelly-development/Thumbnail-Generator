@@ -93,7 +93,10 @@ function initResultSetting(context, initial){
 			const RateX = centerX / 50;
 			const RateY = centerY / 50;
 
-			if (bShape){
+			if (bShapeBackGround){
+				drawBackground(ctx , Width, Height);
+			}
+			else if (bShape){
 				drawBackShape(ctx , centerX + (RateX * shapeLocateX), centerY + (RateY * shapeLocateY));
 			}
 
@@ -200,6 +203,13 @@ function drawBackShape(context, centerX, centerY){
 	// initialize
 	context.filter = "opacity(1.0)";
 	context.setTransform(1, 0, 0, 1, 0, 0);
+}
+
+
+// drawBackGround
+function drawBackground(context, X, Y){
+	context.fillStyle = shapeColor;
+    context.fillRect(0,0,X,Y);
 }
 
 
