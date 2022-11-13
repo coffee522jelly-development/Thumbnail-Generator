@@ -12,14 +12,17 @@ let   bFilter 		= false;
 
 // ShaperEffects
 let   bWireFrame 	= false;
-let   bLighting 	= false;
+let   bLighting 	= true;
+let   bFog 			= false;
 
 let   shapeColor 		= "#aaaaaa";
 let   shapeOpacity		= 1.0;
 let   shapeSize 		= 250;
 let   shapeRotate 		= 0;
 let   shapeLineWidth 	= 10;
-let   shapeVertexSize	= 3;
+let   shapeVertexSize	= 50;
+let   shapeSpacing		= 300;
+let   shapePattern		= 'Single';
 
 const initWidth = window.innerWidth;
 const initHeight = window.innerHeight;
@@ -32,6 +35,8 @@ window.addEventListener('load', (e) => {
 	getViewportSizeAndAdjust();
 	init3DDraw();
 
+	let check = document.getElementById('lighting');
+	check.checked = true;
 });
 
 
@@ -65,6 +70,14 @@ wireFrame.addEventListener('change', (e) => {
 
 
 // Lighting
+let Fog = document.querySelector('#Fog');
+Fog.addEventListener('change', (e) => {
+	bFog = Fog.checked;
+	init3DDraw();
+});
+
+
+// Lighting
 let Lighting = document.querySelector('#lighting');
 Lighting.addEventListener('change', (e) => {
 	bLighting = Lighting.checked;
@@ -74,6 +87,14 @@ Lighting.addEventListener('change', (e) => {
 // ShapeType
 let selectShapeType = document.querySelector('#shapeType');
 selectShapeType.addEventListener('change', (e) => {
+	updateShapeCheckState();
+	init3DDraw();
+});
+
+
+// ShapeType
+let selectShapePattern = document.querySelector('#shapePattern');
+selectShapePattern.addEventListener('change', (e) => {
 	updateShapeCheckState();
 	init3DDraw();
 });
@@ -115,6 +136,14 @@ inputShapeSize.addEventListener('change', (e) => {
 let inputShapeVertexSize = document.querySelector('#inputVertexSize');
 inputShapeVertexSize.addEventListener('change', (e) => {
 	shapeVertexSize = inputShapeVertexSize.value;
+	init3DDraw();
+});
+
+
+// VertexSize
+let inputShapeSpacing = document.querySelector('#inputShapeSpacing');
+inputShapeSpacing.addEventListener('change', (e) => {
+	shapeSpacing = inputShapeSpacing.value;
 	init3DDraw();
 });
 

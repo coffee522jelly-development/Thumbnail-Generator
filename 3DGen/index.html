@@ -123,24 +123,32 @@
                         </label>
                         <select id="shapeType" class="uk-select" aria-label=" example" value="Box">
                           <option id="Plane" value="Plane">Plane</option>
-                          <option id="Circle" value="Circle">Circle</option>
-                          <option selected id="Box" value="Box">Box</option>
+                          <option selected id="Circle" value="Circle">Circle</option>
+                          <option id="Box" value="Box">Box</option>
                           <option id="Cylinder" value="Cylinder">Cylinder</option>
                           <option id="Cone" value="Cone">Cone</option>
                           <option id="Sphere" value="Sphere">Sphere</option>
                           <option id="Torus" value="Torus">Torus</option>
                           <option id="TorusKnot" value="TorusKnot">TorusKnot</option>
                         </select>
+                        <select id="shapePattern" class="uk-select" aria-label=" example" value="Single">
+                          <option selected id="Single" value="Single">Single</option>
+                          <option id="Triple" value="Triple">Triple</option>
+                          <option id="Nine" value="Nine">Nine</option>
+                        </select>
                       </div>
                       <div class="col">
                         <label class="form-check-label">
+                          <input type="checkbox" id="Fog" class="uk-checkbox"> Fog
+                        </label>
+                        <label class="form-check-label">
                           <input type="checkbox" id="lighting" class="uk-checkbox"> Lighting
                         </label>
-                        <select id="meshType" class="uk-select" aria-label=" example" value="Normal">
-                          <option selected id="Normal" value="Normal">Normal</option>
+                        <select id="meshType" class="uk-select" aria-label=" example" value="Lambert">
+                          <option id="Normal" value="Normal">Normal</option>
                           <option id="Phong" value="Phong">Phong</option>
                           <option id="Basic" value="Basic">Basic</option>
-                          <option id="Lambert" value="Lambert">Lambert</option>
+                          <option selected id="Lambert" value="Lambert">Lambert</option>
                           <option id="Standard" value="Standard">Standard</option>
                         </select>
                       </div>
@@ -157,11 +165,13 @@
             <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
               <div class="shapeParam accordion-body">
                 <p>PolygonVertexSize</p>
-                <input type="range"  class="form-range" id="inputVertexSize" min="3" max="100" step="1" value="3">
+                <input type="range"  class="form-range" id="inputVertexSize" min="3" max="100" step="1" value="50">
                 <p>Size</p>
                 <input type="range"  class="form-range" id="inputShapeSize" min="0" max="500" step="10" value="250">
                 <p>Opacity</p>
                 <input type="range"  class="form-range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="1.0">
+                <p>Spacing</p>
+                <input type="range"  class="form-range" id="inputShapeSpacing" min="0" max="2000" step="10" value="300">
               </div>
             </div>
           </div>
