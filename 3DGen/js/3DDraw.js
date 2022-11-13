@@ -1,4 +1,4 @@
-function init3DDraw() {
+function draw3D() {
 
   const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById('3DCanvas'),
@@ -17,42 +17,16 @@ function init3DDraw() {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color( shapeBackgroundColor);
 
-  if (bFog)
-    scene.fog = new THREE.Fog(0x000000, 1000, 500);
+  if (bLighting)  addLighting(scene);
+  if (bParticle)  createParticles(scene);
+  if (bFog)       scene.fog = new THREE.Fog(0x000000, 1000, 500);
 
   const camera = new THREE.PerspectiveCamera(45, imageWidth / imageHeight);
   camera.position.set(750, 750, 750);
-
-  let canvas3D = document.getElementById('3DCanvas');
-  const controls = new THREE.OrbitControls(camera, canvas3D);
-  
-  if (bLighting)
-    addLighting(scene);
+  new THREE.OrbitControls(camera, document.getElementById('3DCanvas'));
 
   const group = new THREE.Group();
-
-  let shapePatetrn = document.getElementById('shapePattern');
-  if (shapePatetrn.value == 'Single'){
-    const geometry = getGeometry();
-    const material = getMaterial();
-    const drawPolygon = new THREE.Mesh(geometry, material);
-    drawPolygon.position.x = shapeSpacing;
-    group.add(drawPolygon);
-  }
-  else if (shapePatetrn.value == 'Triple'){
-    drawTripleShapes(group, 0);
-  }
-  else if (shapePatetrn.value == 'Nine'){
-    for (let i = 0; i < 3; i++){
-      drawTripleShapes(group, i);
-    }
-  }
-
-  group.position.x = -shapeSpacing;
-
-  if (bParticle)
-    createParticles(scene);
-  
+  drawPatternShape(group);  
   scene.add(group);
 
   tick();
@@ -144,21 +118,56 @@ function addLighting(scene){
     scene.add(ambientLight);
 }
 
-function drawTripleShapes(group, Locate){
-    for (let i=0; i<3;i++){
+
+function drawPatternShape(group){
+  let shapePatetrn = document.getElementById('shapePattern');
+  switch (shapePatetrn.value){
+    case 'Single':
+      drawGridShapes(group, 1, true);
+      break;
+    case 'Triple':
+      drawGridShapes(group, 3, true);
+      break;
+    case 'Nine':
+      drawGridShapes(group, 9, true);
+      break;
+    case '3×3':  
+      drawGridShapes(group, 3, false);
+      break;
+    case '9×9':  
+      drawGridShapes(group, 9, false);
+      break;
+  }
+}
+
+
+function drawGridShapes(group, nSize, bArray){
+  if (bArray){
+    for (let i=0; i<nSize; i++){
       const geometry = getGeometry();
       const material = getMaterial();
       const drawPolygon = new THREE.Mesh(geometry, material);
-      drawPolygon.position.x = i * shapeSpacing;
-      if (Locate == 1){
-        drawPolygon.position.y = shapeSpacing;
-      }
-      else if (Locate == 2){
-        drawPolygon.position.y = -shapeSpacing;
-      }
-
+      drawPolygon.position.x = shapeSpacing * (i / 2);
       group.add(drawPolygon);
     }
+    group.position.x = -shapeSpacing * 0.5 * parseInt(nSize / 2);
+  }
+  else{
+    for (let i=0; i<nSize; i++){
+      for (let j=0; j<nSize; j++){
+        const geometry = getGeometry();
+        const material = getMaterial();
+        const drawPolygon = new THREE.Mesh(geometry, material);
+        drawPolygon.position.x = shapeSpacing * (j / 2);
+        drawPolygon.position.y = shapeSpacing * (i / 2);
+  
+        group.add(drawPolygon);
+      }
+    }
+  
+    group.position.x = -shapeSpacing * 0.5 * parseInt(nSize / 2);
+    group.position.y = -shapeSpacing * 0.5 * parseInt(nSize / 2);
+  }
 }
 
 function createParticles(scene){

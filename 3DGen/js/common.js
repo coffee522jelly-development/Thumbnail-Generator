@@ -35,7 +35,7 @@ const initHeight = window.innerHeight;
 window.addEventListener('load', (e) => {
 
 	getViewportSizeAndAdjust();
-	init3DDraw();
+	draw3D();
 
 	let check = document.getElementById('lighting');
 	check.checked = true;
@@ -52,14 +52,14 @@ btnReload.addEventListener('click', (e) => {
 let iImageWidth = document.querySelector('#imageWidth');
 iImageWidth.addEventListener('change', (e) => {
 	imageWidth = iImageWidth.value;
-	init3DDraw();
+	draw3D();
 });
 
 
 let iIamgeHeight = document.querySelector('#imageHeight');
 iIamgeHeight.addEventListener('change', (e) => {
 	imageHeight = iIamgeHeight.value;
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -67,7 +67,7 @@ iIamgeHeight.addEventListener('change', (e) => {
 let wireFrame = document.querySelector('#wireFrame');
 wireFrame.addEventListener('change', (e) => {
 	bWireFrame = wireFrame.checked;
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -75,7 +75,7 @@ wireFrame.addEventListener('change', (e) => {
 let Fog = document.querySelector('#Fog');
 Fog.addEventListener('change', (e) => {
 	bFog = Fog.checked;
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -83,21 +83,21 @@ Fog.addEventListener('change', (e) => {
 let Lighting = document.querySelector('#lighting');
 Lighting.addEventListener('change', (e) => {
 	bLighting = Lighting.checked;
-	init3DDraw();
+	draw3D();
 });
 
 // perticle
 let perticle = document.querySelector('#perticle');
 perticle.addEventListener('change', (e) => {
 	bParticle = perticle.checked;
-	init3DDraw();
+	draw3D();
 });
 
 // ShapeType
 let selectShapeType = document.querySelector('#shapeType');
 selectShapeType.addEventListener('change', (e) => {
 	updateShapeCheckState();
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -105,7 +105,7 @@ selectShapeType.addEventListener('change', (e) => {
 let selectShapePattern = document.querySelector('#shapePattern');
 selectShapePattern.addEventListener('change', (e) => {
 	updateShapeCheckState();
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -113,7 +113,7 @@ selectShapePattern.addEventListener('change', (e) => {
 let selectMeshType = document.querySelector('#meshType');
 selectMeshType.addEventListener('change', (e) => {
 	updateShapeCheckState();
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -122,7 +122,7 @@ selectMeshType.addEventListener('change', (e) => {
 let inputShapeColor = document.querySelector('#inputShapeColor');
 inputShapeColor.addEventListener('change', (e) => {
 	shapeColor = inputShapeColor.value;
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -130,7 +130,7 @@ inputShapeColor.addEventListener('change', (e) => {
 let inputBackgroundColor = document.querySelector('#inputBackgroundColor');
 inputBackgroundColor.addEventListener('change', (e) => {
 	shapeBackgroundColor = inputBackgroundColor.value;
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -138,7 +138,7 @@ inputBackgroundColor.addEventListener('change', (e) => {
 let inputShapeOpacity = document.querySelector('#inputShapeOpacity');
 inputShapeOpacity.addEventListener('change', (e) => {
 	shapeOpacity = inputShapeOpacity.value;
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -146,14 +146,14 @@ inputShapeOpacity.addEventListener('change', (e) => {
 let inputShapeSize = document.querySelector('#inputShapeSize');
 inputShapeSize.addEventListener('change', (e) => {
 	shapeSize = inputShapeSize.value;
-	init3DDraw();
+	draw3D();
 });
 
 // VertexSize
 let inputShapeVertexSize = document.querySelector('#inputVertexSize');
 inputShapeVertexSize.addEventListener('change', (e) => {
 	shapeVertexSize = inputShapeVertexSize.value;
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -161,7 +161,7 @@ inputShapeVertexSize.addEventListener('change', (e) => {
 let inputShapeSpacing = document.querySelector('#inputShapeSpacing');
 inputShapeSpacing.addEventListener('change', (e) => {
 	shapeSpacing = inputShapeSpacing.value;
-	init3DDraw();
+	draw3D();
 });
 
 
@@ -206,9 +206,8 @@ function OnAspectButton(){
 		break;
 		}
 	}
-
 	cropAspectRatio = parseFloat(str);
-	init3DDraw();
+	draw3D();
 }
 
 
