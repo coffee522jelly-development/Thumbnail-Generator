@@ -14,8 +14,10 @@ let   bFilter 		= false;
 let   bWireFrame 	= false;
 let   bLighting 	= true;
 let   bFog 			= false;
+let   bParticle 	= false;
 
-let   shapeColor 		= "#aaaaaa";
+let   shapeColor 				= "#aaaaaa";
+let   shapeBackgroundColor 		= "#000000";
 let   shapeOpacity		= 1.0;
 let   shapeSize 		= 250;
 let   shapeRotate 		= 0;
@@ -69,7 +71,7 @@ wireFrame.addEventListener('change', (e) => {
 });
 
 
-// Lighting
+// Fog
 let Fog = document.querySelector('#Fog');
 Fog.addEventListener('change', (e) => {
 	bFog = Fog.checked;
@@ -81,6 +83,13 @@ Fog.addEventListener('change', (e) => {
 let Lighting = document.querySelector('#lighting');
 Lighting.addEventListener('change', (e) => {
 	bLighting = Lighting.checked;
+	init3DDraw();
+});
+
+// perticle
+let perticle = document.querySelector('#perticle');
+perticle.addEventListener('change', (e) => {
+	bParticle = perticle.checked;
 	init3DDraw();
 });
 
@@ -113,6 +122,14 @@ selectMeshType.addEventListener('change', (e) => {
 let inputShapeColor = document.querySelector('#inputShapeColor');
 inputShapeColor.addEventListener('change', (e) => {
 	shapeColor = inputShapeColor.value;
+	init3DDraw();
+});
+
+
+// BackgroundColor
+let inputBackgroundColor = document.querySelector('#inputBackgroundColor');
+inputBackgroundColor.addEventListener('change', (e) => {
+	shapeBackgroundColor = inputBackgroundColor.value;
 	init3DDraw();
 });
 

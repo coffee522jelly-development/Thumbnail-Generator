@@ -102,6 +102,8 @@ label {
 
 #3DCanvas canvas {
     border-radius: 7px;
+    background-image: 
+    /* radial-gradient(#ffffff, #888888); */
 }
 
 

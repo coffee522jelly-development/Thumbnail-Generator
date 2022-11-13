@@ -3,8 +3,10 @@ function init3DDraw() {
   const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById('3DCanvas'),
     preserveDrawingBuffer: true,
-    antialias: true
+    antialias: true,
+    alpha: true 
   });
+  
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(imageWidth, imageHeight);
 
@@ -13,6 +15,7 @@ function init3DDraw() {
   canvas.style.height = '100%';
 
   const scene = new THREE.Scene();
+  scene.background = new THREE.Color( shapeBackgroundColor);
 
   if (bFog)
     scene.fog = new THREE.Fog(0x000000, 1000, 500);
@@ -46,6 +49,9 @@ function init3DDraw() {
   }
 
   group.position.x = -shapeSpacing;
+
+  if (bParticle)
+    createParticles(scene);
   
   scene.add(group);
 
@@ -153,4 +159,32 @@ function drawTripleShapes(group, Locate){
 
       group.add(drawPolygon);
     }
+}
+
+function createParticles(scene){
+  // 形状データを作成
+  const SIZE = 3000;
+  // 配置する個数
+  const LENGTH = 1000;
+  // 頂点情報を格納する配列
+  const vertices = [];
+  for (let i = 0; i < LENGTH; i++) {
+    const x = SIZE * (Math.random() - 0.5);
+    const y = SIZE * (Math.random() - 0.5);
+    const z = SIZE * (Math.random() - 0.5);
+
+    vertices.push(x, y, z);
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+  const material = new THREE.PointsMaterial({
+    size: 10,
+    color: shapeColor,
+  });
+
+  // 物体を作成
+  const mesh = new THREE.Points(geometry, material);
+  scene.add(mesh); // シーンは任意の THREE.Scene インスタンス
 }
