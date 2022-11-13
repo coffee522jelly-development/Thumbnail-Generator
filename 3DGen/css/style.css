@@ -1,0 +1,234 @@
+
+ :root {
+    --default-font: 'Lato';
+}
+
+
+html, body {
+    user-select: none;
+    font-family: var(--default-font);
+}
+
+p {
+    font-size: 12px;
+    color:#999999;
+    font-family: var(--default-font);
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+input {
+    font-family: var(--default-font);
+}
+
+label {
+    font-family: var(--default-font);
+}
+
+select {
+    font-family: var(--default-font);
+}
+
+button {
+    font-family: var(--default-font);
+    width: 100%;
+}
+
+li {
+    margin: 2rem 0;
+}
+
+label {
+    font-size: 12px;
+}
+
+#main{
+    padding:10px;
+    background-color: #fff;
+}
+
+#indicator{
+    width: 100%;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 7px;
+    border: 1px solid #dee2e6;
+}
+
+#File{
+    color: #ffffff;
+    background-color: #82d300;
+    cursor: pointer;
+    width: 100%;
+}
+
+#Download{
+    color: #ffffff;
+    background-color: #00b3ff;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* ソースキャンバス
+#sourceImage  {
+    max-height: 200px;
+    max-width: 100%;
+    border-radius: 7px;
+}
+
+#sourceCanvas {
+    max-width: 100%;
+    max-height: 350px;
+    display: none;
+}
+
+#croppedImage{
+    max-width: 100%;
+    max-height: 350px;
+    border-radius: 7px;
+}
+
+/*クロップ後キャンバス*/
+/* #croppedCanvas {
+    max-width: 100%;
+    max-height: 350px;
+    display: block; 
+} */
+
+#3DCanvas {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 7px;
+}
+
+
+.imageItem {
+    padding-left: 10px;
+}
+
+#output {
+    max-height:100px;
+    display:none;
+}
+
+.setParam {
+    padding: 5px;
+}
+
+#EditView{
+    background-color:#F3F7FB;
+}
+
+.editView {
+    display: flex;
+    border: 1px solid #dee2e6;
+    border-radius: 7px;
+    margin: -1px;
+    padding: 10px;
+}
+
+.StyleBox {
+    border: 1px solid #dee2e6;
+    border-radius: 7px;
+}
+
+#paramEditView{
+  margin-top: 10px;
+}
+
+/* Fontselect*/
+/*JP*/
+#IPAex{font-family: 'IPAex';}
+#Timemachine-wa{font-family: 'Timemachine-wa';}
+#Senobi-Gothic{font-family: 'Senobi-Gothic';}
+#Kirin{font-family: 'Kirin';}
+#Kiwimaru-Regular{font-family:'Kiwimaru-Regular';}
+#Kosugi-Maru{font-family:'Kosugi-Maru';}
+#KleeOne-Regular{font-family:'KleeOne-Regular';}
+#Train-One{font-family:'Train-One';}
+#Rampart-One{font-family:'Rampart-One';}
+
+/*World*/
+#Archivo-Narrow{font-family:'Archivo-Narrow';}
+#CornerStone{font-family: 'CornerStone';}
+#Cardo{font-family:'Cardo';}
+#inconsolata{font-family:'inconsolata';}
+#Lato{font-family:'Lato';}
+#Manrope{font-family:'Manrope';}
+#Montserrat{font-family:'Montserrat';}
+#Neuton{font-family:'Neuton';}
+#Oraniebaum{font-family: 'Oraniebaum';}
+#Prokopis{font-family: 'Prokopis';}
+#Smarta{font-family:'Smarta';}
+
+/* モバイル向けのスタイル */
+/* 768px 未満 */
+@media not screen and (min-width: 768px) {
+    #controlPanel  {
+        flex-wrap: wrap;
+    }[]
+    .editView  {
+        flex-wrap: wrap;
+    }
+    #output {
+        width:100%;
+    }
+    /* .cropper-container div{
+        width:100%;
+    } */
+}
+
+/* デスクトップ向けのスタイル */
+/* 768px 以上 */
+@media screen and (max-width: 768px) {
+   /*ソースキャンバス*/
+#sourceImage  {
+    max-height: 200px;
+    width: 100%;
+    border-radius: 7px;
+}
+
+#sourceCanvas {
+    width: 100%;
+    max-height: 350px;
+    display: none;
+}
+
+#croppedImage{
+    width: 100%;
+    max-height: 350px;
+    border-radius: 7px;
+}
+
+/*クロップ後キャンバス*/
+#croppedCanvas {
+    width: 100%;
+    max-height: 350px;
+    padding-top: 26px;
+    /* display: block; */
+}
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: #243447;
+      color: #eeeeee;
+    }
+
+    .controlPanel {
+        border: 1px dotted #cccccc;
+    }
+
+    .editView  {
+        border: 1px dotted #cccccc;
+    }
+
+    .preView  {
+        border: 1px dotted #cccccc;
+    }
+}

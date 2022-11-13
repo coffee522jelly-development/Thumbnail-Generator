@@ -1,0 +1,123 @@
+/*フォント定義*/
+/*JPフォント*/
+@font-face {
+      /*IPAex明朝*/
+      font-family:'IPAex';
+      src: url('../fonts/JPFont/IPAexfont/ipaexm.ttf') format('truetype');
+}
+
+@font-face {
+      /*タイムマシンわ号*/
+      font-family:'Timemachine-wa';
+      src: url('../fonts/JPFont/timemachine-wa/timemachine-wa.ttf') format('truetype');
+}
+
+@font-face {
+      /*キウイ丸レギュラー*/
+      font-family:'Kiwimaru';
+      src: url('../fonts/JPFont/Kiwi_Maru/KiwiMaru-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*クレーOneレギュラー*/
+      font-family:'KleeOne';
+      src: url('../fonts/JPFont/Klee_One/KleeOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*小杉丸*/
+      font-family:'Kosugi-Maru';
+      src: url('../fonts/JPFont/Kosugi_Maru/KosugiMaru-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*キリン*/
+      font-family:'Kirin';
+      src: url('../fonts/JPFont/Kirin/kirin-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*セノビゴシック*/
+      font-family:'Senobi-Gothic';
+      src: url('../fonts/JPFont/Senobi-Gothic/Senobi-Gothic-Regular.ttf') format('truetype');
+}
+
+/*Worldフォント*/
+@font-face {
+      /*Archivo-Narrow*/
+      font-family:'Archivo-Narrow';
+      src: url('../fonts/WorldFont/Archivo_Narrow/static/ArchivoNarrow-Medium.ttf') format('truetype');
+}
+
+@font-face {
+      /*Cardo*/
+      font-family:'Cardo';
+      src: url('../fonts/WorldFont/Cardo/Cardo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*inconsolata*/
+      font-family:'inconsolata';
+      src: url('../fonts/WorldFont/inconsolata/inconsolata/static/Ligconsolata-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Lato*/
+      font-family:'Lato';
+      src: url('../fonts/WorldFont/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Manrope*/
+      font-family:'Manrope';
+      src: url('../fonts/WorldFont/Manrope/static/Manrope-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Montserrat*/
+      font-family:'Montserrat';
+      src: url('../fonts/WorldFont/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Neuton*/
+      font-family:'Neuton';
+      src: url('../fonts/WorldFont/Neuton/Neuton-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*トレインOne*/
+      font-family:'Train-One';
+      src: url('../fonts/WorldFont/Train_One/TrainOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*ランパートOne*/
+      font-family:'Rampart-One';
+      src: url('../fonts/WorldFont/Rampart_One/RampartOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*CornerStone*/
+      font-family:'CornerStone';
+      src: url('../fonts/WorldFont/Cornerstone/Cornerstone.ttf') format('truetype');
+}
+
+@font-face {
+      /*Oraniebaum*/
+      font-family:'Oraniebaum';
+      src: url('../fonts/WorldFont/oranienbaum/Oranienbaum.ttf') format('truetype');
+}
+
+@font-face {
+      /*Prokopis*/
+      font-family:'Prokopis';
+      src: url('../fonts/WorldFont/Prokopis/NF-Prokopis-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Smarta*/
+      font-family:'Smarta';
+      src: url('../fonts/WorldFont/Smarta/Smarta/Smarta-Regular.ttf') format('truetype');
+}
+  /*フォント定義ここまで*/
