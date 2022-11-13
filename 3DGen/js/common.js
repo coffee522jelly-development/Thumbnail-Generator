@@ -1,5 +1,7 @@
 // canvas
 let   cropAspectRatio 	= 16 / 9;
+let   imageWidth  = 1600;
+let   imageHeight = 900;
 
 // fonts
 let   boutlineFont 		= false;
@@ -37,6 +39,20 @@ window.addEventListener('load', (e) => {
 let btnReload = document.querySelector('#Reload');
 btnReload.addEventListener('click', (e) => {
 	location.reload();
+});
+
+
+let iImageWidth = document.querySelector('#imageWidth');
+iImageWidth.addEventListener('change', (e) => {
+	imageWidth = iImageWidth.value;
+	init3DDraw();
+});
+
+
+let iIamgeHeight = document.querySelector('#imageHeight');
+iIamgeHeight.addEventListener('change', (e) => {
+	imageHeight = iIamgeHeight.value;
+	init3DDraw();
 });
 
 

@@ -100,9 +100,7 @@ label {
     display: block; 
 } */
 
-#3DCanvas {
-    max-width: 100%;
-    max-height: 400px;
+#3DCanvas canvas {
     border-radius: 7px;
 }
 
