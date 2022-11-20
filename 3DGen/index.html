@@ -122,6 +122,7 @@
                           <input type="checkbox" id="wireFrame" class="uk-checkbox"> WireFrame
                         </label>
                         <select id="shapeType" class="uk-select" aria-label=" example" value="Box">
+                          <option id="Line" value="Line">Line</option>
                           <option id="Plane" value="Plane">Plane</option>
                           <option selected id="Circle" value="Circle">Circle</option>
                           <option id="Box" value="Box">Box</option>
@@ -138,6 +139,8 @@
                           <option id="3×3" value="3×3">3×3</option>
                           <option id="9×9" value="9×9">9×9</option>
                         </select>
+                        <input type="color" id="inputShapeColor" value="#aaaaaa" list="defaultcolors">
+                        <input type="color" id="inputBackgroundColor" value="#000000" list="defaultcolors">
                       </div>
                       <div class="col">
                         <label class="form-check-label">
@@ -147,19 +150,23 @@
                           <input type="checkbox" id="lighting" class="uk-checkbox"> Lighting
                         </label>
                         <label class="form-check-label">
-                          <input type="checkbox" id="perticle" class="uk-checkbox"> Perticle
+                          <input type="checkbox" id="helper" class="uk-checkbox"> Helper
                         </label>
                         <select id="meshType" class="uk-select" aria-label=" example" value="Lambert">
                           <option id="Normal" value="Normal">Normal</option>
                           <option id="Phong" value="Phong">Phong</option>
                           <option id="Basic" value="Basic">Basic</option>
+                          <option id="Toon" value="Toon">Toon</option>
                           <option selected id="Lambert" value="Lambert">Lambert</option>
                           <option id="Standard" value="Standard">Standard</option>
                         </select>
+                        <select id="bgTexture" class="uk-select" aria-label=" example" value="None">
+                          <option id="None" value="None">None</option>
+                          <option id="Particle" value="Particle">Particle</option>
+                        </select>
+                        <input type="color" id="inputParticleColor" value="#ffffff" list="defaultcolors">
                       </div>
                     </div>
-                    <input type="color" id="inputShapeColor" value="#aaaaaa" list="defaultcolors">
-                    <input type="color" id="inputBackgroundColor" value="#000000" list="defaultcolors">
                   </div>
               </div>
             </div>

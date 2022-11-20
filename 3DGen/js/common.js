@@ -14,7 +14,7 @@ let   bFilter 		= false;
 let   bWireFrame 	= false;
 let   bLighting 	= true;
 let   bFog 			= false;
-let   bParticle 	= false;
+let   bHelper 		= false;
 
 let   shapeColor 				= "#aaaaaa";
 let   shapeBackgroundColor 		= "#000000";
@@ -25,6 +25,9 @@ let   shapeLineWidth 	= 10;
 let   shapeVertexSize	= 50;
 let   shapeSpacing		= 300;
 let   shapePattern		= 'Single';
+
+let   particleColor 	= "#ffffff";
+
 
 const initWidth = window.innerWidth;
 const initHeight = window.innerHeight;
@@ -86,10 +89,11 @@ Lighting.addEventListener('change', (e) => {
 	draw3D();
 });
 
-// perticle
-let perticle = document.querySelector('#perticle');
-perticle.addEventListener('change', (e) => {
-	bParticle = perticle.checked;
+
+// Helper
+let Helper = document.querySelector('#helper');
+Helper.addEventListener('change', (e) => {
+	bHelper = Helper.checked;
 	draw3D();
 });
 
@@ -101,7 +105,7 @@ selectShapeType.addEventListener('change', (e) => {
 });
 
 
-// ShapeType
+// ShapePattern
 let selectShapePattern = document.querySelector('#shapePattern');
 selectShapePattern.addEventListener('change', (e) => {
 	updateShapeCheckState();
@@ -112,6 +116,14 @@ selectShapePattern.addEventListener('change', (e) => {
 // meshType
 let selectMeshType = document.querySelector('#meshType');
 selectMeshType.addEventListener('change', (e) => {
+	updateShapeCheckState();
+	draw3D();
+});
+
+
+// bgTexture
+let bgTexture = document.querySelector('#bgTexture');
+bgTexture.addEventListener('change', (e) => {
 	updateShapeCheckState();
 	draw3D();
 });
@@ -130,6 +142,14 @@ inputShapeColor.addEventListener('change', (e) => {
 let inputBackgroundColor = document.querySelector('#inputBackgroundColor');
 inputBackgroundColor.addEventListener('change', (e) => {
 	shapeBackgroundColor = inputBackgroundColor.value;
+	draw3D();
+});
+
+
+// Color
+let inputParticleColor = document.querySelector('#inputParticleColor');
+inputParticleColor.addEventListener('change', (e) => {
+	particleColor = inputParticleColor.value;
 	draw3D();
 });
 

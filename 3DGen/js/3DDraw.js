@@ -1,38 +1,50 @@
 function draw3D() {
-
+  // レンダラー・キャンバスの設定
   const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById('3DCanvas'),
     preserveDrawingBuffer: true,
     antialias: true,
-    alpha: true 
+    alpha: true, 
+    physicalCorrectLights:true
   });
-  
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(imageWidth, imageHeight);
-
+  // renderer.shadowMap.enabled = true;
+  
   let canvas = document.getElementById('3DCanvas');
   canvas.style.width = '50%';
   canvas.style.height = '100%';
 
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color( shapeBackgroundColor);
-
-  if (bLighting)  addLighting(scene);
-  if (bParticle)  createParticles(scene);
-  if (bFog)       scene.fog = new THREE.Fog(0x000000, 1000, 500);
-
+  // カメラの設定
   const camera = new THREE.PerspectiveCamera(45, imageWidth / imageHeight);
   camera.position.set(750, 750, 750);
-  new THREE.OrbitControls(camera, document.getElementById('3DCanvas'));
+  let controls = new THREE.OrbitControls(camera, document.getElementById('3DCanvas'));
 
+  // シーン設定
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(shapeBackgroundColor);
+  
+  if (bHelper)    addHelper(scene);
+  if (bFog)       addFog(scene);
+
+  getBackgroundTexture(scene);
+
+  // シーンへジオメトリ追加
   const group = new THREE.Group();
-  drawPatternShape(group);  
+  drawPatternShape(group);
+
   scene.add(group);
+
+  // ライト固定
+  scene.add(camera);
+  if (bLighting)  addLighting(camera);
 
   tick();
 
   function tick() {
     renderer.render(scene, camera);
+    camera.castShadow = true;
+    controls.update();
     requestAnimationFrame(tick);
   }
 }
@@ -43,27 +55,38 @@ function getGeometry(){
   
   const shapeType = document.getElementById('shapeType');
   switch (shapeType.value){
+    case "Line":
+      geometry = new THREE.PlaneGeometry(shapeSize, shapeSize, shapeVertexSize);
+      break;
+
     case "Plane":
       geometry = new THREE.PlaneGeometry(shapeSize, shapeSize, shapeVertexSize);
       break;
+
     case "Circle":
       geometry = new THREE.CircleGeometry(shapeSize, shapeVertexSize);
       break;
+
     case "Box":
       geometry = new THREE.BoxGeometry(shapeSize, shapeSize, shapeSize);
       break;
+
     case "Cylinder":
       geometry = new THREE.CylinderGeometry(shapeSize, shapeSize, shapeSize, shapeVertexSize);
       break;
+
     case "Cone":
       geometry = new THREE.ConeGeometry(shapeSize, shapeSize, shapeVertexSize);
       break;
+
     case "Sphere":
       geometry = new THREE.SphereGeometry(shapeSize, shapeVertexSize, shapeVertexSize);
       break;
+
     case "Torus":
       geometry = new THREE.TorusGeometry(400, 200, 10, shapeVertexSize);
       break;
+
     case "TorusKnot":  
       geometry = new THREE.TorusKnotGeometry(shapeSize, shapeSize, shapeSize, shapeVertexSize);
       break;
@@ -83,15 +106,19 @@ function getMaterial(){
     case "Phong":
       material = new THREE.MeshPhongMaterial({color: shapeColor, wireframe: bWireFrame});
       break;
+
     case "Lambert":
       material = new THREE.MeshLambertMaterial({color: shapeColor, wireframe: bWireFrame});
       break;
+
     case "Toon":
       material = new THREE.MeshToonMaterial({color: shapeColor, wireframe: bWireFrame});
       break;
+
     case "Standard":
       material = new THREE.MeshStandardMaterial({color: shapeColor, wireframe: bWireFrame});
       break;
+      
     case "Normal":
       material = new THREE.MeshNormalMaterial();
       break;
@@ -102,20 +129,30 @@ function getMaterial(){
 
 
 function addLighting(scene){
-    const directionalLightOne = new THREE.DirectionalLight( 0xffffff, 1.0);
-    scene.add(directionalLightOne);
-    directionalLightOne.position.set(0, 1, 0);
+    const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.99);
+    directionalLight.position.set(0.5, 0.8, 0.5).normalize();
+    directionalLight.castShadow = true;
+    directionalLight.shadow.mapSize.width = 512;
+    directionalLight.shadow.mapSize.height = 512;
+    scene.add(directionalLight);
+    scene.add(directionalLight.target);
 
-    const directionalLightTwo = new THREE.DirectionalLight( 0xffffff, 0.8);
-    scene.add(directionalLightTwo );
-    directionalLightTwo.position.set(0, 0, 1);
-    
-    const directionalLightThree = new THREE.DirectionalLight( 0xffffff, 0.5);
-    scene.add(directionalLightThree);
-    directionalLightThree.position.set(1, 0, 0);
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
     scene.add(ambientLight);
+}
+
+
+function addHelper(scene){
+  const size = 1500;
+  const divisions = 15;
+  const gridHelper = new THREE.GridHelper( size, divisions );
+  scene.add(gridHelper);
+}
+
+
+function addFog(scene){
+    // scene.fog = new THREE.Fog(0x000000, 1000, 500);
+    scene.fog = new THREE.FogExp2(0x000000, 0.00050);
 }
 
 
@@ -170,11 +207,20 @@ function drawGridShapes(group, nSize, bArray){
   }
 }
 
+function getBackgroundTexture(scene){
+  const bgTexture = document.getElementById('bgTexture');
+  switch (bgTexture.value){
+    case "Particle":
+      createParticles(scene);
+      break;
+  }
+}
+
 function createParticles(scene){
   // 形状データを作成
   const SIZE = 3000;
   // 配置する個数
-  const LENGTH = 1000;
+  const LENGTH = 100000;
   // 頂点情報を格納する配列
   const vertices = [];
   for (let i = 0; i < LENGTH; i++) {
@@ -187,10 +233,9 @@ function createParticles(scene){
 
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-
   const material = new THREE.PointsMaterial({
-    size: 10,
-    color: shapeColor,
+    size: 7,
+    color: particleColor,
   });
 
   // 物体を作成
