@@ -2,11 +2,6 @@
 let   cropAspectRatio 	= 16 / 9;
 
 // fonts
-let   boutlineFont 		= false;
-let   bemphasisFont 	= false;
-
-let   fontBold 	        = '';
-let   fontItalic 	    = '';
 let   fontSize 			= 20;
 let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
@@ -28,11 +23,6 @@ let   Sepia 		= 0;
 let   Opacity 		= 1.0;
 
 // ShaperEffects
-let   bShape 			= false;	
-let   bShapeFill 		= false;
-let   bShapeDash 		= false;
-let   bShapeBackGround 	= false;
-
 let   shapeColor 		= "#aaaaaa";
 let   shapeOpacity		= 1.0;
 let   shapeSize 		= 100;
@@ -65,41 +55,6 @@ let btnReload = document.querySelector('#Reload');
 btnReload.addEventListener('click', (e) => {
 	location.reload();
 });
-
-
-// BoldOnOff
-let boldFont = document.querySelector('#fontBold');
-boldFont.addEventListener('change', (e) => {
-	fontBold = (boldFont.checked) ? 'bold' : '';
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// ItalicOnOff
-let ItalicFont = document.querySelector('#fontItalic');
-ItalicFont.addEventListener('change', (e) => {
-	fontItalic = (ItalicFont.checked) ? 'italic' : '';
-
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// outlineOnOff
-let outlineFont = document.querySelector('#outlineFont');
-outlineFont.addEventListener('change', (e) => {
-	boutlineFont = outlineFont.checked;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// EmphasisOnOff
-let emphasisFont = document.querySelector('#emphasisFont');
-emphasisFont.addEventListener('change', (e) => {
-	bemphasisFont = emphasisFont.checked;
-	updateFontCheckState();
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
 
 // FontSize
 let inputFontSize = document.querySelector('#inputFontSize');
@@ -174,40 +129,8 @@ inputFontLocateY.addEventListener('change', (e) => {
 });
 
 
-// DrawShapeOnOff
-let drawShape = document.querySelector('#drawShape');
-drawShape.addEventListener('change', (e) => {
-	updateShapeCheckState();
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-// BackGroundOnOff
-let drawBackGround = document.querySelector('#drawBackGround');
-drawBackGround.addEventListener('change', (e) => {
-	updateShapeCheckState();
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// DrawShapeFillOnOff
-let drawShapeFill = document.querySelector('#drawShapeFill');
-drawShapeFill.addEventListener('change', (e) => {
-	bShapeFill = drawShapeFill.checked;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// DrawShapeDashOnOff
-let drawShapeDash = document.querySelector('#drawShapeDash');
-drawShapeDash.addEventListener('change', (e) => {
-	bShapeDash = drawShapeDash.checked;
-	updateShapeCheckState();
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
 // ShapeType
-var selectShapeType = document.querySelector('#shapeType');
+let selectShapeType = document.querySelector('#shapeType');
 selectShapeType.addEventListener('change', (e) => {
 	updateShapeCheckState();
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
@@ -384,20 +307,20 @@ btnResetParam.addEventListener('click', (e) => {
 });
 
 
-// fullScreen
-let fullScreen = document.querySelector('#fullScreen');
-fullScreen.addEventListener ('click', (e) => {     
-    let main = document.querySelector('#main');
-	main.requestFullscreen();
-});
+// // fullScreen
+// let fullScreen = document.querySelector('#fullScreen');
+// fullScreen.addEventListener ('click', (e) => {     
+//     let main = document.querySelector('#main');
+// 	main.requestFullscreen();
+// });
 
 // 関数/////////////////////////////////////////////////////////////////
 function updateFontCheckState(){
-	let emphasisFont = document.querySelector('#emphasisFont');
-	document.querySelector("#inputFontLineWidth").disabled = (emphasisFont.checked == false);
+	let fontEmphasis = document.querySelector('#fontEmphasis');
+	document.querySelector("#inputFontLineWidth").disabled = (fontEmphasis.checked == false);
 
-	let outline = document.querySelector('#outlineFont');
-	outline.disabled = bemphasisFont;
+	let fontOutline = document.querySelector('#fontOutLine');
+	fontOutline.disabled = bfontEmphasis;
 }
 
 function updateShapeCheckState(){
@@ -415,6 +338,7 @@ function updateShapeCheckState(){
 
 	// check(Draw)
 	let fill = document.querySelector('#drawShapeFill');
+	bShapeFill = fill.checked;
 	let dash = document.querySelector('#drawShapeDash');
 	let shapeType = document.querySelector('#shapeType');
 	fill.disabled = !bShape;

@@ -1,301 +1,299 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- CSS load -->
-  <link rel="stylesheet" type="text/css" media="all" href="dist/css/cropper.css">
-  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="dist/css/uikit.min.css">
-
-  <!-- Javascript load -->
-  <script type="text/javascript" src="dist/js/cropper.min.js"></script>
-  <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="dist/js/uikit.min.js"></script>
-  
-  <title>ThumbnailGenerator(Ver0.0.5)</title>
-</head>
-
-<body>
-  <!--As a EditView -->
-  <div id="main">
-    <div id="EditView" class="editView row">
-      <div id="sourceImage" class="imageItem col-2">
-        <p>EditView</p>
-        <canvas id="sourceCanvas"></canvas>
-        <div id="indicator" class="d-block mx-auto">
-          <p>Indicator : </p>
-        </div>
-        <a href="../3DGen/index.html" target="_blank">GenMode</a>
-      </div>
-      <div id="croppedImage" class="imageItem col-7">
-        <canvas id="croppedCanvas" class="d-block d-flex align-items-center mx-auto"></canvas>
-        <img id="output" src="" class="d-block d-flex align-items-center mx-auto" >
-      </div>
-      <div id="ImageFilter" class="imageItem col-3">
-        <p>Brightness</p>
-        <input type="range" class="form-range" id="inputBrightness" min="0" max="200" step="20" value="100">
-        <p>Blur</p>
-        <input type="range" class="form-range" id="inputBlur" min="0" max="20" step="2" value="0">
-        <p>Contrast</p>
-        <input type="range" class="form-range" id="inputContrast" min="0" max="200" step="10" value="100">
-        <p>GrayScale</p>
-        <input type="range" class="form-range" id="inputGrayScale" min="0" max="100" step="10" value="0">
-        <p>Hue</p>
-        <input type="range" class="form-range" id="inputHue" min="0" max="360" step="1" value="0">
-        <p>Opacity</p>
-        <input type="range" class="form-range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
-        <p>Sepia</p>
-        <input type="range" class="form-range" id="inputSepia" min="0" max="100" step="10" value="0">
-        <button id="ResetParam" class="uk-button uk-button-default">Reset</button>
-      </div>
-    </div>
-    <div id="paramEditView" class="editView row">
-      <div id="TitleEdit" class="col-3">
-        <div class="accordion" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">MainControl</button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-              <div class="accordion-body">
-                <div class="setParam col">
-                  <p>Text</p>
-                  <form name="Title">
-                    <div>
-                      <input type="text" class="uk-input" name="caption" placeholder="Text" aria-label="Text" value="Hello.">
-                    </div>
-                  </form>
-                </div>
-                <div id="controlButton" class="setParam row-cols-1">
-                  <div class="setParam col">
-                    <p>Control</p>
-                    <label id="File" class="uk-button">
-                      <input type="file" id="uploader">SelectFile
-                    </label>
-                    <label id="Download" class="uk-button uk-button-default">
-                      Download
-                    </label>
-                  </div>
-                  <div class="setParam col">
-                    <p>Utility</p>
-                    <button id="Reload" class="uk-button uk-button-default">
-                      Reload
-                    </button>
-                    <!-- <button id="fullScreen" class="uk-button uk-button-default">
-                      FullScreen
-                    </button> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">CropSetting</button>
-                </h2>
-                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                  <div class="accordion-body">
-                    <div class="setParam col">
-                      <p>Aspect Ratio</p>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio5" value="2.333333">
-                        <label class="form-check-label" for="exampleRadios5">21:9</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
-                        <label class="form-check-label" for="exampleRadios1">16:9</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
-                        <label class="form-check-label" for="exampleRadios2">4:3</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
-                        <label class="form-check-label" for="exampleRadios3">3:2</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
-                        <label class="form-check-label" for="exampleRadios4">1:1</label>
-                      </div>
-                      <button id="aspectRatio" class="uk-button-default">
-                        Crop
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS load -->
+    <link rel="stylesheet" type="text/css" media="all" href="dist/css/cropper.css">
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/uikit.min.css">
+    <!-- Javascript load -->
+    <script type="text/javascript" src="dist/js/vue.js"></script>
+    <script type="text/javascript" src="dist/js/cropper.min.js"></script>
+    <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="dist/js/uikit.min.js"></script>
+    <title>ThumbnailGenerator(Ver0.0.5)</title>
+  </head>
+  <body>
+    <!--As a EditView -->
+    <div id="main">
+      <div id="EditView" class="editView row">
+        <div id="sourceImage" class="imageItem col-2">
+          <p>EditView</p>
+          <canvas id="sourceCanvas"></canvas>
+          <div id="indicator" class="d-block mx-auto">
+            <p>Indicator : </p>
           </div>
         </div>
+        <div id="croppedImage" class="imageItem col-7">
+          <canvas id="croppedCanvas" class="d-block d-flex align-items-center mx-auto"></canvas>
+          <img id="output" src="" class="d-block d-flex align-items-center mx-auto" >
+        </div>
+        <div id="ImageFilter" class="imageItem col-3">
+          <p>Brightness</p>
+          <input type="range" class="form-range" id="inputBrightness" min="0" max="200" step="20" value="100">
+          <p>Blur</p>
+          <input type="range" class="form-range" id="inputBlur" min="0" max="20" step="2" value="0">
+          <p>Contrast</p>
+          <input type="range" class="form-range" id="inputContrast" min="0" max="200" step="10" value="100">
+          <p>GrayScale</p>
+          <input type="range" class="form-range" id="inputGrayScale" min="0" max="100" step="10" value="0">
+          <p>Hue</p>
+          <input type="range" class="form-range" id="inputHue" min="0" max="360" step="1" value="0">
+          <p>Opacity</p>
+          <input type="range" class="form-range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
+          <p>Sepia</p>
+          <input type="range" class="form-range" id="inputSepia" min="0" max="100" step="10" value="0">
+          <button id="ResetParam" class="uk-button uk-button-default">Reset</button>
+        </div>
       </div>
-      <div id="FontEdit" class="col-4">
-        <div class="contents">
+      <div id="paramEditView" class="editView row">
+        <div id="TitleEdit" class="col-3">
           <div class="accordion" id="accordionPanelsStayOpenExample">
             <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">FontStyle</button>
+              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">MainControl</button>
               </h2>
-              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                 <div class="accordion-body">
-                  <select id="fontStyle" class="form-select uk-select" aria-label=" example" value="Train-One">
-                    <optgroup label="-JPFont-">
-                    </optgroup>
-                    <option id="IPAex" value="IPAex">IPAex明朝</option>
-                    <option id="Timemachine-wa" value="Timemachine-wa">タイムマシンわ号</option>
-                    <option id="Senobi-Gothic" value="Senobi-Gothic">せのびゴシック</option>
-                    <option id="Kiwimaru" value="Kiwimaru">キウイ丸</option>
-                    <option id="Kosugi-Maru" value="Kosugi-Maru">小杉丸</option>
-                    <option id="KleeOne" value="KleeOner">クレーワン</option>
-                    <option id="Kirin" value="Kirin">キリン</option>
-                    <optgroup label="-WorldFont-">
-                    </optgroup>
-                    <option id="Archivo-Narrow" value="Archivo-Narrow">Archivo-Narrow</option>
-                    <option id="Cardo" value="Cardo">Cardo</option>
-                    <option selected id="CornerStone" value="CornerStone">CornerStone</option>
-                    <option id="inconsolata" value="inconsolata">inconsolata</option>
-                    <option id="Lato" value="Lato">Lato</option>
-                    <option id="Manrope" value="Manrope">Manrope</option>
-                    <option id="Montserrat" value="Montserrat">Montserrat</option>
-                    <option id="Neuton" value="Neuton">Neuton</option>
-                    <option id="Oraniebaum" value="Oraniebaum">Oraniebaum</option>
-                    <option id="Prokopis" value="Prokopis">Prokopis</option>
-                    <option id="Rampart-One" value="Rampart-One">Rampart-One</option>
-                    <option id="Smarta" value="Smarta">Smarta</option>
-                    <option id="Train-One" value="Train-One">Train-One</option>
+                  <div class="setParam col">
+                    <p>Text</p>
+                    <form name="Title">
+                      <div>
+                        <input type="text" class="uk-input" name="caption" placeholder="Text" aria-label="Text" value="Hello.">
+                      </div>
+                    </form>
+                  </div>
+                  <div id="controlButton" class="setParam row-cols-1">
+                    <div class="setParam col">
+                      <p>Control</p>
+                      <label id="File" class="uk-button">
+                        <input type="file" id="uploader">SelectFile 
+                      </label>
+                      <label id="Download" class="uk-button uk-button-default">Download </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">CropSetting</button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                  <div class="setParam col">
+                    <p>Aspect Ratio</p>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio5" value="2.333333">
+                      <label class="form-check-label" for="exampleRadios5">21:9</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
+                      <label class="form-check-label" for="exampleRadios1">16:9</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
+                      <label class="form-check-label" for="exampleRadios2">4:3</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
+                      <label class="form-check-label" for="exampleRadios3">3:2</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
+                      <label class="form-check-label" for="exampleRadios4">1:1</label>
+                    </div>
+                    <button id="aspectRatio" class="uk-button-default">Crop </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingNine">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseNine">Utility</button>
+              </h2>
+              <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
+                <div class="accordion-body">
+                  <div class="setParam col">
+                    <p>Utility</p>
+                    <button id="Reload" class="uk-button uk-button-default">Reload </button>
+                    <button id="GenMode" class="uk-button uk-button-default" onclick="location.href='../3DGen/index.html'">GenMode </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="FontEdit" class="col-4">
+          <div class="contents">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">FontStyle</button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+                  <div class="accordion-body">
+                    <input type="color" id="inputFontColor" value="#ffffff" list="defaultcolors">
+                    <input type="color" id="inputFontBackColor" value="#0068b7" list="defaultcolors">
+                    <select id="fontStyle" class="form-select uk-select" aria-label=" example" value="Train-One">
+                      <optgroup label="-JPFont-"></optgroup>
+                      <option id="IPAex" value="IPAex">IPAex明朝</option>
+                      <option id="Timemachine-wa" value="Timemachine-wa">タイムマシンわ号</option>
+                      <option id="Senobi-Gothic" value="Senobi-Gothic">せのびゴシック</option>
+                      <option id="Kiwimaru" value="Kiwimaru">キウイ丸</option>
+                      <option id="Kosugi-Maru" value="Kosugi-Maru">小杉丸</option>
+                      <option id="KleeOne" value="KleeOner">クレーワン</option>
+                      <option id="Kirin" value="Kirin">キリン</option>
+                      <optgroup label="-WorldFont-"></optgroup>
+                      <option id="Archivo-Narrow" value="Archivo-Narrow">Archivo-Narrow</option>
+                      <option id="Cardo" value="Cardo">Cardo</option>
+                      <option selected id="CornerStone" value="CornerStone">CornerStone</option>
+                      <option id="inconsolata" value="inconsolata">inconsolata</option>
+                      <option id="Lato" value="Lato">Lato</option>
+                      <option id="Manrope" value="Manrope">Manrope</option>
+                      <option id="Montserrat" value="Montserrat">Montserrat</option>
+                      <option id="Neuton" value="Neuton">Neuton</option>
+                      <option id="Oraniebaum" value="Oraniebaum">Oraniebaum</option>
+                      <option id="Prokopis" value="Prokopis">Prokopis</option>
+                      <option id="Rampart-One" value="Rampart-One">Rampart-One</option>
+                      <option id="Smarta" value="Smarta">Smarta</option>
+                      <option id="Train-One" value="Train-One">Train-One</option>
+                    </select>
+                    <label class="form-check-label">
+                      <input type="checkbox" id="fontBold" class="uk-checkbox" v-model="isChecked" v-on:change="setBold">Bold 
+                    </label>
+                    <label class="form-check-label">
+                      <input type="checkbox" id="fontItalic" class="uk-checkbox" v-model="isChecked" v-on:change="setItalic">Italic 
+                    </label>
+                    <label class="form-check-label">
+                      <input type="checkbox" id="fontOutLine" class="uk-checkbox" v-model="isChecked" v-on:change="setOutLine">Outline 
+                    </label>
+                    <label class="form-check-label">
+                      <input type="checkbox" id="fontEmphasis" class="uk-checkbox" v-model="isChecked" v-on:change="setEmphasis">Em 
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">FontParam</button>
+                </h2>
+                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                  <div class="accordion-body">
+                    <p>Size</p>
+                    <input type="range" class="form-range" id="inputFontSize" min="0" max="100" step="1" value="20">
+                    <p>Rotate</p>
+                    <input type="range" class="form-range" id="inputFontRotate" min="0" max="360" step="1" value="0">
+                    <p>LetterSpacing</p>
+                    <input type="range" class="form-range" id="inputFontSpacing" min="0" max="200" step="10" value="10">
+                    <p>LineWidth</p>
+                    <input type="range" class="form-range" id="inputFontLineWidth" min="0" max="150" step="5" value="10">
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">FontLocator</button>
+                </h2>
+                <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
+                  <div class="accordion-body">
+                    <p>LocateX</p>
+                    <p id="indifX"></p>
+                    <input type="range" class="form-range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
+                    <p>LocateY</p>
+                    <p id="indifY"></p>
+                    <input type="range" class="form-range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="ShapeEdit" class="col-5">
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="true" aria-controls="panelsStayOpen-collapseFive">ShapeStyle</button>
+              </h2>
+              <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFive">
+                <div class="accordion-body">
+                  <input type="color" id="inputShapeColor" value="#aaaaaa" list="defaultcolors">
+                  <label>
+                    <input type="checkbox" id="drawShape" class="uk-checkbox" v-model="isChecked" v-on:change="setShapeDraw">Draw 
+                  </label>
+                  <label>
+                    <input type="checkbox" id="drawBackGround" class="uk-checkbox" v-model="isChecked" v-on:change="setBackGround">BackGround(Only) 
+                  </label>
+                  <select id="shapeType" class="uk-select" aria-label=" example" value="Arc">
+                    <option selected id="Arc" value="Arc">Arc</option>
+                    <option id="Square" value="Square">Square</option>
+                    <option id="justify-Rect" value="justify-Rect">justify-Rect</option>
+                    <option id="Line" value="Line">Line</option>
+                    <option id="Sector" value="Sector">Sector</option>
+                    <option id="Polygon" value="Polygon">Polygon</option>
                   </select>
-                  <input type="color" id="inputFontColor" value="#ffffff" list="defaultcolors">
-                  <input type="color" id="inputFontBackColor" value="#0068b7" list="defaultcolors">
-                  <label class="form-check-label">
-                    <input type="checkbox" id="fontBold" class="uk-checkbox"> Bold
-                  </label>
-                  <label class="form-check-label">
-                    <input type="checkbox" id="fontItalic" class="uk-checkbox"> Italic
-                  </label>
-                  <label class="form-check-label">
-                    <input type="checkbox" id="outlineFont" class="uk-checkbox"> Outline
-                  </label>
-                  <label class="form-check-label">
-                    <input type="checkbox" id="emphasisFont" class="uk-checkbox"> Em
-                  </label>
+                  <input type="checkbox" id="drawShapeDash" class="uk-checkbox" v-model="isChecked" v-on:change="setShapeDash">
+                  <label>Dash</label>
+                  <input type="checkbox" id="drawShapeFill" class="uk-checkbox" v-model="isChecked" v-on:change="setShapeFill">
+                  <label>Fill</label>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">FontParam</button>
+              <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">ShapeParam</button>
               </h2>
-              <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
-                <div class="accordion-body">
+              <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
+                <div class="shapeParam accordion-body">
                   <p>Size</p>
-                  <input type="range"  class="form-range" id="inputFontSize" min="0" max="100" step="1" value="20">
+                  <input type="range" class="form-range" id="inputShapeSize" min="0" max="1000" step="10" value="100">
                   <p>Rotate</p>
-                  <input type="range"  class="form-range" id="inputFontRotate" min="0" max="360" step="15" value="0">
-                  <p>LetterSpacing</p>
-                  <input type="range"  class="form-range" id="inputFontSpacing" min="0" max="200" step="10" value="10">
+                  <input type="range" class="form-range" id="inputShapeRotate" min="0" max="360" step="15" value="0">
+                  <p>Opacity</p>
+                  <input type="range" class="form-range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="1.0">
                   <p>LineWidth</p>
-                  <input type="range"  class="form-range" id="inputFontLineWidth" min="0" max="150" step="5" value="10">
+                  <input type="range" class="form-range" id="inputShapeLineWidth" min="0" max="300" step="10" value="10">
+                  <p>DashInterval(Optional)</p>
+                  <input type="range" class="form-range" id="inputShapeDash" min="0" max="150" step="1" value="1">
+                  <p>SectorAngle(Optional)</p>
+                  <input type="range" class="form-range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
+                  <p>PolygonVertexSize(Optional)</p>
+                  <input type="range" class="form-range" id="inputVertexSize" min="3" max="12" step="1" value="3">
                 </div>
               </div>
             </div>
             <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">FontLocator</button>
+              <h2 class="accordion-header" id="panelsStayOpen-headingEight">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">ShapeLocator</button>
               </h2>
-              <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
-                <div class="accordion-body">
-                  <p>LocateX</p><p id="indifX"></p>
-                  <input type="range"  class="form-range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
-                  <p>LocateY</p><p id="indifY"></p>
-                  <input type="range"  class="form-range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
+              <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
+                <div class="shapeParam accordion-body">
+                  <p>LocateX</p>
+                  <p id="indisX"></p>
+                  <input type="range" class="form-range" id="inputShapeLocateX" min="-50" max="50" step="10" value="0">
+                  <p>LocateY</p>
+                  <p id="indisY"></p>
+                  <input type="range" class="form-range" id="inputShapeLocateY" min="-50" max="50" step="10" value="0">
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div id="ShapeEdit" class="col-5">
-        <div class="accordion" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="true" aria-controls="panelsStayOpen-collapseFive">ShapeStyle</button>
-            </h2>
-            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFive">
-              <div class="accordion-body">
-                <label>
-                  <input type="checkbox" id="drawShape" class="uk-checkbox">Draw
-                </label>
-                <label>
-                  <input type="checkbox" id="drawBackGround" class="uk-checkbox">BackGround(Only)
-                </label>
-                <select id="shapeType" class="uk-select" aria-label=" example" value="Arc">
-                  <option selected id="Arc" value="Arc">Arc</option>
-                  <option id="Square" value="Square">Square</option>
-                  <option id="justify-Rect" value="justify-Rect">justify-Rect</option>
-                  <option id="Line" value="Line">Line</option>
-                  <option id="Sector" value="Sector">Sector</option>
-                  <option id="Polygon" value="Polygon">Polygon</option>
-                </select>
-                <input type="color" id="inputShapeColor" value="#aaaaaa" list="defaultcolors">
-                <input type="checkbox" id="drawShapeDash" class="uk-checkbox">
-                <label>Dash</label>
-                <input type="checkbox" id="drawShapeFill" class="uk-checkbox">
-                <label>Fill</label>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingSix">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">ShapeParam</button>
-            </h2>
-            <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
-              <div class="shapeParam accordion-body">
-                <p>Size</p>
-                <input type="range"  class="form-range" id="inputShapeSize" min="0" max="1000" step="10" value="100">
-                <p>Rotate</p>
-                <input type="range"  class="form-range" id="inputShapeRotate" min="0" max="360" step="15" value="0">
-                <p>Opacity</p>
-                <input type="range"  class="form-range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="1.0">
-                <p>LineWidth</p>
-                <input type="range"  class="form-range" id="inputShapeLineWidth" min="0" max="300" step="10" value="10">
-                <p>DashInterval(Optional)</p>
-                <input type="range"  class="form-range" id="inputShapeDash" min="0" max="150" step="1" value="1">
-                <p>SectorAngle(Optional)</p>
-                <input type="range"  class="form-range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
-                <p>PolygonVertexSize(Optional)</p>
-                <input type="range"  class="form-range" id="inputVertexSize" min="3" max="12" step="1" value="3">
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingEight">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">ShapeLocator</button>
-            </h2>
-            <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
-              <div class="shapeParam accordion-body">
-                <p>LocateX</p><p id="indisX"></p>
-                <input type="range"  class="form-range" id="inputShapeLocateX" min="-50" max="50" step="10" value="0">
-                <p>LocateY</p><p id="indisY"></p>
-                <input type="range"  class="form-range" id="inputShapeLocateY" min="-50" max="50" step="10" value="0">
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
+    <footer class="footer py-0 bg-light">
+      <div class="container">
+        <span class="text-muted">Copyright © 2022 Team.A All rights reserved.</span>
       </div>
-    </div>
-  </div>
-  <footer class="footer py-0 bg-light">
-    <div class="container">
-      <span class="text-muted">Copyright © 2022 Team.A All rights reserved.</span>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
   <!-- Javascript load -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/font.css">
   <link rel="stylesheet" href="css/parts.css">
   <script src="js/common.js"></script>
-  <script src="js/cropper.js"></script>
-  <script src="js/read.js"></script>
+  <script src="js/component.js"></script>
+  <script src="js/crop.js"></script>
+  <script src="js/imageLoader.js"></script>
 </html>
