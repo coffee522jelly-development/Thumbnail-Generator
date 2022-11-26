@@ -1,26 +1,27 @@
 
- :root {
-    --default-font: 'Lato';
+:root {
+    --default-font: 'inconsolata';
+    --border-radius: 7px;
 }
-
 
 html, body {
     user-select: none;
     font-family: var(--default-font);
+    height: 100%;
 }
 
 p {
     font-size: 12px;
     color:#999999;
+    margin: 0px;
     font-family: var(--default-font);
-    margin-top: -5px;
-    margin-bottom: 0px;
 }
 
 a {
     color: #aaa;
     font-size: 12px;
     text-decoration: none;
+    font-family: var(--default-font);
 }
 
 input {
@@ -40,7 +41,18 @@ button {
     width: 100%;
 }
 
+nav {
+    width: 100%;
+    height: 40px;
+    background-color: dimgray;
+}
+
+ul {
+    display: flex;
+}
+
 li {
+    list-style: none;
     margin: 2rem 0;
 }
 
@@ -50,15 +62,22 @@ label {
 
 #main{
     padding:10px;
-    background-color: #fff;
+    background-color: #1e1e1a;
+}
+
+#logo {
+    font-size: 20px;
+    padding-right: 30px;
+    padding-left: 5px;
+    font-family: var(--default-font);
+    color:orange;
 }
 
 #indicator{
-    width: 100%;
-    margin: 10px;
+    margin-top: 10px;
     padding: 5px;
-    border-radius: 7px;
-    border: 1px solid #dee2e6;
+    border-radius: var(--border-radius);
+    border: 1px solid #656565;
 }
 
 #File{
@@ -75,65 +94,40 @@ label {
     width: 100%;
 }
 
-/*ソースキャンバス*/
 #sourceImage  {
-    max-height: 200px;
-    max-width: 100%;
-    border-radius: 7px;
+    padding-top: 20px;
 }
 
 #sourceCanvas {
-    max-width: 100%;
-    max-height: 350px;
-    display: none;
+    border: 3px dashed #656565;
+    border-radius: var(--border-radius);
 }
 
-#croppedImage{
-    max-width: 100%;
-    max-height: 350px;
-    border-radius: 7px;
-}
-
-/*クロップ後キャンバス*/
 #croppedCanvas {
-    max-width: 100%;
-    max-height: 350px;
-    /* display: block; */
+    width: 100%;
+    border: 3px dashed #656565;
+    border-radius: var(--border-radius);
+    color: #999999;
 }
 
-.imageItem {
-    padding-left: 10px;
+.PhotoView {
+    width: 100%;
+    background-color: #1e1e1a;;
+    border-radius: var(--border-radius);
 }
 
-#output {
-    max-height: 350px;
-    padding-left: 50px;
-    display:none;
+#PhotoWrapper {
+    margin: 0px 20px 20px 20px;
+    padding-top: 20px;
 }
 
-.setParam {
-    padding: 5px;
-}
-
-#EditView{
-    background-color:#F3F7FB;
-}
-
-.editView {
-    display: flex;
-    border: 1px solid #dee2e6;
-    border-radius: 7px;
-    margin: -1px;
-    padding: 10px;
+.editList{
+    padding-top: 10px;
 }
 
 .StyleBox {
-    border: 1px solid #dee2e6;
-    border-radius: 7px;
-}
-
-#paramEditView{
-  margin-top: 10px;
+    border: 1px solid #656565;
+    border-radius: var(--border-radius);
 }
 
 /* Fontselect*/
@@ -185,7 +179,7 @@ label {
     #sourceImage  {
         max-height: 200px;
         width: 100%;
-        border-radius: 7px;
+        border-radius: var(--border-radius);
     }
 
     #sourceCanvas {
@@ -197,7 +191,7 @@ label {
     #croppedImage{
         width: 100%;
         max-height: 350px;
-        border-radius: 7px;
+        border-radius: var(--border-radius);
     }
 
     /*クロップ後キャンバス*/
@@ -211,7 +205,7 @@ label {
 
 @media (prefers-color-scheme: dark) {
     body {
-      background-color: #243447;
+      background-color: #1e1e1a;
       color: #eeeeee;
     }
 

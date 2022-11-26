@@ -61,47 +61,9 @@ function initResultSetting(context, initial){
 		data: {
 			width: context.width,
 			height: context.width * cropAspectRatio
-		 },
+		},
 		crop: function (event) {
-            const scale = 768 / image.width;
-
-			const croppedCanvas = document.querySelector("#croppedCanvas");
-			let ctx = croppedCanvas.getContext("2d");
-			const Width = croppedCanvas.width = image.height * cropAspectRatio;
-			const Height = croppedCanvas.height = image.height;
-
-			ctx.imageSmoothingEnabled = false;
-
-			ctx.filter = "brightness("+ Brightness + "%)" +
-						 "blur("+ Blur + "px)" + 
-						 "contrast(" + Contrast + "%)" + 
-						 "grayscale("+ GrayScale +"%)" +
-						 "hue-rotate("+ Hue +"deg)" +
-						 "sepia("+ Sepia +"%)" + 
-						 "opacity("+ Opacity +")";
-
-			ctx.drawImage(image,
-				event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
-				0, 0, Width, Height
-			);
-
-			ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "hue-rotate(0)" + "sepia(0%)" + "opacity(1.0)";
-
-			// drawBackShape
-			const centerX = Width / 2;
-			const centerY = Height / 2;
-			const RateX = centerX / 50;
-			const RateY = centerY / 50;
-
-			if (bShapeBackGround){
-				drawBackground(ctx , Width, Height);
-			}
-			else if (bShape){
-				drawBackShape(ctx , centerX + (RateX * shapeLocateX), centerY + (RateY * shapeLocateY));
-			}
-
-			drawText(ctx, centerX + (RateX * fontLocateX), centerY + (RateY * fontLocateY));
-
+			imageCrop(event);
 		},
 		ready(){
 			cropper.setCropBoxData(cropBoxData);
@@ -110,6 +72,47 @@ function initResultSetting(context, initial){
 			
 		}
 	});
+}
+
+
+function imageCrop(event) {
+	const scale = 768 / image.width;
+
+	const croppedCanvas = document.querySelector("#croppedCanvas");
+	let ctx = croppedCanvas.getContext("2d");
+	const Width = croppedCanvas.width = image.height * cropAspectRatio;
+	const Height = croppedCanvas.height = image.height;
+
+	ctx.imageSmoothingEnabled = false;
+
+	ctx.filter = "brightness("+ Brightness + "%)" +
+				"blur("+ Blur + "px)" + 
+				"contrast(" + Contrast + "%)" + 
+				"grayscale("+ GrayScale +"%)" +
+				"hue-rotate("+ Hue +"deg)" +
+				"sepia("+ Sepia +"%)" + 
+				"opacity("+ Opacity +")";
+
+	ctx.drawImage(image,
+		event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
+		0, 0, Width, Height
+	);
+
+	ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "hue-rotate(0)" + "sepia(0%)" + "opacity(1.0)";
+
+	// drawBackShape
+	const centerX = Width / 2;
+	const centerY = Height / 2;
+	const RateX = centerX / 50;
+	const RateY = centerY / 50;
+
+	if (bShapeBackGround){
+		drawBackground(ctx , Width, Height);
+	}
+	else if (bShape){
+		drawBackShape(ctx , centerX + (RateX * shapeLocateX), centerY + (RateY * shapeLocateY));
+	}
+	drawText(ctx, centerX + (RateX * fontLocateX), centerY + (RateY * fontLocateY));
 }
 
 // drawText

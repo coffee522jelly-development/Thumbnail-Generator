@@ -306,14 +306,6 @@ btnResetParam.addEventListener('click', (e) => {
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
-
-// // fullScreen
-// let fullScreen = document.querySelector('#fullScreen');
-// fullScreen.addEventListener ('click', (e) => {     
-//     let main = document.querySelector('#main');
-// 	main.requestFullscreen();
-// });
-
 // 関数/////////////////////////////////////////////////////////////////
 function updateFontCheckState(){
 	let fontEmphasis = document.querySelector('#fontEmphasis');
@@ -421,30 +413,30 @@ function OnDownloadButton(){
 
 // mobile editor adjust
 function getViewportSizeAndAdjust() {
-	if (initWidth < 768){
-		document.querySelector("#ImageFilter").classList.remove("col-3");
-		document.querySelector("#sourceImage").classList.remove("col-2");
-		document.querySelector("#TitleEdit").classList.remove("col-3");
-		document.querySelector("#FontEdit").classList.remove("col-4");
-		document.querySelector("#ShapeEdit").classList.remove("col-5");
-		document.querySelector("#TitleEdit").classList.add("row-cols-1");
-		document.querySelector("#FontEdit").classList.add("row-cols-1");
-		document.querySelector("#ShapeEdit").classList.add("row-cols-1");
-		document.querySelector("#sourceImage").classList.add("col-4");
-	}
+	// if (initWidth < 768){
+	// 	document.querySelector("#ImageFilter").classList.remove("col-3");
+	// 	document.querySelector("#sourceImage").classList.remove("col-2");
+	// 	document.querySelector("#TitleEdit").classList.remove("col-3");
+	// 	document.querySelector("#FontEdit").classList.remove("col-4");
+	// 	document.querySelector("#ShapeEdit").classList.remove("col-5");
+	// 	document.querySelector("#TitleEdit").classList.add("row-cols-1");
+	// 	document.querySelector("#FontEdit").classList.add("row-cols-1");
+	// 	document.querySelector("#ShapeEdit").classList.add("row-cols-1");
+	// 	document.querySelector("#sourceImage").classList.add("col-4");
+	// }
 
-	if (initWidth < 400){
-		document.querySelector('#ImageFilter').remove();
-		document.querySelector('#ShapeEdit').remove();
-		document.querySelector("#EditView").classList.remove("row-cols-2");
-		document.querySelector("#sourceImage").classList.remove("col-2");
-		document.querySelector("#croppedImage").classList.remove("col-7");
-		document.querySelector("#EditView").classList.add("row-cols-1");
-	}
-	else{
-		document.querySelector("#EditView").classList.remove("row-cols-1");
-		document.querySelector("#EditView").classList.add("row-cols-2");
-	}
+	// if (initWidth < 400){
+	// 	document.querySelector('#ImageFilter').remove();
+	// 	document.querySelector('#ShapeEdit').remove();
+	// 	document.querySelector("#EditView").classList.remove("row-cols-2");
+	// 	document.querySelector("#sourceImage").classList.remove("col-2");
+	// 	document.querySelector("#croppedImage").classList.remove("col-7");
+	// 	document.querySelector("#EditView").classList.add("row-cols-1");
+	// }
+	// else{
+	// 	document.querySelector("#EditView").classList.remove("row-cols-1");
+	// 	document.querySelector("#EditView").classList.add("row-cols-2");
+	// }
 }
 
 
