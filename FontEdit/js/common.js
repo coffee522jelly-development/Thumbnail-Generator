@@ -316,6 +316,9 @@ function updateFontCheckState(){
 }
 
 function updateShapeCheckState(){
+	let drawFont = document.querySelector('#fontDraw');
+	bfontDraw = drawFont.checked;
+
 	let drawShape = document.querySelector('#drawShape');
 	bShape = drawShape.checked;
 

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="dist/css/uikit.min.css">
     <!-- Javascript load -->
     <script type="text/javascript" src="dist/js/vue.js"></script>
+    <script type="text/javascript" src="dist/js/Vibrant.min.js"></script>
     <script type="text/javascript" src="dist/js/cropper.min.js"></script>
     <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="dist/js/uikit.min.js"></script>
@@ -63,9 +64,9 @@
                       <div class="col">
                         <p>Control</p>
                         <label id="File" class="uk-button">
-                          <input type="file" id="uploader">Select  File 
+                          <input type="file" id="uploader">Open
                         </label>
-                        <label id="Download" class="uk-button uk-button-default">Download </label>
+                        <label id="Download" class="uk-button">Download </label>
                       </div>
                     </div>
                   </div>
@@ -139,7 +140,7 @@
                 <input type="range" class="form-range uk-range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
                 <p>Sepia</p>
                 <input type="range" class="form-range uk-range" id="inputSepia" min="0" max="100" step="10" value="0">
-                <button id="ResetParam" class="uk-button uk-button-secondary">Reset</button>
+                <button id="ResetParam" class="uk-button">Reset</button>
               </div> 
               <div id="croppedImage" class="col-9">
                 <p>Result</p>
@@ -156,7 +157,12 @@
                       <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                         <div class="accordion-body">
                           <input type="color" id="inputFontColor" value="#ffffff" list="defaultcolors">
+                          <datalist id="defaultcolors"></datalist>
                           <input type="color" id="inputFontBackColor" value="#0068b7" list="defaultcolors">
+                          <datalist id="defaultcolors"></datalist>
+                          <label class="form-check-label">
+                            <input type="checkbox" id="fontDraw" class="uk-checkbox" v-model="isChecked" v-on:change="setFontDraw"> Draw 
+                          </label>
                           <select id="fontStyle" class="form-select uk-select" aria-label=" example" value="Train-One">
                             <optgroup label="-JPFont-"></optgroup>
                             <option id="IPAex" value="IPAex">IPAex明朝</option>
@@ -240,6 +246,7 @@
                     <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFive">
                       <div class="accordion-body">
                         <input type="color" id="inputShapeColor" value="#aaaaaa" list="defaultcolors">
+                        <datalist id="defaultcolors"></datalist>
                         <label>
                           <input type="checkbox" id="drawShape" class="uk-checkbox" v-model="isChecked" v-on:change="setShapeDraw"> Draw 
                         </label>

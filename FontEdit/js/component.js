@@ -1,9 +1,24 @@
 ////////////////////////////////////////////////////////////// チェックボックス
 ///////////////////////////////////////////// フォント設定(f ~)
+let   bfontDraw 	    = false;
 let   bfontOutLine 		= false;
 let   bfontEmphasis 	= false;
 let   fontBold 	        = '';
 let   fontItalic 	    = '';
+
+/*フォント描画するか？*/
+const fDrawFont = new Vue({
+    el:'#fontDraw',
+    data: {
+        isChecked: true
+    },
+    methods: {
+        setFontDraw: function() {
+            updateShapeCheckState();
+            initResultSetting(document.querySelector("#sourceCanvas"), false);
+        }
+    }
+});
 
 /*太字*/
 const fBold = new Vue({
@@ -71,7 +86,7 @@ let   bShapeFill 		= false;
 let   bShapeDash 		= false;
 let   bShapeBackGround 	= false;
 
-/*形状描画強調表現*/
+/*形状描画するか？*/
 const sDrawShape = new Vue({
     el:'#drawShape',
     data: {
@@ -86,7 +101,7 @@ const sDrawShape = new Vue({
 });
 
 
-/*背景描画強調表現*/
+/*背景描画するか？*/
 const sDrawBackGround = new Vue({
     el:'#drawBackGround',
     data: {

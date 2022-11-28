@@ -2,6 +2,16 @@
 :root {
     --default-font: 'inconsolata';
     --border-radius: 7px;
+
+    --light-main-color: #F1EEE9;
+    --light-sub-color: #73777B;
+    --light-accent-color: #EC994B;
+    --light-accent-sub-color: #2a293b;
+
+    --dark-main-color: #E7F6F2;
+    --dark-sub-color: #395B64;
+    --dark-accent-color: #A5C9CA;
+    --dark-accent-sub-color: #2C3333;
 }
 
 html, body {
@@ -12,7 +22,7 @@ html, body {
 
 p {
     font-size: 12px;
-    color:#999999;
+    color: var(--light-sub-color);
     margin: 0px;
     font-family: var(--default-font);
 }
@@ -44,7 +54,6 @@ button {
 nav {
     width: 100%;
     height: 40px;
-    background-color: dimgray;
 }
 
 ul {
@@ -61,8 +70,8 @@ label {
 }
 
 #main{
-    padding:10px;
-    background-color: #1e1e1a;
+    padding: 10px;
+    background-color: var(--light-main-color);
 }
 
 #logo {
@@ -70,28 +79,33 @@ label {
     padding-right: 30px;
     padding-left: 5px;
     font-family: var(--default-font);
-    color:orange;
+    color:var(--light-accent-color);
 }
 
 #indicator{
     margin-top: 10px;
     padding: 5px;
     border-radius: var(--border-radius);
-    border: 1px solid #656565;
+    border: 1px solid var(--light-sub-color);
 }
 
 #File{
-    color: #ffffff;
-    background-color: #82d300;
+    color: var(--light-sub-color);
+    background-color: var(--light-main-color);
     cursor: pointer;
     width: 100%;
 }
 
 #Download{
     color: #ffffff;
-    background-color: #00b3ff;
+    background-color: var(--light-accent-color);
     cursor: pointer;
     width: 100%;
+}
+
+#ResetParam{
+    color: #ffffff;
+    background-color: var(--light-accent-sub-color);
 }
 
 #sourceImage  {
@@ -99,20 +113,20 @@ label {
 }
 
 #sourceCanvas {
-    border: 3px dashed #656565;
+    border: 3px dashed var(--light-sub-color);
     border-radius: var(--border-radius);
 }
 
 #croppedCanvas {
     width: 100%;
-    border: 3px dashed #656565;
+    border: 3px dashed var(--light-sub-color);
     border-radius: var(--border-radius);
-    color: #999999;
+    color: var(--light-sub-color);
 }
 
 .PhotoView {
     width: 100%;
-    background-color: #1e1e1a;;
+    background-color: var(--light-main-color);
     border-radius: var(--border-radius);
 }
 
@@ -126,7 +140,7 @@ label {
 }
 
 .StyleBox {
-    border: 1px solid #656565;
+    border: 1px solid var(--light-sub-color);
     border-radius: var(--border-radius);
 }
 
@@ -209,15 +223,50 @@ label {
       color: #eeeeee;
     }
 
-    .controlPanel {
-        border: 1px dotted #cccccc;
+    p {
+        color: var(--dark-main-color);
     }
 
-    .editView  {
-        border: 1px dotted #cccccc;
+    #sourceCanvas {
+        border: 3px dashed var(--dark-main-color);
+    }
+    
+    #croppedCanvas {
+        border: 3px dashed var(--dark-main-color);
     }
 
-    .preView  {
-        border: 1px dotted #cccccc;
+    #indicator{
+        border: 1px solid var(--dark-main-color);
+    }
+
+    #logo {
+        color: green;
+    }
+
+    #main{
+        background-color: var(--dark-sub-color);
+    }
+
+    .PhotoView {
+        background-color: var(--dark-sub-color);
+    }
+
+    #File{
+        color: var(--dark-sub-color);
+        background-color: var(--dark-main-color);
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    #Download{
+        color: #ffffff;
+        background-color: var(--dark-accent-color);
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    #ResetParam{
+        color: #ffffff;
+        background-color: var(--light-accent-sub-color);
     }
 }

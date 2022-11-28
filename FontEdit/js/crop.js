@@ -106,13 +106,14 @@ function imageCrop(event) {
 	const RateX = centerX / 50;
 	const RateY = centerY / 50;
 
-	if (bShapeBackGround){
+	if (bShapeBackGround)
 		drawBackground(ctx , Width, Height);
-	}
-	else if (bShape){
+	
+	if (bShape)
 		drawBackShape(ctx , centerX + (RateX * shapeLocateX), centerY + (RateY * shapeLocateY));
-	}
-	drawText(ctx, centerX + (RateX * fontLocateX), centerY + (RateY * fontLocateY));
+
+	if (bfontDraw)
+		drawText(ctx, centerX + (RateX * fontLocateX), centerY + (RateY * fontLocateY));
 }
 
 // drawText
