@@ -103,6 +103,12 @@ label {
     width: 100%;
 }
 
+#filterParam{
+    padding: 10px;
+    border: 2px dashed var(--light-sub-color);
+    border-radius: var(--border-radius);
+}
+
 #ResetParam{
     color: #ffffff;
     background-color: var(--light-accent-sub-color);
@@ -113,13 +119,14 @@ label {
 }
 
 #sourceCanvas {
-    border: 3px dashed var(--light-sub-color);
+    border: 2px dashed var(--light-sub-color);
     border-radius: var(--border-radius);
+    width: 100%;
 }
 
 #croppedCanvas {
     width: 100%;
-    border: 3px dashed var(--light-sub-color);
+    border: 2px dashed var(--light-sub-color);
     border-radius: var(--border-radius);
     color: var(--light-sub-color);
 }
@@ -224,19 +231,27 @@ label {
     }
 
     p {
-        color: var(--dark-main-color);
+        color: #aaaaaa;
     }
 
     #sourceCanvas {
-        border: 3px dashed var(--dark-main-color);
+        border: 2px dashed var(--dark-main-color);
     }
     
     #croppedCanvas {
-        border: 3px dashed var(--dark-main-color);
+        border: 2px dashed var(--dark-main-color);
+    }
+
+    #filterParam{
+        border: 2px dashed var(--dark-main-color);
     }
 
     #indicator{
         border: 1px solid var(--dark-main-color);
+    }
+
+    #indicator p{
+        color: var(--dark-main-color);
     }
 
     #logo {

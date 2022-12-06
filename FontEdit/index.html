@@ -125,24 +125,31 @@
         <div class="col-9">          
           <div class="PhotoView">
             <div id="PhotoWrapper" class="row">
-              <div id="ImageFilter" class="col-3">
-                <p>Brightness</p>
-                <input type="range" class="form-range uk-range" id="inputBrightness" min="0" max="200" step="20" value="100">
-                <p>Blur</p>
-                <input type="range" class="form-range uk-range" id="inputBlur" min="0" max="20" step="2" value="0">
-                <p>Contrast</p>
-                <input type="range" class="form-range uk-range" id="inputContrast" min="0" max="200" step="10" value="100">
-                <p>GrayScale</p>
-                <input type="range" class="form-range uk-range" id="inputGrayScale" min="0" max="100" step="10" value="0">
-                <p>Hue</p>
-                <input type="range" class="form-range uk-range" id="inputHue" min="0" max="360" step="1" value="0">
-                <p>Opacity</p>
-                <input type="range" class="form-range uk-range" id="inputOpacity" min="0" max="1.0" step="0.1" value="1.0">
-                <p>Sepia</p>
-                <input type="range" class="form-range uk-range" id="inputSepia" min="0" max="100" step="10" value="0">
-                <button id="ResetParam" class="uk-button">Reset</button>
+              <div id="ImageFilter" class="col-2">
+                <p>ImageFilter</p>
+                  <div id="filterParam">
+                    <p>Brightness(輝度)</p>
+                    <input type="range" class="form-range uk-range" id="inputBrightness" min="0" max="200" step="1" value="100">
+                    <p>Contrast(コントラスト)</p>
+                    <input type="range" class="form-range uk-range" id="inputContrast" min="0" max="200" step="1" value="100">
+                    <p>Saturate(彩度)</p>
+                    <input type="range" class="form-range uk-range" id="inputSaturate" min="0" max="200" step="1" value="100">
+                    <p>GrayScale</p>
+                    <input type="range" class="form-range uk-range" id="inputGrayScale" min="0" max="100" step="1" value="0">
+                    <p>Sepia</p>
+                    <input type="range" class="form-range uk-range" id="inputSepia" min="0" max="100" step="1" value="0">
+                    <p>Hue(色相)</p>
+                    <input type="range" class="form-range uk-range" id="inputHue" min="0" max="360" step="1" value="0">
+                    <p>Opacity(透明度)</p>
+                    <input type="range" class="form-range uk-range" id="inputOpacity" min="0" max="1.0" step="0.01" value="1.0">
+                    <p>Blur(ぼかし)</p>
+                    <input type="range" class="form-range uk-range" id="inputBlur" min="0" max="20" step="1" value="0">
+                    <p>invert(色反転)</p>
+                    <input type="range" class="form-range uk-range" id="inputInvert" min="0" max="100" step="1" value="0">
+                    <button id="ResetParam" class="uk-button">Reset</button>
+                  </div>
               </div> 
-              <div id="croppedImage" class="col-9">
+              <div id="croppedImage" class="col-10">
                 <p>Result</p>
                 <canvas id="croppedCanvas"></canvas>
                 <img id="output" src="">
@@ -328,5 +335,4 @@
   <script src="js/common.js"></script>
   <script src="js/component.js"></script>
   <script src="js/crop.js"></script>
-  <script src="js/imageLoader.js"></script>
 </html>

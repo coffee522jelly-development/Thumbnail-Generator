@@ -1,25 +1,56 @@
-let   cropper = null;
-let   image = null;
-let   file = null;
+let   cropper 	= null;
+let   image 	= null;
+let   file 		= null;
 
-const cropImage = function (evt) {
-    const files = evt.target.files;
-    if (files.length == 0) {
-        return;
-    }
-    file = files[0];	// 先頭のイメージファイルの読み込み
 
-	// 選択されたファイルが画像かどうか確認
-	if(!file.type.match(/^image/)) {
+// ドラッグ＆ドロップ
+if (window.File) {
+    let dropArea = document.querySelector('#main');
+    dropArea.addEventListener('dragover', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+    }, false);
+ 
+    dropArea.addEventListener('drop', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+ 
+		// ドロップしたファイル
+		let fileData = e.dataTransfer.files;
+		file = fileData[0];
+	
+		cropImageFile(file);
+
+    }, false);
+}
+
+// アップローダー
+const uploader = document.querySelector('#uploader');
+uploader.addEventListener('change', cropImage);
+
+//  イメージを切り抜く
+function cropImage(e) {
+
+	// 選択したファイル
+	let fileData = e.target.files;
+	file = fileData[0];
+
+	cropImageFile(file);
+}
+
+
+// 画像読み込みクロップ
+function cropImageFile(file){
+	if (!file.type.match(/^image/)) {
 		alert('画像を選択してください');
 		return;
 	}
 
     image = new Image();
+	
     let reader = new FileReader();
-    reader.onload = function (evt) {
-
-        image.onload = function () {
+    reader.onload = (e) =>{
+        image.onload = () => {
 			const imageWidth  = image.width;
 			const imageHeight  = image.height;
             const scale = 768 / imageWidth;
@@ -31,15 +62,39 @@ const cropImage = function (evt) {
 			const Height = canvas.height = imageHeight * scale;
             ctx.drawImage(image, 0, 0, imageWidth, imageHeight, 0, 0, Width, Height);
             initResultSetting(canvas, true);
+
+			// 画像から色を抽出しdefaultとして設定
+			let vibrant = new Vibrant(image);
+			let swatches = vibrant.swatches();
+			for (let swatch in swatches){
+				if (swatches.hasOwnProperty(swatch) && swatches[swatch]){
+					let list = document.getElementById('defaultcolors');
+					let option = document.createElement('option');
+					option.value = swatches[swatch].getHex();
+					list.appendChild(option);
+				}
+			}
+
+			// // 初期設定
+			// let fontColor = document.getElementById('inputFontColor');
+			// const optionfontColor = fontColor.querySelectorAll('option');
+			// const selectedfontColor = optionfontColor[0];
+			// selectedfontColor.selected = true;
+
+			// let fontBackColor = document.getElementById('inputFontBackColor');
+			// const optionfontBackColor = fontBackColor.querySelectorAll('option');
+			// const selectedfontBackColor = optionfontBackColor[1];
+			// selectedfontBackColor.selected = true;
+
+			// let shapeColor = document.getElementById('inputShapeColor');
+			// const optionshapeColor = shapeColor.querySelectorAll('option');
+			// const selectedshapeColor = optionshapeColor[2];
+			// selectedshapeColor.selected = true;
         }
-        image.src = evt.target.result;
+        image.src = e.target.result;
     }
     reader.readAsDataURL(file);
 }
-
-//　Uploader
-const uploader = document.querySelector('#uploader');
-uploader.addEventListener('change', cropImage);
 
 // ResultViewerSetting
 function initResultSetting(context, initial){
@@ -62,8 +117,8 @@ function initResultSetting(context, initial){
 			width: context.width,
 			height: context.width * cropAspectRatio
 		},
-		crop: function (event) {
-			imageCrop(event);
+		crop: (e) => {
+			imageCrop(e);
 		},
 		ready(){
 			cropper.setCropBoxData(cropBoxData);
@@ -75,21 +130,24 @@ function initResultSetting(context, initial){
 }
 
 
+// 画像切り抜き時のイベント関数
 function imageCrop(event) {
 	const scale = 768 / image.width;
 
 	const croppedCanvas = document.querySelector("#croppedCanvas");
-	let ctx = croppedCanvas.getContext("2d");
 	const Width = croppedCanvas.width = image.height * cropAspectRatio;
 	const Height = croppedCanvas.height = image.height;
+	let ctx = croppedCanvas.getContext("2d");
 
-	ctx.imageSmoothingEnabled = false;
+	ctx.imageSmoothingEnabled = true;
 
 	ctx.filter = "brightness("+ Brightness + "%)" +
 				"blur("+ Blur + "px)" + 
 				"contrast(" + Contrast + "%)" + 
 				"grayscale("+ GrayScale +"%)" +
 				"hue-rotate("+ Hue +"deg)" +
+				"invert("+ Invert +"%)" +
+				"saturate("+ Saturate +"%)" + 
 				"sepia("+ Sepia +"%)" + 
 				"opacity("+ Opacity +")";
 
@@ -98,9 +156,8 @@ function imageCrop(event) {
 		0, 0, Width, Height
 	);
 
-	ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "hue-rotate(0)" + "sepia(0%)" + "opacity(1.0)";
+	ctx.filter = "brightness(100%)" + "blur(0px)" + "contrast(100%)" + "grayscale(0%)" + "hue-rotate(0)" + "invert(0%)"+ "saturate(100%)" + "sepia(0%)" + "opacity(1.0)";
 
-	// drawBackShape
 	const centerX = Width / 2;
 	const centerY = Height / 2;
 	const RateX = centerX / 50;
@@ -116,7 +173,7 @@ function imageCrop(event) {
 		drawText(ctx, centerX + (RateX * fontLocateX), centerY + (RateY * fontLocateY));
 }
 
-// drawText
+// テキスト描画関数(切り抜き時に付与)
 function drawText(context, centerX, centerY){
 	let fontStyle = document.querySelector("#fontStyle").value;
 	let fontRelativeSize = fontSize * 5;
@@ -154,7 +211,7 @@ function drawText(context, centerX, centerY){
 	}
 }
 
-// drawBackShape
+// 図形描画関数(切り抜き時に付与)
 function drawBackShape(context, centerX, centerY){
 	// Rotate the shape
 	context.translate(centerX, centerY);
@@ -165,29 +222,36 @@ function drawBackShape(context, centerX, centerY){
 		context.setLineDash([shapeDashInterval]);
 
 	const shapeType = document.querySelector("#shapeType").value;
+	
 	switch (shapeType) {
 	case "Arc":
 		context.arc(centerX, centerY, shapeSize, 0 * Math.PI / 180, 360 * Math.PI / 180, false);
 		break;
+
 	case "Square":
 		context.rect(centerX - shapeSize / 2, centerY - shapeSize / 2, shapeSize, shapeSize);
 		break;
+
 	case "justify-Rect":
 		context.rect(0, centerY - shapeSize / 2, 2 * centerX, shapeSize);
 		break;
+
 	case "Line":
 		context.moveTo(0, centerY);
 		context.lineTo(2 * centerX, centerY);
 		break;
+
 	case "Sector":
 		context.beginPath();
 		context.moveTo(centerX, centerY);
 		context.arc(centerX, centerY, shapeSize, 0 * Math.PI / 180, shapeSectorAngle * Math.PI / 180,false);
 		context.closePath();
 		break;
+
 	case "Polygon":
 		drawPolygon(context, centerX, centerY, shapeSize, shapeVertexSize, 0);
 		break;
+
 	default:
 		console.log(`Sorry, we are out of ${shapeType}.`);
 		return;
@@ -210,24 +274,22 @@ function drawBackShape(context, centerX, centerY){
 }
 
 
-// drawBackGround
+// 背景描画関数(切り抜き時に付与)
 function drawBackground(context, X, Y){
 	context.fillStyle = shapeColor;
     context.fillRect(0,0,X,Y);
 }
 
 
-// drawPolygon
+// ポリゴン描画関数(切り抜き時に付与)
 function drawPolygon(context, position_x, position_y, radius, num, rotation) {
 	if (num < 3) return false;
-
 	context.lineWidth = 10;
-  
+	context.beginPath();
+
 	const angle = 360 / num;
 	const angleOffset = -90;
-  
-	context.beginPath();
-  
+
 	for (let i = 0; i < num; i++) {
 	  const x1 =
 		radius *
@@ -242,9 +304,7 @@ function drawPolygon(context, position_x, position_y, radius, num, rotation) {
 	}
   
 	context.closePath();
-
 	context.filter = "opacity(" + shapeOpacity + ")";
-
 	context.strokeStyle = shapeColor;
 	context.stroke();
 
@@ -252,43 +312,40 @@ function drawPolygon(context, position_x, position_y, radius, num, rotation) {
 		context.fillStyle = shapeColor;
 		context.fill();
 	}
-  }
+}
 
 
-  function ag2fileSizeOpt(a,b,c){
+// ファイルサイズの計算
+function ag2fileSizeOpt(a,b,c){
 	let thisSize, fileUnit, thisUnit;
-  
-	//数値に変換
+
 	thisSize = Number(a);
-	//数値に変換できなかった場合
-	if(isNaN(thisSize)) return 'Error : Not a Number.';
-	//小数点を含めている場合
-	if(String(thisSize).split('.').length > 1) return 'Error : Unaccetable Number.';
-  
-	//基準のバイト数と単位の配列を設定
-	if(b){
-	  b = 1000;
-	  fileUnit = ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-	}else{
-	  b = 1024;
-	  fileUnit = ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+	if (isNaN(thisSize)) return 'Error : Not a Number.';
+	if (String(thisSize).split('.').length > 1) return 'Error : Unaccetable Number.';
+
+	if (b){
+		b = 1000;
+		fileUnit = ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
 	}
-  
-	//有効小数点 デフォルト小数第2位まで(小数第3位で四捨五入)
-	if(c !== 0){c = c ? c : 2;}
-  
-	if(thisSize >= b){
-	  for(let i = 0, j = 0, sizeTemp = (thisSize / b); sizeTemp >= 1 && j < fileUnit.length; i++, j++, sizeTemp /= b){
-		thisUnit = i;
-		thisSize = sizeTemp;
-	  }
-	  thisSize = (Math.round(thisSize * (10**c))/(10**c))+' '+fileUnit[thisUnit];
-	}else{
-	  if(a === 1) thisUnit = 'byte';
-	  else thisUnit = 'bytes';
-	  thisSize = a+' '+thisUnit;
+	else{
+		b = 1024;
+		fileUnit = ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
 	}
-  
-	//変換した表記の文字列を返す
+
+	if (c !== 0){c = c ? c : 2;}
+
+	if (thisSize >= b){
+		for(let i = 0, j = 0, sizeTemp = (thisSize / b); sizeTemp >= 1 && j < fileUnit.length; i++, j++, sizeTemp /= b){
+			thisUnit = i;
+			thisSize = sizeTemp;
+		}
+		thisSize = (Math.round(thisSize * (10**c))/(10**c))+' '+fileUnit[thisUnit];
+	}
+	else{
+		if(a === 1) thisUnit = 'byte';
+		else thisUnit = 'bytes';
+		thisSize = a+' '+thisUnit;
+	}
+
 	return thisSize;
-  }
+}

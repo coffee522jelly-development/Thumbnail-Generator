@@ -14,12 +14,24 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: #0a0a0a;
-  height: 1px;
+  background: var(--light-accent-color);
+  height: 5px;
 }
 
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background: rgb(222, 222, 222);
+  border-radius: 50%;
+  /* border: 1px solid rgb(0, 0, 0); */
+  margin-top: -5px;
+  cursor: pointer;
+}
+
+
 /*カラー*/
-input[type="color" i] {
+input[type="color"] {
   vertical-align: -3px;
   width: 100px;
   height: 25px;
@@ -27,4 +39,44 @@ input[type="color" i] {
   border-radius: 7px;
   background: none;
   border: 2px solid #dee2e6;
+}
+
+/*チェックボックス*/
+input.uk-checkbox {
+  background-color: rgb(255, 255, 255);
+}
+
+input.uk-checkbox:checked {
+  background-color: var(--light-accent-color);
+}
+  
+input.uk-checkbox:checked:focus {
+  background-color: var(--light-accent-color);
+}
+
+/*ラジオボタン*/
+.form-check-input:checked {
+  background-color: var(--light-accent-color);
+  border-color: var(--light-accent-color);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  input[type="range"]::-webkit-slider-runnable-track {
+    background: var(--dark-accent-sub-color);
+    height: 5px;
+  }
+
+  input.uk-checkbox:checked {
+    background-color: var(--dark-sub-color);
+  }
+    
+  input.uk-checkbox:checked:focus {
+    background-color: var(--dark-sub-color);
+  }
+  
+  .form-check-input:checked {
+    background-color: var(--dark-sub-color);
+    border-color: var(--dark-sub-color);
+  }
 }

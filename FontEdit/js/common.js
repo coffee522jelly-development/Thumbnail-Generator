@@ -1,7 +1,7 @@
-// canvas
+// Canvas
 let   cropAspectRatio 	= 16 / 9;
 
-// fonts
+// Fonts
 let   fontSize 			= 20;
 let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
@@ -12,17 +12,18 @@ let   fontLocateX       = 0;
 let   fontLocateY       = 0;
 
 // ImageFilterEffects
-let   bFilter 		= false;
+let   bFilter 			= false;
+let   Brightness 		= 100;
+let   Blur 				= 0;
+let   Contrast 			= 100;
+let   GrayScale 		= 0;
+let   Hue				= 0;
+let   Invert 			= 0;
+let   Saturate 			= 100;
+let   Sepia 			= 0;
+let   Opacity 			= 1.0;
 
-let   Brightness 	= 100;
-let   Blur 			= 0;
-let   Contrast 		= 100;
-let   GrayScale 	= 0;
-let   Hue			= 0;
-let   Sepia 		= 0;
-let   Opacity 		= 1.0;
-
-// ShaperEffects
+// ShapeEffects
 let   shapeColor 		= "#aaaaaa";
 let   shapeOpacity		= 1.0;
 let   shapeSize 		= 100;
@@ -39,7 +40,7 @@ const initHeight = window.innerHeight;
 
 // イベントリスナー/////////////////////////////////////////////////////////////////
 
-// window load
+// Window load
 window.addEventListener('load', (e) => {
 
 	getViewportSizeAndAdjust();
@@ -50,11 +51,12 @@ window.addEventListener('load', (e) => {
 });
 
 
-// window Reload
+// Window Reload
 let btnReload = document.querySelector('#Reload');
 btnReload.addEventListener('click', (e) => {
 	location.reload();
 });
+
 
 // FontSize
 let inputFontSize = document.querySelector('#inputFontSize');
@@ -97,7 +99,7 @@ inputFontBackColor.addEventListener('change', (e) => {
 
 
 // FontStyle
-var selectFontStyle = document.querySelector('#fontStyle');
+let selectFontStyle = document.querySelector('#fontStyle');
 selectFontStyle.addEventListener('change', (e) => {
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
@@ -269,6 +271,22 @@ inputHue.addEventListener('change', (e) => {
 });
 
 
+// Invert
+let inputInvert = document.querySelector('#inputInvert');
+inputInvert.addEventListener('change', (e) => {
+	Invert = inputInvert.value;
+	initResultSetting(document.querySelector("#sourceCanvas"), false);
+});
+
+
+// Saturate
+let inputSaturate = document.querySelector('#inputSaturate');
+inputSaturate.addEventListener('change', (e) => {
+	Saturate = inputSaturate.value;
+	initResultSetting(document.querySelector("#sourceCanvas"), false);
+});
+
+
 // Sepia
 let inputSepia = document.querySelector('#inputSepia');
 inputSepia.addEventListener('change', (e) => {
@@ -293,7 +311,9 @@ btnResetParam.addEventListener('click', (e) => {
 	Contrast 	= 100;
 	GrayScale 	= 0;
 	Hue	 		= 0;
+	Invert 		= 0; 
 	Sepia 		= 0;
+	Saturate 	= 100;
 	Opacity 	= 1.0;
 
 	inputBrightness.value = Brightness;
@@ -301,7 +321,9 @@ btnResetParam.addEventListener('click', (e) => {
 	inputContrast.value = Contrast;
 	inputGrayScale.value = GrayScale;
 	inputHue.value = Hue;
+	inputInvert.value = Invert;
 	inputSepia.value = Sepia;
+	inputSaturate.value = Saturate;
 	inputOpacity.value = Opacity;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
@@ -375,10 +397,10 @@ function updateIndiXY(){
 function OnAspectButton(){
 	let radioList = document.getElementsByName("AspectRatio");
 	let str = "";
-	for(var i=0; i<radioList.length; i++){
+	for(let i=0; i<radioList.length; i++){
 		if (radioList[i].checked) {
-		str = radioList[i].value;
-		break;
+			str = radioList[i].value;
+			break;
 		}
 	}
 
@@ -401,7 +423,7 @@ function OnDownloadButton(){
 		let el = document.querySelector('#indicator');
 		el.innerHTML = '<p>Embed image-size('+ String(croppedCanvas.width) +'×'+ String(croppedCanvas.height) +')</p>';
 
-		// NoneDummyCanvas
+		// DummyCanvas
 		croppedCanvas.style.display = "none";
 		cropper.reset();
 		croppedCanvas.remove();
@@ -444,19 +466,19 @@ function getViewportSizeAndAdjust() {
 
 
 function downloadFromUrlAutomatically(url, fileName){
-	var xhr = new XMLHttpRequest();
+	let xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
 	xhr.responseType = 'blob';
 	xhr.onload = function(e){
-		if(this.status == 200){
-		var urlUtil = window.URL || window.webkitURL;
-		var imgUrl = urlUtil.createObjectURL(this.response);
-		var link = document.createElement('a');
-		link.href=imgUrl;
-		link.download = fileName;
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
+		if (this.status == 200){
+			let urlUtil = window.URL || window.webkitURL;
+			let imgUrl = urlUtil.createObjectURL(this.response);
+			let link = document.createElement('a');
+			link.href=imgUrl;
+			link.download = fileName;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
 		}
 	};
 	xhr.send();
