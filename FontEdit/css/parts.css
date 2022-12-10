@@ -63,7 +63,7 @@ input.uk-checkbox:checked:focus {
 
 @media (prefers-color-scheme: dark) {
   input[type="range"]::-webkit-slider-runnable-track {
-    background: var(--dark-accent-sub-color);
+    background: var(--light-main-color);
     height: 5px;
   }
 

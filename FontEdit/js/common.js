@@ -51,6 +51,11 @@ window.addEventListener('load', (e) => {
 });
 
 
+window.addEventListener('resize', function(){
+	getViewportSizeAndAdjust();
+});
+
+
 // Window Reload
 let btnReload = document.querySelector('#Reload');
 btnReload.addEventListener('click', (e) => {
@@ -236,6 +241,10 @@ let inputBrightness = document.querySelector('#inputBrightness');
 inputBrightness.addEventListener('change', (e) => {
 	Brightness = inputBrightness.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+	
+	// Display
+	let indiBrightness = document.querySelector('#indiBrightness');
+	indiBrightness.innerHTML = ':' + inputBrightness.value + '';
 });
 
 
@@ -244,6 +253,10 @@ let inputBlur = document.querySelector('#inputBlur');
 inputBlur.addEventListener('change', (e) => {
 	Blur = inputBlur.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+	// Display
+	let indiBlur = document.querySelector('#indiBlur');
+	indiBlur.innerHTML = ':' + inputBlur.value + '';
 });
 
 
@@ -252,6 +265,10 @@ let inputContrast = document.querySelector('#inputContrast');
 inputContrast.addEventListener('change', (e) => {
 	Contrast = inputContrast.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+	// Display
+	let indiContrast = document.querySelector('#indiContrast');
+	indiContrast.innerHTML = ':' + inputContrast.value + '';
 });
 
 
@@ -260,6 +277,10 @@ let inputGrayScale = document.querySelector('#inputGrayScale');
 inputGrayScale.addEventListener('change', (e) => {
 	GrayScale = inputGrayScale.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+	// Display
+	let indiGrayscale = document.querySelector('#indiGrayscale');
+	indiGrayscale.innerHTML = ':' + inputGrayScale.value + '';
 });
 
 
@@ -268,6 +289,10 @@ let inputHue = document.querySelector('#inputHue');
 inputHue.addEventListener('change', (e) => {
 	Hue = inputHue.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+	// Display
+	let indiHue = document.querySelector('#indiHue');
+	indiHue.innerHTML = ':' + inputHue.value + '';
 });
 
 
@@ -276,6 +301,10 @@ let inputInvert = document.querySelector('#inputInvert');
 inputInvert.addEventListener('change', (e) => {
 	Invert = inputInvert.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+	// Display
+	let indiInvert = document.querySelector('#indiInvert');
+	indiInvert.innerHTML = ':' + inputInvert.value + '';
 });
 
 
@@ -284,6 +313,10 @@ let inputSaturate = document.querySelector('#inputSaturate');
 inputSaturate.addEventListener('change', (e) => {
 	Saturate = inputSaturate.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+	// Display
+	let indiSaturate = document.querySelector('#indiSaturate');
+	indiSaturate.innerHTML = ':' + inputSaturate.value + '';
 });
 
 
@@ -292,6 +325,10 @@ let inputSepia = document.querySelector('#inputSepia');
 inputSepia.addEventListener('change', (e) => {
 	Sepia = inputSepia.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+	// Display
+	let indiSepia = document.querySelector('#indiSepia');
+	indiSepia.innerHTML = ':' + inputSepia.value + '';
 });
 
 
@@ -300,12 +337,18 @@ let inputOpacity = document.querySelector('#inputOpacity');
 inputOpacity.addEventListener('change', (e) => {
 	Opacity = inputOpacity.value;
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+	// Display
+	let indiOpacity = document.querySelector('#indiOpacity');
+	indiOpacity.innerHTML = ':' + inputOpacity.value + '';
 });
 
 
 // ResetParams
 let btnResetParam = document.querySelector('#ResetParam');
-btnResetParam.addEventListener('click', (e) => {
+btnResetParam.addEventListener('click', resetParam);
+
+function resetParam(){
 	Brightness 	= 100;
 	Blur 		= 0;
 	Contrast 	= 100;
@@ -325,6 +368,33 @@ btnResetParam.addEventListener('click', (e) => {
 	inputSepia.value = Sepia;
 	inputSaturate.value = Saturate;
 	inputOpacity.value = Opacity;
+	initResultSetting(document.querySelector("#sourceCanvas"), false);
+}
+
+
+// Grayish
+let btnGrayish= document.querySelector('#Grayish');
+btnGrayish.addEventListener('click', (e) => {
+	resetParam();
+
+	GrayScale = 80;
+	inputGrayScale.value = GrayScale;
+	Opacity = 0.8;
+	inputOpacity.value = Opacity;
+	
+	initResultSetting(document.querySelector("#sourceCanvas"), false);
+});
+
+// Vivid
+let btnVivid = document.querySelector('#Vivid');
+btnVivid.addEventListener('click', (e) => {
+	resetParam();
+
+	Contrast = 150;
+	inputContrast.value = Contrast;
+	Saturate = 200;
+	inputSaturate.value = Saturate;
+
 	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
@@ -438,7 +508,54 @@ function OnDownloadButton(){
 
 // mobile editor adjust
 function getViewportSizeAndAdjust() {
-	// if (initWidth < 768){
+	if (cropper != null){
+		cropper.destroy();
+		const canvas = document.querySelector("#sourceCanvas");
+		initResultSetting(canvas, true);
+	}
+	if (window.innerWidth < 768){
+		let element = document.querySelector("#ImageFilter");
+		element.classList.remove('col-2');
+		element.classList.add('col-12');
+
+		element = document.querySelector("#controlPanel");
+		element.classList.remove('col-3');
+		element.classList.add('col-12');
+
+		element = document.querySelector("#PhotoView");
+		element.classList.remove('col-9');
+		element.classList.add('col-12');
+
+		element = document.querySelector("#FontEdit");
+		element.classList.remove('col-6');
+		element.classList.add('col-12');
+
+		element = document.querySelector("#ShapeEdit");
+		element.classList.remove('col-6');
+		element.classList.add('col-12');
+	}
+	else{
+		let element = document.querySelector("#ImageFilter");
+		element.classList.remove('col-12');
+		element.classList.add('col-2');
+
+		element = document.querySelector("#controlPanel");
+		element.classList.remove('col-12');
+		element.classList.add('col-3');
+
+		element = document.querySelector("#PhotoView");
+		element.classList.remove('col-12');
+		element.classList.add('col-9');
+
+		element = document.querySelector("#FontEdit");
+		element.classList.remove('col-12');
+		element.classList.add('col-6');
+
+		element = document.querySelector("#ShapeEdit");
+		element.classList.remove('col-12');
+		element.classList.add('col-6');
+	}
+	// if ( < 768){
 	// 	document.querySelector("#ImageFilter").classList.remove("col-3");
 	// 	document.querySelector("#sourceImage").classList.remove("col-2");
 	// 	document.querySelector("#TitleEdit").classList.remove("col-3");

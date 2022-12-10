@@ -79,7 +79,7 @@ label {
     padding-right: 30px;
     padding-left: 5px;
     font-family: var(--default-font);
-    color:var(--light-accent-color);
+    color: var(--light-accent-color);
 }
 
 #indicator{
@@ -107,6 +107,11 @@ label {
     padding: 10px;
     border: 2px dashed var(--light-sub-color);
     border-radius: var(--border-radius);
+    background-color: #fff;
+}
+
+.filter{
+    margin-top: -7px;
 }
 
 #ResetParam{
@@ -131,14 +136,13 @@ label {
     color: var(--light-sub-color);
 }
 
-.PhotoView {
+#controlPanel #PhotoView {
     width: 100%;
     background-color: var(--light-main-color);
     border-radius: var(--border-radius);
 }
 
 #PhotoWrapper {
-    margin: 0px 20px 20px 20px;
     padding-top: 20px;
 }
 
@@ -198,7 +202,7 @@ label {
 @media screen and (max-width: 768px) {
     /*ソースキャンバス*/
     #sourceImage  {
-        max-height: 200px;
+        max-height: 350px;
         width: 100%;
         border-radius: var(--border-radius);
     }
@@ -219,14 +223,20 @@ label {
     #croppedCanvas {
         width: 100%;
         max-height: 350px;
-        padding-top: 26px;
+        /* padding-top: 26px; */
         /* display: block; */
     }
 }
 
 @media (prefers-color-scheme: dark) {
+
+    .accordion {
+        --bs-accordion-bg: var(--dark-accent-sub-color);
+        --bs-accordion-color: var(--dark-main-color);
+    }
+
     body {
-      background-color: #1e1e1a;
+      background-color: var(--dark-accent-sub-color);
       color: #eeeeee;
     }
 
@@ -242,8 +252,9 @@ label {
         border: 2px dashed var(--dark-main-color);
     }
 
-    #filterParam{
-        border: 2px dashed var(--dark-main-color);
+    #filterParam {
+        border: 1px solid var(--dark-main-color);
+        background-color: var(--dark-accent-sub-color);
     }
 
     #indicator{
@@ -281,7 +292,23 @@ label {
     }
     
     #ResetParam{
-        color: #ffffff;
-        background-color: var(--light-accent-sub-color);
+        color: var(--dark-accent-sub-color);
+        background-color: var(--dark-main-color);
+    }
+    #aspectRatio{
+        color: var(--dark-accent-sub-color);
+        background-color: var(--dark-main-color);
+    }
+    #Reload{
+        color: var(--dark-accent-sub-color);
+        background-color: var(--dark-main-color);
+    }
+    #GenMode{
+        color: var(--dark-accent-sub-color);
+        background-color: var(--dark-main-color);
+    }
+    .presetButton{
+        color: var(--dark-accent-sub-color);
+        background-color: var(--dark-main-color);
     }
 }

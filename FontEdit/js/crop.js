@@ -124,7 +124,6 @@ function initResultSetting(context, initial){
 			cropper.setCropBoxData(cropBoxData);
 			let el = document.querySelector('#indicator');
 			el.innerHTML = '<p>ImageSize : '+ String(image.width) +'×'+ String(image.height) +'<br> FileName : ' + file.name + '<br> FileSize : ' + ag2fileSizeOpt(file.size, true, 1); +'</p>';
-			
 		}
 	});
 }
