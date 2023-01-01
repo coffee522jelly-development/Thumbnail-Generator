@@ -61,7 +61,7 @@ input.uk-checkbox:checked:focus {
 }
 
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   input[type="range"]::-webkit-slider-runnable-track {
     background: var(--light-main-color);
     height: 5px;
@@ -79,4 +79,4 @@ input.uk-checkbox:checked:focus {
     background-color: var(--dark-sub-color);
     border-color: var(--dark-sub-color);
   }
-}
+} */

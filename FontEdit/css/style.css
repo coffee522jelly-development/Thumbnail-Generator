@@ -5,13 +5,17 @@
 
     --light-main-color: #F1EEE9;
     --light-sub-color: #73777B;
-    --light-accent-color: #EC994B;
+    --light-accent-color: #5fba8d;
     --light-accent-sub-color: #2a293b;
+    --light-shadow : 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
 
-    --dark-main-color: #E7F6F2;
-    --dark-sub-color: #395B64;
-    --dark-accent-color: #A5C9CA;
-    --dark-accent-sub-color: #2C3333;
+    --dark-main-color: #fffeff;
+    --dark-back-color: #243447;
+    --dark-sub-color: #5fba8d;
+    --dark-accent-color: #5fba8d;
+    --dark-accent-sub-color: #243447;
+    --dark-shadow :   5px 5px 10px #1f2c3c, -5px -5px 10px #293c52;
+
 }
 
 html, body {
@@ -155,6 +159,12 @@ label {
     border-radius: var(--border-radius);
 }
 
+.accordion {
+    box-shadow: var(--light-shadow);
+    border-radius: var(--border-radius);
+
+}
+
 /* Fontselect*/
 /*JP*/
 #IPAex{font-family: 'IPAex';}
@@ -229,10 +239,22 @@ label {
 }
 
 @media (prefers-color-scheme: dark) {
-
     .accordion {
         --bs-accordion-bg: var(--dark-accent-sub-color);
         --bs-accordion-color: var(--dark-main-color);
+        box-shadow: var(--dark-shadow);
+    }
+
+    .accordion-item {
+        border: none;
+    }
+
+    .accordion-button:not(.collapsed){
+        box-shadow: none;
+    }
+
+    .accordion-button:focus {
+        border-color: var(--light-accent-color) !important;
     }
 
     body {
@@ -270,7 +292,7 @@ label {
     }
 
     #main{
-        background-color: var(--dark-sub-color);
+        background-color: var(--dark-back-color);
     }
 
     .PhotoView {
@@ -285,7 +307,7 @@ label {
     }
     
     #Download{
-        color: #ffffff;
+        color: #000000;
         background-color: var(--dark-accent-color);
         cursor: pointer;
         width: 100%;
