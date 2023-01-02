@@ -53,6 +53,7 @@ select {
 button {
     font-family: var(--default-font);
     width: 100%;
+    border: none;
 }
 
 nav {
@@ -98,6 +99,7 @@ label {
     background-color: var(--light-main-color);
     cursor: pointer;
     width: 100%;
+    text-align: center;
 }
 
 #Download{
@@ -109,17 +111,13 @@ label {
 
 #filterParam{
     padding: 10px;
-    border: 2px dashed var(--light-sub-color);
+    box-shadow: var(--light-shadow);
     border-radius: var(--border-radius);
-    background-color: #fff;
-}
-
-.filter{
-    margin-top: -7px;
 }
 
 #ResetParam{
-    color: #ffffff;
+    margin-top: 20px;
+    color: #e0e0e0;
     background-color: var(--light-accent-sub-color);
 }
 
@@ -265,6 +263,9 @@ label {
     p {
         color: #aaaaaa;
     }
+    select {
+        background-color: var(--dark-main-color);
+    }
 
     #sourceCanvas {
         border: 2px dashed var(--dark-main-color);
@@ -275,7 +276,7 @@ label {
     }
 
     #filterParam {
-        border: 1px solid var(--dark-main-color);
+        box-shadow: var(--dark-shadow);
         background-color: var(--dark-accent-sub-color);
     }
 

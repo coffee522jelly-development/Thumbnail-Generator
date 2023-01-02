@@ -48,354 +48,380 @@ window.addEventListener('load', (e) => {
 	updateShapeCheckState();
 	updateIndiXY();
 
+	// Window Reload
+	let btnReload = document.querySelector('#Reload');
+	btnReload.addEventListener('click', (e) => {
+		location.reload();
+	});
+
+
+	// FontSize
+	let inputFontSize = document.querySelector('#inputFontSize');
+	inputFontSize.addEventListener('change', (e) => {
+		fontSize = inputFontSize.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// FontSpacing
+	let inputFontSpacing = document.querySelector('#inputFontSpacing');
+	inputFontSpacing.addEventListener('change', (e) => {
+		fontSpacing = inputFontSpacing.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// FontRotate
+	let inputFontRotate = document.querySelector('#inputFontRotate');
+	inputFontRotate.addEventListener('change', (e) => {
+		fontRotate = inputFontRotate.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// FontColor
+	let inputFontColor = document.querySelector('#inputFontColor');
+	inputFontColor.addEventListener('change', (e) => {
+		fontColor = inputFontColor.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// FontBackColor
+	let inputFontBackColor = document.querySelector('#inputFontBackColor');
+	inputFontBackColor.addEventListener('change', (e) => {
+		fontBackColor = inputFontBackColor.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// FontStyle
+	let selectFontStyle = document.querySelector('#fontStyle');
+	selectFontStyle.addEventListener('change', (e) => {
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// FontLineWidth
+	let inputFontLineWidth = document.querySelector('#inputFontLineWidth');
+	inputFontLineWidth.addEventListener('change', (e) => {
+		fontLineWidth = inputFontLineWidth.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// FontLocateX
+	let inputFontLocateX = document.querySelector('#inputFontLocateX');
+	inputFontLocateX.addEventListener('change', (e) => {
+		fontLocateX = inputFontLocateX.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+		updateIndiXY();
+	});
+
+
+	// FontLocateY
+	let inputFontLocateY = document.querySelector('#inputFontLocateY');
+	inputFontLocateY.addEventListener('change', (e) => {
+		fontLocateY = inputFontLocateY.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+		updateIndiXY();
+	});
+
+
+	// ShapeType
+	let selectShapeType = document.querySelector('#shapeType');
+	selectShapeType.addEventListener('change', (e) => {
+		updateShapeCheckState();
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// ShapeColor
+	let inputShapeColor = document.querySelector('#inputShapeColor');
+	inputShapeColor.addEventListener('change', (e) => {
+		shapeColor = inputShapeColor.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// ShapeOpacity
+	let inputShapeOpacity = document.querySelector('#inputShapeOpacity');
+	inputShapeOpacity.addEventListener('change', (e) => {
+		shapeOpacity = inputShapeOpacity.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// ShapeSize
+	let inputShapeSize = document.querySelector('#inputShapeSize');
+	inputShapeSize.addEventListener('change', (e) => {
+		shapeSize = inputShapeSize.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// ShapeLineWidth
+	let inputShapeLineWidth = document.querySelector('#inputShapeLineWidth');
+	inputShapeLineWidth.addEventListener('change', (e) => {
+		shapeLineWidth = inputShapeLineWidth.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// ShapeVertexSize
+	let inputShapeVertexSize = document.querySelector('#inputVertexSize');
+	inputShapeVertexSize.addEventListener('change', (e) => {
+		shapeVertexSize = inputShapeVertexSize.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// ShapeSectorAngle
+	let inputSectorAngle = document.querySelector('#inputSectorAngle');
+	inputSectorAngle.addEventListener('change', (e) => {
+		shapeSectorAngle = inputSectorAngle.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// ShapeDashInterval
+	let inputShapeDash = document.querySelector('#inputShapeDash');
+	inputShapeDash.addEventListener('change', (e) => {
+		shapeDashInterval = inputShapeDash.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// ShapeLocateX
+	let inputShapeLocateX = document.querySelector('#inputShapeLocateX');
+	inputShapeLocateX.addEventListener('change', (e) => {
+		shapeLocateX = inputShapeLocateX.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+		updateIndiXY();
+	});
+
+
+	// ShapeLocateY
+	let inputShapeLocateY = document.querySelector('#inputShapeLocateY');
+	inputShapeLocateY.addEventListener('change', (e) => {
+		shapeLocateY = inputShapeLocateY.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+		updateIndiXY();
+	});
+
+
+	// FontRotate
+	let inputShapeRotate = document.querySelector('#inputShapeRotate');
+	inputShapeRotate.addEventListener('change', (e) => {
+		shapeRotate = inputShapeRotate.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// AspectRatioCheck
+	let btnAspectRatio = document.querySelector('#aspectRatio');
+	btnAspectRatio.addEventListener('click', OnAspectButton);
+
+
+	// Download
+	let btnDownload = document.querySelector('#Download');
+	btnDownload.addEventListener('click', OnDownloadButton);
+
+
+	// Brightness
+	let inputBrightness = document.querySelector('#inputBrightness');
+	inputBrightness.addEventListener('change', (e) => {
+		Brightness = inputBrightness.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+		
+		// Display
+		let indiBrightness = document.querySelector('#indiBrightness');
+		indiBrightness.innerHTML = 'Brightness:' + inputBrightness.value + '';
+	});
+
+
+	// Blur
+	let inputBlur = document.querySelector('#inputBlur');
+	inputBlur.addEventListener('change', (e) => {
+		Blur = inputBlur.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+		// Display
+		let indiBlur = document.querySelector('#indiBlur');
+		indiBlur.innerHTML = 'Blur:' + inputBlur.value + '';
+	});
+
+
+	// Contrast
+	let inputContrast = document.querySelector('#inputContrast');
+	inputContrast.addEventListener('change', (e) => {
+		Contrast = inputContrast.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+		// Display
+		let indiContrast = document.querySelector('#indiContrast');
+		indiContrast.innerHTML = 'Contrast:' + inputContrast.value + '';
+	});
+
+
+	// GrayScale
+	let inputGrayScale = document.querySelector('#inputGrayScale');
+	inputGrayScale.addEventListener('change', (e) => {
+		GrayScale = inputGrayScale.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+		// Display
+		let indiGrayscale = document.querySelector('#indiGrayscale');
+		indiGrayscale.innerHTML = 'GrayScale:' + inputGrayScale.value + '';
+	});
+
+
+	// Hue
+	let inputHue = document.querySelector('#inputHue');
+	inputHue.addEventListener('change', (e) => {
+		Hue = inputHue.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+		// Display
+		let indiHue = document.querySelector('#indiHue');
+		indiHue.innerHTML = 'Hue:' + inputHue.value + '';
+	});
+
+
+	// Invert
+	let inputInvert = document.querySelector('#inputInvert');
+	inputInvert.addEventListener('change', (e) => {
+		Invert = inputInvert.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+		// Display
+		let indiInvert = document.querySelector('#indiInvert');
+		indiInvert.innerHTML = 'Invert:' + inputInvert.value + '';
+	});
+
+
+	// Saturate
+	let inputSaturate = document.querySelector('#inputSaturate');
+	inputSaturate.addEventListener('change', (e) => {
+		Saturate = inputSaturate.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+		// Display
+		let indiSaturate = document.querySelector('#indiSaturate');
+		indiSaturate.innerHTML = 'Saturate:' + inputSaturate.value + '';
+	});
+
+
+	// Sepia
+	let inputSepia = document.querySelector('#inputSepia');
+	inputSepia.addEventListener('change', (e) => {
+		Sepia = inputSepia.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+		// Display
+		let indiSepia = document.querySelector('#indiSepia');
+		indiSepia.innerHTML = 'Sepia:' + inputSepia.value + '';
+	});
+
+
+	// Opacity
+	let inputOpacity = document.querySelector('#inputOpacity');
+	inputOpacity.addEventListener('change', (e) => {
+		Opacity = inputOpacity.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+
+		// Display
+		let indiOpacity = document.querySelector('#indiOpacity');
+		indiOpacity.innerHTML = 'Opacity:' + inputOpacity.value + '';
+	});
+
+
+	// ResetParams
+	let btnResetParam = document.querySelector('#ResetParam');
+	btnResetParam.addEventListener('click', resetParam);
+
+
+	// Grayish
+	let btnGrayish= document.querySelector('#Grayish');
+	btnGrayish.addEventListener('click', (e) => {
+		resetParam();
+
+		GrayScale = 80;
+		inputGrayScale.value = GrayScale;
+		Opacity = 0.8;
+		inputOpacity.value = Opacity;
+		
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+	// Vivid
+	let btnVivid = document.querySelector('#Vivid');
+	btnVivid.addEventListener('click', (e) => {
+		resetParam();
+
+		Contrast = 150;
+		inputContrast.value = Contrast;
+		Saturate = 200;
+		inputSaturate.value = Saturate;
+
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+	function resetParam(){
+		Brightness 	= 100;
+		Blur 		= 0;
+		Contrast 	= 100;
+		GrayScale 	= 0;
+		Hue	 		= 0;
+		Invert 		= 0; 
+		Sepia 		= 0;
+		Saturate 	= 100;
+		Opacity 	= 1.0;
+	
+		inputBrightness.value = Brightness;
+		inputBlur.value = Blur;
+		inputContrast.value = Contrast;
+		inputGrayScale.value = GrayScale;
+		inputHue.value = Hue;
+		inputInvert.value = Invert;
+		inputSepia.value = Sepia;
+		inputSaturate.value = Saturate;
+		inputOpacity.value = Opacity;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	
+		// Display
+		let indiBrightness = document.querySelector('#indiBrightness');
+		indiBrightness.innerHTML = 'Brightness:' + inputBrightness.value + '';
+	
+		let indiBlur = document.querySelector('#indiBlur');
+		indiBlur.innerHTML = 'Blur:' + inputBlur.value + '';
+	
+		let indiContrast = document.querySelector('#indiContrast');
+		indiContrast.innerHTML = 'Contrast:' + inputContrast.value + '';
+	
+		let indiGrayScale = document.querySelector('#indiGrayscale');
+		indiGrayScale.innerHTML = 'GrayScale:' + inputGrayScale.value + '';
+	
+		let indiHue = document.querySelector('#indiHue');
+		indiHue.innerHTML = 'Hue:' + inputHue.value + '';
+	
+		let indiInvert = document.querySelector('#indiInvert');
+		indiInvert.innerHTML = 'Invert:' + inputInvert.value + '';
+	
+		let indiSepia = document.querySelector('#indiSepia');
+		indiSepia.innerHTML = 'Sepia:' + inputSepia.value + '';
+	
+		let indiSaturate = document.querySelector('#indiSaturate');
+		indiSaturate.innerHTML = 'Saturate:' + inputSaturate.value + '';
+		
+		let indiOpacity = document.querySelector('#indiOpacity');
+		indiOpacity.innerHTML = 'Opacity:' + inputOpacity.value + '';
+	}
 });
 
 
 window.addEventListener('resize', function(){
 	getViewportSizeAndAdjust();
-});
-
-
-// Window Reload
-let btnReload = document.querySelector('#Reload');
-btnReload.addEventListener('click', (e) => {
-	location.reload();
-});
-
-
-// FontSize
-let inputFontSize = document.querySelector('#inputFontSize');
-inputFontSize.addEventListener('change', (e) => {
-	fontSize = inputFontSize.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// FontSpacing
-let inputFontSpacing = document.querySelector('#inputFontSpacing');
-inputFontSpacing.addEventListener('change', (e) => {
-	fontSpacing = inputFontSpacing.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// FontRotate
-let inputFontRotate = document.querySelector('#inputFontRotate');
-inputFontRotate.addEventListener('change', (e) => {
-	fontRotate = inputFontRotate.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// FontColor
-let inputFontColor = document.querySelector('#inputFontColor');
-inputFontColor.addEventListener('change', (e) => {
-	fontColor = inputFontColor.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// FontBackColor
-let inputFontBackColor = document.querySelector('#inputFontBackColor');
-inputFontBackColor.addEventListener('change', (e) => {
-	fontBackColor = inputFontBackColor.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// FontStyle
-let selectFontStyle = document.querySelector('#fontStyle');
-selectFontStyle.addEventListener('change', (e) => {
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// FontLineWidth
-let inputFontLineWidth = document.querySelector('#inputFontLineWidth');
-inputFontLineWidth.addEventListener('change', (e) => {
-	fontLineWidth = inputFontLineWidth.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// FontLocateX
-let inputFontLocateX = document.querySelector('#inputFontLocateX');
-inputFontLocateX.addEventListener('change', (e) => {
-	fontLocateX = inputFontLocateX.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-	updateIndiXY();
-});
-
-
-// FontLocateY
-let inputFontLocateY = document.querySelector('#inputFontLocateY');
-inputFontLocateY.addEventListener('change', (e) => {
-	fontLocateY = inputFontLocateY.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-	updateIndiXY();
-});
-
-
-// ShapeType
-let selectShapeType = document.querySelector('#shapeType');
-selectShapeType.addEventListener('change', (e) => {
-	updateShapeCheckState();
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// ShapeColor
-let inputShapeColor = document.querySelector('#inputShapeColor');
-inputShapeColor.addEventListener('change', (e) => {
-	shapeColor = inputShapeColor.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// ShapeOpacity
-let inputShapeOpacity = document.querySelector('#inputShapeOpacity');
-inputShapeOpacity.addEventListener('change', (e) => {
-	shapeOpacity = inputShapeOpacity.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// ShapeSize
-let inputShapeSize = document.querySelector('#inputShapeSize');
-inputShapeSize.addEventListener('change', (e) => {
-	shapeSize = inputShapeSize.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// ShapeLineWidth
-let inputShapeLineWidth = document.querySelector('#inputShapeLineWidth');
-inputShapeLineWidth.addEventListener('change', (e) => {
-	shapeLineWidth = inputShapeLineWidth.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// ShapeVertexSize
-let inputShapeVertexSize = document.querySelector('#inputVertexSize');
-inputShapeVertexSize.addEventListener('change', (e) => {
-	shapeVertexSize = inputShapeVertexSize.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// ShapeSectorAngle
-let inputSectorAngle = document.querySelector('#inputSectorAngle');
-inputSectorAngle.addEventListener('change', (e) => {
-	shapeSectorAngle = inputSectorAngle.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// ShapeDashInterval
-let inputShapeDash = document.querySelector('#inputShapeDash');
-inputShapeDash.addEventListener('change', (e) => {
-	shapeDashInterval = inputShapeDash.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// ShapeLocateX
-let inputShapeLocateX = document.querySelector('#inputShapeLocateX');
-inputShapeLocateX.addEventListener('change', (e) => {
-	shapeLocateX = inputShapeLocateX.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-	updateIndiXY();
-});
-
-
-// ShapeLocateY
-let inputShapeLocateY = document.querySelector('#inputShapeLocateY');
-inputShapeLocateY.addEventListener('change', (e) => {
-	shapeLocateY = inputShapeLocateY.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-	updateIndiXY();
-});
-
-
-// FontRotate
-let inputShapeRotate = document.querySelector('#inputShapeRotate');
-inputShapeRotate.addEventListener('change', (e) => {
-	shapeRotate = inputShapeRotate.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-
-// AspectRatioCheck
-let btnAspectRatio = document.querySelector('#aspectRatio');
-btnAspectRatio.addEventListener('click', OnAspectButton);
-
-
-// Download
-let btnDownload = document.querySelector('#Download');
-btnDownload.addEventListener('click', OnDownloadButton);
-
-
-// Brightness
-let inputBrightness = document.querySelector('#inputBrightness');
-inputBrightness.addEventListener('change', (e) => {
-	Brightness = inputBrightness.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-	
-	// Display
-	let indiBrightness = document.querySelector('#indiBrightness');
-	indiBrightness.innerHTML = ':' + inputBrightness.value + '';
-});
-
-
-// Blur
-let inputBlur = document.querySelector('#inputBlur');
-inputBlur.addEventListener('change', (e) => {
-	Blur = inputBlur.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-
-	// Display
-	let indiBlur = document.querySelector('#indiBlur');
-	indiBlur.innerHTML = ':' + inputBlur.value + '';
-});
-
-
-// Contrast
-let inputContrast = document.querySelector('#inputContrast');
-inputContrast.addEventListener('change', (e) => {
-	Contrast = inputContrast.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-
-	// Display
-	let indiContrast = document.querySelector('#indiContrast');
-	indiContrast.innerHTML = ':' + inputContrast.value + '';
-});
-
-
-// GrayScale
-let inputGrayScale = document.querySelector('#inputGrayScale');
-inputGrayScale.addEventListener('change', (e) => {
-	GrayScale = inputGrayScale.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-
-	// Display
-	let indiGrayscale = document.querySelector('#indiGrayscale');
-	indiGrayscale.innerHTML = ':' + inputGrayScale.value + '';
-});
-
-
-// Hue
-let inputHue = document.querySelector('#inputHue');
-inputHue.addEventListener('change', (e) => {
-	Hue = inputHue.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-
-	// Display
-	let indiHue = document.querySelector('#indiHue');
-	indiHue.innerHTML = ':' + inputHue.value + '';
-});
-
-
-// Invert
-let inputInvert = document.querySelector('#inputInvert');
-inputInvert.addEventListener('change', (e) => {
-	Invert = inputInvert.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-
-	// Display
-	let indiInvert = document.querySelector('#indiInvert');
-	indiInvert.innerHTML = ':' + inputInvert.value + '';
-});
-
-
-// Saturate
-let inputSaturate = document.querySelector('#inputSaturate');
-inputSaturate.addEventListener('change', (e) => {
-	Saturate = inputSaturate.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-
-	// Display
-	let indiSaturate = document.querySelector('#indiSaturate');
-	indiSaturate.innerHTML = ':' + inputSaturate.value + '';
-});
-
-
-// Sepia
-let inputSepia = document.querySelector('#inputSepia');
-inputSepia.addEventListener('change', (e) => {
-	Sepia = inputSepia.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-
-	// Display
-	let indiSepia = document.querySelector('#indiSepia');
-	indiSepia.innerHTML = ':' + inputSepia.value + '';
-});
-
-
-// Opacity
-let inputOpacity = document.querySelector('#inputOpacity');
-inputOpacity.addEventListener('change', (e) => {
-	Opacity = inputOpacity.value;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-
-	// Display
-	let indiOpacity = document.querySelector('#indiOpacity');
-	indiOpacity.innerHTML = ':' + inputOpacity.value + '';
-});
-
-
-// ResetParams
-let btnResetParam = document.querySelector('#ResetParam');
-btnResetParam.addEventListener('click', resetParam);
-
-function resetParam(){
-	Brightness 	= 100;
-	Blur 		= 0;
-	Contrast 	= 100;
-	GrayScale 	= 0;
-	Hue	 		= 0;
-	Invert 		= 0; 
-	Sepia 		= 0;
-	Saturate 	= 100;
-	Opacity 	= 1.0;
-
-	inputBrightness.value = Brightness;
-	inputBlur.value = Blur;
-	inputContrast.value = Contrast;
-	inputGrayScale.value = GrayScale;
-	inputHue.value = Hue;
-	inputInvert.value = Invert;
-	inputSepia.value = Sepia;
-	inputSaturate.value = Saturate;
-	inputOpacity.value = Opacity;
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-}
-
-
-// Grayish
-let btnGrayish= document.querySelector('#Grayish');
-btnGrayish.addEventListener('click', (e) => {
-	resetParam();
-
-	GrayScale = 80;
-	inputGrayScale.value = GrayScale;
-	Opacity = 0.8;
-	inputOpacity.value = Opacity;
-	
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
-});
-
-// Vivid
-let btnVivid = document.querySelector('#Vivid');
-btnVivid.addEventListener('click', (e) => {
-	resetParam();
-
-	Contrast = 150;
-	inputContrast.value = Contrast;
-	Saturate = 200;
-	inputSaturate.value = Saturate;
-
-	initResultSetting(document.querySelector("#sourceCanvas"), false);
 });
 
 // 関数/////////////////////////////////////////////////////////////////
@@ -406,6 +432,7 @@ function updateFontCheckState(){
 	let fontOutline = document.querySelector('#fontOutLine');
 	fontOutline.disabled = bfontEmphasis;
 }
+
 
 function updateShapeCheckState(){
 	let drawFont = document.querySelector('#fontDraw');

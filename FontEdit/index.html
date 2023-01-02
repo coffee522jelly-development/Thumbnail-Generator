@@ -6,13 +6,11 @@
     <!-- CSS load -->
     <link rel="stylesheet" type="text/css" media="all" href="dist/css/cropper.css">
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/css/uikit.min.css">
     <!-- Javascript load -->
     <script type="text/javascript" src="dist/js/vue.js"></script>
     <script type="text/javascript" src="dist/js/Vibrant.min.js"></script>
     <script type="text/javascript" src="dist/js/cropper.min.js"></script>
     <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="dist/js/uikit.min.js"></script>
     <title>ThumbnailGenerator(Ver0.0.5)</title>
   </head>
   <body>
@@ -56,17 +54,17 @@
                       <p>Text</p>
                       <form name="Title">
                         <div>
-                          <input type="text" class="uk-input" name="caption" placeholder="Text" aria-label="Text" value="Hello.">
+                          <input type="text" name="caption" placeholder="Text" aria-label="Text" value="Hello.">
                         </div>
                       </form>
                     </div>
                     <div id="controlButton" class="row-cols-1">
                       <div class="col">
                         <p>Control</p>
-                        <label id="File" class="uk-button">
+                        <label id="File">
                           <input type="file" id="uploader">Open 
                         </label>
-                        <label id="Download" class="uk-button">Download </label>
+                        <button id="Download" type="button">Download </button>
                       </div>
                     </div>
                   </div>
@@ -74,33 +72,33 @@
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">CropSetting</button>
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">AspectSetting</button>
                 </h2>
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
                   <div class="accordion-body">
                     <div class="col">
                       <p>Aspect Ratio</p>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio5" value="2.333333">
+                        <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio5" value="2.333333">
                         <label class="form-check-label" for="exampleRadios5">21:9</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
+                        <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio1" value="1.777777" checked>
                         <label class="form-check-label" for="exampleRadios1">16:9</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
+                        <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio2" value="1.333333">
                         <label class="form-check-label" for="exampleRadios2">4:3</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
+                        <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio3" value="1.5">
                         <label class="form-check-label" for="exampleRadios3">3:2</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" class="uk-radio" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
+                        <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
                         <label class="form-check-label" for="exampleRadios4">1:1</label>
                       </div>
-                      <button id="aspectRatio" class="uk-button-default">Crop </button>
+                      <button id="aspectRatio">Submit </button>
                     </div>
                   </div>
                 </div>
@@ -139,8 +137,8 @@
                   <div class="accordion-body">
                     <div class="col">
                       <p>Utility</p>
-                      <button id="Reload" class="uk-button uk-button-default">Reload </button>
-                      <button id="GenMode" class="uk-button uk-button-default" onclick="location.href='../3DGen/index.html'">Wallpaper Gen</button>
+                      <button id="Reload">Reload </button>
+                      <button id="GenMode" onclick="location.href='../3DGen/index.html'">Wallpaper Gen</button>
                     </div>
                   </div>
                 </div>
@@ -154,42 +152,42 @@
               <p>ImageFilter</p>
               <div id="filterParam">
                 <div class="filter">
-                  <p>Brightness(輝度)</p><p id="indiBrightness"></p>
-                  <input type="range" class="form-range uk-range" id="inputBrightness" min="0" max="200" step="1" value="100">
+                  <p id="indiBrightness">Brightness:</p>
+                  <input type="range" class="form-range" id="inputBrightness" min="0" max="200" step="1" value="100">
                 </div>
                 <div class="filter">
-                  <p>Contrast(コントラスト)</p><p id="indiContrast"></p>
-                  <input type="range" class="form-range uk-range" id="inputContrast" min="0" max="200" step="1" value="100">
+                  <p id="indiContrast">Contrast:</p>
+                  <input type="range" class="form-range" id="inputContrast" min="0" max="200" step="1" value="100">
                 </div>
                 <div class="filter">
-                  <p>Saturate(彩度)</p><p id="indiSaturate"></p>
-                  <input type="range" class="form-range uk-range" id="inputSaturate" min="0" max="200" step="1" value="100">
+                  <p id="indiSaturate">Saturate:</p>
+                  <input type="range" class="form-range" id="inputSaturate" min="0" max="200" step="1" value="100">
                 </div>
                 <div class="filter">
-                  <p>GrayScale</p><p id="indiGrayscale"></p>
-                  <input type="range" class="form-range uk-range" id="inputGrayScale" min="0" max="100" step="1" value="0">
+                  <p id="indiGrayscale">GrayScale:</p>
+                  <input type="range" class="form-range" id="inputGrayScale" min="0" max="100" step="1" value="0">
                 </div>
                 <div class="filter">
-                  <p>Sepia</p><p id="indiSepia"></p>
-                  <input type="range" class="form-range uk-range" id="inputSepia" min="0" max="100" step="1" value="0">
+                  <p id="indiSepia">Sepia:</p>
+                  <input type="range" class="form-range" id="inputSepia" min="0" max="100" step="1" value="0">
                 </div>
                 <div class="filter">
-                  <p>Hue(色相)</p><p id="indiHue"></p>
-                  <input type="range" class="form-range uk-range" id="inputHue" min="0" max="360" step="1" value="0">
+                  <p id="indiHue">Hue:</p>
+                  <input type="range" class="form-range" id="inputHue" min="0" max="360" step="1" value="0">
                 </div>
                 <div class="filter">
-                  <p>Opacity(透明度)</p><p id="indiOpacity"></p>
-                  <input type="range" class="form-range uk-range" id="inputOpacity" min="0" max="1.0" step="0.01" value="1.0">
+                  <p id="indiOpacity">Opacity:</p>
+                  <input type="range" class="form-range" id="inputOpacity" min="0" max="1.0" step="0.01" value="1.0">
                 </div>
                 <div class="filter">
-                  <p>Blur(ぼかし)</p><p id="indiBlur"></p>
-                  <input type="range" class="form-range uk-range" id="inputBlur" min="0" max="20" step="1" value="0">
+                  <p id="indiBlur">Blur:</p>
+                  <input type="range" class="form-range" id="inputBlur" min="0" max="20" step="1" value="0">
                 </div>
                 <div class="filter">
-                  <p>invert(色反転)</p><p id="indiInvert"></p>
-                  <input type="range" class="form-range uk-range" id="inputInvert" min="0" max="100" step="1" value="0">
+                  <p id="indiInvert">Invert:</p>
+                  <input type="range" class="form-range" id="inputInvert" min="0" max="100" step="1" value="0">
                 </div>
-                <button id="ResetParam" class="uk-button">Reset</button>
+                <button id="ResetParam">Reset</button>
               </div>
             </div>
             <div id="croppedImage" class="col-10">
@@ -206,14 +204,15 @@
                     </h2>
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                       <div class="accordion-body">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="fontDraw" name="fontBold" v-model="isChecked" v-on:change="setFontDraw" value="yes" checked>
+                          <label class="form-check-label" for="Draw">Draw</label>
+                        </div>
                         <input type="color" id="inputFontColor" value="#ffffff" list="defaultcolors">
                         <datalist id="defaultcolors"></datalist>
                         <input type="color" id="inputFontBackColor" value="#0068b7" list="defaultcolors">
                         <datalist id="defaultcolors"></datalist>
-                        <label class="form-check-label">
-                          <input type="checkbox" id="fontDraw" class="uk-checkbox" v-model="isChecked" v-on:change="setFontDraw">  Draw 
-                        </label>
-                        <select id="fontStyle" class="form-select uk-select" aria-label=" example" value="Train-One">
+                        <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=" example" value="Train-One">
                           <optgroup label="-JPFont-"></optgroup>
                           <option id="IPAex" value="IPAex">IPAex明朝</option>
                           <option id="Timemachine-wa" value="Timemachine-wa">タイムマシンわ号</option>
@@ -238,16 +237,16 @@
                           <option id="Train-One" value="Train-One">Train-One</option>
                         </select>
                         <label class="form-check-label">
-                          <input type="checkbox" id="fontBold" class="uk-checkbox" v-model="isChecked" v-on:change="setBold">  Bold 
+                          <input type="checkbox" id="fontBold" v-model="isChecked" v-on:change="setBold">  Bold 
                         </label>
                         <label class="form-check-label">
-                          <input type="checkbox" id="fontItalic" class="uk-checkbox" v-model="isChecked" v-on:change="setItalic">  Italic 
+                          <input type="checkbox" id="fontItalic" v-model="isChecked" v-on:change="setItalic">  Italic 
                         </label>
                         <label class="form-check-label">
-                          <input type="checkbox" id="fontOutLine" class="uk-checkbox" v-model="isChecked" v-on:change="setOutLine">  Outline 
+                          <input type="checkbox" id="fontOutLine" v-model="isChecked" v-on:change="setOutLine">  Outline 
                         </label>
                         <label class="form-check-label">
-                          <input type="checkbox" id="fontEmphasis" class="uk-checkbox" v-model="isChecked" v-on:change="setEmphasis">  Em 
+                          <input type="checkbox" id="fontEmphasis" v-model="isChecked" v-on:change="setEmphasis">  Em 
                         </label>
                       </div>
                     </div>
@@ -259,13 +258,13 @@
                     <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                       <div class="accordion-body">
                         <p>Size</p>
-                        <input type="range" class="form-range uk-range" id="inputFontSize" min="0" max="100" step="1" value="20">
+                        <input type="range" class="form-range" id="inputFontSize" min="0" max="100" step="1" value="20">
                         <p>Rotate</p>
-                        <input type="range" class="form-range uk-range" id="inputFontRotate" min="0" max="360" step="1" value="0">
+                        <input type="range" class="form-range" id="inputFontRotate" min="0" max="360" step="1" value="0">
                         <p>LetterSpacing</p>
-                        <input type="range" class="form-range uk-range" id="inputFontSpacing" min="0" max="200" step="10" value="10">
+                        <input type="range" class="form-range" id="inputFontSpacing" min="0" max="200" step="10" value="10">
                         <p>LineWidth</p>
-                        <input type="range" class="form-range uk-range" id="inputFontLineWidth" min="0" max="150" step="5" value="10">
+                        <input type="range" class="form-range" id="inputFontLineWidth" min="0" max="150" step="5" value="10">
                       </div>
                     </div>
                   </div>
@@ -277,10 +276,10 @@
                       <div class="accordion-body">
                         <p>LocateX</p>
                         <p id="indifX"></p>
-                        <input type="range" class="form-range uk-range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
+                        <input type="range" class="form-range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
                         <p>LocateY</p>
                         <p id="indifY"></p>
-                        <input type="range" class="form-range uk-range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
+                        <input type="range" class="form-range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
                       </div>
                     </div>
                   </div>
@@ -295,15 +294,16 @@
                   </h2>
                   <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFive">
                     <div class="accordion-body">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="drawShape" v-model="isChecked" v-on:change="setShapeDraw" value="yes" checked>
+                        <label class="form-check-label" for="Draw">Draw</label>
+                      </div>
                       <input type="color" id="inputShapeColor" value="#aaaaaa" list="defaultcolors">
+                      <label>
+                        <input type="checkbox" id="drawBackGround" v-model="isChecked" v-on:change="setBackGround">  BackGround(Only) 
+                      </label>
                       <datalist id="defaultcolors"></datalist>
-                      <label>
-                        <input type="checkbox" id="drawShape" class="uk-checkbox" v-model="isChecked" v-on:change="setShapeDraw">  Draw 
-                      </label>
-                      <label>
-                        <input type="checkbox" id="drawBackGround" class="uk-checkbox" v-model="isChecked" v-on:change="setBackGround">  BackGround(Only) 
-                      </label>
-                      <select id="shapeType" class="uk-select" aria-label=" example" value="Arc">
+                      <select id="shapeType" class="form-select form-select-lg mb-3" value="Arc">
                         <option selected id="Arc" value="Arc">Arc</option>
                         <option id="Square" value="Square">Square</option>
                         <option id="justify-Rect" value="justify-Rect">justify-Rect</option>
@@ -312,10 +312,10 @@
                         <option id="Polygon" value="Polygon">Polygon</option>
                       </select>
                       <label>
-                        <input type="checkbox" id="drawShapeDash" class="uk-checkbox" v-model="isChecked" v-on:change="setShapeDash">  Dash 
+                        <input type="checkbox" id="drawShapeDash" v-model="isChecked" v-on:change="setShapeDash">  Dash 
                       </label>
                       <label>
-                        <input type="checkbox" id="drawShapeFill" class="uk-checkbox" v-model="isChecked" v-on:change="setShapeFill">  Fill 
+                        <input type="checkbox" id="drawShapeFill" v-model="isChecked" v-on:change="setShapeFill">  Fill 
                       </label>
                     </div>
                   </div>
@@ -327,19 +327,19 @@
                   <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
                     <div class="shapeParam accordion-body">
                       <p>Size</p>
-                      <input type="range" class="form-range uk-range" id="inputShapeSize" min="0" max="1000" step="10" value="100">
+                      <input type="range" class="form-range" id="inputShapeSize" min="0" max="1000" step="10" value="100">
                       <p>Rotate</p>
-                      <input type="range" class="form-range uk-range" id="inputShapeRotate" min="0" max="360" step="15" value="0">
+                      <input type="range" class="form-range" id="inputShapeRotate" min="0" max="360" step="15" value="0">
                       <p>Opacity</p>
-                      <input type="range" class="form-range uk-range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="1.0">
+                      <input type="range" class="form-range" id="inputShapeOpacity" min="0" max="1.0" step="0.1" value="1.0">
                       <p>LineWidth</p>
-                      <input type="range" class="form-range uk-range" id="inputShapeLineWidth" min="0" max="300" step="10" value="10">
+                      <input type="range" class="form-range" id="inputShapeLineWidth" min="0" max="300" step="10" value="10">
                       <p>DashInterval(Optional)</p>
-                      <input type="range" class="form-range uk-range" id="inputShapeDash" min="0" max="150" step="1" value="1">
+                      <input type="range" class="form-range" id="inputShapeDash" min="0" max="150" step="1" value="1">
                       <p>SectorAngle(Optional)</p>
-                      <input type="range" class="form-range uk-range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
+                      <input type="range" class="form-range" id="inputSectorAngle" min="0" max="360" step="5" value="45">
                       <p>PolygonVertexSize(Optional)</p>
-                      <input type="range" class="form-range uk-range" id="inputVertexSize" min="3" max="12" step="1" value="3">
+                      <input type="range" class="form-range" id="inputVertexSize" min="3" max="12" step="1" value="3">
                     </div>
                   </div>
                 </div>
@@ -351,10 +351,10 @@
                     <div class="shapeParam accordion-body">
                       <p>LocateX</p>
                       <p id="indisX"></p>
-                      <input type="range" class="form-range uk-range" id="inputShapeLocateX" min="-50" max="50" step="10" value="0">
+                      <input type="range" class="form-range" id="inputShapeLocateX" min="-50" max="50" step="10" value="0">
                       <p>LocateY</p>
                       <p id="indisY"></p>
-                      <input type="range" class="form-range uk-range" id="inputShapeLocateY" min="-50" max="50" step="10" value="0">
+                      <input type="range" class="form-range" id="inputShapeLocateY" min="-50" max="50" step="10" value="0">
                     </div>
                   </div>
                 </div>
