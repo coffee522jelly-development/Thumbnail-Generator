@@ -164,8 +164,7 @@ function imageCrop(event) {
 
 	if (bShapeBackGround)
 		drawBackground(ctx , Width, Height);
-	
-	if (bShape)
+	else if (bShape)
 		drawBackShape(ctx , centerX + (RateX * shapeLocateX), centerY + (RateY * shapeLocateY));
 
 	if (bfontDraw)
@@ -260,12 +259,29 @@ function drawBackShape(context, centerX, centerY){
 	context.filter = "opacity(" + shapeOpacity + ")";
 	context.lineWidth = shapeLineWidth;
 
+	let fillStyle;
+
 	if (bShapeFill){
-		context.fillStyle = shapeColor;
+		fillStyle = shapeColor;
+	}
+
+
+	if (bShapeGradient){
+		const grad = context.createLinearGradient(0, 0, 2.0 * centerX, 2.0 * centerY);
+		grad.addColorStop(0.0 , shapeSubColor);
+		grad.addColorStop(1.0 , shapeColor);
+		fillStyle = grad;
+	}
+
+	if (bShapeFill || bShapeGradient){
+		context.fillStyle = fillStyle;
 		context.fill();
 	}
-	context.strokeStyle = shapeColor;
-	context.stroke();
+
+	if (bShapeDash){
+		context.strokeStyle = shapeColor;
+		context.stroke();
+	}
 	
 	// initialize
 	context.filter = "opacity(1.0)";
@@ -275,7 +291,17 @@ function drawBackShape(context, centerX, centerY){
 
 // 背景描画関数(切り抜き時に付与)
 function drawBackground(context, X, Y){
-	context.fillStyle = shapeColor;
+	if (bShapeFill){
+		context.fillStyle = shapeColor;
+	}
+
+	if (bShapeGradient){
+		const grad = context.createLinearGradient(0, 0, X, Y);
+		grad.addColorStop(0.0 , shapeSubColor);
+		grad.addColorStop(1.0 , shapeColor);
+		context.fillStyle = grad;	
+	}
+
     context.fillRect(0,0,X,Y);
 }
 

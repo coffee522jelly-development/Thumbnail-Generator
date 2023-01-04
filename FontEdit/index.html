@@ -11,7 +11,7 @@
     <script type="text/javascript" src="dist/js/Vibrant.min.js"></script>
     <script type="text/javascript" src="dist/js/cropper.min.js"></script>
     <script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
-    <title>ThumbnailGenerator(Ver0.0.5)</title>
+    <title>ThumbnailGenerator(Ver0.0.5.5)</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm bg-light">
@@ -210,7 +210,7 @@
                         </div>
                         <input type="color" id="inputFontColor" value="#ffffff" list="defaultcolors">
                         <datalist id="defaultcolors"></datalist>
-                        <input type="color" id="inputFontBackColor" value="#0068b7" list="defaultcolors">
+                        <input type="color" id="inputFontBackColor" value="#6fbb8d" list="defaultcolors">
                         <datalist id="defaultcolors"></datalist>
                         <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=" example" value="Train-One">
                           <optgroup label="-JPFont-"></optgroup>
@@ -298,7 +298,8 @@
                         <input class="form-check-input" type="checkbox" id="drawShape" v-model="isChecked" v-on:change="setShapeDraw" value="yes" checked>
                         <label class="form-check-label" for="Draw">Draw</label>
                       </div>
-                      <input type="color" id="inputShapeColor" value="#aaaaaa" list="defaultcolors">
+                      <input type="color" id="inputShapeColor" value="#6fbb8d" list="defaultcolors">
+                      <input type="color" id="inputShapeSubColor" value="#ffffff" list="defaultcolors">
                       <label>
                         <input type="checkbox" id="drawBackGround" v-model="isChecked" v-on:change="setBackGround">  BackGround(Only) 
                       </label>
@@ -312,10 +313,13 @@
                         <option id="Polygon" value="Polygon">Polygon</option>
                       </select>
                       <label>
-                        <input type="checkbox" id="drawShapeDash" v-model="isChecked" v-on:change="setShapeDash">  Dash 
+                        <input type="checkbox" id="drawShapeDash" v-model="isChecked" v-on:change="setShapeDash">  Dash(OutLine) 
                       </label>
                       <label>
                         <input type="checkbox" id="drawShapeFill" v-model="isChecked" v-on:change="setShapeFill">  Fill 
+                      </label>
+                      <label>
+                        <input type="checkbox" id="drawShapeGradient" v-model="isChecked" v-on:change="setShapeGradient">  Gradient 
                       </label>
                     </div>
                   </div>
@@ -364,6 +368,7 @@
         </div>
       </div>
     </div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7935629838646249" crossorigin="anonymous"></script>
     <footer class="footer py-0 bg-light">
       <div class="container">
         <span class="text-muted">Copyright © 2022 Team.A All rights reserved.</span>

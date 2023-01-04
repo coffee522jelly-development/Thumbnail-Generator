@@ -85,6 +85,7 @@ let   bShape 			= false;
 let   bShapeFill 		= false;
 let   bShapeDash 		= false;
 let   bShapeBackGround 	= false;
+let   bShapeGradient    = false;
 
 /*形状描画するか？*/
 const sDrawShape = new Vue({
@@ -146,5 +147,21 @@ const sDrawShapeFill = new Vue({
         }
     }
 });
+
+
+/*形状グラデーション*/
+const sDrawShapeGradient = new Vue({
+    el:'#drawShapeGradient',
+    data: {
+        isChecked: false
+    },
+    methods: {
+        setShapeGradient: function() {
+            bShapeGradient = this.isChecked;
+            updateShapeCheckState();
+            initResultSetting(document.querySelector("#sourceCanvas"), false);
+        }
+    }
+})
 
 

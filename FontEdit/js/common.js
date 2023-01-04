@@ -6,7 +6,7 @@ let   fontSize 			= 20;
 let   fontRotate 		= 0;
 let   fontSpacing 		= 10;
 let   fontColor         = "#ffffff";
-let   fontBackColor     = "#0068b7";
+let   fontBackColor     = "#6fbb8d";
 let   fontLineWidth 	= 10;
 let   fontLocateX       = 0;
 let   fontLocateY       = 0;
@@ -24,7 +24,8 @@ let   Sepia 			= 0;
 let   Opacity 			= 1.0;
 
 // ShapeEffects
-let   shapeColor 		= "#aaaaaa";
+let   shapeColor 		= "#6fbb8d";
+let   shapeSubColor 	= "#ffffff";
 let   shapeOpacity		= 1.0;
 let   shapeSize 		= 100;
 let   shapeRotate 		= 0;
@@ -140,6 +141,14 @@ window.addEventListener('load', (e) => {
 	let inputShapeColor = document.querySelector('#inputShapeColor');
 	inputShapeColor.addEventListener('change', (e) => {
 		shapeColor = inputShapeColor.value;
+		initResultSetting(document.querySelector("#sourceCanvas"), false);
+	});
+
+
+	// ShapeSubColor
+	let inputShapeSubColor = document.querySelector('#inputShapeSubColor');
+	inputShapeSubColor.addEventListener('change', (e) => {
+		shapeSubColor = inputShapeSubColor.value;
 		initResultSetting(document.querySelector("#sourceCanvas"), false);
 	});
 
@@ -534,7 +543,7 @@ function OnDownloadButton(){
 // mobile editor adjust
 function getViewportSizeAndAdjust() {
 	if (cropper != null){
-		cropper.destroy();
+		// cropper.destroy();
 		initResultSetting(document.querySelector("#sourceCanvas"), true);
 	}
 	if (window.innerWidth < 768){
