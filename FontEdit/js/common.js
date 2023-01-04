@@ -426,6 +426,10 @@ window.addEventListener('load', (e) => {
 		let indiOpacity = document.querySelector('#indiOpacity');
 		indiOpacity.innerHTML = 'Opacity:' + inputOpacity.value + '';
 	}
+
+	/*ローディング終了*/
+	const loading = document.querySelector( '.loading' );
+	loading.classList.add('hide');
 });
 
 

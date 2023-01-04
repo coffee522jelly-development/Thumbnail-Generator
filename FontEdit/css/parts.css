@@ -1,3 +1,22 @@
+:root {
+  --default-font: 'inconsolata';
+  --border-radius: 7px;
+
+  --light-main-color: #F1EEE9;
+  --light-sub-color: #73777B;
+  --light-accent-color: #5fba8d;
+  --light-accent-sub-color: #2a293b;
+  --light-shadow : 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+
+  --dark-main-color: #fffeff;
+  --dark-back-color: #243447;
+  --dark-sub-color: #5fba8d;
+  --dark-accent-color: #5fba8d;
+  --dark-accent-sub-color: #243447;
+  --dark-shadow :   5px 5px 10px #1f2c3c, -5px -5px 10px #293c52;
+
+}
+
 /*スクロールバー*/
 ::-webkit-scrollbar {
     width: 0px;
@@ -59,9 +78,50 @@ input.uk-checkbox:checked:focus {
   border-color: var(--light-accent-color);
 }
 
+/*ローディング*/
+@keyframes loading {
+  0% { transform: rotate( 0deg ); }
+  100% { transform: rotate( 360deg ); }
+}
 
-/* @media (prefers-color-scheme: dark) {
-  input[type="range"]::-webkit-slider-runnable-track {
+.loading {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background:  var(--light-main-color);
+}
+
+.loading.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1000ms;
+}
+
+.loading .circle {
+  display: block;
+  position: relative;
+  top: calc( 50% - 20px );
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  border: 7px solid var(--light-main-color);
+  border-top: 7px solid var(--light-accent-color);
+  border-radius: 100px;
+  animation: loading 1000ms linear 0ms infinite normal both;
+}
+
+@media (prefers-color-scheme: dark) {
+  .loading {
+    background: var(--dark-back-color);
+  }
+  .loading .circle {
+    border: 7px solid var(--dark-back-color);
+    border-top: 7px solid var(--light-accent-color);
+  }
+  /* input[type="range"]::-webkit-slider-runnable-track {
     background: var(--light-main-color);
     height: 5px;
   }
@@ -77,5 +137,5 @@ input.uk-checkbox:checked:focus {
   .form-check-input:checked {
     background-color: var(--dark-sub-color);
     border-color: var(--dark-sub-color);
-  }
-} */
+  } */
+}
