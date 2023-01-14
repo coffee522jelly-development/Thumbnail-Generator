@@ -45,6 +45,11 @@
               <p>Indicator : </p>
             </div>
           </div>
+          <!-- <div id="SmartPhoneView" class="creppedImage col-12">
+            <p>Result</p>
+            <canvas class="croppedCanvas"></canvas>
+            <img class="output" src="">
+          </div> -->
           <div id="TitleEdit" class="editList">
             <div class="accordion" id="accordionPanelsStayOpenExample">
               <div class="accordion-item">
@@ -57,17 +62,16 @@
                       <p>Text</p>
                       <form name="Title">
                         <div>
-                          <input type="text" name="caption" placeholder="Text" aria-label="Text" value="Hello.">
+                          <input type="text" name="caption" class="form-control form-control-lg col-12" placeholder="Text" aria-label="Text" value="Hello.">
                         </div>
                       </form>
                     </div>
                     <div id="controlButton" class="row-cols-1">
                       <div class="col">
                         <p>Control</p>
-                        <label id="File">
-                          <input type="file" id="uploader">Open 
-                        </label>
-                        <button id="Download" type="button">Download </button>
+                        <button id="FileOpen" class="btn btn-lg">Open</button>
+                        <input type="file" id="uploader" accept=".png, .jpg, .jpeg" multiple>
+                        <button id="Download" class="btn btn-lg">Download </button>
                       </div>
                     </div>
                   </div>
@@ -80,7 +84,6 @@
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
                   <div class="accordion-body">
                     <div class="col">
-                      <p>Aspect Ratio</p>
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio5" value="2.333333">
                         <label class="form-check-label" for="exampleRadios5">21:9</label>
@@ -101,7 +104,7 @@
                         <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
                         <label class="form-check-label" for="exampleRadios4">1:1</label>
                       </div>
-                      <button id="aspectRatio">Submit </button>
+                      <button id="aspectRatio" class="btn btn-lg presetButton">Submit </button>
                     </div>
                   </div>
                 </div>
@@ -114,10 +117,10 @@
                   <div class="accordion-body">
                     <div class="row">
                       <div class="col-6">
-                        <button id="Grayish" type="button" class='presetButton'>Grayish </button>
+                        <button id="Grayish" type="button" class='btn btn-md presetButton'>Grayish </button>
                       </div>
                       <div class="col-6">
-                        <button id="Vivid" type="button" class='presetButton'>Vivid </button>
+                        <button id="Vivid" type="button" class='btn btn-md presetButton'>Vivid </button>
                       </div>
                     </div>
                   </div>
@@ -139,9 +142,8 @@
                 <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
                   <div class="accordion-body">
                     <div class="col">
-                      <p>Utility</p>
-                      <button id="Reload">Reload </button>
-                      <button id="GenMode" onclick="location.href='../3DGen/index.html'">Wallpaper Gen</button>
+                      <button id="Reload" class="btn btn-lg presetButton">Reload </button>
+                      <button id="GenMode" class="btn btn-lg presetButton" onclick="location.href='../3DGen/index.html'">Wallpaper Gen</button>
                     </div>
                   </div>
                 </div>
@@ -190,13 +192,13 @@
                   <p id="indiInvert">Invert:</p>
                   <input type="range" class="form-range" id="inputInvert" min="0" max="100" step="1" value="0">
                 </div>
-                <button id="ResetParam">Reset</button>
+                <button id="ResetParam" class="btn btn-lg">Reset</button>
               </div>
             </div>
-            <div id="croppedImage" class="col-10">
+            <div id="PCFullView" class="croppedImage col-10">
               <p>Result</p>
-              <canvas id="croppedCanvas"></canvas>
-              <img id="output" src="">
+              <canvas class="croppedCanvas"></canvas>
+              <img class="output col-3" src="">
             </div>
             <div id="FontEdit" class="editList col-6">
               <div class="contents">

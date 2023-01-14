@@ -102,6 +102,11 @@ label {
     text-align: center;
 }
 
+#FileOpen{
+    border: 2px solid var(--light-accent-color);
+    margin-bottom: 5px;
+}
+
 #Download{
     color: #ffffff;
     background-color: var(--light-accent-color);
@@ -121,6 +126,12 @@ label {
     background-color: var(--light-accent-sub-color);
 }
 
+.presetButton{
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: var( --dark-accent-color);
+}
+
 #sourceImage  {
     padding-top: 20px;
 }
@@ -131,7 +142,7 @@ label {
     width: 100%;
 }
 
-#croppedCanvas {
+.croppedCanvas {
     width: 100%;
     border: 2px dashed var(--light-sub-color);
     border-radius: var(--border-radius);
@@ -160,7 +171,6 @@ label {
 .accordion {
     box-shadow: var(--light-shadow);
     border-radius: var(--border-radius);
-
 }
 
 /* Fontselect*/
@@ -197,7 +207,7 @@ label {
     .editView  {
         flex-wrap: wrap;
     }
-    #output {
+    .output {
         width:100%;
     }
     /* .cropper-container div{
@@ -221,14 +231,14 @@ label {
         display: none;
     }
 
-    #croppedImage{
+    .croppedImage{
         width: 100%;
         max-height: 350px;
         border-radius: var(--border-radius);
     }
 
     /*クロップ後キャンバス*/
-    #croppedCanvas {
+    .croppedCanvas {
         width: 100%;
         max-height: 350px;
         /* padding-top: 26px; */
@@ -271,7 +281,7 @@ label {
         border: 2px dashed var(--dark-main-color);
     }
     
-    #croppedCanvas {
+    .croppedCanvas {
         border: 2px dashed var(--dark-main-color);
     }
 
@@ -306,6 +316,10 @@ label {
         cursor: pointer;
         width: 100%;
     }
+
+    #FileOpen{
+        color: #ffffff;
+    }
     
     #Download{
         color: #000000;
@@ -315,22 +329,6 @@ label {
     }
     
     #ResetParam{
-        color: var(--dark-accent-sub-color);
-        background-color: var(--dark-main-color);
-    }
-    #aspectRatio{
-        color: var(--dark-accent-sub-color);
-        background-color: var(--dark-main-color);
-    }
-    #Reload{
-        color: var(--dark-accent-sub-color);
-        background-color: var(--dark-main-color);
-    }
-    #GenMode{
-        color: var(--dark-accent-sub-color);
-        background-color: var(--dark-main-color);
-    }
-    .presetButton{
         color: var(--dark-accent-sub-color);
         background-color: var(--dark-main-color);
     }

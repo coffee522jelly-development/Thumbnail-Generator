@@ -133,7 +133,7 @@ function initResultSetting(context, initial){
 function imageCrop(event) {
 	const scale = 768 / image.width;
 
-	const croppedCanvas = document.querySelector("#croppedCanvas");
+	const croppedCanvas = document.querySelector(".croppedCanvas");
 	const Width = croppedCanvas.width = image.height * cropAspectRatio;
 	const Height = croppedCanvas.height = image.height;
 	let ctx = croppedCanvas.getContext("2d");

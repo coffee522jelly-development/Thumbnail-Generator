@@ -231,6 +231,11 @@ window.addEventListener('load', (e) => {
 	let btnAspectRatio = document.querySelector('#aspectRatio');
 	btnAspectRatio.addEventListener('click', OnAspectButton);
 
+	// FileOpen
+	let FileOpen = document.querySelector("#FileOpen");
+	FileOpen.addEventListener("click", () => {
+		document.querySelector("#uploader").click();
+	});
 
 	// Download
 	let btnDownload = document.querySelector('#Download');
@@ -523,8 +528,8 @@ function OnAspectButton(){
 function OnDownloadButton(){
 	if (cropper != null){
 		// ConvertPngImage
-		let output = document.querySelector("#output");
-		const croppedCanvas = document.querySelector("#croppedCanvas");
+		let output = document.querySelector(".output");
+		const croppedCanvas = document.querySelector(".croppedCanvas");
 		output.src = croppedCanvas.toDataURL();
 		output.style.display = "block"; //visible
 
