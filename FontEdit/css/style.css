@@ -25,7 +25,7 @@ html, body {
 }
 
 p {
-    font-size: 12px;
+    font-size: 10.5px;
     color: var(--light-sub-color);
     margin: 0px;
     font-family: var(--default-font);
@@ -33,7 +33,7 @@ p {
 
 a {
     color: #aaa;
-    font-size: 12px;
+    font-size: 10.5px;
     text-decoration: none;
     font-family: var(--default-font);
 }
@@ -71,16 +71,16 @@ li {
 }
 
 label {
-    font-size: 12px;
+    font-size: 10.5px;
 }
 
 #main{
-    padding: 10px;
+    padding: 10.5px;
     background-color: var(--light-main-color);
 }
 
 #logo {
-    font-size: 20px;
+    font-size: 15px;
     padding-right: 30px;
     padding-left: 5px;
     font-family: var(--default-font);
@@ -137,14 +137,14 @@ label {
 }
 
 #sourceCanvas {
-    border: 2px dashed var(--light-sub-color);
     border-radius: var(--border-radius);
     width: 100%;
+    box-shadow: var(--light-shadow);
 }
 
 .croppedCanvas {
     width: 100%;
-    border: 2px dashed var(--light-sub-color);
+    box-shadow: var(--light-shadow);
     border-radius: var(--border-radius);
     color: var(--light-sub-color);
 }
@@ -278,11 +278,11 @@ label {
     }
 
     #sourceCanvas {
-        border: 2px dashed var(--dark-main-color);
+        box-shadow: var(--dark-shadow);
     }
     
     .croppedCanvas {
-        border: 2px dashed var(--dark-main-color);
+        box-shadow: var(--dark-shadow);
     }
 
     #filterParam {
@@ -322,7 +322,7 @@ label {
     }
     
     #Download{
-        color: #000000;
+        color: #ffffff;
         background-color: var(--dark-accent-color);
         cursor: pointer;
         width: 100%;
