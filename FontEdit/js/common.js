@@ -46,7 +46,7 @@ window.addEventListener('load', (e) => {
 
 	getViewportSizeAndAdjust();
 	updateFontCheckState();
-	updateShapeCheckState();
+	updateCheckState();
 	updateIndiXY();
 
 	// Window Reload
@@ -132,7 +132,7 @@ window.addEventListener('load', (e) => {
 	// ShapeType
 	let selectShapeType = document.querySelector('#shapeType');
 	selectShapeType.addEventListener('change', (e) => {
-		updateShapeCheckState();
+		updateCheckState();
 		initResultSetting(document.querySelector("#sourceCanvas"), false);
 	});
 
@@ -443,52 +443,51 @@ window.addEventListener('resize', function(){
 });
 
 // 関数/////////////////////////////////////////////////////////////////
-function updateFontCheckState(){
-	let fontEmphasis = document.querySelector('#fontEmphasis');
-	document.querySelector("#inputFontLineWidth").disabled = (fontEmphasis.checked == false);
-
-	let fontOutline = document.querySelector('#fontOutLine');
-	fontOutline.disabled = bfontEmphasis;
-}
-
-
-function updateShapeCheckState(){
-	let drawFont = document.querySelector('#fontDraw');
-	bfontDraw = drawFont.checked;
+// 状態管理
+function updateCheckState(){
+	bfontDraw = document.querySelector('#fontDraw').checked;
+	bShape = document.querySelector('#drawShape').checked;
+	bShapeBackGround = document.querySelector('#drawBackGround').checked;
 
 	let drawShape = document.querySelector('#drawShape');
-	bShape = drawShape.checked;
-
-	let drawBackGround = document.querySelector('#drawBackGround');
-	bShapeBackGround = drawBackGround.checked;
 	drawShape.disabled = bShapeBackGround;
 
-	const ImageFilter = document.querySelectorAll(".imageItem > input[type='range']");
-	for (let i = 0; i < ImageFilter.length; i++) {
-		ImageFilter[i].disabled = bShapeBackGround;
-	}
+	bfontLeftAlign = document.querySelector('#fontLeftAlign').checked;
+	bShapeFill = document.querySelector('#drawShapeFill').checked;
 
-	// check(Draw)
 	let fill = document.querySelector('#drawShapeFill');
-	bShapeFill = fill.checked;
 	let dash = document.querySelector('#drawShapeDash');
 	let shapeType = document.querySelector('#shapeType');
 	fill.disabled = !bShape;
 	dash.disabled = !bShape;
 	shapeType.disabled = !bShape;
 
-	// shapeInput(Draw)
-	const shapeParam = document.querySelectorAll(".shapeParam > input[type='range']");
-	for (let i = 0; i < shapeParam.length; i++) {
-		shapeParam[i].disabled = (!bShape || bShapeBackGround);
-	}
-
 	let shapeTypeValue = shapeType.value;
 	document.querySelector("#inputSectorAngle").disabled = (shapeTypeValue != "Sector");
 	document.querySelector("#inputVertexSize").disabled = (shapeTypeValue != "Polygon");
 	document.querySelector("#inputShapeDash").disabled = (dash.checked == false);
+
+	const ImageFilter = document.querySelectorAll(".imageItem > input[type='range']");
+	for (let i = 0; i < ImageFilter.length; i++) {
+		ImageFilter[i].disabled = bShapeBackGround;
+	}
+
+	const shapeParam = document.querySelectorAll(".shapeParam > input[type='range']");
+	for (let i = 0; i < shapeParam.length; i++) {
+		shapeParam[i].disabled = (!bShape || bShapeBackGround);
+	}
 }
 
+// フォントチェック状態管理
+function updateFontCheckState(){
+	bfontEmphasis = document.querySelector('#fontEmphasis').checked;
+	bfontOutLine = document.querySelector('#fontOutLine').checked;
+
+	document.querySelector("#inputFontLineWidth").disabled = (bfontEmphasis == false);
+	document.querySelector('#fontOutLine').disabled = bfontEmphasis;
+}
+
+// XYスライダー状態管理
 function updateIndiXY(){
 	// Font Locator
 	let indifX = document.querySelector('#indifX');

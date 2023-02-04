@@ -74,22 +74,6 @@ function cropImageFile(file){
 					list.appendChild(option);
 				}
 			}
-
-			// // 初期設定
-			// let fontColor = document.getElementById('inputFontColor');
-			// const optionfontColor = fontColor.querySelectorAll('option');
-			// const selectedfontColor = optionfontColor[0];
-			// selectedfontColor.selected = true;
-
-			// let fontBackColor = document.getElementById('inputFontBackColor');
-			// const optionfontBackColor = fontBackColor.querySelectorAll('option');
-			// const selectedfontBackColor = optionfontBackColor[1];
-			// selectedfontBackColor.selected = true;
-
-			// let shapeColor = document.getElementById('inputShapeColor');
-			// const optionshapeColor = shapeColor.querySelectorAll('option');
-			// const selectedshapeColor = optionshapeColor[2];
-			// selectedshapeColor.selected = true;
         }
         image.src = e.target.result;
     }
@@ -185,28 +169,39 @@ function drawText(context, centerX, centerY){
 	context.translate(-1* centerX, -1* centerY);
 
 	// ImageSizer
-	const element = document.Title.caption.value;
-	const fontX = centerX - (context.measureText(element).width / 2);
-	const fontY = centerY + (fontRelativeSize / 3);
+	let text = document.getElementById("text").value;
+	for (let lines = text.split("\n"), i=0, l=lines.length; l>i; i++) {
+		let line = lines[i];
+		let addY = fontRelativeSize;
+		if ( i > 0 ) addY += fontRelativeSize * 1.0 * i;
+	
+		let fontX = centerX;
+		if (bfontLeftAlign)
+			fontX -= 0.5 * (context.canvas.clientWidth/ 2);
+		else
+			fontX -= (context.measureText(line).width / 2);
+		
+		const fontY = centerY + (fontRelativeSize / 3) + addY - 1.5 * fontRelativeSize;
 
-	if (bfontEmphasis){
-		context.lineWidth = String(fontLineWidth);
-		context.lineJoin = "miter";
-		context.miterLimit = "5"
+		if (bfontEmphasis){
+			context.lineWidth = String(fontLineWidth);
+			context.lineJoin = "miter";
+			context.miterLimit = "5"
 
-		context.strokeStyle = fontBackColor;
-		context.strokeText(element, fontX, fontY);
-		context.fillStyle = fontColor;
-		context.fillText(element, fontX, fontY);
-	}
-	else if (bfontOutLine){
-		context.strokeStyle = fontColor;
-		context.strokeText(element, fontX, fontY);
-	}
-	else{
-		context.fillStyle = fontColor;
-		context.fillText(element, fontX, fontY);
-	}
+			context.strokeStyle = fontBackColor;
+			context.strokeText(line, fontX, fontY);
+			context.fillStyle = fontColor;
+			context.fillText(line, fontX, fontY);
+		}
+		else if (bfontOutLine){
+			context.strokeStyle = fontColor;
+			context.strokeText(line, fontX, fontY);
+		}
+		else{
+			context.fillStyle = fontColor;
+			context.fillText(line, fontX, fontY);
+		}
+	}	
 }
 
 // 図形描画関数(切り抜き時に付与)

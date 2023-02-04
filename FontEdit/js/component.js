@@ -3,6 +3,7 @@
 let   bfontDraw 	    = false;
 let   bfontOutLine 		= false;
 let   bfontEmphasis 	= false;
+let   bfontLeftAlign    = false;
 let   fontBold 	        = '';
 let   fontItalic 	    = '';
 
@@ -14,7 +15,7 @@ const fDrawFont = new Vue({
     },
     methods: {
         setFontDraw: function() {
-            updateShapeCheckState();
+            updateCheckState();
             initResultSetting(document.querySelector("#sourceCanvas"), false);
         }
     }
@@ -58,7 +59,7 @@ const fOutline = new Vue({
     },
     methods: {
         setOutLine: function() {
-            bfontOutLine = this.isChecked;
+            updateFontCheckState();
             initResultSetting(document.querySelector("#sourceCanvas"), false);
         }
     }
@@ -73,8 +74,22 @@ const fEmphasis = new Vue({
     },
     methods: {
         setEmphasis: function() {
-            bfontEmphasis = this.isChecked;
             updateFontCheckState();
+            initResultSetting(document.querySelector("#sourceCanvas"), false);
+        }
+    }
+});
+
+
+/*左揃え*/
+const fLeftAlignFont = new Vue({
+    el:'#fontLeftAlign',
+    data: {
+        isChecked: true
+    },
+    methods: {
+        setFontLeftAlign: function() {
+            updateCheckState();
             initResultSetting(document.querySelector("#sourceCanvas"), false);
         }
     }
@@ -95,7 +110,7 @@ const sDrawShape = new Vue({
     },
     methods: {
         setShapeDraw: function() {
-            updateShapeCheckState();
+            updateCheckState();
             initResultSetting(document.querySelector("#sourceCanvas"), false);
         }
     }
@@ -110,7 +125,7 @@ const sDrawBackGround = new Vue({
     },
     methods: {
         setBackGround: function() {
-            updateShapeCheckState();
+            updateCheckState();
             initResultSetting(document.querySelector("#sourceCanvas"), false);
         }
     }
@@ -126,7 +141,7 @@ const sDrawShapeDash = new Vue({
     methods: {
         setShapeDash: function() {
             bShapeDash = this.isChecked;
-            updateShapeCheckState();
+            updateCheckState();
             initResultSetting(document.querySelector("#sourceCanvas"), false);
         }
     }
@@ -142,7 +157,7 @@ const sDrawShapeFill = new Vue({
     methods: {
         setShapeFill: function() {
             bShapeFill = this.isChecked;
-            updateShapeCheckState();
+            updateCheckState();
             initResultSetting(document.querySelector("#sourceCanvas"), false);
         }
     }
@@ -158,7 +173,7 @@ const sDrawShapeGradient = new Vue({
     methods: {
         setShapeGradient: function() {
             bShapeGradient = this.isChecked;
-            updateShapeCheckState();
+            updateCheckState();
             initResultSetting(document.querySelector("#sourceCanvas"), false);
         }
     }
