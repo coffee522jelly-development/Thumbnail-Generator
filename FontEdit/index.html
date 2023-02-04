@@ -105,7 +105,7 @@ Hello.</textarea>
                         <input class="form-check-input" type="radio" name="AspectRatio" id="AspectRatio4" value="1.0">
                         <label class="form-check-label" for="exampleRadios4">1:1</label>
                       </div>
-                      <button id="aspectRatio" class="btn btn-lg presetButton">Submit </button>
+                      <button id="aspectRatio" class="btn btn-md presetButton">Submit </button>
                     </div>
                   </div>
                 </div>
@@ -118,11 +118,12 @@ Hello.</textarea>
                   <div class="accordion-body">
                     <div class="row">
                       <div class="col-6">
-                        <button id="Grayish" type="button" class='btn btn-md presetButton'>Grayish </button>
-                        <button id="BrightSepia" type="button" class='btn btn-md presetButton'>Bright Sepia </button>
+                        <button id="Grayish" type="button" class='btn btn-sm presetButton'>Grayish </button>
+                        <button id="BrightSepia" type="button" class='btn btn-sm presetButton'>Bright Sepia </button>
                       </div>
                       <div class="col-6">
-                        <button id="Vivid" type="button" class='btn btn-md presetButton'>Vivid </button>
+                        <button id="Vivid" type="button" class='btn btn-sm presetButton'>Vivid </button>
+                        <button id="Darkness" type="button" class='btn btn-sm presetButton'>Darkness </button>
                       </div>
                     </div>
                   </div>
@@ -143,9 +144,13 @@ Hello.</textarea>
                 </h2>
                 <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
                   <div class="accordion-body">
-                    <div class="col">
-                      <button id="Reload" class="btn btn-lg presetButton">Reload </button>
-                      <button id="GenMode" class="btn btn-lg presetButton" onclick="location.href='../3DGen/index.html'">Wallpaper Gen</button>
+                    <div class="row">
+                      <div class="col-6">
+                        <button id="Reload" class="btn btn-sm presetButton">Reload </button>
+                      </div>
+                      <div class="col-6">
+                        <button id="GenMode" class="btn btn-sm presetButton" onclick="location.href='../3DGen/index.html'">Wallpaper Gen</button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -193,7 +198,7 @@ Hello.</textarea>
                   <p id="indiInvert">Invert:</p>
                   <input type="range" class="form-range" id="inputInvert" min="0" max="100" step="1" value="0">
                 </div>
-                <button id="ResetParam" class="btn btn-lg">Reset</button>
+                <button id="ResetParam" class="btn btn-md">Reset</button>
               </div>
             </div>
             <div id="PCFullView" class="croppedImage col-10">
@@ -221,7 +226,7 @@ Hello.</textarea>
                         <datalist id="defaultcolors"></datalist>
                         <input type="color" id="inputFontBackColor" value="#6fbb8d" list="defaultcolors">
                         <datalist id="defaultcolors"></datalist>
-                        <select id="fontStyle" class="form-select form-select-lg mb-3" aria-label=" example" value="Train-One">
+                        <select id="fontStyle" class="form-select form-select-md mb-3" aria-label=" example" value="Train-One">
                           <optgroup label="-JPFont-"></optgroup>
                           <option id="IPAex" value="IPAex">IPAex明朝</option>
                           <option id="Timemachine-wa" value="Timemachine-wa">タイムマシンわ号</option>
@@ -285,10 +290,10 @@ Hello.</textarea>
                       <div class="accordion-body">
                         <p>LocateX</p>
                         <p id="indifX"></p>
-                        <input type="range" class="form-range" id="inputFontLocateX" min="-50" max="50" step="10" value="0">
+                        <input type="range" class="form-range" id="inputFontLocateX" min="-50" max="50" step="1" value="0">
                         <p>LocateY</p>
                         <p id="indifY"></p>
-                        <input type="range" class="form-range" id="inputFontLocateY" min="-50" max="50" step="10" value="0">
+                        <input type="range" class="form-range" id="inputFontLocateY" min="-50" max="50" step="1" value="0">
                       </div>
                     </div>
                   </div>
@@ -313,7 +318,7 @@ Hello.</textarea>
                         <input type="checkbox" id="drawBackGround" v-model="isChecked" v-on:change="setBackGround">  BackGround(Only) 
                       </label>
                       <datalist id="defaultcolors"></datalist>
-                      <select id="shapeType" class="form-select form-select-lg mb-3" value="Arc">
+                      <select id="shapeType" class="form-select form-select-md mb-3" value="Arc">
                         <option selected id="Arc" value="Arc">Arc</option>
                         <option id="Square" value="Square">Square</option>
                         <option id="justify-Rect" value="justify-Rect">justify-Rect</option>
@@ -391,4 +396,5 @@ Hello.</textarea>
   <script src="js/common.js"></script>
   <script src="js/component.js"></script>
   <script src="js/crop.js"></script>
+  <script src="js/setButtons.js"></script>
 </html>

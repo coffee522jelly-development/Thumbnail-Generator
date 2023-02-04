@@ -85,7 +85,7 @@ const fEmphasis = new Vue({
 const fLeftAlignFont = new Vue({
     el:'#fontLeftAlign',
     data: {
-        isChecked: true
+        isChecked: false
     },
     methods: {
         setFontLeftAlign: function() {

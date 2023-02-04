@@ -172,16 +172,14 @@ function drawText(context, centerX, centerY){
 	let text = document.getElementById("text").value;
 	for (let lines = text.split("\n"), i=0, l=lines.length; l>i; i++) {
 		let line = lines[i];
-		let addY = fontRelativeSize;
-		if ( i > 0 ) addY += fontRelativeSize * 1.0 * i;
+		let addY = fontRelativeSize * 0.5;
+		addY += fontRelativeSize * i;
 	
 		let fontX = centerX;
-		if (bfontLeftAlign)
-			fontX -= 0.5 * (context.canvas.clientWidth/ 2);
-		else
+		if (!bfontLeftAlign)
 			fontX -= (context.measureText(line).width / 2);
 		
-		const fontY = centerY + (fontRelativeSize / 3) + addY - 1.5 * fontRelativeSize;
+		const fontY = centerY + addY;
 
 		if (bfontEmphasis){
 			context.lineWidth = String(fontLineWidth);
