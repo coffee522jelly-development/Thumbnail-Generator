@@ -60,7 +60,10 @@ window.addEventListener('load', (e) => {
 	let inputFontSize = document.querySelector('#inputFontSize');
 	inputFontSize.addEventListener('change', (e) => {
 		fontSize = inputFontSize.value;
+		
+		fontSize = Cookies.get('fontSize');
 		initResultSetting(document.querySelector("#sourceCanvas"), false);
+		Cookies.set('fintSize', fontSize);
 	});
 
 
