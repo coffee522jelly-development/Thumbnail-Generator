@@ -8,6 +8,7 @@ let   fontSpacing 		= 10;
 let   fontColor         = "#ffffff";
 let   fontBackColor     = "#6fbb8d";
 let   fontLineWidth 	= 10;
+let   fontLineHeight 	= fontSize * 5;
 let   fontLocateX       = 0;
 let   fontLocateY       = 0;
 
@@ -112,7 +113,6 @@ window.addEventListener('load', (e) => {
 		fontLineWidth = inputFontLineWidth.value;
 		initResultSetting(document.querySelector("#sourceCanvas"), false);
 	});
-
 
 	// FontLocateX
 	let inputFontLocateX = document.querySelector('#inputFontLocateX');
