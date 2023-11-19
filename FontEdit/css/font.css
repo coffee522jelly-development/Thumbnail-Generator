@@ -42,6 +42,50 @@
       src: url('../fonts/JPFont/Senobi-Gothic/Senobi-Gothic-Regular.ttf') format('truetype');
 }
 
+@font-face {
+      /*からかぜ*/
+      font-family:'karakaze';
+      src: url('../fonts/JPFont/karakaze/karakaze-R.ttf') format('truetype');
+}
+
+@font-face {
+      /*マキナス４*/
+      font-family:'makinas4';
+      src: url('../fonts/JPFont/makinas4/Makinas-4-Flat.otf') format('truetype');
+}
+
+@font-face {
+      /*金書字*/
+      font-family:'kinkakuji';
+      src: url('../fonts/JPFont/Kinkakuji/Kinkakuji-Normal.ttf') format('truetype');
+}
+
+@font-face {
+      /*白福*/
+      font-family:'shirofuku';
+      src: url('../fonts/JPFont/Shirofuku/CHI_Shirofuku-G2.otf') format('truetype');
+}
+
+@font-face {
+      /*草稿明朝*/
+      font-family:'soukoumincho';
+      src: url('../fonts/JPFont/SoukouMincho/SoukouMincho.ttf') format('truetype');
+}
+
+@font-face {
+      /*零ゴシック*/
+      font-family:'zerogothic';
+      src: url('../fonts/JPFont/ZeroGothic/ZeroGothic.otf') format('truetype');
+}
+
+@font-face {
+      /*ロンド*/
+      font-family:'ronde';
+      src: url('../fonts/JPFont/ronde_square/Ronde-B_square.otf') format('truetype');
+}
+
+
+
 /*Worldフォント*/
 @font-face {
       /*Archivo-Narrow*/
@@ -119,5 +163,35 @@
       /*Smarta*/
       font-family:'Smarta';
       src: url('../fonts/WorldFont/Smarta/Smarta/Smarta-Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*NoiseWarning*/
+      font-family:'NoiseWarning';
+      src: url('../fonts/WorldFont/NoiseWarning/Noise_Warning_Regular.ttf') format('truetype');
+}
+
+@font-face {
+      /*Amari2*/
+      font-family:'Amari2';
+      src: url('../fonts/WorldFont/AmariFont/Amari_Font_2-100VF.ttf') format('truetype');
+}
+
+@font-face {
+      /*Amari21*/
+      font-family:'Amari21';
+      src: url('../fonts/WorldFont/AmariFont/Amari_Font_21-100VF.ttf') format('truetype');
+}
+
+@font-face {
+      /*Amari30*/
+      font-family:'Amari30';
+      src: url('../fonts/WorldFont/AmariFont/Amari_Font_30-100-Regular.otf') format('truetype');
+}
+
+@font-face {
+      /*Amari63*/
+      font-family:'Amari63';
+      src: url('../fonts/WorldFont/AmariFont/Amari_Font_63-100-Regular.otf') format('truetype');
 }
   /*フォント定義ここまで*/
